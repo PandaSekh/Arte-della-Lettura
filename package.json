@@ -8,8 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sanity/client": "^2.0.9",
     "next": "10.0.3",
     "react": "17.0.1",
     "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "postcss": "^8.1.14",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^2.0.1"
   }
 }
