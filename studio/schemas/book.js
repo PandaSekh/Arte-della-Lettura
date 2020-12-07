@@ -12,6 +12,14 @@ export default {
 			title: "Title",
 		},
 		{
+			name: "cover",
+			title: "Book Cover",
+			type: "image",
+			options: {
+				hotspot: false,
+			},
+		},
+		{
 			name: "isbn",
 			type: "string",
 			title: "ISBN",
@@ -54,9 +62,9 @@ export default {
 			type: "string",
 		},
 		{
-			name: "editor",
-			title: "Editor",
-			type: "number",
+			name: "publisher",
+			title: "Publisher",
+			type: "string",
 		},
 		{
 			name: "rating",

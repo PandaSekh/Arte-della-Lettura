@@ -1,48 +1,46 @@
 import Head from "next/head";
 
-import getPosts from "../lib/postsContainer";
+import { getAllPosts } from "../lib/sanityClient";
 
-import { getImgUrl } from "../lib/sanityClient";
-
-import PortableText from "@sanity/block-content-to-react";
-import Book from "../components/Book";
+import Navbar from "../components/Navbar";
+import PostHomepage from "../components/PostHomepage";
 
 export default function Home(props) {
-	const serializers = {
-		types: {
-			book: props => {
-				console.log("book", props);
-				return <Book book={props.node} />;
-			},
-			reference: props => {
-				console.log(props);
-				if (props._type === "book") {
-					console.log(props);
-					<Book book={props.node} />;
-				}
-			},
-		},
-		marks: {
-			internalLink: ({ mark, children }) => {
-				const { slug = {} } = mark;
-				const href = `/${slug.current}`;
-				return <a href={href}>{children}</a>;
-			},
-		},
-	};
+	// const serializers = {
+	// 	types: {
+	// 		book: props => {
+	// 			return <Book book={props.node} />;
+	// 		},
+	// 	},
+	// 	marks: {
+	// 		internalLink: ({ mark, children }) => {
+	// 			const { slug = {} } = mark;
+	// 			const href = `/${slug.current}`;
+	// 			return <a href={href}>{children}</a>;
+	// 		},
+	// 	},
+	// 	link: ({ mark, children }) => {
+	// 		const { blank, href } = mark;
+	// 		return blank ? (
+	// 			<a href={href} target="_blank" rel="noopener">
+	// 				{children}
+	// 			</a>
+	// 		) : (
+	// 			<a href={href}>{children}</a>
+	// 		);
+	// 	},
+	// };
 
-	const postsToDisplay = props.posts.map(post => {
-		return (
-			<div key={post._id}>
-				<PortableText blocks={post.body} serializers={serializers} />
-			</div>
-		);
+	// <PortableText blocks={post.body} serializers={serializers} />;
+
+	const homepagePosts = props.posts.map(post => {
+		return <PostHomepage post={post} />;
 	});
 
 	return (
 		<div>
 			<Head>
-				<title>Create Next App</title>
+				<title>Arte della Lettura</title>
 				<link rel="icon" href="/favicon.ico" />
 				<meta name="description" content="Esempio" key="description" />
 				<meta
@@ -51,20 +49,16 @@ export default function Home(props) {
 					key="viewport"
 				/>
 			</Head>
-			<p>Index</p>
-			<p>{postsToDisplay}</p>
+
+			<Navbar />
+
+			<main>{homepagePosts}</main>
 		</div>
 	);
 }
 
 export async function getStaticProps() {
-	const posts = await getPosts();
-	// console.log(posts);
-	// console.log(posts[0].body);
-	// posts.forEach(post => {
-	// 	console.log("All: ", post);
-	// 	console.log("Body: ", post.body);
-	// });
+	const posts = await getAllPosts();
 	return {
 		props: { posts: posts },
 	};

@@ -20,6 +20,13 @@ export default function Navbar() {
 					</Link>
 				</li>
 			</ul>
+			<div>
+				<img
+					className="max-h-auto max-w-3xl w-2/6"
+					src="/images/logo.png"
+					alt="Logo Arte della Lettura"
+				/>
+			</div>
 		</header>
 	);
 }
