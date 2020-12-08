@@ -1,38 +1,42 @@
 import Head from "next/head";
 
-import getPosts from "../lib/postsContainer";
+import { getAllPosts } from "../lib/sanityClient";
+
+import Navbar from "../components/Navbar";
+import PostHomepage from "../components/PostHomepage";
+import { getPosts } from "../lib/cache";
+
+import { Fragment } from "react";
 
 export default function Home(props) {
-	const postsToDisplay = props.posts.map(post => {
-		return (
-			<div key={post._id}>
-				Id: {post._id}
-				<p>Title: {post.title}</p>
-			</div>
-		);
+	const homepagePosts = props.posts.map(post => {
+		return <PostHomepage post={post} key={post._id} />;
 	});
 
 	return (
-		<div>
+		<Fragment>
 			<Head>
-				<title>Create Next App</title>
-				<link rel="icon" href="/favicon.ico" />
-				<meta name="description" content="Esempio" key="description" />
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1.0"
-					key="viewport"
-				/>
+				<meta name="description" content="override" key="description" />
 			</Head>
-			<p>HEllo</p>
-			<p>{postsToDisplay}</p>
-		</div>
+
+			<div className="posts">
+				{homepagePosts}
+				{homepagePosts}
+				{homepagePosts}
+				{homepagePosts}
+			</div>
+			<div className="sidebar">Sidebar</div>
+		</Fragment>
 	);
 }
 
 export async function getStaticProps() {
+	// const posts = await getAllPosts();
+	// return {
+	// 	props: { posts: posts },
+	// };
 	const posts = await getPosts();
-	console.log(posts);
+	const again = await getPosts();
 	return {
 		props: { posts: posts },
 	};
