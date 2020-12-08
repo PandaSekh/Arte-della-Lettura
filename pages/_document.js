@@ -23,7 +23,7 @@ class MyDocument extends Document {
 					<meta name="mobile-web-app-capable" content="yes" />
 					<meta
 						name="msapplication-config"
-						content="/static/icons/browserconfig.xml"
+						content="/browserconfig.xml"
 					/>
 					<meta name="msapplication-TileColor" content="#2B5797" />
 					<meta name="msapplication-tap-highlight" content="no" />
@@ -32,29 +32,28 @@ class MyDocument extends Document {
 					<link
 						rel="apple-touch-icon"
 						sizes="180x180"
-						href="/static/icons/apple-touch-icon.png"
+						href="/apple-touch-icon.png"
 					/>
 					<link
 						rel="icon"
 						type="image/png"
 						sizes="32x32"
-						href="/static/icons/favicon-32x32.png"
+						href="//favicon-32x32.png"
 					/>
 					<link
 						rel="icon"
 						type="image/png"
 						sizes="16x16"
-						href="/static/icons/favicon-16x16.png"
+						href="/favicon-16x16.png"
 					/>
-					<link rel="manifest" href="/static/manifest.json" />
 					<link
 						rel="mask-icon"
-						href="/static/icons/safari-pinned-tab.svg"
+						href="/safari-pinned-tab.svg"
 						color="#5bbad5"
 					/>
 					<link
 						rel="shortcut icon"
-						href="/static/icons/favicon.ico"
+						href="/favicon.ico"
 					/>
 					<link
 						rel="stylesheet"
@@ -86,6 +85,7 @@ class MyDocument extends Document {
 						content="https://yourdomain.com/static/icons/apple-touch-icon.png"
 					/>
 					<link rel="icon" href="/favicon.png" />
+					<link rel="manifest" href="/manifest.webmanifest"></link>
 				</Head>
 				<body>
 					<Main />
