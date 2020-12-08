@@ -1,5 +1,11 @@
 module.exports = {
-	purge: ["./src/**/*.js", "./public/index.html"],
+	purge: {
+		enabled: true,
+		content: [
+			"./components/*.js",
+			"./pages/*.js",
+		],
+	},
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		colors: {
@@ -18,4 +24,7 @@ module.exports = {
 		},
 	},
 	plugins: [],
+	corePlugins: {
+		animation: false,
+	},
 };
