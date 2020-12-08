@@ -1,0 +1,26 @@
+{
+  "name": "Arte della Lettura",
+  "short_name": "Arte della Lettura",
+  "icons": [
+    {
+      "src": "/static/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/android-chrome-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/panda-logo.png",
+      "sizes": "1001x1001",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#018fd9",
+  "background_color": "#FFFFFF",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

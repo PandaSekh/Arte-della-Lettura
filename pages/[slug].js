@@ -1,4 +1,3 @@
-import { getPost, getAllPostsSlugs } from "../lib/sanityClient";
 import PortableText from "@sanity/block-content-to-react";
 
 import { serializers } from "../lib/blockContentSerializer";

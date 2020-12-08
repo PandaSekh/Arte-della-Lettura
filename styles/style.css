@@ -16,7 +16,7 @@ main {
 	grid-template-areas: "posts sidebar";
 }
 
-.posts {
+.content {
 	grid-area: posts;
 	display: grid;
 	grid-template-columns: 1fr 1fr;

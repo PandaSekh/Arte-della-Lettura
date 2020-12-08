@@ -37,3 +37,6 @@ yarn-error.log*
 .vscode/
 
 package-lock.json
+
+**/public/workbox-*.js
+**/public/sw.js

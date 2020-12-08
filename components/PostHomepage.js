@@ -1,6 +1,3 @@
-import { serializers } from "../lib/blockContentSerializer";
-
-import PortableText from "@sanity/block-content-to-react";
 import Link from "next/link";
 import Image from "next/image";
 import { getImgUrl } from "../lib/sanityClient";
@@ -24,7 +21,8 @@ export default function PostHomepage(props) {
 					<a>
 						<Image
 							src={getImgUrl(props.post.mainImage)
-								.width(500)
+								// .width(340)
+								// .height(500)
 								.url()}
 							width={340}
 							height={500}
