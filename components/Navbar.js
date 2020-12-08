@@ -1,31 +1,62 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
+	const router = useRouter();
+
 	return (
 		<header>
-			<ul>
-				<li>
+			<ul className="navbar-ul">
+				<li className="navbar-li">
 					<Link href="/">
-						<a>Home</a>
+						<a
+							className={
+								router.pathname == "/"
+									? "active navbar-link"
+									: "navbar-link"
+							}
+						>
+							Home
+						</a>
 					</Link>
 				</li>
-				<li>
+				<li className="navbar-li">
 					<Link href="/archive">
-						<a>Archivio</a>
+						<a
+							className={
+								router.pathname == "/archive"
+									? "active navbar-link"
+									: "navbar-link"
+							}
+						>
+							Archivio
+						</a>
 					</Link>
 				</li>
-				<li>
+				<li className="navbar-li">
 					<Link href="/about">
-						<a>About</a>
+						<a
+							className={
+								router.pathname == "/about"
+									? "active navbar-link"
+									: "navbar-link"
+							}
+						>
+							About
+						</a>
 					</Link>
 				</li>
 			</ul>
 			<div>
-				<img
-					className="max-h-auto max-w-3xl w-2/6"
-					src="/images/logo.png"
-					alt="Logo Arte della Lettura"
-				/>
+				<Link href="/">
+					<a>
+						<img
+							className="logo"
+							src="/images/logo.png"
+							alt="Logo Arte della Lettura"
+						/>
+					</a>
+				</Link>
 			</div>
 		</header>
 	);
