@@ -18,6 +18,10 @@ main {
 
 .posts {
 	grid-area: posts;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+	grid-template-areas: "post post";
 }
 
 .sidebar {
@@ -42,6 +46,9 @@ main {
 	}
 	main {
 		@apply container mx-auto px-4 block lg:grid lg:grid-cols-4;
+	}
+	.single-post-homepage {
+		@apply m-auto w-11/12 mb-8 grid;
 	}
 }
 

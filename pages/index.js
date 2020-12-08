@@ -8,7 +8,6 @@ import { getPosts } from "../lib/cache";
 
 import { Fragment } from "react";
 
-
 export default function Home(props) {
 	const homepagePosts = props.posts.map(post => {
 		return <PostHomepage post={post} key={post._id} />;
@@ -20,9 +19,12 @@ export default function Home(props) {
 				<meta name="description" content="override" key="description" />
 			</Head>
 
-			{/* <Navbar /> */}
-
-			<div className="posts">{homepagePosts}</div>
+			<div className="posts">
+				{homepagePosts}
+				{homepagePosts}
+				{homepagePosts}
+				{homepagePosts}
+			</div>
 			<div className="sidebar">Sidebar</div>
 		</Fragment>
 	);

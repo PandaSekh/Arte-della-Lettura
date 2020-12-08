@@ -21,7 +21,7 @@ export default function Navbar() {
 					</Link>
 				</li>
 				<li className="navbar-li">
-					<Link href="/archive">
+					<Link href="/archivio">
 						<a
 							className={
 								router.pathname == "/archive"

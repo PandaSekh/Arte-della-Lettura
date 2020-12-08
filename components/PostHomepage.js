@@ -6,20 +6,34 @@ import Image from "next/image";
 import { getImgUrl } from "../lib/sanityClient";
 
 export default function PostHomepage(props) {
-	console.log("post: ", props.post);
+	const book = props.post.body.find(block => {
+		return block._type === "book";
+	});
+
 	return (
 		<div className="single-post-homepage">
 			<Link href={`/${encodeURIComponent(props.post.slug.current)}`}>
 				<a>
-					<h3>{props.post.title}</h3>
+					<h3 className="homepage-title text-center">
+						{props.post.title}
+					</h3>
 				</a>
 			</Link>
-			<Image
-				src={getImgUrl(props.post.mainImage).width(300).url()}
-				width={300}
-				height={450}
-			/>
-			{/* <PortableText blocks={props.post.body} serializers={serializers} /> */}
+			<div className="grid m-auto">
+				<Image
+					src={getImgUrl(props.post.mainImage).width(500).url()}
+					width={340}
+					height={500}
+					className="m-auto"
+					alt={`Copertina ${book.title ? book.title : "libro"}`}
+				/>
+			</div>
+			<p>
+				{props.post.excerpt
+					? "Breve descrizione"
+					: book.synopsis.slice(0, 400)}
+				...
+			</p>
 		</div>
 	);
 }
