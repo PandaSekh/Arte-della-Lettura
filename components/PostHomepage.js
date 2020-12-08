@@ -20,13 +20,21 @@ export default function PostHomepage(props) {
 				</a>
 			</Link>
 			<div className="grid m-auto">
-				<Image
-					src={getImgUrl(props.post.mainImage).width(500).url()}
-					width={340}
-					height={500}
-					className="m-auto"
-					alt={`Copertina ${book.title ? book.title : "libro"}`}
-				/>
+				<Link href={`/${encodeURIComponent(props.post.slug.current)}`}>
+					<a>
+						<Image
+							src={getImgUrl(props.post.mainImage)
+								.width(500)
+								.url()}
+							width={340}
+							height={500}
+							className="m-auto"
+							alt={`Copertina ${
+								book.title ? book.title : "libro"
+							}`}
+						/>
+					</a>
+				</Link>
 			</div>
 			<p>
 				{props.post.excerpt
