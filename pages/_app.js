@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
 		<Fragment>
 			<Head>
 				<title>Arte della Lettura</title>
-				<link rel="icon" href="/favicon.ico" />
+				
 				<meta name="description" content="Esempio" key="description" />
 				<meta
 					name="viewport"
@@ -19,7 +19,10 @@ function MyApp({ Component, pageProps }) {
 			</Head>
 			<Navbar />
 			<main>
-				<Component {...pageProps} />
+				<div className="content">
+					<Component {...pageProps} />
+				</div>
+				<div className="sidebar">Sidebar</div>
 			</main>
 		</Fragment>
 	);

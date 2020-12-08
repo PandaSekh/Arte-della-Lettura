@@ -52,7 +52,7 @@ export default function Navbar() {
 					<a>
 						<img
 							className="logo"
-							src="/images/Logo.png"
+							src="/images/logo.png"
 							alt="Logo Arte della Lettura"
 						/>
 					</a>
