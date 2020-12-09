@@ -6,7 +6,12 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: sans-serif;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	color: #3a3a3a;
 }
 
 main {
@@ -47,8 +52,11 @@ main {
 	main {
 		@apply container mx-auto px-4 block lg:grid lg:grid-cols-4;
 	}
-	.single-post-homepage {
+	.singlePostHomepage {
 		@apply m-auto w-11/12 mb-8 grid;
+	}
+	.homepageTitle {
+		@apply text-center font-light text-2xl mb-2;
 	}
 }
 
@@ -58,5 +66,11 @@ main {
 	}
 	.sidebar {
 		display: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.content {
+		display: block;
 	}
 }

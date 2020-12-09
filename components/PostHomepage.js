@@ -8,12 +8,10 @@ export default function PostHomepage(props) {
 	});
 
 	return (
-		<div className="single-post-homepage">
+		<div className="singlePostHomepage">
 			<Link href={`/${encodeURIComponent(props.post.slug.current)}`}>
 				<a>
-					<h3 className="homepage-title text-center">
-						{props.post.title}
-					</h3>
+					<h3 className="homepageTitle">{props.post.title}</h3>
 				</a>
 			</Link>
 			<div className="grid m-auto">
@@ -21,11 +19,13 @@ export default function PostHomepage(props) {
 					<a>
 						<Image
 							src={getImgUrl(props.post.mainImage)
-								// .width(340)
-								// .height(500)
+								.width(300)
+								.height(460)
 								.url()}
-							width={340}
-							height={500}
+							width={300}
+							height={460}
+							// width={340}
+							// height={500}
 							className="m-auto"
 							alt={`Copertina ${
 								book.title ? book.title : "libro"
