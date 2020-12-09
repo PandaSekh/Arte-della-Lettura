@@ -14,10 +14,13 @@ class MyDocument extends Document {
 						name="apple-mobile-web-app-status-bar-style"
 						content="default"
 					/>
-					<meta name="apple-mobile-web-app-title" content="PWA App" />
+					<meta
+						name="apple-mobile-web-app-title"
+						content="Arte della Lettura"
+					/>
 					<meta
 						name="description"
-						content="Best PWA App in the world"
+						content="Quattro chiacchiere su libri, fumetti, manga e audiolibri. Su Arte della Lettura trovi Recensioni, Interviste e Anteprime!"
 					/>
 					<meta name="format-detection" content="telephone=no" />
 					<meta name="mobile-web-app-capable" content="yes" />
@@ -27,7 +30,7 @@ class MyDocument extends Document {
 					/>
 					<meta name="msapplication-TileColor" content="#2B5797" />
 					<meta name="msapplication-tap-highlight" content="no" />
-					<meta name="theme-color" content="#000000" />
+					<meta name="theme-color" content="#018fd9" />
 
 					<link
 						rel="apple-touch-icon"
@@ -38,7 +41,7 @@ class MyDocument extends Document {
 						rel="icon"
 						type="image/png"
 						sizes="32x32"
-						href="//favicon-32x32.png"
+						href="/favicon-32x32.png"
 					/>
 					<link
 						rel="icon"
@@ -51,39 +54,38 @@ class MyDocument extends Document {
 						href="/safari-pinned-tab.svg"
 						color="#5bbad5"
 					/>
-					<link
-						rel="shortcut icon"
-						href="/favicon.ico"
-					/>
-					<link
-						rel="stylesheet"
-						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-					/>
+					<link rel="shortcut icon" href="/favicon.png" />
 
 					<meta name="twitter:card" content="summary" />
-					<meta name="twitter:url" content="https://yourdomain.com" />
-					<meta name="twitter:title" content="PWA App" />
+					<meta
+						name="twitter:url"
+						content="https://www.artedellalettura.it/"
+					/>
+					<meta name="twitter:title" content="Arte della Lettura" />
 					<meta
 						name="twitter:description"
-						content="Best PWA App in the world"
+						content="Quattro chiacchiere su libri, fumetti, manga e audiolibri."
 					/>
 					<meta
 						name="twitter:image"
 						content="https://yourdomain.com/static/icons/android-chrome-192x192.png"
 					/>
-					<meta name="twitter:creator" content="@DavidWShadow" />
+					<meta name="twitter:creator" content="@PandaSekh" />
 					<meta property="og:type" content="website" />
-					<meta property="og:title" content="PWA App" />
+					<meta property="og:title" content="Arte della Lettura" />
 					<meta
 						property="og:description"
-						content="Best PWA App in the world"
+						content="Quattro chiacchiere su libri, fumetti, manga e audiolibri."
 					/>
-					<meta property="og:site_name" content="PWA App" />
-					<meta property="og:url" content="https://yourdomain.com" />
 					<meta
-						property="og:image"
-						content="https://yourdomain.com/static/icons/apple-touch-icon.png"
+						property="og:site_name"
+						content="Arte della Lettura"
 					/>
+					<meta
+						property="og:url"
+						content="https://artedellalettura.it"
+					/>
+					<meta property="og:image" content="/favicon.png" />
 					<link rel="icon" href="/favicon.png" />
 					<link rel="manifest" href="/manifest.webmanifest"></link>
 				</Head>

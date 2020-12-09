@@ -2,6 +2,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { Fragment } from "react";
 
+
 export default function Home(props) {
 	const PostHomepage = dynamic(() => import("../components/PostHomepage"));
 	const homepagePosts = props.posts.map(post => {
@@ -11,14 +12,17 @@ export default function Home(props) {
 	return (
 		<Fragment>
 			<Head>
-				<meta name="description" content="override" key="description" />
+				<meta
+					name="description"
+					content="override-me"
+					key="description"
+				/>
 			</Head>
 
-				{homepagePosts}
-				{homepagePosts}
-				{homepagePosts}
-				{homepagePosts}
-			
+			{homepagePosts}
+			{homepagePosts}
+			{homepagePosts}
+			{homepagePosts}
 		</Fragment>
 	);
 }
