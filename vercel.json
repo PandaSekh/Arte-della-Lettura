@@ -1,0 +1,7 @@
+{
+  "regions": ["cdg1"],
+  "trailingSlash": false,
+   "github": {
+    "silent": true
+  }
+}
