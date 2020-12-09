@@ -1,10 +1,7 @@
 module.exports = {
 	purge: {
 		enabled: true,
-		content: [
-			"./components/*.js",
-			"./pages/*.js",
-		],
+		content: ["./components/*.js", "./pages/*.js"],
 	},
 	darkMode: false, // or 'media' or 'class'
 	theme: {
@@ -12,7 +9,7 @@ module.exports = {
 			customBlue: {
 				light: "#45b8f5",
 				DEFAULT: "#018fd9",
-				dark: "#117fba",
+				lighter: "#87d5ff",
 			},
 		},
 		extend: {},

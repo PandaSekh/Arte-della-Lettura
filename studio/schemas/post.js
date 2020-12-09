@@ -39,7 +39,12 @@ export default {
 		{
 			name: "publishedAt",
 			title: "Published at",
-			type: "datetime",
+			type: "date",
+			options: {
+				dateFormat: "DD MM YYYY",
+				timeStep: 30,
+				calendarTodayLabel: "Oggi",
+			},
 		},
 		{
 			name: "body",

@@ -8,7 +8,7 @@ export default function Navbar() {
 		<header>
 			<ul className="navbar-ul">
 				<li className="navbar-li">
-					<Link href="/">
+					<Link href="/" prefetch={false}>
 						<a
 							className={
 								router.pathname == "/"
@@ -21,7 +21,7 @@ export default function Navbar() {
 					</Link>
 				</li>
 				<li className="navbar-li">
-					<Link href="/archivio">
+					<Link href="/archivio" prefetch={false}>
 						<a
 							className={
 								router.pathname == "/archive"
@@ -34,7 +34,7 @@ export default function Navbar() {
 					</Link>
 				</li>
 				<li className="navbar-li">
-					<Link href="/about">
+					<Link href="/about" prefetch={false}>
 						<a
 							className={
 								router.pathname == "/about"
@@ -48,7 +48,7 @@ export default function Navbar() {
 				</li>
 			</ul>
 			<div>
-				<Link href="/">
+				<Link href="/" prefetch={false}>
 					<a>
 						<img
 							className="logo"
