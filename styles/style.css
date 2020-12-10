@@ -105,4 +105,15 @@ main {
 	.content {
 		display: block;
 	}
+	.main-nav-desktop {
+		display: none;
+	}
+	#burger {
+		display: block;
+	}
+}
+@media (min-width: 768px) {
+	#burger {
+		display: none;
+	}
 }
