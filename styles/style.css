@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--hamb-color: #3a3a3a;
+	--header-bg-color: #ffffff;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -35,48 +40,18 @@ main {
 	background-color: #272727;
 }
 
-/* .homePageImage {
-	opacity: 1;
-	-webkit-transition: 0.3s ease-in-out;
-	transition: 0.3s ease-in-out;
-}
-
-.homePageImage:hover {
-	opacity: 0.6;
-} */
-
 .readMoreButton {
 	-webkit-transition: 0.3s ease;
 	transition: 0.3s ease-in-out;
 	color: white;
 }
 
-.switch {
-	/* width: 70px;
-	height: 29px; */
-	border-radius: 50px;
-	position: relative;
-	background-color: aqua;
-}
-
-.ball {
-	/* background: white; */
-	/* width: 24px;
-	height: 24px; */
-	/* background: white; */
-	/* border-radius: 100%; */
-	/* position: absolute; */
-	/* top: 3px;
-	left: 4px; */
-	transition: 0.5s all ease;
-}
-
 @layer components {
 	.ball {
-		@apply bg-dark-white w-6 h-6 rounded-full absolute top-0.5 dark:left-1.5 right-1.5 transform transition-all dark:translate-x-9 duration-500 ease-in-out;
+		@apply bg-dark-white w-6 h-6 rounded-full absolute top-1 left-1.5 transform transition-all dark:translate-x-7 duration-500 ease-in-out;
 	}
 	.switch {
-		@apply h-7 w-16;
+		@apply rounded-full h-8 w-16 bg-dark-black dark:bg-customBlue absolute right-8 top-4 shadow-2xl hover:ring ring-customBlue ring-opacity-50;
 	}
 	p {
 		@apply text-dark-grayText dark:text-dark-white;
@@ -109,7 +84,7 @@ main {
 		@apply text-center font-light text-2xl mb-2 hover:text-customBlue;
 	}
 	.homePageImage {
-		@apply grid m-auto my-2 transition-opacity opacity-100 hover:opacity-60;
+		@apply grid m-auto my-2 transition-opacity opacity-100 hover:opacity-60 shadow-xl;
 	}
 	.homepageDate {
 		@apply text-center font-extralight text-sm;
@@ -118,7 +93,10 @@ main {
 		@apply text-center m-auto w-max cursor-pointer p-3 bg-customBlue hover:bg-customBlue-light mt-4 rounded;
 	}
 	.svgLogo {
-		@apply stroke-current fill-current text-dark-black dark:text-dark-white mx-auto my-10;
+		@apply stroke-current fill-current text-dark-black dark:text-dark-white mx-auto my-10 w-full;
+	}
+	.mobileNav::before {
+		@apply dark:bg-customBlue-darker bg-customBlue;
 	}
 }
 
@@ -128,6 +106,12 @@ main {
 	}
 	.sidebar {
 		display: none;
+	}
+}
+
+@media (max-width: 550px) {
+	.logo {
+		width: 66.66%;
 	}
 }
 
@@ -141,9 +125,215 @@ main {
 	#burger {
 		display: block;
 	}
+	.switch {
+		visibility: hidden; /*todo posizionare*/
+	}
+	header {
+		display: grid;
+		grid-template-columns: 6fr 1fr;
+		background-color: var(--header-bg-color);
+		margin-bottom: 10px;
+		box-shadow: 0px 2px 5px var(--header-bg-color);
+	}
+	.logo {
+		margin: -50px 5%;
+		width: 50%;
+	}
 }
 @media (min-width: 768px) {
 	#burger {
 		display: none;
 	}
 }
+
+/*
+HAMBURGER MENU
+*/
+.openMainNav {
+	position: absolute;
+	top: 15px;
+	padding-top: 20px;
+	right: 15px;
+	z-index: 1000;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+.openMainNav:focus {
+	outline: none;
+}
+.burger {
+	position: relative;
+	display: block;
+	width: 28px;
+	height: 4px;
+	margin: 0 auto;
+	background: var(--hamb-color);
+	transition: all 0.275s;
+}
+
+.burger:after,
+.burger:before {
+	content: "";
+	display: block;
+	height: 100%;
+	background-color: var(--hamb-color);
+	transition: all 0.275s;
+}
+
+.burger:after {
+	transform: translateY(-12px);
+}
+
+.burger:before {
+	transform: translateY(-16px);
+}
+
+/* Toggle State part */
+.isOpen .burger {
+	transform: translateY(-8px) rotate(-45deg);
+	background: #ffffff;
+}
+
+.isOpen .burger:before {
+	transform: translateY(0px) skew(-10deg) rotate(75deg);
+	background: #ffffff;
+}
+
+.isOpen .burger:after {
+	transform: translateY(-12px) translateX(10px) skew(-20deg);
+	opacity: 0;
+}
+
+.isOpen .burgerText {
+	visibility: hidden;
+}
+
+/* MENU Text part */
+
+.burgerText {
+	display: block;
+	font-size: 0.675rem;
+	letter-spacing: 0.05em;
+	margin-top: 0.5em;
+	text-transform: uppercase;
+	font-weight: 500;
+	text-align: center;
+	color: var(--hamb-color);
+}
+
+/* Main menu positionning */
+.mobileNav {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	text-align: center;
+	background: rgba(255, 255, 255, 0.8);
+	opacity: 0;
+	z-index: -1;
+	visibility: hidden;
+	transition: all 0.375s;
+}
+
+.mobileNav.isOpen {
+	opacity: 1;
+	z-index: 100;
+	visibility: visible;
+	overflow: none;
+}
+
+/* Yellow band effect */
+.mobileNav::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: -15px;
+	/* background: #018fd9; */
+	transform-origin: 0 0;
+	transform: skew(-14deg) translateX(-120%);
+	transition: all 0.275s 0.1s;
+}
+
+.mobileNav.isOpen::before {
+	transform: skew(-14deg) translateX(0);
+}
+
+/* Skewing effect on menu links */
+.mobileNav ul {
+	display: inline-flex;
+	flex-direction: column;
+	height: 100%; /* Should be 100%, but we have a notice message :D */
+	align-items: flex-end;
+	justify-content: center;
+	transform: translateX(-18%) skew(-16deg);
+}
+
+.mobileNav li {
+	display: block;
+	margin: 0.5rem 0;
+	text-align: right;
+	transform: skew(16deg);
+}
+
+/* Apparition effect on links */
+.mobileNav a {
+	opacity: 0;
+	transform: translateY(-10px);
+}
+
+.mobileNav.isOpen a {
+	opacity: 1;
+	transform: translateY(0);
+}
+.mobileNav li:nth-child(1) a {
+	transition: all 275ms 175ms;
+}
+.mobileNav li:nth-child(2) a {
+	transition: all 275ms 225ms;
+}
+.mobileNav li:nth-child(3) a {
+	transition: all 275ms 275ms;
+}
+.mobileNav li:nth-child(4) a {
+	transition: all 275ms 325ms;
+}
+.mobileNav li:nth-child(5) a {
+	transition: all 275ms 375ms;
+}
+
+/* Decoration */
+.mobileNav ul,
+.mobileNav li {
+	list-style: none;
+	padding: 0;
+}
+.mobileNav a {
+	display: block;
+	padding-top: 12px;
+	color: #ffffff;
+	font-size: 2em;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.lockBody {
+	overflow: hidden;
+	position: fixed;
+}
+
+@media (max-width: 768px) {
+	.active {
+		border-bottom: 4px solid white;
+	}
+}
+
+/* @layer components {
+	.burger:after,
+	.burger:before {
+		@apply bg-dark-white bg-dark-grayText w-full block duration-300;
+	}
+} */

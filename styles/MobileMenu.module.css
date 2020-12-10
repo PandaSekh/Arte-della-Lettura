@@ -1,3 +1,7 @@
+@tailwind components;
+/* @tailwind base; */
+@tailwind utilities;
+
 .openMainNav {
 	position: absolute;
 	top: 15px;
@@ -21,12 +25,17 @@
 	transition: all 0.275s;
 }
 
+.normal {
+	background-color: #3a3a3a;
+	color: #3a3a3a;
+}
+
 .burger:after,
 .burger:before {
 	content: "";
 	display: block;
 	height: 100%;
-	background: #3a3a3a;
+	background-color: #3a3a3a;
 	transition: all 0.275s;
 }
 
@@ -164,7 +173,7 @@
 	display: block;
 	padding-top: 12px;
 	color: #ffffff;
-	font-size: 1.4em;
+	font-size: 2em;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -174,6 +183,14 @@
 	position: fixed;
 }
 
-.active {
-	border-bottom: 4px solid white;
+@media (max-width: 768px) {
+	.active {
+		border-bottom: 4px solid white;
+	}
+}
+
+@layer components {
+	.burger:hover {
+		@apply dark:bg-customBlue;
+	}
 }

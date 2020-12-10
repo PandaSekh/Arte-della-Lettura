@@ -29,9 +29,9 @@ module.exports = {
 			opacity: ["hover"],
 			inset: ["dark"],
 			translate: ["dark"],
+			ringWidth: ["hover"],
 		},
 	},
-	plugins: [],
 	corePlugins: {
 		animation: false,
 	},
