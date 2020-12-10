@@ -12,11 +12,6 @@
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 		Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	color: #000000;
-}
-
-p {
-	color: #3a3a3a;
 }
 
 main {
@@ -37,10 +32,10 @@ main {
 .sidebar {
 	grid-area: sidebar;
 
-	background-color: aquamarine;
+	background-color: #272727;
 }
 
-.homePageImage {
+/* .homePageImage {
 	opacity: 1;
 	-webkit-transition: 0.3s ease-in-out;
 	transition: 0.3s ease-in-out;
@@ -48,7 +43,7 @@ main {
 
 .homePageImage:hover {
 	opacity: 0.6;
-}
+} */
 
 .readMoreButton {
 	-webkit-transition: 0.3s ease;
@@ -56,9 +51,41 @@ main {
 	color: white;
 }
 
+.switch {
+	/* width: 70px;
+	height: 29px; */
+	border-radius: 50px;
+	position: relative;
+	background-color: aqua;
+}
+
+.ball {
+	/* background: white; */
+	/* width: 24px;
+	height: 24px; */
+	/* background: white; */
+	/* border-radius: 100%; */
+	/* position: absolute; */
+	/* top: 3px;
+	left: 4px; */
+	transition: 0.5s all ease;
+}
+
 @layer components {
+	.ball {
+		@apply bg-dark-white w-6 h-6 rounded-full absolute top-0.5 dark:left-1.5 right-1.5 transform transition-all dark:translate-x-9 duration-500 ease-in-out;
+	}
+	.switch {
+		@apply h-7 w-16;
+	}
+	p {
+		@apply text-dark-grayText dark:text-dark-white;
+	}
+	body {
+		@apply dark:bg-dark-background dark:text-dark-white text-dark-black transition-all;
+	}
 	.navbar-link {
-		@apply hover:text-customBlue text-lg hover:border-b-2;
+		@apply hover:text-customBlue text-lg hover:border-b-2 font-medium;
 	}
 	.navbar-li {
 		@apply inline p-3 text-center;
@@ -82,13 +109,16 @@ main {
 		@apply text-center font-light text-2xl mb-2 hover:text-customBlue;
 	}
 	.homePageImage {
-		@apply grid m-auto my-2;
+		@apply grid m-auto my-2 transition-opacity opacity-100 hover:opacity-60;
 	}
 	.homepageDate {
 		@apply text-center font-extralight text-sm;
 	}
 	.readMoreButton {
 		@apply text-center m-auto w-max cursor-pointer p-3 bg-customBlue hover:bg-customBlue-light mt-4 rounded;
+	}
+	.svgLogo {
+		@apply stroke-current fill-current text-dark-black dark:text-dark-white mx-auto my-10;
 	}
 }
 

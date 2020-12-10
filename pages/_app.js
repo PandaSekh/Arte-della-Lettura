@@ -2,6 +2,7 @@ import "../styles/style.css";
 import dynamic from "next/dynamic";
 import { Fragment } from "react";
 import Head from "next/head";
+import DarkModeButton from "../components/DarkModeButton";
 
 function MyApp({ Component, pageProps }) {
 	const Navbar = dynamic(() => import("../components/Navbar"));
@@ -25,6 +26,17 @@ function MyApp({ Component, pageProps }) {
 				/>
 				<script
 					dangerouslySetInnerHTML={{
+						__html: `
+											if (localStorage.theme === "dark" ) {
+						document.querySelector('html').classList.add('dark')
+						} else {
+						document.querySelector('html').classList.remove('dark')
+						}
+                  `,
+					}}
+				/>
+				{/* <script
+					dangerouslySetInnerHTML={{
 						__html: `(function(a,b,c){var d=a.history,e=document,f=navigator||{},g=localStorage,
 					h=encodeURIComponent,i=d.pushState,k=function(){return Math.random().toString(36)},
 					l=function(){return g.cid||(g.cid=k()),g.cid},m=function(r){var s=[];for(var t in r)
@@ -44,8 +56,9 @@ function MyApp({ Component, pageProps }) {
 					trackException:function q(r,s){return n("exception",null,null,null,null,r,s)}}})
 					(window,"XX-XXXXXXXXX-X",{anonymizeIp:true,colorDepth:true,characterSet:true,screenSize:true,language:true});`,
 					}}
-				/>
+				/> */}
 			</Head>
+			<DarkModeButton />
 			<Navbar />
 			<main>
 				<div className="content">

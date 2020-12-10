@@ -4,6 +4,7 @@ import { createRef } from "react";
 
 import style from "../styles/MobileMenu.module.css";
 import NavLinks from "./NavLinks";
+import SvgHeader from "./SvgHeader";
 
 export default function Navbar() {
 	const router = useRouter();
@@ -139,11 +140,12 @@ export default function Navbar() {
 			<div>
 				<Link href="/" prefetch={false}>
 					<a>
-						<img
+						<SvgHeader />
+						{/* <img
 							className="logo"
 							src="/images/Logo.png"
 							alt="Logo Arte della Lettura"
-						/>
+						/> */}
 					</a>
 				</Link>
 			</div>
