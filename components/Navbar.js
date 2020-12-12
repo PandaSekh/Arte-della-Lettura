@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { createRef, useState } from "react";
+import { createRef, useEffect } from "react";
 
 // import style from "../styles/MobileMenu.module.css";
 // import NavLinks from "./NavLinks";
@@ -16,6 +16,7 @@ export default function Navbar() {
 		burgerRef.current.classList.toggle("isOpen");
 		navRef.current.classList.toggle("isOpen");
 		document.body.classList.toggle("lockBody");
+		document.querySelector(".switch").classList.toggle("isOpen");
 	}
 
 	// const urls = [

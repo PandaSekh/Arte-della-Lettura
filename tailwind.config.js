@@ -29,6 +29,7 @@ module.exports = {
 			opacity: ["hover"],
 			inset: ["dark"],
 			translate: ["dark"],
+			backgroundOpacity: ["dark"],
 			ringWidth: ["hover"],
 		},
 	},
