@@ -2,7 +2,6 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { Fragment } from "react";
 
-
 export default function Home(props) {
 	const PostHomepage = dynamic(() => import("../components/PostHomepage"));
 	const homepagePosts = props.posts.map(post => {
@@ -19,12 +18,12 @@ export default function Home(props) {
 				/>
 			</Head>
 
-			
-
-			{homepagePosts}
-			{homepagePosts}
-			{homepagePosts}
-			{homepagePosts}
+			<div className="content">
+				{homepagePosts}
+				{homepagePosts}
+				{homepagePosts}
+				{homepagePosts}
+			</div>
 		</Fragment>
 	);
 }

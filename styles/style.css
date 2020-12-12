@@ -46,7 +46,25 @@ main {
 	color: white;
 }
 
+/* BASIC STYLES */
+
 @layer components {
+	h1 {
+		@apply font-extralight text-4xl text-center mb-2;
+	}
+
+	.book-block > .cover {
+		@apply mr-4 float-left;
+	}
+
+	.book-block > .synopsys {
+		@apply mt-4 pr-20 pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
+	}
+
+	.book-block {
+		@apply my-8 ;
+	}
+
 	.ball {
 		@apply bg-dark-white w-6 h-6 rounded-full absolute top-1 left-1.5 transform transition-all dark:translate-x-7 duration-500 ease-in-out;
 	}
@@ -87,7 +105,7 @@ main {
 		@apply grid m-auto my-2 transition-opacity opacity-100 hover:opacity-60 shadow-xl;
 	}
 	.homepageDate {
-		@apply text-center font-extralight text-sm;
+		@apply text-center font-light text-sm;
 	}
 	.readMoreButton {
 		@apply text-center m-auto w-max cursor-pointer p-3 bg-customBlue hover:bg-customBlue-light mt-4 rounded;
@@ -343,4 +361,26 @@ HAMBURGER MENU
 .lockBody {
 	overflow: hidden;
 	position: fixed;
+}
+
+.stars {
+	display: flex;
+}
+.stars[data-stars] .star polygon {
+	fill: #ffd055;
+}
+.stars[data-stars="1"] .star:nth-child(1) ~ .star polygon {
+	fill: #d8d8d8;
+}
+.stars[data-stars="2"] .star:nth-child(2) ~ .star polygon {
+	fill: #d8d8d8;
+}
+.stars[data-stars="3"] .star:nth-child(3) ~ .star polygon {
+	fill: #d8d8d8;
+}
+.stars[data-stars="4"] .star:nth-child(4) ~ .star polygon {
+	fill: #d8d8d8;
+}
+.stars[data-stars="5"] .star:nth-child(5) ~ .star polygon {
+	fill: #d8d8d8;
 }

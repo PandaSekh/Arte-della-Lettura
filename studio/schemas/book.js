@@ -47,6 +47,12 @@ export default {
 			of: [{ type: "string" }],
 		},
 		{
+			name: "series",
+			title: "Series",
+			type: "array",
+			of: [{ type: "string" }],
+		},
+		{
 			name: "publishedDate",
 			title: "Published Date",
 			type: "datetime",

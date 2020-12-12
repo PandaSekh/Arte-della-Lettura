@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { createRef, useEffect } from "react";
+import { createRef } from "react";
 
-// import style from "../styles/MobileMenu.module.css";
-// import NavLinks from "./NavLinks";
 import SvgHeader from "./SvgHeader";
 
 export default function Navbar() {
@@ -19,36 +17,16 @@ export default function Navbar() {
 		document.querySelector(".switch").classList.toggle("isOpen");
 	}
 
-	// const urls = [
-	// 	{
-	// 		url: "/",
-	// 		name: "Home",
-	// 	},
-	// 	{
-	// 		url: "/archivio",
-	// 		name: "Archivio",
-	// 	},
-	// 	{
-	// 		url: "/about",
-	// 		name: "About",
-	// 	},
-	// ];
-
 	return (
 		<header>
 			<button
 				ref={burgerRef}
 				id="burger"
 				className="openMainNav"
-				// className="open-main-nav"
 				onClick={handleMenuClick}
 			>
 				<span className="burger"></span>
-				{/* <span className="burgerText">Menu</span> */}
 			</button>
-
-			{/* <NavLinks isMobile={true} navRef={navRef} urls={urls} />
-			<NavLinks isMobile={false} navRef={navRef} urls={urls} /> */}
 
 			<nav className="mobileNav" ref={navRef}>
 				<ul>
@@ -140,11 +118,6 @@ export default function Navbar() {
 				<Link href="/" prefetch={false}>
 					<a>
 						<SvgHeader />
-						{/* <img
-							className="logo"
-							src="/images/Logo.png"
-							alt="Logo Arte della Lettura"
-						/> */}
 					</a>
 				</Link>
 			</div>

@@ -63,9 +63,7 @@ function MyApp({ Component, pageProps }) {
 			<DarkModeButton />
 			<Navbar />
 			<main>
-				<div className="content">
-					<Component {...pageProps} />
-				</div>
+				<Component {...pageProps} />
 				<Sidebar />
 			</main>
 		</Fragment>

@@ -2,6 +2,7 @@ import PortableText from "@sanity/block-content-to-react";
 
 import { serializers } from "../lib/blockContentSerializer";
 import { getPosts } from "../lib/cache";
+import DateUnderPost from "../components/DateUnderPost";
 
 export async function getStaticPaths() {
 	const posts = await getPosts();
@@ -24,9 +25,10 @@ export async function getStaticProps({ params }) {
 
 export default function Post({ post }) {
 	return (
-		<div>
-			<h3>{post.title}</h3>
+		<article>
+			<h1>{post.title}</h1>
+			<DateUnderPost date={post.publishedAt} />
 			<PortableText blocks={post.body} serializers={serializers} />
-		</div>
+		</article>
 	);
 }

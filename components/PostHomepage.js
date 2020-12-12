@@ -43,7 +43,7 @@ export default function PostHomepage(props) {
 			</div>
 			<p>
 				{props.post.excerpt
-					? props.post.excerpt
+					? props.post.excerpt.slice(0, 400)
 					: book.synopsis.slice(0, 400)}
 				...
 			</p>
