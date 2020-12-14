@@ -1,40 +1,46 @@
 import { getImgUrl } from "../lib/sanityClient";
 import Image from "next/image";
+import { Fragment } from "react";
 
 export default function Book(props) {
 	return (
-		<div className="book-block">
-			<div className="cover">
-				<Image
-					src={getImgUrl(props.book.cover).url()}
-					width={275}
-					height={420}
-				/>
-			</div>
-			<p>
-				<strong>{props.book.title}</strong> di{" "}
-				{props.book.author.join(", ")}
-				<br />
-				<strong>Serie:</strong> {props.book.series?.join(", ")}
-				<br />
-				<strong>Casa Editrice:</strong> {props.book.publisher}
-				<br />
-				<strong>
-					{props.book.genre.length === 1 ? "Genere" : "Generi"}:
-				</strong>{" "}
-				{props.book.genre.join(", ")}
-				<br />
-				<strong>Formato:</strong> {props.book.format}
-				<br />
-				<strong>Pagine:</strong> {props.book.pages}
-				<br />
-				<div>
-					<strong>Valutazione:</strong>{" "}
-					<Stars rating={props.book.rating} />
+		<Fragment>
+			<div className="book-block">
+				<div className="cover">
+					<Image
+						src={getImgUrl(props.book.cover).url()}
+						width={275}
+						height={420}
+					/>
 				</div>
-			</p>
-			<blockquote className="synopsys">{props.book.synopsis}</blockquote>
-		</div>
+				<p>
+					<strong>{props.book.title}</strong> di{" "}
+					{props.book.author.join(", ")}
+					<br />
+					<strong>Serie:</strong> {props.book.series?.join(", ")}
+					<br />
+					<strong>Casa Editrice:</strong> {props.book.publisher}
+					<br />
+					<strong>
+						{props.book.genre.length === 1 ? "Genere" : "Generi"}:
+					</strong>{" "}
+					{props.book.genre.join(", ")}
+					<br />
+					<strong>Formato:</strong> {props.book.format}
+					<br />
+					<strong>Pagine:</strong> {props.book.pages}
+					<br />
+					<div>
+						<strong>Valutazione:</strong>{" "}
+						<Stars rating={props.book.rating} />
+					</div>
+				</p>
+				<blockquote className="synopsys">
+					{props.book.synopsis}
+				</blockquote>
+			</div>
+			<div className="bookBlockEnd"></div>
+		</Fragment>
 	);
 }
 

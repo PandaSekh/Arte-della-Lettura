@@ -48,9 +48,53 @@ main {
 
 /* BASIC STYLES */
 
-@layer components {
+@layer base {
+	body {
+		@apply dark:bg-dark-background dark:text-dark-white text-dark-black transition-all pb-10;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-extralight mb-2;
+	}
 	h1 {
-		@apply font-extralight text-4xl text-center mb-2;
+		@apply text-4xl;
+	}
+	h2 {
+		@apply text-3xl;
+	}
+	h3 {
+		@apply text-2xl;
+	}
+	h4 {
+		@apply text-xl;
+	}
+	h5 {
+		@apply text-lg;
+	}
+	p {
+		@apply text-dark-grayText dark:text-dark-white;
+	}
+	main {
+		@apply container mx-auto px-4 block lg:grid lg:grid-cols-4;
+	}
+	p > a {
+		@apply underline text-customBlue;
+	}
+	p > a:hover {
+		@apply italic cursor-pointer;
+	}
+}
+
+@layer components {
+	.postTitle {
+		@apply text-center;
+	}
+	.bookBlockEnd {
+		@apply clear-both mb-4;
 	}
 
 	.book-block > .cover {
@@ -62,7 +106,7 @@ main {
 	}
 
 	.book-block {
-		@apply my-8 ;
+		@apply my-4;
 	}
 
 	.ball {
@@ -71,12 +115,7 @@ main {
 	.switch {
 		@apply rounded-full h-8 w-16 bg-dark-black dark:bg-customBlue absolute right-8 top-4 shadow-2xl hover:ring ring-customBlue ring-opacity-50;
 	}
-	p {
-		@apply text-dark-grayText dark:text-dark-white;
-	}
-	body {
-		@apply dark:bg-dark-background dark:text-dark-white text-dark-black transition-all;
-	}
+
 	.navbar-link {
 		@apply hover:text-customBlue text-lg hover:border-b-2 font-medium;
 	}
@@ -91,9 +130,6 @@ main {
 	}
 	.logo {
 		@apply max-h-full w-4/6 m-auto lg:w-2/5;
-	}
-	main {
-		@apply container mx-auto px-4 block lg:grid lg:grid-cols-4;
 	}
 	.singlePostHomepage {
 		@apply m-auto w-11/12 mb-8 grid;

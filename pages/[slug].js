@@ -26,7 +26,7 @@ export async function getStaticProps({ params }) {
 export default function Post({ post }) {
 	return (
 		<article>
-			<h1>{post.title}</h1>
+			<h1 className="postTitle">{post.title}</h1>
 			<DateUnderPost date={post.publishedAt} />
 			<PortableText blocks={post.body} serializers={serializers} />
 		</article>
