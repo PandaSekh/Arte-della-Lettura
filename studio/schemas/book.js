@@ -47,6 +47,17 @@ export default {
 			of: [{ type: "string" }],
 		},
 		{
+			name: "tags",
+			title: "Tags",
+			type: "array",
+			of: [{ type: "string" }],
+		},
+		{
+			name: "language",
+			title: "Language",
+			type: "string",
+		},
+		{
 			name: "series",
 			title: "Series",
 			type: "array",
@@ -55,7 +66,7 @@ export default {
 		{
 			name: "publishedDate",
 			title: "Published Date",
-			type: "datetime",
+			type: "date",
 		},
 		{
 			name: "pages",
