@@ -36,15 +36,15 @@ export default {
 			title: "Category",
 			type: "string",
 		},
-		{
-			name: "tags",
-			title: "tags",
-			type: "array",
-			of: [{ type: "string" }],
-			options: {
-				layout: "tags",
-			},
-		},
+// 		{
+// 			name: "tags",
+// 			title: "tags",
+// 			type: "array",
+// 			of: [{ type: "string" }],
+// 			options: {
+// 				layout: "tags",
+// 			},
+// 		},
 		{
 			name: "publishedAt",
 			title: "Published at",
