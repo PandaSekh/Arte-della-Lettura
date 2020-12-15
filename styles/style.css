@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--hamb-color: #3a3a3a;
+	--header-bg-color: #ffffff;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -12,11 +17,6 @@
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 		Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	color: #000000;
-}
-
-p {
-	color: #3a3a3a;
 }
 
 main {
@@ -37,17 +37,7 @@ main {
 .sidebar {
 	grid-area: sidebar;
 
-	background-color: aquamarine;
-}
-
-.homePageImage {
-	opacity: 1;
-	-webkit-transition: 0.3s ease-in-out;
-	transition: 0.3s ease-in-out;
-}
-
-.homePageImage:hover {
-	opacity: 0.6;
+	background-color: #272727;
 }
 
 .readMoreButton {
@@ -56,9 +46,78 @@ main {
 	color: white;
 }
 
+/* BASIC STYLES */
+
+@layer base {
+	body {
+		@apply dark:bg-dark-background dark:text-dark-white text-dark-black transition-all pb-10;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-extralight mb-2;
+	}
+	h1 {
+		@apply text-4xl;
+	}
+	h2 {
+		@apply text-3xl;
+	}
+	h3 {
+		@apply text-2xl;
+	}
+	h4 {
+		@apply text-xl;
+	}
+	h5 {
+		@apply text-lg;
+	}
+	p {
+		@apply text-dark-grayText dark:text-dark-white;
+	}
+	main {
+		@apply container mx-auto px-4 block lg:grid lg:grid-cols-4;
+	}
+	p > a {
+		@apply underline text-customBlue;
+	}
+	p > a:hover {
+		@apply italic cursor-pointer;
+	}
+}
+
 @layer components {
+	.postTitle {
+		@apply text-center;
+	}
+	.bookBlockEnd {
+		@apply clear-both mb-4;
+	}
+
+	.book-block > .cover {
+		@apply mr-4 float-left;
+	}
+
+	.book-block > .synopsys {
+		@apply mt-4 pr-20 pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
+	}
+
+	.book-block {
+		@apply my-4;
+	}
+
+	.ball {
+		@apply bg-dark-white w-6 h-6 rounded-full absolute top-1 left-1.5 transform transition-all dark:translate-x-7 duration-500 ease-in-out;
+	}
+	.switch {
+		@apply rounded-full h-8 w-16 bg-dark-black dark:bg-customBlue absolute right-8 top-4 shadow-2xl hover:ring ring-customBlue ring-opacity-50;
+	}
+
 	.navbar-link {
-		@apply hover:text-customBlue text-lg hover:border-b-2;
+		@apply hover:text-customBlue text-lg hover:border-b-2 font-medium;
 	}
 	.navbar-li {
 		@apply inline p-3 text-center;
@@ -72,9 +131,6 @@ main {
 	.logo {
 		@apply max-h-full w-4/6 m-auto lg:w-2/5;
 	}
-	main {
-		@apply container mx-auto px-4 block lg:grid lg:grid-cols-4;
-	}
 	.singlePostHomepage {
 		@apply m-auto w-11/12 mb-8 grid;
 	}
@@ -82,13 +138,43 @@ main {
 		@apply text-center font-light text-2xl mb-2 hover:text-customBlue;
 	}
 	.homePageImage {
-		@apply grid m-auto my-2;
+		@apply grid m-auto my-2 transition-opacity opacity-100 hover:opacity-60 shadow-xl;
 	}
 	.homepageDate {
-		@apply text-center font-extralight text-sm;
+		@apply text-center font-light text-sm;
 	}
 	.readMoreButton {
 		@apply text-center m-auto w-max cursor-pointer p-3 bg-customBlue hover:bg-customBlue-light mt-4 rounded;
+	}
+	.svgLogo {
+		@apply stroke-current fill-current text-dark-black dark:text-dark-white mx-auto my-10 w-full;
+	}
+	.mobileNav::before {
+		@apply dark:bg-customBlue-darker bg-customBlue;
+	}
+	.mobileNav {
+		@apply dark:bg-dark-grayText dark:bg-opacity-50 bg-opacity-80 bg-dark-white;
+	}
+	#burger {
+		@apply hidden;
+	}
+
+	@media (max-width: 768px) {
+		.switch {
+			@apply -left-10 transition-transform;
+		}
+		.switch.isOpen {
+			@apply left-4 top-4 z-50;
+		}
+		header {
+			@apply grid bg-dark-white dark:bg-dark-grayText mb-2;
+		}
+		.logo {
+			@apply w-2/4 p-1;
+		}
+		.active {
+			@apply border-dark-white border-solid border-b-4;
+		}
 	}
 }
 
@@ -98,6 +184,12 @@ main {
 	}
 	.sidebar {
 		display: none;
+	}
+}
+
+@media (max-width: 550px) {
+	.logo {
+		width: 66.66%;
 	}
 }
 
@@ -111,9 +203,220 @@ main {
 	#burger {
 		display: block;
 	}
-}
-@media (min-width: 768px) {
-	#burger {
-		display: none;
+
+	header {
+		grid-template-columns: 6fr 1fr;
 	}
+	.logo {
+		margin: -50px 5%;
+	}
+
+	.switch {
+		transform: translate(-200%);
+	}
+	.switch.isOpen {
+		transform: translateY(0%);
+		transition: all 0.375s;
+	}
+}
+
+/*
+HAMBURGER MENU
+*/
+.openMainNav {
+	position: absolute;
+	top: 15px;
+	padding-top: 20px;
+	right: 15px;
+	z-index: 40;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+.openMainNav:focus {
+	outline: none;
+}
+.burger {
+	position: relative;
+	display: block;
+	width: 28px;
+	height: 4px;
+	margin: 0 auto;
+	background: var(--hamb-color);
+	transition: all 0.275s;
+}
+
+.burger:after,
+.burger:before {
+	content: "";
+	display: block;
+	height: 100%;
+	background-color: var(--hamb-color);
+	transition: all 0.275s;
+}
+
+.burger:after {
+	transform: translateY(-12px);
+}
+
+.burger:before {
+	transform: translateY(-16px);
+}
+
+/* Toggle State part */
+.isOpen .burger {
+	transform: translateY(-8px) rotate(-45deg);
+	background: #ffffff;
+}
+
+.isOpen .burger:before {
+	transform: translateY(0px) skew(-10deg) rotate(75deg);
+	background: #ffffff;
+}
+
+.isOpen .burger:after {
+	transform: translateY(-12px) translateX(10px) skew(-20deg);
+	opacity: 0;
+}
+
+.isOpen .burgerText {
+	visibility: hidden;
+}
+
+/* MENU Text part */
+
+.burgerText {
+	display: block;
+	font-size: 0.675rem;
+	letter-spacing: 0.05em;
+	margin-top: 0.5em;
+	text-transform: uppercase;
+	font-weight: 500;
+	text-align: center;
+	color: var(--hamb-color);
+}
+
+/* Main menu positionning */
+.mobileNav {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	text-align: center;
+	/* background: rgba(255, 255, 255, 0.8); */
+	opacity: 0;
+	z-index: -1;
+	visibility: hidden;
+	transition: all 0.375s;
+}
+
+.mobileNav.isOpen {
+	opacity: 1;
+	z-index: 30;
+	visibility: visible;
+	overflow: none;
+}
+
+/* Yellow band effect */
+.mobileNav::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: -15px;
+	/* background: #018fd9; */
+	transform-origin: 0 0;
+	transform: skew(-14deg) translateX(-120%);
+	transition: all 0.275s 0.1s;
+}
+
+.mobileNav.isOpen::before {
+	transform: skew(-14deg) translateX(0);
+}
+
+/* Skewing effect on menu links */
+.mobileNav ul {
+	display: inline-flex;
+	flex-direction: column;
+	height: 100%; /* Should be 100%, but we have a notice message :D */
+	align-items: flex-end;
+	justify-content: center;
+	transform: translateX(-18%) skew(-16deg);
+}
+
+.mobileNav li {
+	display: block;
+	margin: 0.5rem 0;
+	text-align: right;
+	transform: skew(16deg);
+}
+
+/* Apparition effect on links */
+.mobileNav a {
+	opacity: 0;
+	transform: translateY(-10px);
+}
+
+.mobileNav.isOpen a {
+	opacity: 1;
+	transform: translateY(0);
+}
+.mobileNav li:nth-child(1) a {
+	transition: all 275ms 175ms;
+}
+.mobileNav li:nth-child(2) a {
+	transition: all 275ms 225ms;
+}
+.mobileNav li:nth-child(3) a {
+	transition: all 275ms 275ms;
+}
+.mobileNav li:nth-child(4) a {
+	transition: all 275ms 325ms;
+}
+.mobileNav li:nth-child(5) a {
+	transition: all 275ms 375ms;
+}
+
+/* Decoration */
+.mobileNav ul,
+.mobileNav li {
+	list-style: none;
+	padding: 0;
+}
+.mobileNav a {
+	display: block;
+	padding-top: 12px;
+	color: #ffffff;
+	font-size: 2em;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.lockBody {
+	overflow: hidden;
+	position: fixed;
+}
+
+.stars {
+	display: flex;
+}
+.stars[data-stars] .star polygon {
+	fill: #ffd055;
+}
+.stars[data-stars="1"] .star:nth-child(1) ~ .star polygon {
+	fill: #d8d8d8;
+}
+.stars[data-stars="2"] .star:nth-child(2) ~ .star polygon {
+	fill: #d8d8d8;
+}
+.stars[data-stars="3"] .star:nth-child(3) ~ .star polygon {
+	fill: #d8d8d8;
+}
+.stars[data-stars="4"] .star:nth-child(4) ~ .star polygon {
+	fill: #d8d8d8;
+}
+.stars[data-stars="5"] .star:nth-child(5) ~ .star polygon {
+	fill: #d8d8d8;
 }

@@ -5,12 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prestart": "node lib/jsonCacher.js"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^2.0.9",
     "@sanity/image-url": "^0.140.19",
+    "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.0.4",
     "minisearch": "^3.0.2",
     "next": "10.0.3",

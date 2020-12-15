@@ -2,8 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { createRef } from "react";
 
-import style from "../styles/MobileMenu.module.css";
-import NavLinks from "./NavLinks";
+import SvgHeader from "./SvgHeader";
 
 export default function Navbar() {
 	const router = useRouter();
@@ -12,51 +11,30 @@ export default function Navbar() {
 	const navRef = createRef();
 
 	function handleMenuClick() {
-		burgerRef.current.classList.toggle(style.isOpen);
-		navRef.current.classList.toggle(style.isOpen);
-		document.body.classList.toggle(style.lockBody);
+		burgerRef.current.classList.toggle("isOpen");
+		navRef.current.classList.toggle("isOpen");
+		document.body.classList.toggle("lockBody");
+		document.querySelector(".switch").classList.toggle("isOpen");
 	}
-
-	// const urls = [
-	// 	{
-	// 		url: "/",
-	// 		name: "Home",
-	// 	},
-	// 	{
-	// 		url: "/archivio",
-	// 		name: "Archivio",
-	// 	},
-	// 	{
-	// 		url: "/about",
-	// 		name: "About",
-	// 	},
-	// ];
 
 	return (
 		<header>
 			<button
 				ref={burgerRef}
 				id="burger"
-				className={style.openMainNav}
-				// className="open-main-nav"
+				className="openMainNav"
 				onClick={handleMenuClick}
 			>
-				<span className={style.burger}></span>
-				{/* <span className="burger"></span> */}
-				<span className={style.burgerText}>Menu</span>
-				{/* <span className="burger-text">Menu</span> */}
+				<span className="burger"></span>
 			</button>
 
-			{/* <NavLinks isMobile={true} navRef={navRef} urls={urls} />
-			<NavLinks isMobile={false} navRef={navRef} urls={urls} /> */}
-
-			<nav className={style.mobileNav} ref={navRef}>
+			<nav className="mobileNav" ref={navRef}>
 				<ul>
 					<li>
 						<Link href="/" prefetch={false}>
 							<a
 								className={
-									router.pathname == "/" ? style.active : null
+									router.pathname == "/" ? "active" : null
 								}
 							>
 								Home
@@ -68,7 +46,7 @@ export default function Navbar() {
 							<a
 								className={
 									router.pathname == "/archivio"
-										? style.active
+										? "active"
 										: null
 								}
 							>
@@ -81,7 +59,7 @@ export default function Navbar() {
 							<a
 								className={
 									router.pathname == "/about"
-										? style.active
+										? "active"
 										: null
 								}
 							>
@@ -111,7 +89,7 @@ export default function Navbar() {
 						<Link href="/archivio" prefetch={false}>
 							<a
 								className={
-									router.pathname == "/archive"
+									router.pathname == "/archivio"
 										? "active navbar-link"
 										: "navbar-link"
 								}
@@ -136,14 +114,10 @@ export default function Navbar() {
 				</ul>
 			</nav>
 
-			<div>
+			<div className="logo">
 				<Link href="/" prefetch={false}>
 					<a>
-						<img
-							className="logo"
-							src="/images/Logo.png"
-							alt="Logo Arte della Lettura"
-						/>
+						<SvgHeader />
 					</a>
 				</Link>
 			</div>
