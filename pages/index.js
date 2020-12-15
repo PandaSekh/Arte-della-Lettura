@@ -5,7 +5,11 @@ import { Fragment } from "react";
 export default function Home(props) {
 	const PostHomepage = dynamic(() => import("../components/PostHomepage"));
 	const homepagePosts = props.posts.map(post => {
-		return <PostHomepage post={post} key={post._id} />;
+		return (
+			<article>
+				<PostHomepage post={post} key={post._id} />
+			</article>
+		);
 	});
 
 	return (
@@ -18,19 +22,13 @@ export default function Home(props) {
 				/>
 			</Head>
 
-			<div className="content">
-				{homepagePosts}
-				{homepagePosts}
-				{homepagePosts}
-				{homepagePosts}
-			</div>
+			<div className="content">{homepagePosts}</div>
 		</Fragment>
 	);
 }
 
-export async function getStaticProps() {
-	const cache = await import("../lib/cache");
-	const posts = await cache.getPosts();
+export function getStaticProps() {
+	const posts = require("../cache/posts.json");
 	return {
 		props: { posts: posts },
 	};

@@ -1,11 +1,9 @@
 import PortableText from "@sanity/block-content-to-react";
-
 import { serializers } from "../lib/blockContentSerializer";
-import { getPosts } from "../lib/cache";
 import DateUnderPost from "../components/DateUnderPost";
 
 export async function getStaticPaths() {
-	const posts = await getPosts();
+	const posts = require("../cache/posts.json");
 	const slugs = posts.map(post => post.slug.current);
 	const paths = slugs.map(slug => ({
 		params: { slug: slug.toString() },
@@ -18,7 +16,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	const posts = await getPosts();
+	const posts = require("../cache/posts.json");
 	const post = posts.filter(post => post.slug.current === params.slug)[0];
 	return { props: { post } };
 }

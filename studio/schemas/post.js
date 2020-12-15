@@ -56,6 +56,16 @@ export default {
 			},
 		},
 		{
+			name: "updatedAt",
+			title: "Updated at",
+			type: "date",
+			options: {
+				dateFormat: "DD MM YYYY",
+				timeStep: 30,
+				calendarTodayLabel: "Oggi",
+			},
+		},
+		{
 			name: "body",
 			title: "Body",
 			type: "blockContent",
