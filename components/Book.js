@@ -17,8 +17,13 @@ export default function Book(props) {
 					<strong>{props.book.title}</strong> di{" "}
 					{props.book.author.join(", ")}
 					<br />
-					<strong>Serie:</strong> {props.book.series?.join(", ")}
-					<br />
+					{props.book.series && (
+						<Fragment>
+							<strong>Serie:</strong>{" "}
+							{props.book.series.join(", ")}
+							<br />
+						</Fragment>
+					)}
 					<strong>Casa Editrice:</strong> {props.book.publisher}
 					<br />
 					<strong>

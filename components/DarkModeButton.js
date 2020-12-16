@@ -26,7 +26,7 @@ export default function DarkModeButton() {
 
 	return (
 		<div onClick={toggleDarkMode} className="switch">
-			<div className="ball"></div>
+			<div className="ball" aria-label="Switch per Dark Mode"></div>
 		</div>
 	);
 }
