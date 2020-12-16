@@ -58,7 +58,7 @@ main {
 	h4,
 	h5,
 	h6 {
-		@apply font-extralight mb-2;
+		@apply font-light mb-2;
 	}
 	h1 {
 		@apply text-4xl;
@@ -91,7 +91,7 @@ main {
 
 @layer components {
 	.postTitle {
-		@apply text-center;
+		@apply text-center font-extralight;
 	}
 	.bookBlockEnd {
 		@apply clear-both mb-4;
@@ -138,7 +138,7 @@ main {
 		@apply text-center font-light text-2xl mb-2 hover:text-customBlue;
 	}
 	.homePageImage {
-		@apply grid m-auto my-2 transition-opacity opacity-100 hover:opacity-60 shadow-xl;
+		@apply grid m-auto my-2 transition-opacity opacity-100 shadow-xl;
 	}
 	.homepageDate {
 		@apply text-center font-light text-sm;
@@ -159,6 +159,12 @@ main {
 		@apply hidden;
 	}
 
+	@media (min-width: 768px) {
+		.homePageImage {
+			@apply hover:opacity-60;
+		}
+	}
+
 	@media (max-width: 768px) {
 		.switch {
 			@apply -left-10 transition-transform;
@@ -174,6 +180,12 @@ main {
 		}
 		.active {
 			@apply border-dark-white border-solid border-b-4;
+		}
+		.book-block > .cover {
+			@apply block float-none mx-auto w-max;
+		}
+		.book-block > p {
+			@apply px-2.5;
 		}
 	}
 }

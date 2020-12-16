@@ -35,7 +35,7 @@ export default function PostHomepage(props) {
 							// width={340}
 							// height={500}
 							alt={`Copertina ${
-								book.title ? book.title : "libro"
+								book?.title ? book.title : "libro"
 							}`}
 						/>
 					</a>

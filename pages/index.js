@@ -6,8 +6,8 @@ export default function Home(props) {
 	const PostHomepage = dynamic(() => import("../components/PostHomepage"));
 	const homepagePosts = props.posts.map(post => {
 		return (
-			<article>
-				<PostHomepage post={post} key={post._id} />
+			<article key={post._id}>
+				<PostHomepage post={post} />
 			</article>
 		);
 	});
