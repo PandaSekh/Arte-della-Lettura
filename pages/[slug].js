@@ -1,7 +1,6 @@
 import PortableText from "@sanity/block-content-to-react";
 import { serializers } from "../lib/blockContentSerializer";
 import DateUnderPost from "../components/DateUnderPost";
-import { Fragment } from "react";
 
 export async function getStaticPaths() {
 	const posts = require("../cache/posts.json");

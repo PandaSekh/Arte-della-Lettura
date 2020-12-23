@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getImgUrl } from "../lib/sanityClient";
-
 import dynamic from "next/dynamic";
 
 export default function PostHomepage(props) {

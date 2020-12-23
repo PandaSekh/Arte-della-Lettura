@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prestart": "node lib/jsonCacher.js"
+    "prebuild": "node lib/jsonCacher.js"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",

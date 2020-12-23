@@ -41,8 +41,14 @@ export default {
 			of: [{ type: "string" }],
 		},
 		{
-			name: "genre",
-			title: "Genre",
+			name: "genres",
+			title: "Genres",
+			type: "array",
+			of: [{ type: "string" }],
+		},
+		{
+			name: "subgenres",
+			title: "SubGenres",
 			type: "array",
 			of: [{ type: "string" }],
 		},
@@ -69,6 +75,11 @@ export default {
 			type: "date",
 		},
 		{
+			name: "originalPublishedDate",
+			title: "Original Published Date",
+			type: "date",
+		},
+		{
 			name: "pages",
 			title: "Pages",
 			type: "number",
@@ -86,6 +97,11 @@ export default {
 		{
 			name: "rating",
 			title: "Rating",
+			type: "number",
+		},
+		{
+			name: "avgRating",
+			title: "Average Rating",
 			type: "number",
 		},
 	],

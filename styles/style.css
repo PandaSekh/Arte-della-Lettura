@@ -64,19 +64,19 @@ main {
 		@apply text-4xl;
 	}
 	h2 {
-		@apply text-3xl;
+		@apply text-3xl font-medium;
 	}
 	h3 {
-		@apply text-2xl;
+		@apply text-2xl font-medium;
 	}
 	h4 {
-		@apply text-xl;
+		@apply text-xl font-medium;
 	}
 	h5 {
-		@apply text-lg;
+		@apply text-lg font-medium;
 	}
 	p {
-		@apply text-dark-grayText dark:text-dark-white;
+		@apply text-dark-grayText dark:text-dark-white text-base my-4;
 	}
 	main {
 		@apply container mx-auto px-4 block lg:grid lg:grid-cols-4;
@@ -86,6 +86,9 @@ main {
 	}
 	p > a:hover {
 		@apply italic cursor-pointer;
+	}
+	blockquote {
+		@apply mt-4 pr-20 pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
 	}
 }
 
@@ -101,9 +104,8 @@ main {
 		@apply mr-4 float-left;
 	}
 
-	.book-block > .synopsys {
-		@apply mt-4 pr-20 pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
-	}
+	/* .book-block > .synopsys {
+	} */
 
 	.book-block {
 		@apply my-4;
