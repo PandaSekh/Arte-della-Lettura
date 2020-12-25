@@ -58,52 +58,54 @@ main {
 	h4,
 	h5,
 	h6 {
-		@apply font-extralight mb-2;
+		@apply font-light mb-2;
 	}
 	h1 {
 		@apply text-4xl;
 	}
 	h2 {
-		@apply text-3xl;
+		@apply text-3xl font-medium;
 	}
 	h3 {
-		@apply text-2xl;
+		@apply text-2xl font-medium;
 	}
 	h4 {
-		@apply text-xl;
+		@apply text-xl font-medium;
 	}
 	h5 {
-		@apply text-lg;
+		@apply text-lg font-medium;
 	}
 	p {
-		@apply text-dark-grayText dark:text-dark-white;
+		@apply text-dark-grayText dark:text-dark-white text-lg my-4;
 	}
 	main {
 		@apply container mx-auto px-4 block lg:grid lg:grid-cols-4;
 	}
 	p > a {
-		@apply underline text-customBlue;
+		@apply text-customBlue;
 	}
 	p > a:hover {
-		@apply italic cursor-pointer;
+		@apply cursor-pointer underline;
+	}
+	blockquote {
+		@apply mt-4 pr-20 pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
 	}
 }
 
 @layer components {
 	.postTitle {
-		@apply text-center;
+		@apply text-center font-extralight;
 	}
 	.bookBlockEnd {
-		@apply clear-both mb-4;
+		@apply clear-both mb-8;
 	}
 
 	.book-block > .cover {
 		@apply mr-4 float-left;
 	}
 
-	.book-block > .synopsys {
-		@apply mt-4 pr-20 pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
-	}
+	/* .book-block > .synopsys {
+	} */
 
 	.book-block {
 		@apply my-4;
@@ -138,7 +140,7 @@ main {
 		@apply text-center font-light text-2xl mb-2 hover:text-customBlue;
 	}
 	.homePageImage {
-		@apply grid m-auto my-2 transition-opacity opacity-100 hover:opacity-60 shadow-xl;
+		@apply grid m-auto my-2 transition-opacity opacity-100 shadow-xl;
 	}
 	.homepageDate {
 		@apply text-center font-light text-sm;
@@ -159,6 +161,12 @@ main {
 		@apply hidden;
 	}
 
+	@media (min-width: 768px) {
+		.homePageImage {
+			@apply hover:opacity-60;
+		}
+	}
+
 	@media (max-width: 768px) {
 		.switch {
 			@apply -left-10 transition-transform;
@@ -174,6 +182,12 @@ main {
 		}
 		.active {
 			@apply border-dark-white border-solid border-b-4;
+		}
+		.book-block > .cover {
+			@apply block float-none mx-auto w-max;
+		}
+		.book-block > p {
+			@apply px-2.5;
 		}
 	}
 }

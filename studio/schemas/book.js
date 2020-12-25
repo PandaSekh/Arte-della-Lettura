@@ -38,19 +38,34 @@ export default {
 			name: "author",
 			title: "Author",
 			type: "array",
-			of: [{ type: "string" }],
+			of: [
+				{
+					type: "reference",
+					to: [{ type: "author" }],
+				},
+			]
 		},
 		{
-			name: "genre",
-			title: "Genre",
+			name: "genres",
+			title: "Genres",
 			type: "array",
-			of: [{ type: "string" }],
+			of: [
+				{
+					type: "reference",
+					to: [{ type: "genre" }],
+				},
+			],
 		},
 		{
-			name: "tags",
-			title: "Tags",
+			name: "subgenres",
+			title: "SubGenres",
 			type: "array",
-			of: [{ type: "string" }],
+			of: [
+				{
+					type: "reference",
+					to: [{ type: "genre" }],
+				},
+			],
 		},
 		{
 			name: "language",
@@ -64,9 +79,14 @@ export default {
 			of: [{ type: "string" }],
 		},
 		{
-			name: "publishedDate",
-			title: "Published Date",
-			type: "date",
+			name: "yearPublished",
+			title: "Published Year",
+			type: "number",
+		},
+		{
+			name: "originalYearPublished",
+			title: "Original Published Year",
+			type: "number",
 		},
 		{
 			name: "pages",
@@ -81,24 +101,30 @@ export default {
 		{
 			name: "publisher",
 			title: "Publisher",
-			type: "string",
+			type: "reference",
+			to: [{ type: "publisher" }],
 		},
 		{
 			name: "rating",
 			title: "Rating",
 			type: "number",
 		},
+		{
+			name: "avgRating",
+			title: "Average Rating",
+			type: "number",
+		},
 	],
 	preview: {
 		select: {
 			title: "title",
-			authors: "author",
+			author: "author.0.name",
 		},
 		prepare(selection) {
 			const { title, authors } = selection;
 			return {
 				title: title,
-				subtitle: authors.length <= 1 ? authors[0] : authors.join(","),
+				subtitle: authors,
 			};
 		},
 	},

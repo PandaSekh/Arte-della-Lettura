@@ -1,8 +1,12 @@
 import { getImgUrl } from "../lib/sanityClient";
 import Image from "next/image";
 import { Fragment } from "react";
+import Link from "next/link";
+import getKey from "../lib/keyGen";
 
 export default function Book(props) {
+	const allGenres = props.book.genres.concat(props.book.subgenres);
+
 	return (
 		<Fragment>
 			<div className="book-block">
@@ -15,25 +19,61 @@ export default function Book(props) {
 				</div>
 				<p>
 					<strong>{props.book.title}</strong> di{" "}
-					{props.book.author.join(", ")}
+					{props.book.author
+						.map(singleAuthor => (
+							<Link
+								key={getKey()}
+								href={`/autori/${encodeURIComponent(
+									singleAuthor.slug?.current
+								)}`}
+							>
+								<a>{singleAuthor.name}</a>
+							</Link>
+						))
+						.reduce((a, b) => [a, ", ", b])}
 					<br />
-					<strong>Serie:</strong> {props.book.series?.join(", ")}
-					<br />
-					<strong>Casa Editrice:</strong> {props.book.publisher}
+					{props.book.series && (
+						<Fragment>
+							<strong>Serie:</strong>{" "}
+							{props.book.series.join(", ")}
+							<br />
+						</Fragment>
+					)}
+					<strong>Casa Editrice:</strong>{" "}
+					<Link
+						key={getKey()}
+						href={`/case-editrici/${encodeURIComponent(
+							props.book.publisher.slug?.current
+						)}`}
+					>
+						<a>{props.book.publisher.name}</a>
+					</Link>
 					<br />
 					<strong>
-						{props.book.genre.length === 1 ? "Genere" : "Generi"}:
+						{allGenres.length === 1 ? "Genere" : "Generi"}:
 					</strong>{" "}
-					{props.book.genre.join(", ")}
+					{/* Create an url and text for every genre and use reduce as a join */}
+					{allGenres
+						.map(genre => (
+							<Link
+								key={getKey()}
+								href={`/generi/${encodeURIComponent(
+									genre.slug?.current
+								)}`}
+							>
+								<a>{genre.name}</a>
+							</Link>
+						))
+						.reduce((a, b) => [a, ", ", b])}
 					<br />
 					<strong>Formato:</strong> {props.book.format}
 					<br />
 					<strong>Pagine:</strong> {props.book.pages}
 					<br />
-					<div>
+					<Fragment>
 						<strong>Valutazione:</strong>{" "}
 						<Stars rating={props.book.rating} />
-					</div>
+					</Fragment>
 				</p>
 				<blockquote className="synopsys">
 					{props.book.synopsis}

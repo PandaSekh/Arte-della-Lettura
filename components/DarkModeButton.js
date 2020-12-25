@@ -16,7 +16,6 @@ export default function DarkModeButton() {
 	function toggleDarkMode() {
 		isDark = !isDark;
 		document.querySelector("html").classList.toggle("dark");
-		// document.querySelector("#burger").classList.toggle("dark");
 		document.documentElement.style.setProperty(
 			"--hamb-color",
 			isDark ? "#FFFFFF" : "#3a3a3a"
@@ -26,7 +25,7 @@ export default function DarkModeButton() {
 
 	return (
 		<div onClick={toggleDarkMode} className="switch">
-			<div className="ball"></div>
+			<div className="ball" aria-label="Switch per Dark Mode"></div>
 		</div>
 	);
 }

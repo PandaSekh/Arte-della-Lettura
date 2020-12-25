@@ -7,7 +7,7 @@ import DarkModeButton from "../components/DarkModeButton";
 
 function MyApp({ Component, pageProps }) {
 	const Navbar = dynamic(() => import("../components/Navbar"));
-	const Sidebar = dynamic(() => import("../components/SIdebar"));
+	const Sidebar = dynamic(() => import("../components/Sidebar"));
 
 	return (
 		<Fragment>

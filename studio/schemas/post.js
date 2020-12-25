@@ -34,17 +34,18 @@ export default {
 		{
 			name: "category",
 			title: "Category",
-			type: "string",
+			type: "reference",
+			to: [{ type: "category" }],
 		},
-// 		{
-// 			name: "tags",
-// 			title: "tags",
-// 			type: "array",
-// 			of: [{ type: "string" }],
-// 			options: {
-// 				layout: "tags",
-// 			},
-// 		},
+		// 		{
+		// 			name: "tags",
+		// 			title: "tags",
+		// 			type: "array",
+		// 			of: [{ type: "string" }],
+		// 			options: {
+		// 				layout: "tags",
+		// 			},
+		// 		},
 		{
 			name: "publishedAt",
 			title: "Published at",
@@ -56,14 +57,9 @@ export default {
 			},
 		},
 		{
-			name: "updatedAt",
-			title: "Updated at",
-			type: "date",
-			options: {
-				dateFormat: "DD MM YYYY",
-				timeStep: 30,
-				calendarTodayLabel: "Oggi",
-			},
+			name: "excerpt",
+			title: "Excerpt",
+			type: "text",
 		},
 		{
 			name: "body",
