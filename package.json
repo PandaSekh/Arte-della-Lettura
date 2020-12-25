@@ -25,7 +25,8 @@
     "next-unused": "^0.0.3",
     "postcss": "^8.1.14",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^2.0.1"
+    "tailwindcss": "^2.0.1",
+    "webpack": "^5.11.0"
   },
   "next-unused": {
     "alias": {},
