@@ -1,13 +1,14 @@
 import "../styles/style.css";
-
 import dynamic from "next/dynamic";
 import { Fragment } from "react";
 import Head from "next/head";
-import DarkModeButton from "../components/DarkModeButton";
 
 function MyApp({ Component, pageProps }) {
 	const Navbar = dynamic(() => import("../components/Navbar"));
-	const Sidebar = dynamic(() => import("../components/Sidebar"));
+	// const Sidebar = dynamic(() => import("../components/Sidebar"));
+	const DarkModeButton = dynamic(() =>
+		import("../components/DarkModeButton")
+	);
 
 	return (
 		<Fragment>
@@ -63,7 +64,7 @@ function MyApp({ Component, pageProps }) {
 			<Navbar />
 			<main>
 				<Component {...pageProps} />
-				<Sidebar />
+				{/* <Sidebar /> */}
 			</main>
 		</Fragment>
 	);
