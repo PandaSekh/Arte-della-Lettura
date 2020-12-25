@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prebuild": "node lib/jsonCacher.js"
+    "prebuild": "node lib/jsonCacher.js",
+    "find:unused": "next-unused"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
@@ -15,15 +16,24 @@
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.0.4",
     "fuse.js": "^6.4.3",
-    "minisearch": "^3.0.2",
     "next": "^10.0.3",
     "next-pwa": "^5.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
   "devDependencies": {
+    "next-unused": "^0.0.3",
     "postcss": "^8.1.14",
     "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^2.0.1"
+  },
+  "next-unused": {
+    "alias": {},
+    "include": [
+      "components",
+      "lib"
+    ],
+    "exclude": [],
+    "entrypoints": []
   }
 }
