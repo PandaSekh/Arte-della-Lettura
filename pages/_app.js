@@ -5,8 +5,10 @@ import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
 	const Navbar = dynamic(() => import("../components/Navbar"));
-	const Sidebar = dynamic(() => import("../components/Sidebar"));
-	const DarkModeButton = dynamic(() => import("../components/DarkModeButton"));
+	// const Sidebar = dynamic(() => import("../components/Sidebar"));
+	const DarkModeButton = dynamic(() =>
+		import("../components/DarkModeButton")
+	);
 
 	return (
 		<Fragment>
@@ -62,7 +64,7 @@ function MyApp({ Component, pageProps }) {
 			<Navbar />
 			<main>
 				<Component {...pageProps} />
-				<Sidebar />
+				{/* <Sidebar /> */}
 			</main>
 		</Fragment>
 	);

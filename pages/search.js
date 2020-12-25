@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-
 import Fuse from "fuse.js";
 import { useState, useEffect } from "react";
 
