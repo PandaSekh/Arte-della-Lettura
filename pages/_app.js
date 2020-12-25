@@ -3,11 +3,11 @@ import "../styles/style.css";
 import dynamic from "next/dynamic";
 import { Fragment } from "react";
 import Head from "next/head";
-import DarkModeButton from "../components/header/DarkModeButton";
+import DarkModeButton from "../components/DarkModeButton";
 
 function MyApp({ Component, pageProps }) {
-	const Navbar = dynamic(() => import("../components/header/Navbar"));
-	const Sidebar = dynamic(() => import("../components/SIdebar"));
+	const Navbar = dynamic(() => import("../components/Navbar"));
+	const Sidebar = dynamic(() => import("../components/Sidebar"));
 
 	return (
 		<Fragment>

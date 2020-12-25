@@ -34,7 +34,8 @@ export default {
 		{
 			name: "category",
 			title: "Category",
-			type: "string",
+			type: "reference",
+			to: [{ type: "category" }],
 		},
 		// 		{
 		// 			name: "tags",
@@ -58,7 +59,7 @@ export default {
 		{
 			name: "excerpt",
 			title: "Excerpt",
-			type: "string",
+			type: "text",
 		},
 		{
 			name: "body",

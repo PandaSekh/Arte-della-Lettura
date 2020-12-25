@@ -76,16 +76,16 @@ main {
 		@apply text-lg font-medium;
 	}
 	p {
-		@apply text-dark-grayText dark:text-dark-white text-base my-4;
+		@apply text-dark-grayText dark:text-dark-white text-lg my-4;
 	}
 	main {
 		@apply container mx-auto px-4 block lg:grid lg:grid-cols-4;
 	}
 	p > a {
-		@apply underline text-customBlue;
+		@apply text-customBlue;
 	}
 	p > a:hover {
-		@apply italic cursor-pointer;
+		@apply cursor-pointer underline;
 	}
 	blockquote {
 		@apply mt-4 pr-20 pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
@@ -97,7 +97,7 @@ main {
 		@apply text-center font-extralight;
 	}
 	.bookBlockEnd {
-		@apply clear-both mb-4;
+		@apply clear-both mb-8;
 	}
 
 	.book-block > .cover {
