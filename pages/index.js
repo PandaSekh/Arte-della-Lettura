@@ -28,7 +28,7 @@ export default function Home(props) {
 }
 
 export function getStaticProps() {
-	const posts = require("../cache/posts.json");
+	const posts = require("../cache/home.json");
 	return {
 		props: { posts: posts },
 	};

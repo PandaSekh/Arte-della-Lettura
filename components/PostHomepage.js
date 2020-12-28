@@ -7,10 +7,6 @@ export default function PostHomepage(props) {
 	const DateUnderPost = dynamic(() => import("./DateUnderPost"));
 	const ReadMore = dynamic(() => import("./ReadMore"));
 
-	const book = props.post.body.find(block => {
-		return block._type === "book";
-	});
-
 	return (
 		<div className="singlePostHomepage">
 			<Link href={`/${encodeURIComponent(props.post.slug.current)}`}>
@@ -24,26 +20,24 @@ export default function PostHomepage(props) {
 					<a>
 						<Image
 							src={getImgUrl(props.post.mainImage)
-								// .width(400)
-								// .height(560)
+								// .width(300)
+								// .height(460)
 								.quality(75)
 								.auto("format")
-								.url()}
+								.url()
+								.toString()}
+							// webp
+							// sizes={[300, 150]}
+							loading="lazy"
 							width={300}
 							height={460}
-							// width={340}
-							// height={500}
-							alt={`Copertina ${
-								book?.title ? book.title : "libro"
-							}`}
+							alt={props.post.title}
 						/>
 					</a>
 				</Link>
 			</div>
 			<p>
-				{props.post.excerpt
-					? props.post.excerpt.slice(0, 400)
-					: book.synopsis.slice(0, 400)}
+				{props.post.excerpt.slice(0, 400)}
 				...
 			</p>
 			<ReadMore slug={props.post.slug.current} />

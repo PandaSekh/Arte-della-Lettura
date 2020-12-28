@@ -32,5 +32,10 @@ export default {
 			title: "Description",
 			type: "text",
 		},
+		{
+			name: "website",
+			title: "Website",
+			type: "string",
+		},
 	],
 };
