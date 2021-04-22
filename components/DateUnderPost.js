@@ -12,14 +12,12 @@ months[10] = "Ottobre";
 months[11] = "Novembre";
 months[12] = "Dicembre";
 
-export default function DateUnderPost(props) {
-	const date = props.date.split("-");
-	const day = date[2].charAt(0) === "0" ? date[2].slice(1) : date[2];
-	const month = months[Number(date[1])];
+export default function DateUnderPost({ date }) {
+	const dateArray = date.split("-");
 
 	return (
 		<p className="homepageDate">
-			{day} {month} {date[0]}
+			{dateArray[0]} {months[Number(dateArray[1])]} {dateArray[2]}
 		</p>
 	);
 }

@@ -1,46 +1,35 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getImgUrl } from "../lib/sanityClient";
-import dynamic from "next/dynamic";
+import DateUnderPost from "./DateUnderPost";
+import ReadMore from "./ReadMore";
 
-export default function PostHomepage({ post }) {
-	const DateUnderPost = dynamic(() => import("./DateUnderPost"));
-	const ReadMore = dynamic(() => import("./ReadMore"));
-
+export default function PostHomepage({ post, data }) {
 	return (
 		<div className="singlePostHomepage">
-			<Link href={`/${encodeURIComponent(post.slug.current)}`}>
+			<Link href={`/${encodeURIComponent(data.slug)}`}>
 				<a>
-					<h3 className="homepageTitle">{post.title}</h3>
+					<h3 className="homepageTitle">{data.title}</h3>
 				</a>
 			</Link>
-			<DateUnderPost date={post.publishedAt} />
+			<DateUnderPost date={data.publishedAt} />
 			<div className="homePageImage">
-				<Link href={`/${encodeURIComponent(post.slug.current)}`}>
+				<Link href={`/${encodeURIComponent(data.slug)}`}>
 					<a>
 						<Image
-							src={getImgUrl(post.mainImage)
-								// .width(300)
-								// .height(460)
-								.quality(75)
-								.auto("format")
-								.url()
-								.toString()}
-							// webp
-							// sizes={[300, 150]}
+							src={`/static/images/books/${data.image}`}
 							loading="lazy"
 							width={300}
 							height={460}
-							alt={post.title}
+							alt={data.title}
 						/>
 					</a>
 				</Link>
 			</div>
 			<p>
-				{post.excerpt.slice(0, 400)}
+				{post.slice(0, 400)}
 				...
 			</p>
-			<ReadMore slug={post.slug.current} />
+			<ReadMore slug={data.slug} />
 		</div>
 	);
 }

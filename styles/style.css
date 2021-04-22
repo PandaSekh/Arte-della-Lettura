@@ -20,14 +20,13 @@ body {
 }
 
 main {
-	display: grid;
-	grid-template-columns: 3fr 1fr;
+	display: flex;
+	/* grid-template-columns: 3fr 1fr;
 	grid-template-rows: auto;
-	grid-template-areas: "posts sidebar";
+	grid-template-areas: "posts sidebar"; */
 }
 
 .content {
-	grid-area: posts;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: auto;
@@ -35,7 +34,7 @@ main {
 }
 
 .sidebar {
-	grid-area: sidebar;
+	/* grid-area: sidebar; */
 
 	background-color: #272727;
 }
@@ -143,7 +142,7 @@ main {
 		@apply grid m-auto my-2 transition-opacity opacity-100 shadow-xl;
 	}
 	.homepageDate {
-		@apply text-center font-light text-sm m-0;
+		@apply text-center font-light text-base	 m-0;
 	}
 	.readMoreButton {
 		@apply text-center m-auto w-max cursor-pointer p-3 bg-customBlue hover:bg-customBlue-light mt-4 rounded;

@@ -3,23 +3,26 @@ import Image from "next/image";
 import { Fragment } from "react";
 import Link from "next/link";
 import getKey from "../lib/keyGen";
+import stringToSlug from "../lib/stringToSlug";
 
-export default function Book(props) {
-	const allGenres = props.book.genres.concat(props.book.subgenres);
+export default function Book({ slug }) {
+	const book = require(`../books/${slug}.json`);
+	console.log(book);
+	console.log(book.author.map(singleAuthor => singleAuthor));
 
 	return (
 		<Fragment>
 			<div className="book-block">
 				<div className="cover">
 					<Image
-						src={getImgUrl(props.book.cover).url()}
+						src={`/static/images/books/${book.image}`}
 						width={275}
 						height={420}
 					/>
 				</div>
 				<p>
-					<strong>{props.book.title}</strong> di{" "}
-					{props.book.author
+					<strong>{book.title}</strong> di{" "}
+					{book.author
 						.map(singleAuthor => (
 							<Link
 								key={getKey()}
@@ -27,15 +30,14 @@ export default function Book(props) {
 									singleAuthor.slug?.current
 								)}`}
 							>
-								<a>{singleAuthor.name}</a>
+								<a>{singleAuthor}</a>
 							</Link>
 						))
 						.reduce((a, b) => [a, ", ", b])}
 					<br />
-					{props.book.series && (
+					{book.series && (
 						<Fragment>
-							<strong>Serie:</strong>{" "}
-							{props.book.series.join(", ")}
+							<strong>Serie:</strong> {book.series.join(", ")}
 							<br />
 						</Fragment>
 					)}
@@ -43,41 +45,39 @@ export default function Book(props) {
 					<Link
 						key={getKey()}
 						href={`/case-editrici/${encodeURIComponent(
-							props.book.publisher.slug?.current
+							stringToSlug(book.publisher)
 						)}`}
 					>
-						<a>{props.book.publisher.name}</a>
+						<a>{book.publisher}</a>
 					</Link>
 					<br />
 					<strong>
-						{allGenres.length === 1 ? "Genere" : "Generi"}:
+						{book.genres.length === 1 ? "Genere" : "Generi"}:
 					</strong>{" "}
 					{/* Create an url and text for every genre and use reduce as a join */}
-					{allGenres
+					{book.genres
 						.map(genre => (
 							<Link
 								key={getKey()}
 								href={`/generi/${encodeURIComponent(
-									genre.slug?.current
+									stringToSlug(genre)
 								)}`}
 							>
-								<a>{genre.name}</a>
+								<a>{genre}</a>
 							</Link>
 						))
 						.reduce((a, b) => [a, ", ", b])}
 					<br />
-					<strong>Formato:</strong> {props.book.format}
+					<strong>Formato:</strong> {book.format}
 					<br />
-					<strong>Pagine:</strong> {props.book.pages}
+					<strong>Pagine:</strong> {book.pages}
 					<br />
 					<Fragment>
-						<strong>Valutazione:</strong>{" "}
-						<Stars rating={props.book.rating} />
+						<strong>Valutazione:</strong>
+						<Stars rating={book.rating} />
 					</Fragment>
 				</p>
-				<blockquote className="synopsys">
-					{props.book.synopsis}
-				</blockquote>
+				<blockquote className="synopsys">{book.synopsis}</blockquote>
 			</div>
 			<div className="bookBlockEnd"></div>
 		</Fragment>
@@ -86,7 +86,7 @@ export default function Book(props) {
 
 const Stars = ({ rating }) => {
 	return (
-		<div className="stars" data-stars={rating}>
+		<span className="stars" data-stars={rating}>
 			<svg height="25" width="23" className="star rating" data-rating="1">
 				<polygon
 					points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78"
@@ -117,6 +117,6 @@ const Stars = ({ rating }) => {
 					fillRule="nonzero"
 				/>
 			</svg>
-		</div>
+		</span>
 	);
 };
