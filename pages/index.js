@@ -40,7 +40,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 import { postFilePaths, POSTS_PATH } from "../lib/mdxUtils";
-import getKey from "../lib/keyGen"
+import getKey from "../lib/keyGen";
 import PostHomepage from "../components/PostHomepage";
 
 export default function Index({ posts }) {
@@ -56,16 +56,23 @@ export default function Index({ posts }) {
 }
 
 export function getStaticProps() {
-	const posts = postFilePaths.slice(0, 10).map(filePath => {
-		const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
-		const { content, data } = matter(source);
+	const posts = postFilePaths
+		.slice(0, 10)
+		.map(filePath => {
+			const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
+			const { content, data } = matter(source);
 
-		return {
-			content,
-			data,
-			filePath,
-		};
-	});
+			if (data.isPublished === false || !content) return null;
+
+			return {
+				content,
+				data,
+				filePath,
+			};
+		})
+		.filter(post => post);
+
+	console.log(posts);
 
 	return { props: { posts } };
 }

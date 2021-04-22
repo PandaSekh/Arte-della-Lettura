@@ -25,8 +25,8 @@ export default function PostHomepage({ post, data }) {
 					</a>
 				</Link>
 			</div>
-			<p>
-				{post.slice(0, 400)}
+			<p className="extract">
+				{data.extract.slice(0, 400)}
 				...
 			</p>
 			<ReadMore slug={data.slug} />

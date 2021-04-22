@@ -21,6 +21,7 @@ body {
 
 main {
 	display: flex;
+	justify-content: space-around;
 	/* grid-template-columns: 3fr 1fr;
 	grid-template-rows: auto;
 	grid-template-areas: "posts sidebar"; */
@@ -43,6 +44,15 @@ main {
 	-webkit-transition: 0.3s ease;
 	transition: 0.3s ease-in-out;
 	color: white;
+}
+
+article {
+	max-width: 66rem;
+	margin: auto;
+}
+
+.extract {
+	max-width: 30rem;
 }
 
 /* BASIC STYLES */
@@ -78,7 +88,7 @@ main {
 		@apply text-dark-grayText dark:text-dark-white text-lg my-4;
 	}
 	main {
-		@apply container mx-auto px-4 block lg:grid lg:grid-cols-4;
+		@apply container mx-auto px-4 block;
 	}
 	p > a {
 		@apply text-customBlue;
@@ -89,6 +99,9 @@ main {
 	blockquote {
 		@apply mt-4 pr-20 pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
 	}
+	/* footer {
+		@apply bg-customBlue-light absolute left-0 bottom-0 w-full text-center;
+	} */
 }
 
 @layer components {
@@ -102,9 +115,6 @@ main {
 	.book-block > .cover {
 		@apply mr-4 float-left;
 	}
-
-	/* .book-block > .synopsys {
-	} */
 
 	.book-block {
 		@apply my-4;

@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-export default function CustomLink({ as, href, ...otherProps }) {
+export default function CustomLink({ postSlug, text }) {
 	return (
 		<>
-			<Link as={as} href={href}>
-				<a {...otherProps} />
+			<Link href={encodeURIComponent(postSlug)}>
+				<a>{text}</a>
 			</Link>
 		</>
 	);

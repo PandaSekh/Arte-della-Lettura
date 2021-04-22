@@ -82,7 +82,6 @@ export default function PostPage({ source, frontMatter }) {
 				<DateUnderPost date={frontMatter.publishedAt} />
 				<div>{content}</div>
 			</article>
-			//{" "}
 		</>
 	);
 }
