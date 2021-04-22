@@ -7,10 +7,10 @@ module.exports = withPWA({
 		domains: ["cdn.sanity.io"],
 	},
 	poweredByHeader: false,
-	assetPrefix:
-		process.env.NODE_ENV === "production"
-			? "https://artedellaletturacdn.b-cdn.net"
-			: "",
+	// assetPrefix:
+	// 	process.env.NODE_ENV === "production"
+	// 		? "https://artedellaletturacdn.b-cdn.net"
+	// 		: "",
 	pwa: {
 		dest: "public",
 		disable: process.env.NODE_ENV === "development",
