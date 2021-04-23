@@ -173,7 +173,7 @@ article {
 
 	@media (min-width: 768px) {
 		.homePageImage {
-			@apply hover:opacity-60;
+			@apply hover:opacity-80;
 		}
 	}
 
