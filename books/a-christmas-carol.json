@@ -7,8 +7,7 @@
     "Charles Dickens"
   ],
   "genres": [
-    "Fiction",
-    "Classics"
+    "Classico"
   ],
   "language": "it",
   "ogPublishedYear": 1843,
@@ -16,5 +15,6 @@
   "format": "Paperback",
   "publisher": "Caravaggio Editore",
   "rating": 5,
-  "image": ".jpg"
+  "image": "ChristmasCarol.jpg",
+  "reviewSlug": ""
 }

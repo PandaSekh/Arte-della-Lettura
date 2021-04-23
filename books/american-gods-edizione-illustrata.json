@@ -7,7 +7,6 @@
     "Neil Gaiman"
   ],
   "genres": [
-    "Fiction",
     "Fantasy",
     "Mitologia e Leggende"
   ],
@@ -17,5 +16,5 @@
   "format": "Hardcover",
   "publisher": "Mondadori",
   "rating": 5,
-  "image": ".jpg"
+  "image": "AmericanGods.jpg"
 }
