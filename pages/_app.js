@@ -5,7 +5,6 @@ import { DefaultSeo } from "next-seo";
 import SEO from "../seo.config";
 import Navbar from "../components/Navbar";
 import DarkModeButton from "../components/DarkModeButton";
-import Footer from "../components/Footer/Footer";
 
 function MyApp({ Component, pageProps }) {
 	return (

@@ -15,13 +15,17 @@ export default function PostHomepage({ post, data }) {
 			<div className="homePageImage">
 				<Link href={`/${encodeURIComponent(data.slug)}`}>
 					<a>
-						<Image
-							src={`/static/images/books/${data.image}`}
-							loading="lazy"
-							width={300}
-							height={460}
-							alt={data.title}
-						/>
+						<div className="homePageImage">
+							<Image
+								src={`/static/images/books/${data.image}`}
+								loading="lazy"
+								// width={300}
+								// height={460}
+								alt={data.title}
+								layout="fill"
+								objectFit="contain"
+							/>
+						</div>
 					</a>
 				</Link>
 			</div>
