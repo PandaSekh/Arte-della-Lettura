@@ -15,7 +15,6 @@ export default function Index({ posts }) {
 }
 
 export function getStaticProps() {
-	const posts = getPublishedPosts(0, 11);
-
+	const posts = getPublishedPosts(0, 7);
 	return { props: { posts } };
 }
