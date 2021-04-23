@@ -2,7 +2,8 @@ export default function DarkModeButton() {
 	let isDark = true;
 
 	if (typeof window !== "undefined") {
-		isDark = localStorage.theme === "dark" ? true : false;
+		isDark = localStorage.getItem("theme") === "dark" ? true : false;
+		if (isDark) document.querySelector("html").classList.add("dark");
 		document.documentElement.style.setProperty(
 			"--hamb-color",
 			isDark ? "#FFFFFF" : "#3a3a3a"
@@ -20,7 +21,7 @@ export default function DarkModeButton() {
 			"--hamb-color",
 			isDark ? "#FFFFFF" : "#3a3a3a"
 		);
-		localStorage.theme = isDark ? "dark" : null;
+		localStorage.setItem("theme", isDark ? "dark" : null);
 	}
 
 	return (
