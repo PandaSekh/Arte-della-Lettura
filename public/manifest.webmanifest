@@ -3,7 +3,7 @@
 	"name": "Arte della Lettura",
 	"lang": "it",
 	"description": "Blog di recensioni",
-	"start_url": "https://arte-della-lettura.vercel.app/",
+	"start_url": "http://localhost:3000/",
 	"background_color": "#018fd9",
 	"theme_color": "#2196f3",
 	"dir": "ltr",
