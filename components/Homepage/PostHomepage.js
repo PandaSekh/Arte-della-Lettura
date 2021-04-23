@@ -30,7 +30,7 @@ export default function PostHomepage({ post, data }) {
 				</Link>
 			</div>
 			<p className="extract">
-				{data.extract.slice(0, 400)}
+				{data.extract ? data.extract?.slice(0, 400) : post.slice(0,400)}
 				...
 			</p>
 			<ReadMore slug={data.slug} />
