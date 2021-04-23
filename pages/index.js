@@ -1,35 +1,20 @@
-import Head from "next/head";
-import dynamic from "next/dynamic";
-import { Fragment } from "react";
+import { getPublishedPosts } from "../lib/postsAPI";
+import getKey from "../lib/keyGen";
+import PostHomepage from "../components/Homepage/PostHomepage";
 
-export default function Home(props) {
-	const PostHomepage = dynamic(() => import("../components/PostHomepage"));
-	const homepagePosts = props.posts.map(post => {
-		return (
-			<article key={post._id}>
-				<PostHomepage post={post} />
-			</article>
-		);
-	});
-
+export default function Index({ posts }) {
 	return (
-		<Fragment>
-			<Head>
-				<meta
-					name="description"
-					content="override-me"
-					key="description"
-				/>
-			</Head>
-
-			<div className="content">{homepagePosts}</div>
-		</Fragment>
+		<div className="content">
+			{posts.map(post => (
+				<article key={getKey()}>
+					<PostHomepage post={post.content} data={post.data} />
+				</article>
+			))}
+		</div>
 	);
 }
 
 export function getStaticProps() {
-	const posts = require("../cache/home.json");
-	return {
-		props: { posts: posts },
-	};
+	const posts = getPublishedPosts(0, 7);
+	return { props: { posts } };
 }

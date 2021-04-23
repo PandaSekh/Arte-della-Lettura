@@ -1,42 +1,61 @@
 import "../styles/style.css";
-import dynamic from "next/dynamic";
-import { Fragment } from "react";
 import Head from "next/head";
+import { DefaultSeo } from "next-seo";
+import SEO from "../seo.config";
+import Navbar from "../components/Header/Navbar";
+import DarkModeButton from "../components/Header/DarkModeButton";
 
 function MyApp({ Component, pageProps }) {
-	const Navbar = dynamic(() => import("../components/Navbar"));
-	// const Sidebar = dynamic(() => import("../components/Sidebar"));
-	const DarkModeButton = dynamic(() =>
-		import("../components/DarkModeButton")
-	);
-
 	return (
-		<Fragment>
+		<>
 			<Head>
-				<title>
-					Arte della Lettura | Recensioni di Libri e Fumetti
-				</title>
+				<meta name="application-name" content="Arte della Lettura" />
+				<meta name="apple-mobile-web-app-capable" content="yes" />
+				<meta
+					name="apple-mobile-web-app-status-bar-style"
+					content="default"
+				/>
+				<meta
+					name="apple-mobile-web-app-title"
+					content="Arte della Lettura"
+				/>
 				<meta
 					name="description"
-					content="Quattro chiacchiere su libri, fumetti, manga e audiolibri. Su Arte della Lettura trovi Recensioni, Interviste e Anteprime!"
-					key="description"
+					content="Quattro chiacchiere su libri e fumetti."
 				/>
+				<meta name="format-detection" content="telephone=no" />
+				<meta name="mobile-web-app-capable" content="yes" />
 				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1.0"
-					key="viewport"
+					name="msapplication-config"
+					content="/browserconfig.xml"
 				/>
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-											if (localStorage.theme === "dark" ) {
-						document.querySelector('html').classList.add('dark')
-						} else {
-						document.querySelector('html').classList.remove('dark')
-						}
-                  `,
-					}}
+				<meta name="msapplication-TileColor" content="#2B5797" />
+				<meta name="msapplication-tap-highlight" content="no" />
+				<meta name="theme-color" content="#018fd9" />
+
+				<link
+					rel="apple-touch-icon"
+					sizes="180x180"
+					href="/apple-touch-icon.png"
 				/>
+				<link
+					rel="icon"
+					type="image/png"
+					sizes="32x32"
+					href="/favicon-32x32.png"
+				/>
+				<link
+					rel="icon"
+					type="image/png"
+					sizes="16x16"
+					href="/favicon-16x16.png"
+				/>
+				<link
+					rel="mask-icon"
+					href="/safari-pinned-tab.svg"
+					color="#5bbad5"
+				/>
+				<link rel="shortcut icon" href="/favicon.png" />
 				{/* <script
 					dangerouslySetInnerHTML={{
 						__html: `(function(a,b,c){var d=a.history,e=document,f=navigator||{},g=localStorage,
@@ -60,13 +79,15 @@ function MyApp({ Component, pageProps }) {
 					}}
 				/> */}
 			</Head>
+			<DefaultSeo {...SEO} />
 			<DarkModeButton />
 			<Navbar />
 			<main>
 				<Component {...pageProps} />
 				{/* <Sidebar /> */}
 			</main>
-		</Fragment>
+			{/* <Footer /> */}
+		</>
 	);
 }
 

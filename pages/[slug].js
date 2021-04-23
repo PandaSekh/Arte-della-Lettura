@@ -1,32 +1,76 @@
-import PortableText from "@sanity/block-content-to-react";
-import { serializers } from "../lib/blockContentSerializer";
-import DateUnderPost from "../components/DateUnderPost";
+import matter from "gray-matter";
+import hydrate from "next-mdx-remote/hydrate";
+import renderToString from "next-mdx-remote/render-to-string";
+import Head from "next/head";
+import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
+import InternalLink from "../components/UtilComponents/InternalLink";
+import DateUnderPost from "../components/Post/DateUnderPost";
+import Book from "../components/BookCard/Book";
+import CustomImage from "../components/Post/Image";
+import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 
-export async function getStaticPaths() {
-	const posts = require("../cache/posts.json");
-	const slugs = posts.map(post => post.slug.current);
-	const paths = slugs.map(slug => ({
-		params: { slug: slug.toString() },
-	}));
+const components = {
+	InternalLink: InternalLink,
+	Book: Book,
+	Head,
+	Image: CustomImage,
+};
 
-	return {
-		paths: paths,
-		fallback: false,
-	};
-}
-
-export async function getStaticProps({ params }) {
-	const posts = require("../cache/posts.json");
-	const post = posts.filter(post => post.slug.current === params.slug)[0];
-	return { props: { post } };
-}
-
-export default function Post({ post }) {
+export default function PostPage({ source, frontMatter }) {
+	const router = useRouter();
+	const content = hydrate(source, { components });
 	return (
-		<article>
-			<h1 className="postTitle">{post.title}</h1>
-			<DateUnderPost date={post.publishedAt} />
-			<PortableText blocks={post.body} serializers={serializers} />
-		</article>
+		<>
+			<NextSeo
+				title={frontMatter.title}
+				openGraph={{
+					title: frontMatter.title,
+					url: router.pathname,
+					type: "article",
+					article: {
+						publishedTime: frontMatter.publishedAt,
+						modifiedTime: frontMatter.updatedAt,
+						authors: ["Alessio Franceschi"],
+					},
+				}}
+			/>
+			<article>
+				<h1 className="postTitle">{frontMatter.title}</h1>
+				<DateUnderPost date={frontMatter.publishedAt} />
+				<div>{content}</div>
+			</article>
+		</>
 	);
 }
+
+export const getStaticProps = async ({ params }) => {
+	const source = getPostBySlug(params.slug);
+
+	const { content, data } = matter(source);
+
+	const mdxSource = await renderToString(content, {
+		components,
+		mdxOptions: {
+			remarkPlugins: [],
+			rehypePlugins: [],
+		},
+		scope: data,
+	});
+
+	return {
+		props: {
+			source: mdxSource,
+			frontMatter: data,
+		},
+	};
+};
+
+export const getStaticPaths = async () => {
+	const paths = getPublishedPostSlug();
+
+	return {
+		paths,
+		fallback: false,
+	};
+};
