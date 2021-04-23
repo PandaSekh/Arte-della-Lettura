@@ -1,20 +1,12 @@
 import { getPublishedPosts } from "../lib/postsAPI";
-import getKey from "../lib/keyGen";
-import PostHomepage from "../components/Homepage/PostHomepage";
+import RenderPosts from "../components/Homepage/RenderPosts";
+import config from "../website.config.json";
 
 export default function Index({ posts }) {
-	return (
-		<div className="content">
-			{posts.map(post => (
-				<article key={getKey()}>
-					<PostHomepage post={post.content} data={post.data} />
-				</article>
-			))}
-		</div>
-	);
+	return <RenderPosts posts={posts} />;
 }
 
 export function getStaticProps() {
-	const posts = getPublishedPosts(0, 7);
+	const posts = getPublishedPosts(0, config.postsPerPage);
 	return { props: { posts } };
 }
