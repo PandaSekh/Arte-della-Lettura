@@ -1,6 +1,6 @@
 import { getPublishedPosts } from "../lib/postsAPI";
 import getKey from "../lib/keyGen";
-import PostHomepage from "../components/PostHomepage";
+import PostHomepage from "../components/Homepage/PostHomepage";
 
 export default function Index({ posts }) {
 	return (

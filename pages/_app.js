@@ -1,14 +1,13 @@
 import "../styles/style.css";
-import { Fragment } from "react";
 import Head from "next/head";
 import { DefaultSeo } from "next-seo";
 import SEO from "../seo.config";
-import Navbar from "../components/Navbar";
-import DarkModeButton from "../components/DarkModeButton";
+import Navbar from "../components/Header/Navbar";
+import DarkModeButton from "../components/Header/DarkModeButton";
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<Fragment>
+		<>
 			<Head>
 				<meta name="application-name" content="Arte della Lettura" />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -22,7 +21,7 @@ function MyApp({ Component, pageProps }) {
 				/>
 				<meta
 					name="description"
-					content="Quattro chiacchiere su libri, fumetti, manga e audiolibri. Su Arte della Lettura trovi Recensioni, Interviste e Anteprime!"
+					content="Quattro chiacchiere su libri e fumetti."
 				/>
 				<meta name="format-detection" content="telephone=no" />
 				<meta name="mobile-web-app-capable" content="yes" />
@@ -88,7 +87,7 @@ function MyApp({ Component, pageProps }) {
 				{/* <Sidebar /> */}
 			</main>
 			{/* <Footer /> */}
-		</Fragment>
+		</>
 	);
 }
 

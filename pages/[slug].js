@@ -2,12 +2,12 @@ import matter from "gray-matter";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import Head from "next/head";
-import InternalLink from "../components/InternalLink";
-import DateUnderPost from "../components/DateUnderPost";
-import Book from "../components/BookCard/Book";
-import CustomImage from "../components/Post/Image";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import InternalLink from "../components/UtilComponents/InternalLink";
+import DateUnderPost from "../components/Post/DateUnderPost";
+import Book from "../components/BookCard/Book";
+import CustomImage from "../components/Post/Image";
 import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 
 const components = {
