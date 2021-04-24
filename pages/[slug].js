@@ -18,6 +18,10 @@ const components = {
 	Book: dynamic(() => import("../components/BookCard/Book")),
 	Head,
 	Image: dynamic(() => import("../components/Post/Image")),
+	Stars: dynamic(() => import("../components/BookCard/Stars")),
+	BoldTextWithStars: dynamic(() =>
+		import("../components/UtilComponents/BoldTextWithStars")
+	),
 };
 
 export default function PostPage({ source, frontMatter }) {

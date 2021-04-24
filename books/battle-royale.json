@@ -7,7 +7,7 @@
     "Koushun Takami"
   ],
   "genres": [
-    "Fiction"
+    "Distopia"
   ],
   "language": "it",
   "ogPublishedYear": 1999,
@@ -15,5 +15,6 @@
   "format": "Paperback",
   "publisher": "Mondadori",
   "rating": 5,
-  "image": ".jpg"
+  "image": "BattleRoyale.jpg",
+  "reviewSlug": "recensione-battle-royale-takami"
 }

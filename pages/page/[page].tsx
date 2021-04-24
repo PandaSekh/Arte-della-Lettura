@@ -2,12 +2,20 @@ import { getPublishedPostPath, getPublishedPosts } from "../../lib/postsAPI";
 import config from "../../website.config.json";
 import RenderPosts from "../../components/Homepage/RenderPosts";
 
-export default function Index({ posts }) {
+export default function Index({ posts }: {
+	posts: {
+		content: string
+		data: {
+			[key: string]: any;
+		}
+		filePath: string
+	}[]
+}) {
 	return <RenderPosts posts={posts} />;
 }
 
-export const getStaticProps = async ({ params }) => {
-	const pageMinusOne = params.page - 1;
+export const getStaticProps = async ({ params }: { params: { page: string } }) => {
+	const pageMinusOne = Number.parseInt(params.page) - 1;
 	const posts = getPublishedPosts(
 		pageMinusOne,
 		pageMinusOne + config.postsPerPage

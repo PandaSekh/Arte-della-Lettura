@@ -1,9 +1,10 @@
 export default function DarkModeButton() {
 	let isDark = true;
+	const htmlTag = document.querySelector("html")!
 
 	if (typeof window !== "undefined") {
 		isDark = localStorage.getItem("theme") === "dark" ? true : false;
-		if (isDark) document.querySelector("html").classList.add("dark");
+		if (isDark) htmlTag.classList.add("dark");
 		document.documentElement.style.setProperty(
 			"--hamb-color",
 			isDark ? "#FFFFFF" : "#3a3a3a"
@@ -16,12 +17,12 @@ export default function DarkModeButton() {
 
 	function toggleDarkMode() {
 		isDark = !isDark;
-		document.querySelector("html").classList.toggle("dark");
+		htmlTag.classList.toggle("dark");
 		document.documentElement.style.setProperty(
 			"--hamb-color",
 			isDark ? "#FFFFFF" : "#3a3a3a"
 		);
-		localStorage.setItem("theme", isDark ? "dark" : null);
+		localStorage.setItem("theme", isDark ? "dark" : "");
 	}
 
 	return (

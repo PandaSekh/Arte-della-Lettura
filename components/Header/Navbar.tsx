@@ -1,19 +1,21 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { createRef } from "react";
+import { createRef, RefObject } from "react";
 import SvgHeader from "./SvgHeader";
 
 export default function Navbar() {
 	const router = useRouter();
 
-	const burgerRef = createRef();
-	const navRef = createRef();
+	const burgerRef = createRef<HTMLButtonElement>();
+	const navRef = createRef<HTMLElement>();
 
 	function handleMenuClick() {
-		burgerRef.current.classList.toggle("isOpen");
-		navRef.current.classList.toggle("isOpen");
-		document.body.classList.toggle("lockBody");
-		document.querySelector(".switch").classList.toggle("isOpen");
+		if (burgerRef && navRef) {
+			burgerRef.current!.classList.toggle("isOpen");
+			navRef.current!.classList.toggle("isOpen");
+			document.body.classList.toggle("lockBody");
+			document.querySelector(".switch")!.classList.toggle("isOpen");
+		}
 	}
 
 	return (
@@ -33,7 +35,7 @@ export default function Navbar() {
 						<Link href="/" prefetch={false}>
 							<a
 								className={
-									router.pathname == "/" ? "active" : null
+									router.pathname == "/" ? "active" : ""
 								}
 							>
 								Home
@@ -46,7 +48,7 @@ export default function Navbar() {
 								className={
 									router.pathname == "/archivio"
 										? "active"
-										: null
+										: ""
 								}
 							>
 								Archivio
@@ -59,7 +61,7 @@ export default function Navbar() {
 								className={
 									router.pathname == "/about"
 										? "active"
-										: null
+										: ""
 								}
 							>
 								About

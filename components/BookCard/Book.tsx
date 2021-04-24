@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import getKey from "../../lib/keyGen";
 import stringToSlug from "../../lib/stringToSlug";
-import Stars from "./Stars";
+import BoldTextWithStars from "../UtilComponents/BoldTextWithStars";
 
-export default function Book({ slug }) {
+export default function Book({ slug }: { slug: string }) {
 	const book = require(`../../books/${slug}.json`);
 
 	return (
@@ -20,21 +20,21 @@ export default function Book({ slug }) {
 				<p>
 					<strong>{book.title}</strong> di{" "}
 					{book.author
-						.map(singleAuthor => (
+						.map((singleAuthor: string) => (
 							<Link
 								key={getKey()}
 								href={`/autori/${encodeURIComponent(
-									singleAuthor.slug?.current
+									stringToSlug(singleAuthor)
 								)}`}
 							>
 								<a>{singleAuthor}</a>
 							</Link>
 						))
-						.reduce((a, b) => [a, ", ", b])}
+						.reduce((a: string, b: string) => [a, ", ", b])}
 					<br />
 					{book.series && (
 						<>
-							<strong>Serie:</strong> {book.series.join(", ")}
+							<strong>Serie:</strong> {book.series.reduce((a: string, b: string) => [a, ", ", b])}
 							<br />
 						</>
 					)}
@@ -53,7 +53,7 @@ export default function Book({ slug }) {
 					</strong>{" "}
 					{/* Create an url and text for every genre and use reduce as a join */}
 					{book.genres
-						.map(genre => (
+						.map((genre: string) => (
 							<Link
 								key={getKey()}
 								href={`/generi/${encodeURIComponent(
@@ -63,16 +63,23 @@ export default function Book({ slug }) {
 								<a>{genre}</a>
 							</Link>
 						))
-						.reduce((a, b) => [a, ", ", b])}
+						.reduce((a: string, b: string) => [a, ", ", b])}
 					<br />
 					<strong>Formato:</strong> {book.format}
 					<br />
 					<strong>Pagine:</strong> {book.pages}
 					<br />
-					<>
-						<strong>Valutazione:</strong>
-						<Stars rating={book.rating} />
-					</>
+					<BoldTextWithStars
+						text="Valutazione: "
+						rating={book.rating}
+					/>
+					<style jsx>
+						{`
+							p {
+								margin: 0px;
+							}
+						`}
+					</style>
 				</p>
 				<blockquote>{book.synopsis}</blockquote>
 			</div>

@@ -7,8 +7,7 @@
     "Banana Yoshimoto"
   ],
   "genres": [
-    "Fiction",
-    "Literary",
+    "Narrativa",
     "Giappone"
   ],
   "language": "it",
@@ -17,5 +16,6 @@
   "format": "Paperback",
   "publisher": "Feltrinelli",
   "rating": 3,
-  "image": ".jpg"
+  "image": "Kitchen.jpg",
+  "reviewSlug": "recensione-kitchen-banana-yoshimoto"
 }

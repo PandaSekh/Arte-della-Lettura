@@ -1,4 +1,4 @@
-export default function Stars({ rating }) {
+export default function Stars({ rating }: { rating: number | string }) {
 	return (
 		<span className="stars" data-stars={rating}>
 			<svg height="25" width="23" className="star rating" data-rating="1">
