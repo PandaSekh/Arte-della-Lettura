@@ -48,7 +48,7 @@ export default function PostPage({ source, frontMatter }: {
 					},
 				}}
 			/>
-			<article className="w-5/6 mx-auto my-0">
+			<article className="w-9/12 mx-auto my-0">
 				<h1 className="text-center font-extralight">
 					{frontMatter.title}
 				</h1>

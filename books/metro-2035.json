@@ -8,7 +8,6 @@
   ],
   "genres": [
     "Fantascienza",
-    "Fiction",
     "Distopia",
     "Apocalittico"
   ],
@@ -18,5 +17,6 @@
   "format": "Paperback",
   "publisher": "Multiplayer.it Edizioni",
   "rating": 3,
-  "image": ".jpg"
+  "image": "Metro2035.jpg",
+  "reviewSlug": "recensione-metro-2035-dmitry-glukhovsky"
 }

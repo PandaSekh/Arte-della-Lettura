@@ -83,7 +83,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<DefaultSeo {...SEO} />
 			<DarkModeButton />
 			<Navbar />
-			<main className="flex flex-wrap container mx-auto px-16 justify-between">
+			<main className="flex flex-wrap container mx-auto sm:px-16 justify-between">
 				<Component {...pageProps} />
 				{/* <Sidebar /> */}
 			</main>
@@ -109,6 +109,18 @@ function MyApp({ Component, pageProps }: AppProps) {
 							-webkit-font-smoothing: antialiased;
 							-moz-osx-font-smoothing: grayscale;
 							text-rendering: optimizelegibility;
+					}
+					details summary {
+						cursor: pointer;
+					}
+
+					details summary > * {
+						display: inline;
+					}
+					summary {list-style: none}
+					summary::-webkit-details-marker {display: none; }
+					details summary::before {
+						content:"⚠️";
 					}
 				`}
 			</style>

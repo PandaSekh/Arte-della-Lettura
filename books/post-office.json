@@ -7,7 +7,7 @@
     "Charles Bukowski"
   ],
   "genres": [
-    "Fiction"
+    "Narrativa"
   ],
   "language": "it",
   "ogPublishedYear": 1971,
@@ -15,5 +15,6 @@
   "format": "Paperback",
   "publisher": "TEA",
   "rating": 5,
-  "image": ".jpg"
+  "image": "PostOffice.jpg",
+  "reviewSlug": "recensione-post-office-di-charles-bukowski"
 }
