@@ -42,7 +42,7 @@ export function getPublishedPostSlug() {
 		.map(slug => ({ params: { slug } }));
 }
 
-export function getPublishedPosts(sliceFrom = undefined, sliceTo = undefined) {
+export function getPublishedPosts(sliceFrom: number | undefined = undefined, sliceTo: number | undefined = undefined) {
 	return getPublishedPostPath()
 		.map(filePath => {
 			const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
@@ -61,8 +61,8 @@ export function getPublishedPosts(sliceFrom = undefined, sliceTo = undefined) {
 }
 
 export function getPublishedPostsForHoepage(
-	sliceFrom = undefined,
-	sliceTo = undefined
+	sliceFrom: number | undefined = undefined,
+	sliceTo: number | undefined = undefined
 ) {
 	return getPublishedPostPath()
 		.map(filePath => {
