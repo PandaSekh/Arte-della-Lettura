@@ -3,7 +3,7 @@ import Image from "next/image";
 import DateUnderPost from "../Post/DateUnderPost";
 import ReadMore from "./ReadMore";
 
-export default function PostHomepage({ post, data }) {
+export default function PostHomepage({ post, data }: { post: string, data: { [key: string]: any } }) {
 	return (
 		<div className="singlePostHomepage m-auto w-11/12 mb-8 grid">
 			<Link href={`/${encodeURIComponent(data.slug)}`}>

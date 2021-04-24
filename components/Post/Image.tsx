@@ -7,6 +7,13 @@ export default function CustomImage({
 	height,
 	layout,
 	center,
+}: {
+	url: string;
+	alt: string;
+	width: number;
+	height: number;
+	layout: "fixed" | "intrinsic" | "responsive" | undefined;
+	center: boolean;
 }) {
 	return (
 		<div

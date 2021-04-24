@@ -1,7 +1,15 @@
 import getKey from "../../lib/keyGen";
 import PostHomepage from "./PostHomepage";
 
-export default function RenderPosts({ posts }) {
+export default function RenderPosts({ posts }: {
+	posts: {
+		content: string
+		data: {
+			[key: string]: any;
+		}
+		filePath: string
+	}[]
+}) {
 	return (
 		// <div className="content grid-cols-2 grid">
 		// <div className="content flex flex-none flex-wrap	">

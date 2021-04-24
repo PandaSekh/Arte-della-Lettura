@@ -1,4 +1,4 @@
-const months = [];
+const months: Array<String> = [];
 months[1] = "Gennaio";
 months[2] = "Febbraio";
 months[3] = "Marzo";
@@ -12,7 +12,7 @@ months[10] = "Ottobre";
 months[11] = "Novembre";
 months[12] = "Dicembre";
 
-export default function DateUnderPost({ date }) {
+export default function DateUnderPost({ date }: { date: string }) {
 	const dateArray = date.split("-");
 
 	return (
