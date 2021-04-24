@@ -16,7 +16,7 @@ export default function DateUnderPost({ date }) {
 	const dateArray = date.split("-");
 
 	return (
-		<p className="homepageDate">
+		<p className="text-center font-light text-base m-0">
 			{dateArray[0]} {months[Number(dateArray[1])]} {dateArray[2]}
 		</p>
 	);

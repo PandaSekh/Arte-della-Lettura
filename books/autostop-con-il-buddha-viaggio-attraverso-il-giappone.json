@@ -7,8 +7,7 @@
     "Will Ferguson"
   ],
   "genres": [
-    "Letteratura di viaggio",
-    "Essays & Travelogues"
+    "Letteratura di viaggio"
   ],
   "language": "it",
   "ogPublishedYear": 1998,
@@ -16,5 +15,6 @@
   "format": "Paperback",
   "publisher": "Feltrinelli",
   "rating": 5,
-  "image": ".jpg"
+  "image": "AutostopConBuddha.jpg",
+  "reviewSlug": "recensione-autostop-con-buddha-will-ferguson"
 }

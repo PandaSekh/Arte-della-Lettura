@@ -82,11 +82,32 @@ function MyApp({ Component, pageProps }) {
 			<DefaultSeo {...SEO} />
 			<DarkModeButton />
 			<Navbar />
-			<main>
+			<main className="flex flex-wrap container mx-auto px-4 justify-between">
 				<Component {...pageProps} />
 				{/* <Sidebar /> */}
 			</main>
 			{/* <Footer /> */}
+			<style jsx global>
+				{`
+					:root {
+						--hamb-color: #3a3a3a;
+						--header-bg-color: #ffffff;
+					}
+					
+					* {
+						margin: 0;
+						padding: 0;
+						box-sizing: border-box;
+						outline: none;
+					}
+
+					body {
+						font-family: -apple-system, BlinkMacSystemFont,
+							"Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+							"Helvetica Neue", sans-serif;
+					}
+				`}
+			</style>
 		</>
 	);
 }

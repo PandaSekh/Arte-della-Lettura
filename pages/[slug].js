@@ -2,19 +2,22 @@ import matter from "gray-matter";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import InternalLink from "../components/UtilComponents/InternalLink";
+// import InternalLink from "../components/UtilComponents/InternalLink";
 import DateUnderPost from "../components/Post/DateUnderPost";
-import Book from "../components/BookCard/Book";
-import CustomImage from "../components/Post/Image";
+// import Book from "../components/BookCard/Book";
+// import CustomImage from "../components/Post/Image";
 import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 
 const components = {
-	InternalLink: InternalLink,
-	Book: Book,
+	InternalLink: dynamic(() =>
+		import("../components/UtilComponents/InternalLink")
+	),
+	Book: dynamic(() => import("../components/BookCard/Book")),
 	Head,
-	Image: CustomImage,
+	Image: dynamic(() => import("../components/Post/Image")),
 };
 
 export default function PostPage({ source, frontMatter }) {
@@ -35,11 +38,20 @@ export default function PostPage({ source, frontMatter }) {
 					},
 				}}
 			/>
-			<article>
-				<h1 className="postTitle">{frontMatter.title}</h1>
+			<article className="w-5/6 mx-auto my-0">
+				<h1 className="text-center font-extralight">
+					{frontMatter.title}
+				</h1>
 				<DateUnderPost date={frontMatter.publishedAt} />
-				<div>{content}</div>
+				{content}
 			</article>
+			{/* <style jsx>
+				{`
+					.article{
+						max-width: 66%
+					}
+				`}
+			</style> */}
 		</>
 	);
 }

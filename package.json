@@ -5,16 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "prebuild": "node lib/jsonCacher.js"
+    "start": "next start"
   },
   "dependencies": {
-    "@sanity/block-content-to-react": "^2.0.7",
-    "@sanity/client": "^2.1.0",
-    "@sanity/image-url": "^0.140.19",
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.0.4",
-    "dotenv": "^8.2.0",
     "fuse.js": "^6.4.3",
     "gray-matter": "^4.0.2",
     "next": "^10.0.3",
