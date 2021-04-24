@@ -6,7 +6,12 @@ export default function ReadMore({ slug }: { slug: string }) {
 			<Link href={`/${encodeURIComponent(slug)}`}>
 				<a aria-label="Leggi il post completo">Continua a leggere</a>
 			</Link>
-			<style jsx>{"color: white"}</style>
+			<style jsx>{`color: white; 
+			@media (max-width: 768px){
+						.readMoreButton {
+					width:inherit
+						}
+			`}</style>
 		</div>
 	);
 }

@@ -18,6 +18,13 @@ export default function DateUnderPost({ date }: { date: string }) {
 	return (
 		<p className="text-center font-light text-base m-0">
 			{dateArray[0]} {months[Number(dateArray[1])]} {dateArray[2]}
+			<style jsx>
+				{`
+					p{
+						width: inherit;
+					}
+				`}
+			</style>
 		</p>
 	);
 }

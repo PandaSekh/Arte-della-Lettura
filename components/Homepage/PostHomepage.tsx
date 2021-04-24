@@ -14,7 +14,7 @@ export default function PostHomepage({ post, data }: { post: string, data: { [ke
 				</a>
 			</Link>
 			<DateUnderPost date={data.publishedAt} />
-			<div className="homePageImage grid m-auto my-2 w-72 relative transition-opacity opacity-100 hover:opacity-80">
+			<div className="homePageImage grid m-auto my-2 w-72 h-80 relative transition-opacity opacity-100 hover:opacity-80">
 				<Link href={`/${encodeURIComponent(data.slug)}`}>
 					<a>
 						{/* <div className="homePageImage"> */}
@@ -31,13 +31,6 @@ export default function PostHomepage({ post, data }: { post: string, data: { [ke
 					</a>
 				</Link>
 			</div>
-			<style jsx>
-				{`
-					.homePageImage {
-						height: 28.75rem;
-					}
-				`}
-			</style>
 			<p className="extract">
 				{data.extract
 					? data.extract?.slice(0, 400)
@@ -47,8 +40,22 @@ export default function PostHomepage({ post, data }: { post: string, data: { [ke
 			<style jsx>
 				{`
 					.extract {
-						max-width: 80%;
+						max-width: 100%;
 						margin: auto;
+					}
+						@media (min-width: 768px){
+						.homePageImage {
+							height: 28.75rem;
+						}
+							.extract {
+						max-width: 80%;	margin: auto;
+					}
+					}
+					.homePageImage {
+							height: 24rem;
+						}
+					a, .homePageImage{
+						width: inherit;
 					}
 				`}
 			</style>

@@ -10,6 +10,8 @@ import DateUnderPost from "../components/Post/DateUnderPost";
 // import Book from "../components/BookCard/Book";
 // import CustomImage from "../components/Post/Image";
 import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
+import { GetStaticPaths } from "next";
+import { MdxRemote } from "next-mdx-remote/types";
 
 const components = {
 	InternalLink: dynamic(() =>
@@ -24,7 +26,11 @@ const components = {
 	),
 };
 
-export default function PostPage({ source, frontMatter }) {
+export default function PostPage({ source, frontMatter }: {
+	source: MdxRemote.Source, frontMatter: {
+		[key: string]: any;
+	}
+}) {
 	const router = useRouter();
 	const content = hydrate(source, { components });
 	return (
@@ -49,18 +55,15 @@ export default function PostPage({ source, frontMatter }) {
 				<DateUnderPost date={frontMatter.publishedAt} />
 				{content}
 			</article>
-			{/* <style jsx>
-				{`
-					.article{
-						max-width: 66%
-					}
-				`}
-			</style> */}
 		</>
 	);
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: {
+	params: {
+		slug: string;
+	}
+}) => {
 	const source = getPostBySlug(params.slug);
 
 	const { content, data } = matter(source);
@@ -82,7 +85,7 @@ export const getStaticProps = async ({ params }) => {
 	};
 };
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
 	const paths = getPublishedPostSlug();
 
 	return {

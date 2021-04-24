@@ -9,7 +9,7 @@ export const postFilePaths = fs
 	.readdirSync(POSTS_PATH)
 	.filter(path => /\.mdx?$/.test(path));
 
-export function getPostBySlug(slug) {
+export function getPostBySlug(slug: string) {
 	const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`);
 	return fs.readFileSync(postFilePath);
 }
@@ -23,7 +23,7 @@ export function getPublishedPostPath() {
 			if (data.isPublished === false || !content) return null;
 			else return filePath;
 		})
-		.filter(filePath => filePath)
+		.filter((filePath): filePath is string => filePath !== null && filePath !== undefined)
 		.filter(filePath => /\.mdx?$/.test(filePath));
 }
 
@@ -36,7 +36,7 @@ export function getPublishedPostSlug() {
 			if (data.isPublished === false || !content) return null;
 			else return filePath;
 		})
-		.filter(filePath => filePath)
+		.filter((filePath): filePath is string => filePath !== null && filePath !== undefined)
 		.filter(filePath => /\.mdx?$/.test(filePath))
 		.map(path => path.replace(/\.mdx?$/, ""))
 		.map(slug => ({ params: { slug } }));
@@ -56,10 +56,7 @@ export function getPublishedPosts(sliceFrom = undefined, sliceTo = undefined) {
 		})
 		.filter(post => post)
 		.sort(
-			(a, b) =>
-				getDateFrom_MM_DD_YYYY(b.data.publishedAt) -
-				getDateFrom_MM_DD_YYYY(a.data.publishedAt)
-		)
+			(a: PostWithFilepath, b: PostWithFilepath) => getDateFrom_MM_DD_YYYY(b.data.publishedAt).getTime() - getDateFrom_MM_DD_YYYY(a.data.publishedAt).getTime())
 		.slice(sliceFrom, sliceTo);
 }
 
@@ -70,7 +67,7 @@ export function getPublishedPostsForHoepage(
 	return getPublishedPostPath()
 		.map(filePath => {
 			const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
-			const {data } = matter(source);
+			const { data } = matter(source);
 
 			return {
 				data,
@@ -80,8 +77,16 @@ export function getPublishedPostsForHoepage(
 		.filter(post => post)
 		.sort(
 			(a, b) =>
-				getDateFrom_MM_DD_YYYY(b.data.publishedAt) -
-				getDateFrom_MM_DD_YYYY(a.data.publishedAt)
+				getDateFrom_MM_DD_YYYY(b.data.publishedAt).getTime() -
+				getDateFrom_MM_DD_YYYY(a.data.publishedAt).getTime()
 		)
 		.slice(sliceFrom, sliceTo);
+}
+
+interface PostWithFilepath {
+	content: string,
+	data: {
+		[key: string]: any;
+	},
+	filePath: string,
 }
