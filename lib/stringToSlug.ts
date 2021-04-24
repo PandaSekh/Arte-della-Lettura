@@ -1,4 +1,4 @@
-export default function stringToSlug(str) {
+export default function stringToSlug(str: string): string {
 	str = str.replace(/^\s+|\s+$/g, "");
 	str = str.toLowerCase();
 

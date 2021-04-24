@@ -1,11 +1,12 @@
 import "../styles/style.css";
 import Head from "next/head";
+import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import SEO from "../seo.config";
 import Navbar from "../components/Header/Navbar";
 import DarkModeButton from "../components/Header/DarkModeButton";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<Head>
@@ -82,7 +83,7 @@ function MyApp({ Component, pageProps }) {
 			<DefaultSeo {...SEO} />
 			<DarkModeButton />
 			<Navbar />
-			<main className="flex flex-wrap container mx-auto px-4 justify-between">
+			<main className="flex flex-wrap container mx-auto px-16 justify-between">
 				<Component {...pageProps} />
 				{/* <Sidebar /> */}
 			</main>
@@ -93,7 +94,7 @@ function MyApp({ Component, pageProps }) {
 						--hamb-color: #3a3a3a;
 						--header-bg-color: #ffffff;
 					}
-					
+
 					* {
 						margin: 0;
 						padding: 0;
