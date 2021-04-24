@@ -1,8 +1,8 @@
 export default function DarkModeButton() {
 	let isDark = true;
-	const htmlTag = document.querySelector("html")!
 
 	if (typeof window !== "undefined") {
+		var htmlTag = document.querySelector("html")!
 		isDark = localStorage.getItem("theme") === "dark" ? true : false;
 		if (isDark) htmlTag.classList.add("dark");
 		document.documentElement.style.setProperty(
