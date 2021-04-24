@@ -83,8 +83,11 @@
 		@apply my-4;
 	} */
 
-	.ball {
+	/* .ball {
 		@apply bg-dark-white w-6 h-6 rounded-full absolute top-1 left-1.5 transform transition-all dark:translate-x-7 duration-500 ease-in-out;
+	} */
+	.ball {
+		@apply w-6 h-6 rounded-full absolute top-1 left-1.5 transform transition-all dark:translate-x-7 duration-500 ease-in-out;
 	}
 	.switch {
 		@apply rounded-full h-8 w-16 bg-dark-black dark:bg-customBlue absolute right-8 top-4 shadow-2xl hover:ring ring-customBlue ring-opacity-50;
