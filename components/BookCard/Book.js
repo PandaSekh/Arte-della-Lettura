@@ -9,8 +9,8 @@ export default function Book({ slug }) {
 
 	return (
 		<>
-			<div className="book-block">
-				<div className="cover">
+			<div className="my-6">
+				<div className="mr-4 float-left">
 					<Image
 						src={`/static/images/books/${book.image}`}
 						width={275}
@@ -74,9 +74,10 @@ export default function Book({ slug }) {
 						<Stars rating={book.rating} />
 					</>
 				</p>
-				<blockquote className="synopsys">{book.synopsis}</blockquote>
+				<blockquote>{book.synopsis}</blockquote>
 			</div>
-			<div className="bookBlockEnd"></div>
+			{/* <div className="clear-both mb-8"></div> */}
+			<hr className="my-6 border-dark-grayText dark:border-customBlue-light border-opacity-40 border-t-2 w-4/12 mx-auto" />
 		</>
 	);
 }

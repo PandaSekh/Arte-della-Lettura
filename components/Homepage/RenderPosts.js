@@ -3,9 +3,11 @@ import PostHomepage from "./PostHomepage";
 
 export default function RenderPosts({ posts }) {
 	return (
-		<div className="content">
+		// <div className="content grid-cols-2 grid">
+		// <div className="content flex flex-none flex-wrap	">
+		<div className="content grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid">
 			{posts.map(post => (
-				<article key={getKey()}>
+				<article key={getKey()} className="mx-auto my-0">
 					<PostHomepage post={post.content} data={post.data} />
 				</article>
 			))}

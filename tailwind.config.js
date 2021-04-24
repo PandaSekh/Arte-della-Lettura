@@ -1,7 +1,16 @@
 module.exports = {
 	purge: {
-		enabled: true,
-		content: ["./components/**/*.js", "./pages/**/*.js"],
+		enabled: false,
+		content: [
+			"./components/**/*.js",
+			"./pages/**/*.js",
+			"./pages/*.js",
+			"./components/*.js",
+		],
+		options: {
+			keyframes: true,
+			fontFace: true,
+		},
 	},
 	darkMode: "class", // or 'media' or 'class'
 	//https://javisperez.github.io/tailwindcolorshades/?lochmara=018fd9

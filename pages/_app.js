@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }) {
 			<DefaultSeo {...SEO} />
 			<DarkModeButton />
 			<Navbar />
-			<main className="flex-wrap">
+			<main className="flex flex-wrap container mx-auto px-4 justify-between">
 				<Component {...pageProps} />
 				{/* <Sidebar /> */}
 			</main>
@@ -93,7 +93,7 @@ function MyApp({ Component, pageProps }) {
 						--hamb-color: #3a3a3a;
 						--header-bg-color: #ffffff;
 					}
-
+					
 					* {
 						margin: 0;
 						padding: 0;
@@ -105,15 +105,6 @@ function MyApp({ Component, pageProps }) {
 						font-family: -apple-system, BlinkMacSystemFont,
 							"Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
 							"Helvetica Neue", sans-serif;
-					}
-
-					article {
-						margin: 0px auto 0px auto;
-					}
-					
-					main {
-						display: flex;
-						justify-content: space-between;
 					}
 				`}
 			</style>
