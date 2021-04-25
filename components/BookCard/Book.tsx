@@ -9,7 +9,7 @@ export default function Book({ slug }: { slug: string }) {
 
 	return (
 		<>
-			<div className="my-6 max-w-7xl">
+			<div className="mt-6 max-w-7xl">
 				<div className="mr-4 float-left">
 					<Image
 						src={`/static/images/books/${book.image}`}
@@ -82,7 +82,7 @@ export default function Book({ slug }: { slug: string }) {
 					</style>
 				</p>
 				<blockquote>{book.synopsis}</blockquote>
-			</div><div className="clear-both mb-8"></div>
+			</div><div className="clear-both"></div>
 			<hr className="my-6 border-dark-grayText dark:border-customBlue-light border-opacity-40 border-t-2 w-4/12 mx-auto" />
 		</>
 	);
