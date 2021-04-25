@@ -4,6 +4,7 @@ import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import SEO from "../seo.config";
 import Navbar from "../components/Header/Navbar";
+import Footer from "../components/Footer/Footer";
 import DarkModeButton from "../components/Header/DarkModeButton";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -87,7 +88,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<Component {...pageProps} />
 				{/* <Sidebar /> */}
 			</main>
-			{/* <Footer /> */}
+			<Footer />
 			<style jsx global>
 				{`
 					:root {

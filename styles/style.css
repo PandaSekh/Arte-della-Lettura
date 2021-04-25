@@ -5,7 +5,7 @@
 /* BASIC STYLES */
 @layer base {
 	body {
-		@apply dark:bg-dark-background dark:text-dark-white text-dark-black transition-all pb-10;
+		@apply dark:bg-dark-background dark:text-dark-white text-dark-black transition-all;
 	}
 	h1,
 	h2,
