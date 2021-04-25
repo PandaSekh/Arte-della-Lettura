@@ -13,5 +13,6 @@
 	"publisher": "",
 	"rating": 5,
 	"image": ".jpg",
-	"reviewSlug": ""
+	"reviewSlug": "",
+  "readDate": ""
 }

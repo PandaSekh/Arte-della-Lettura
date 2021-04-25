@@ -9,12 +9,13 @@
   "genres": [
     "Biografia & Autobiografia"
   ],
-  "language": "it",
+  "language": "it","publishedYear": 2015,
   "ogPublishedYear": 2015,
   "pages": 297,
   "format": "eBook",
   "publisher": "Bompiani",
   "rating": 4,
   "image": "LottaPerLaLiberta.jpg",
-  "reviewSlug": "recensione-la-mia-lotta-per-la-liberta-di-yeonmi-park"
+  "reviewSlug": "recensione-la-mia-lotta-per-la-liberta-di-yeonmi-park",
+  "readDate": "31-06-2018"
 }

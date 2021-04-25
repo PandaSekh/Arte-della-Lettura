@@ -9,7 +9,7 @@
   "genres": [
     "Narrativa"
   ],
-  "language": "en",
+  "language": "it",
   "publishedYear": 2006,
   "ogPublishedYear": 1978,
   "pages": 304,
@@ -17,5 +17,6 @@
   "publisher": "Guanda",
   "rating": 4,
   "image": "Donne.jpeg",
-  "reviewSlug": "parliamo-di-donne-charles-bukowski"
+  "reviewSlug": "parliamo-di-donne-charles-bukowski",
+  "readDate": "03-08-2019"
 }

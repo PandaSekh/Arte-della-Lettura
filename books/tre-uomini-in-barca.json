@@ -11,12 +11,13 @@
     "Commedia"
   ],
   "language": "it",
-  "publishedYear": "2013",
+  "publishedYear": 2013,
   "ogPublishedYear": 1889,
   "pages": 185,
   "format": "Paperback",
   "publisher": "Feltrinelli",
   "rating": 4,
   "image": "TreUominiInBarca.jpg",
-  "reviewSlug": "recensione-tre-uomini-in-barca-di-jerome-k-jerome"
+  "reviewSlug": "recensione-tre-uomini-in-barca-di-jerome-k-jerome",
+	"readDate": "19-06-2018"
 }

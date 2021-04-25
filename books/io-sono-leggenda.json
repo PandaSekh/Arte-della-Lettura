@@ -6,12 +6,13 @@
 	"author": ["Richard Matheson"],
 	"genres": ["Fiction", "Distopia"],
 	"language": "it",
-	"publishedYear": "2020",
+	"publishedYear": 2020,
 	"ogPublishedYear": "1954",
 	"pages": "200",
 	"format": "Paperback",
 	"publisher": "Mondadori",
 	"rating": 5,
 	"image": "io-sono-leggenda.jpg",
-	"reviewSlug": "recensione-io-sono-leggenda"
+	"reviewSlug": "recensione-io-sono-leggenda",
+  "readDate": "19-09-2019"
 }
