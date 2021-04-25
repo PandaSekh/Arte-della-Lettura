@@ -39,24 +39,26 @@ export default function PostHomepage({ post, data }: { post: string, data: { [ke
 			</p>
 			<style jsx>
 				{`
-					.extract {
-						max-width: 100%;
-						margin: auto;
-					}
-						@media (min-width: 768px){
-						.homePageImage {
-							height: 28.75rem;
-						}
-							.extract {
-						max-width: 80%;	margin: auto;
-					}
-					}
+				.extract {
+					max-width: 100%;
+					margin: auto;
+				}
+				@media (max-width: 768px) {
 					.homePageImage {
-							height: 24rem;
-						}
-					a, .homePageImage{
+						height: 24rem;
+					}
+					a,
+					.homePageImage {
 						width: inherit;
 					}
+					.extract {
+						max-width: 80%;
+						margin: auto;
+					}
+				}
+				.homePageImage {
+					height: 28.75rem;
+				}
 				`}
 			</style>
 			<ReadMore slug={data.slug} />

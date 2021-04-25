@@ -7,7 +7,6 @@
     "Stephen King"
   ],
   "genres": [
-    "Fiction",
     "Thriller",
     "Horror"
   ],
@@ -17,5 +16,6 @@
   "format": "Paperback",
   "publisher": "Pickwick",
   "rating": 4,
-  "image": ".jpg"
+  "image": "UomoInFuga.jpg",
+  "reviewSlug": "recensione-luomo-in-fuga-stephen-king"
 }
