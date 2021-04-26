@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import Book from "../../interfaces/Book";
 import getKey from "../../lib/keyGen";
+import { intersperse } from "../../lib/genericUtils";
 import stringToSlug from "../../lib/stringToSlug";
 import BoldTextWithStars from "../UtilComponents/BoldTextWithStars";
 
-export default function Book({ slug }: { slug: string }) {
-	const book = require(`../../books/${slug}.json`);
+export default function BookElement({ slug }: { slug: string }) {
+	const book: Book = require(`../../books/${slug}.json`);
 
 	return (
 		<>
@@ -19,8 +21,8 @@ export default function Book({ slug }: { slug: string }) {
 				</div>
 				<p>
 					<strong>{book.title}</strong> di{" "}
-					{book.author
-						.map((singleAuthor: string) => (
+					{intersperse(book.author
+						.map((singleAuthor) => (
 							<Link
 								key={getKey()}
 								href={`/autori/${encodeURIComponent(
@@ -29,12 +31,12 @@ export default function Book({ slug }: { slug: string }) {
 							>
 								<a>{singleAuthor}</a>
 							</Link>
-						))
-						.reduce((a: string, b: string) => [a, ", ", b])}
+						)), ",")
+					}
 					<br />
 					{book.series && (
 						<>
-							<strong>Serie:</strong> {book.series.reduce((a: string, b: string) => [a, ", ", b])}
+							<strong>Serie:</strong> {book.series.map(series => series.series).reduce((a: string, b: string) => a + ", " + b)}
 							<br />
 						</>
 					)}
@@ -51,8 +53,7 @@ export default function Book({ slug }: { slug: string }) {
 					<strong>
 						{book.genres.length === 1 ? "Genere" : "Generi"}:
 					</strong>{" "}
-					{/* Create an url and text for every genre and use reduce as a join */}
-					{book.genres
+					{intersperse(book.genres
 						.map((genre: string) => (
 							<Link
 								key={getKey()}
@@ -62,8 +63,7 @@ export default function Book({ slug }: { slug: string }) {
 							>
 								<a>{genre}</a>
 							</Link>
-						))
-						.reduce((a: string, b: string) => [a, ", ", b])}
+						)), ",")}
 					<br />
 					<strong>Formato:</strong> {book.format}
 					<br />
