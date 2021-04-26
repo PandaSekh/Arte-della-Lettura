@@ -14,5 +14,9 @@ export default interface Book {
   rating: 0 | 1 | 2 | 3 | 4 | 5,
   image: string,
   reviewSlug: string,
-  readDate: string
+  readDate: string,
+  series: [{
+    series: string,
+    numInSeries: string | number
+  }]
 }

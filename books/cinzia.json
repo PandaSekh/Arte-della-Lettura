@@ -7,13 +7,17 @@
     "Leo Ortolani"
   ],
   "genres": [
-    "Comics & Graphic Novels"
+    "Fumetto",
+    "Graphic Novel"
   ],
   "language": "it",
   "ogPublishedYear": 2018,
+  "publishedYear": 2018,
   "pages": 240,
   "format": "Hardcover",
   "publisher": "Bao Publishing",
   "rating": 4,
-  "image": ".jpg"
+  "image": "Cinzia.jpg",
+	"reviewSlug": "recensione-cinzia-di-leo-ortolani",
+  "readDate": "25-08-2019"
 }

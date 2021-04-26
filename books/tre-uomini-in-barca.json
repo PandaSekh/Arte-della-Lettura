@@ -19,5 +19,6 @@
   "rating": 4,
   "image": "TreUominiInBarca.jpg",
   "reviewSlug": "recensione-tre-uomini-in-barca-di-jerome-k-jerome",
-	"readDate": "19-06-2018"
+	"readDate": "19-06-2018",
+	"series": [{"series": "Tre uomini", "numInSeries": 1}]
 }

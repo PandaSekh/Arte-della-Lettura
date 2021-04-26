@@ -16,5 +16,9 @@
   "format": "Paperback",
   "publisher": "Fanucci",
   "rating": 5,
-  "image": ".jpg"
+  "image": "Dune.jpg",
+	"reviewSlug": "recensione-dune-frank-herbert",
+  "readDate": "11-11-2020",
+  "publishedYear": 2017,
+	"series": [{"series": "Dune", "numInSeries": 1}]
 }

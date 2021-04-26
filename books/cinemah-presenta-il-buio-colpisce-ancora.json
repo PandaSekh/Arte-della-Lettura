@@ -7,17 +7,16 @@
     "Leo Ortolani"
   ],
   "genres": [
-    "Humor",
-    "Performing Arts",
-    "Comic Strips & Cartoons",
-    "Film",
-    "Form"
+    "Fumetto"
   ],
   "language": "it",
-  "ogPublishedYear": null,
+  "ogPublishedYear": 2019,
+  "publishedYear": 2019,
   "pages": 192,
   "format": "Hardcover",
   "publisher": "BAO Publishing",
   "rating": 1,
-  "image": ".jpg"
+  "image": "IlBuioColpisceAncora.jpg",
+	"reviewSlug": "recensione-il-buio-colpisce-ancora-ortolani",
+  "readDate": "6-11-2019"
 }

@@ -4,8 +4,8 @@
   "isbn13": "9788871684093",
   "synopsis": "\"Stringi i denti, e ricordati che sei un dio in incognito\". Se lo ripete spesso ciascuno dei 250 ricercatori terrestri sbarcati su Arkanor, pianeta oppresso dalla bestialità medioevale. Il pianeta nuota nell'ignoranza, in un pantano sanguinoso fatto di cospirazioni e avidità. Basta essere intelligenti e non adeguarsi al conformismo più piatto per finire nelle maglie tremende delle milizie imperiali. Sulla Terra, intanto, la vita procede in modo idilliaco, tutto è pace, armonia, conoscenza e creatività. Dagli autori del celebre \"Picnic sul ciglio della strada\", un romanzo in cui l'umanità del futuro continua ineluttabilmente a confrontarsi con i nodi di sempre: la volontà di dominio, il desiderio di conoscenza, la superstizione.",
   "author": [
-    "Boris Natanovich Strugatsky",
-    "Arkadii Natanovich Strugatsky"
+    "Boris Strugatsky",
+    "Arkadii Strugatsky"
   ],
   "genres": [
     "Fiction",
@@ -18,5 +18,8 @@
   "format": "Paperback",
   "publisher": "Marcos y Marcos",
   "rating": 0,
-  "image": ".jpg"
+  "image": "è difficile essere un dio.jpg",
+	"reviewSlug": "",
+  "readDate": "30-10-2020",
+  "publishedYear": 2005
 }

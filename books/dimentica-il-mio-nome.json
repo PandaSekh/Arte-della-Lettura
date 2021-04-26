@@ -8,9 +8,8 @@
   ],
   "genres": [
     "Biografia & Autobiografia",
-    "Comics & Graphic Novels",
-    "Entertainment & Performing Arts",
-    "Saggistica"
+    "Graphic Novel",
+    "Fumetto"
   ],
   "language": "it",
   "ogPublishedYear": 2014,
@@ -18,5 +17,8 @@
   "format": "Hardcover",
   "publisher": "Bao Publishing",
   "rating": 4,
-  "image": ".jpg"
+  "image": "DimenticaIlMioNome.jpg",
+	"reviewSlug": "recensione-dimentica-il-mio-nome-zerocalcare",
+  "readDate": "6-11-2019",
+  "publishedYear": "2014"
 }

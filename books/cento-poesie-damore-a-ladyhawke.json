@@ -7,13 +7,16 @@
     "Michele Mari"
   ],
   "genres": [
-    "Poetry"
+    "Poesia"
   ],
   "language": "it",
   "ogPublishedYear": 2007,
+  "publishedYear": 2007,
   "pages": 112,
   "format": "Paperback",
   "publisher": "Einaudi",
   "rating": 5,
-  "image": ".jpg"
+  "image": "CentoPoesieDAmorePerLadyhawkeHQ.jpg",	
+  "reviewSlug": "cento-poesie-amore-per-ladyhawke",
+  "readDate": "17-09-2018"
 }

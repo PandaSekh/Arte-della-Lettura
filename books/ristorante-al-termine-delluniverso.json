@@ -19,5 +19,6 @@
   "rating": 4,
   "image": "RistoranteAlTermineDellUniverso.jpg",
   "reviewSlug": "ristorante-al-termine-dell-universo",
-  "readDate": "25-09-2018"
+  "readDate": "25-09-2018",
+	"series": [{"series": "Guida galattica per gli autostoppisti", "numInSeries": 2}]
 }

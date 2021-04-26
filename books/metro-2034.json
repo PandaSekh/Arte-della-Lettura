@@ -20,5 +20,6 @@
   "rating": 3,
   "image": "Metro2034.jpeg",
   "reviewSlug": "recensione-metro-2034",
-  "readDate": "25-04-2018"
+  "readDate": "25-04-2018",
+	"series": [{"series": "Metro", "numInSeries": 2}]
 }

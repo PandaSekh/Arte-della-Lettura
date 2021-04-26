@@ -17,5 +17,6 @@
   "rating": 5,
   "image": "AnneDiTettiVerdi.jpg",
   "reviewSlug": "recensione-anne-di-tetti-verdi-lucy-montgomery",
-  "readDate": "29-09-2019"
+  "readDate": "29-09-2019",
+	"series": [{"series": "Anne di Tetti Verdi", "numInSeries": 1}]
 }

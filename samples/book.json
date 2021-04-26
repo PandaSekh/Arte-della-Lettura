@@ -5,8 +5,8 @@
 	"synopsis": "",
 	"author": [""],
 	"genres": [""],
+	"series": [{}],
 	"language": "",
-	"publishedYear": "",
 	"ogPublishedYear": "",
 	"pages": "",
 	"format": "",
@@ -14,5 +14,6 @@
 	"rating": 5,
 	"image": ".jpg",
 	"reviewSlug": "",
-  "readDate": ""
+  "readDate": "",
+  "publishedYear": ""
 }

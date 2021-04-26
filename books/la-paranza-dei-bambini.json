@@ -7,7 +7,7 @@
     "Roberto Saviano"
   ],
   "genres": [
-    "Fiction"
+    "Narrativa"
   ],
   "language": "it",
   "ogPublishedYear": 2016,
@@ -15,5 +15,9 @@
   "format": "Paperback",
   "publisher": "Feltrinelli",
   "rating": 3,
-  "image": ".jpg"
+  "image": "LaParanzaDeiBambini.jpg",
+  "reviewSlug": "recensione-la-paranza-dei-bambini",
+  "publishedYear": 2018,
+  "readDate": "9-08-2018",
+	"series": [{"series": "La paranza dei bambini", "numInSeries": 1}]
 }

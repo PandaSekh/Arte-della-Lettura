@@ -7,14 +7,16 @@
     "Davide Longo"
   ],
   "genres": [
-    "Fiction",
-    "Mystery & Detective"
+    "Thriller"
   ],
   "language": "it",
-  "ogPublishedYear": null,
+  "ogPublishedYear": 2018 ,
   "pages": 327,
   "format": "Paperback",
   "publisher": "Feltrinelli",
   "rating": 4,
-  "image": ".jpg"
+  "image": "CosiGiocanoLeBestieGiovani.jpg",
+	"reviewSlug": "recensione-cosi-giocano-le-bestie-giovani",
+  "readDate": "30-09-2018",
+  "publishedYear": "2018"
 }
