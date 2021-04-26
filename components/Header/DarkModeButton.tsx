@@ -33,10 +33,23 @@ export default function DarkModeButton() {
 	}
 
 	return (
-		<div onClick={toggleDarkMode} className="switch">
-			<div className="ball" aria-label="Switch per Dark Mode">
+		<div onClick={toggleDarkMode} className="switch rounded-full h-8 w-16 bg-dark-black dark:bg-customBlue absolute right-8 top-4 shadow-2xl hover:ring ring-customBlue ring-opacity-50">
+			<div className="ball  w-6 h-6 rounded-full absolute top-1 left-1.5 transform transition-all dark:translate-x-7 duration-500 ease-in-out" aria-label="Switch per Dark Mode">
 				<SunMoon />
 			</div>
+			<style jsx>
+				{`
+        @media (max-width: 768px) {
+          	.switch {
+							transform: translate(-200%);
+						}
+						.switch.isOpen {
+							transform: translateY(0%);
+							transition: all 0.375s;
+						}
+        }
+        `}
+			</style>
 		</div>
 	);
 }

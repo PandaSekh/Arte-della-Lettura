@@ -8,7 +8,7 @@ export default function PostHomepage({ post, data }: { post: string, data: { [ke
 		<div className="singlePostHomepage m-auto w-11/12 mb-8 grid">
 			<Link href={`/${encodeURIComponent(data.slug)}`}>
 				<a>
-					<h3 className="homepageTitle text-center font-light text-2xl mb-2 hover:text-customBlue">
+					<h3 className="homepageTitle text-center font-light text-2xl mb-2 hover:text-customBlue mx-auto">
 						{data.title}
 					</h3>
 				</a>

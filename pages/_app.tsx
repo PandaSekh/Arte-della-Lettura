@@ -3,7 +3,7 @@ import Head from "next/head";
 import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import SEO from "../seo.config";
-import Navbar from "../components/Header/Navbar";
+import Navbar from "../components/Header/NavBar/Navbar";
 import Footer from "../components/Footer/Footer";
 import DarkModeButton from "../components/Header/DarkModeButton";
 
@@ -111,6 +111,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 							-moz-osx-font-smoothing: grayscale;
 							text-rendering: optimizelegibility;
 					}
+
+					.lockBody {
+						overflow: hidden;
+						position: fixed;
+					}
+
 					details summary {
 						cursor: pointer;
 					}
