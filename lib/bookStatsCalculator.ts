@@ -34,6 +34,7 @@ function getAverageNumOfPages(): number {
 function getBooksReadPerMonth() {
   const booksPerMonthMap = new Map<number, number>();
   BOOKS.forEach(book => {
+    if (!book.readDate) return;
     const monthRead = getMonthFromDate(book.readDate);
     let booksReadPerMonth = booksPerMonthMap.get(monthRead);
     booksReadPerMonth ??= 0; // if undefined, assign 0
