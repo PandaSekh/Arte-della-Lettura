@@ -1,0 +1,24 @@
+{
+  "title": "Dune",
+  "isbn": "8834733797",
+  "isbn13": "9788834733790",
+  "synopsis": "Arrakis è il pianeta più inospitale della galassia. Una landa di sabbia e rocce popolata da mostri striscianti e sferzata da tempeste devastanti. Ma sulla sua superficie cresce il melange, la sostanza che dà agli uomini la facoltà di aprire i propri orizzonti mentali, conoscere il futuro, acquisire le capacità per manovrare le immense astronavi che garantiscono gli scambi tra i mondi e la sopravvivenza stessa dell'Impero. Sul saggio Duca Leto, della famiglia Atreides, ricade la scelta dell'Imperatore per la successione ai crudeli Harkonnen al governo dell'ambito pianeta. È la fine dei fragili equilibri di potere su cui si reggeva l'ordine dell'Impero, l'inizio di uno scontro cosmico tra forze straordinarie, popoli magici e misteriosi, intelligenze sconosciute e insondabili.",
+  "author": [
+    "Frank Herbert"
+  ],
+  "genres": [
+    "Fiction",
+    "Fantascienza"
+  ],
+  "language": "it",
+  "ogPublishedYear": 1965,
+  "pages": 695,
+  "format": "Paperback",
+  "publisher": "Fanucci",
+  "rating": 5,
+  "image": "Dune.jpg",
+	"reviewSlug": "recensione-dune-frank-herbert",
+  "readDate": "11-11-2020",
+  "publishedYear": 2017,
+	"series": [{"series": "Dune", "numInSeries": 1}]
+}

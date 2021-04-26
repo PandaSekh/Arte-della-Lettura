@@ -5,13 +5,15 @@
 	"synopsis": "",
 	"author": [""],
 	"genres": [""],
+	"series": [{}],
 	"language": "",
-	"publishedYear": "",
 	"ogPublishedYear": "",
 	"pages": "",
 	"format": "",
 	"publisher": "",
 	"rating": 5,
 	"image": ".jpg",
-	"reviewSlug": ""
+	"reviewSlug": "",
+  "readDate": "",
+  "publishedYear": ""
 }

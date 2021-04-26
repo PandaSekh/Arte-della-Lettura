@@ -6,7 +6,10 @@ export default function SvgHeader() {
 			viewBox="0 0 588.15 72.72"
 			xmlns="http://www.w3.org/2000/svg"
 			className="stroke-current fill-current text-dark-black dark:text-dark-white mx-auto my-10 w-full"
+			aria-labelledby="artedellaletturaTitle"
+			role="img"
 		>
+			<title id="artedellaletturaTitle">Arte della Lettura</title>
 			<g
 				id="svgGroup"
 				strokeLinecap="round"

@@ -8,13 +8,13 @@ export default function PostHomepage({ post, data }: { post: string, data: { [ke
 		<div className="singlePostHomepage m-auto w-11/12 mb-8 grid">
 			<Link href={`/${encodeURIComponent(data.slug)}`}>
 				<a>
-					<h3 className="homepageTitle text-center font-light text-2xl mb-2 hover:text-customBlue">
+					<h3 className="homepageTitle text-center font-light text-2xl mb-2 hover:text-customBlue mx-auto">
 						{data.title}
 					</h3>
 				</a>
 			</Link>
 			<DateUnderPost date={data.publishedAt} />
-			<div className="homePageImage grid m-auto my-2 w-72 relative transition-opacity opacity-100 hover:opacity-80">
+			<div className="homePageImage grid m-auto my-2 w-72 h-80 relative transition-opacity opacity-100 hover:opacity-80">
 				<Link href={`/${encodeURIComponent(data.slug)}`}>
 					<a>
 						{/* <div className="homePageImage"> */}
@@ -31,13 +31,6 @@ export default function PostHomepage({ post, data }: { post: string, data: { [ke
 					</a>
 				</Link>
 			</div>
-			<style jsx>
-				{`
-					.homePageImage {
-						height: 28.75rem;
-					}
-				`}
-			</style>
 			<p className="extract">
 				{data.extract
 					? data.extract?.slice(0, 400)
@@ -46,10 +39,26 @@ export default function PostHomepage({ post, data }: { post: string, data: { [ke
 			</p>
 			<style jsx>
 				{`
+				.extract {
+					max-width: 100%;
+					margin: auto;
+				}
+				@media (max-width: 768px) {
+					.homePageImage {
+						height: 24rem;
+					}
+					a,
+					.homePageImage {
+						width: inherit;
+					}
 					.extract {
 						max-width: 80%;
 						margin: auto;
 					}
+				}
+				.homePageImage {
+					height: 28.75rem;
+				}
 				`}
 			</style>
 			<ReadMore slug={data.slug} />

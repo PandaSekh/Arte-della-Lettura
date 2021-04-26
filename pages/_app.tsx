@@ -3,7 +3,8 @@ import Head from "next/head";
 import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import SEO from "../seo.config";
-import Navbar from "../components/Header/Navbar";
+import Navbar from "../components/Header/NavBar/Navbar";
+import Footer from "../components/Footer/Footer";
 import DarkModeButton from "../components/Header/DarkModeButton";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -83,11 +84,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<DefaultSeo {...SEO} />
 			<DarkModeButton />
 			<Navbar />
-			<main className="flex flex-wrap container mx-auto px-16 justify-between">
+			<main className="flex flex-wrap container mx-auto sm:px-16 justify-between">
 				<Component {...pageProps} />
 				{/* <Sidebar /> */}
 			</main>
-			{/* <Footer /> */}
+			<Footer />
 			<style jsx global>
 				{`
 					:root {
@@ -106,7 +107,50 @@ function MyApp({ Component, pageProps }: AppProps) {
 						font-family: -apple-system, BlinkMacSystemFont,
 							"Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
 							"Helvetica Neue", sans-serif;
+							-webkit-font-smoothing: antialiased;
+							-moz-osx-font-smoothing: grayscale;
+							text-rendering: optimizelegibility;
 					}
+
+					.lockBody {
+						overflow: hidden;
+						position: fixed;
+					}
+
+					details summary {
+						cursor: pointer;
+					}
+
+					details summary > * {
+						display: inline;
+					}
+					summary {list-style: none}
+					summary::-webkit-details-marker {display: none; }
+					details summary::before {
+						content:"⚠️";
+					}
+
+					ul > li::before {
+						content: "";
+						position: absolute;
+						background-color: #d1d5db;
+						border-radius: 50%;
+						width: 0.375em;
+						height: 0.375em;
+						top: calc(0.875em - 0.1875em);
+						left: 0.25em;
+					}
+
+					ul > li {
+						position: relative;
+						padding-left: 1.75em;
+					}
+
+					ul {
+							margin-top: 1.25em;
+							margin-bottom: 1.25em;
+					}
+
 				`}
 			</style>
 		</>

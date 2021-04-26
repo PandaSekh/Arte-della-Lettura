@@ -6,12 +6,13 @@
 	"author": ["Jay Asher"],
 	"genres": ["Narrativa", "Young Adult"],
 	"language": "it",
-	"publishedYear": "2018",
+	"publishedYear": 2013,
 	"ogPublishedYear": "2007",
 	"pages": "229",
 	"format": "Paperback",
 	"publisher": "Mondadori",
 	"rating": 5,
 	"image": "Tredici.jpg",
-	"reviewSlug": "recensione-tredici-jay-asher"
+	"reviewSlug": "recensione-tredici-jay-asher",
+	"readDate": "31-05-2018"
 }

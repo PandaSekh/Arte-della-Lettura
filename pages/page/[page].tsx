@@ -1,6 +1,7 @@
 import { getPublishedPostPath, getPublishedPosts } from "../../lib/postsAPI";
 import config from "../../website.config.json";
 import RenderPosts from "../../components/Homepage/RenderPosts";
+import { GetStaticPaths } from "next";
 
 export default function Index({ posts }: {
 	posts: {
@@ -23,7 +24,7 @@ export const getStaticProps = async ({ params }: { params: { page: string } }) =
 	return { props: { posts } };
 };
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
 	const postsCount = getPublishedPostPath().length;
 	const numberOfPages = Math.ceil(postsCount / config.postsPerPage);
 	const paths = [];
