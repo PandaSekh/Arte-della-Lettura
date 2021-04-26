@@ -7,9 +7,6 @@
     "Tamsyn Muir"
   ],
   "genres": [
-    "Fiction",
-    "Fiction",
-    "Horror",
     "Fantasy"
   ],
   "language": "it",
@@ -18,5 +15,9 @@
   "format": "Hardcover",
   "publisher": "Mondadori",
   "rating": 4,
-  "image": ".jpg"
+  "image": "Gideon la Nona.jpg",
+	"reviewSlug": "recensione-gideon-la-nona-tamsyn-muir",
+  "readDate": "21-11-2020",
+  "publishedYear": 2019,
+  "series": [{"series": "The Locked Tomb", "numInSeries": 1}]
 }

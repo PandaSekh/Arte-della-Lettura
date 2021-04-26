@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Book from "../interfaces/Book";
+import Statistics from "../interfaces/Statistics";
 import { getBookPages } from "./bookUtils";
 import { mapToJSON } from "./genericUtils";
 import { getMonthFromDate } from "./timeUtils";
@@ -49,8 +50,3 @@ export default function getStatistics(): Statistics {
   }
 }
 
-interface Statistics {
-  totalBooks?: number,
-  averagePages?: number,
-  booksPerMonth?: string
-}

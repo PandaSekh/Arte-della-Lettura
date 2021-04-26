@@ -7,7 +7,6 @@ export default function Statistiche({ stats }: { stats: any }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const stats = getStatistics();
-  console.log(stats)
 
   return {
     props: {

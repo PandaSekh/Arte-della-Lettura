@@ -1,5 +1,5 @@
 {
-  "title": "Falce (Trilogia della Falce, #1)",
+  "title": "Falce",
   "isbn": "8804722916",
   "isbn13": "9788804722915",
   "synopsis": "Un mondo senza fame, senza guerre, senza povertà, senza malattie. Un mondo senza morte. Un mondo in cui l'umanità è riuscita a sconfiggere i suoi incubi peggiori. A occuparsi di tutte le necessità della razza umana è il Thunderhead, un'immensa, onnisciente e onnipotente intelligenza artificiale. Il Thunderhead non sbaglia mai, e soprattutto non ha sentimenti, né rimorsi, né rimpianti. Quello in cui vivono i due adolescenti Citra Terranova e Rowan Damisch è davvero un mondo perfetto. O così appare. Se nessuno muore più, infatti, tenere la pressione demografica sotto controllo diventa un vincolo ineluttabile. Anche l'efficienza del Thunderhead ha dei limiti e non può provvedere alle esigenze di una popolazione in continua crescita. Per questo ogni anno un certo numero di persone deve essere \"spigolato\". In termini meno poetici: ucciso. Il delicato quanto cruciale incarico è affidato alle cosiddette falci, le uniche a poter decidere quali vite devono finire. Quando la Compagnia delle falci decide di reclutare nuovi membri, il Venerando Maestro Faraday sceglie come apprendisti proprio Citra e Rowan. Schietti, coraggiosi, onesti, i due ragazzi non ne vogliono sapere di diventare degli assassini. E questo fa di loro delle falci potenzialmente perfette.",
@@ -7,16 +7,18 @@
     "Neal Shusterman"
   ],
   "genres": [
-    "Fiction",
-    "Juvenile Fiction",
-    "Fantascienza",
+    "Distopia",
     "Fantascienza"
   ],
-  "language": "en",
+  "language": "it",
   "ogPublishedYear": 2016,
   "pages": 360,
   "format": "Hardcover",
   "publisher": "Mondadori",
   "rating": 5,
-  "image": ".jpg"
+  "image": "Falce.jpg",
+	"reviewSlug": "recensione-falce-neal-shusterman",
+  "readDate": "31-07-2020",
+  "publishedYear": 2020,
+  "series": [{"series": "Trilogia della Falce", "numInSeries": 1}]
 }
