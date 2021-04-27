@@ -13,6 +13,10 @@ export default function DesktopHeader() {
       </ul>
       <style jsx>
         {`
+        ul, li {
+          list-style: none;
+          padding: 0;
+        }
         @media (max-width: 768px) {
           .main-nav-desktop {
             display: none;
