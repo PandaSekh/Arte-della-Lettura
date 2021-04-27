@@ -3,17 +3,14 @@
 const withPWA = require("next-pwa");
 
 module.exports = withPWA({
-	images: {
-		domains: ["cdn.sanity.io"],
-	},
 	poweredByHeader: false,
 	pwa: {
 		dest: "public",
 		disable: process.env.NODE_ENV === "development",
 	},
 	future: {
-    webpack5: true,
-  },
+		webpack5: true,
+	},
 });
 
 // module.exports = withPlugins(
