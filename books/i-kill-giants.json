@@ -4,12 +4,12 @@
   "isbn13": "9788832731545",
   "synopsis": "Il mondo si è spaccato in due e solo una bambina straordinariamente fragile e caparbia può impedirgli di spezzarsi definitivamente. Barbara Thorson fa la quinta elementare, ama il fantasy e i giochi di ruolo, non ha molti amici e ha un segreto. È la custode del martello incantato Coveleski, il distruttore di giganti. Barbara dorme in cantina, perché al primo piano di casa sua si nasconde un orrore tanto terrificante che lei non osa salire quelle scale. \"I Kill Giants\" è una storia che vi trasformerà. Da questa storia è tratto il film di Anders Walter, sceneggiato da Joe Kelly.",
   "author": [
-    "Ken JM Niimura",
+    "J.M. Ken Niimura",
     "Joe Kelly"
   ],
   "genres": [
-    "Comics & Graphic Novels",
-    "Fiction",
+    "Graphic Novel",
+    "Fumetto",
     "Fantascienza"
   ],
   "language": "it",
@@ -18,5 +18,8 @@
   "format": "Hardcover",
   "publisher": "Bao Publishing",
   "rating": 3,
-  "image": ".jpg"
+  "image": "IKillGiantsTitan.jpg",
+	"reviewSlug": "recensione-i-kill-giants-titan-edition",
+  "readDate": "24-10-2019",
+  "publishedYear": 2018
 }

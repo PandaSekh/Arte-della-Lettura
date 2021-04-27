@@ -7,7 +7,7 @@
     "Alexandra Kleeman"
   ],
   "genres": [
-    "Fiction"
+    "Narrativa"
   ],
   "language": "it",
   "ogPublishedYear": 2015,
@@ -15,5 +15,8 @@
   "format": "Paperback",
   "publisher": "Edizioni Black Coffee",
   "rating": 0,
-  "image": ".jpg"
+  "image": "Il corpo che vuoi.jpg",
+	"reviewSlug": "",
+  "readDate": "14-04-2020",
+  "publishedYear": 2017
 }

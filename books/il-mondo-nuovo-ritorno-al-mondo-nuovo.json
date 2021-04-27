@@ -7,8 +7,8 @@
     "Aldous Huxley"
   ],
   "genres": [
-    "Fiction",
-    "Literary Collections",
+    "Classico",
+    "Distopia",
     "Fantascienza"
   ],
   "language": "it",
@@ -17,5 +17,8 @@
   "format": "Paperback",
   "publisher": "Mondadori",
   "rating": 5,
-  "image": ".jpg"
+  "image": "IlMondoNuovo.jpg",
+	"reviewSlug": "recensione-il-mondo-nuovo-aldous-huxley",
+  "readDate": "15-08-2020",
+  "publishedYear": 2016
 }

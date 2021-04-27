@@ -7,8 +7,8 @@
     "Margaret Atwood"
   ],
   "genres": [
-    "Fiction",
-    "Fantascienza"
+    "Distopia",
+    "Classico"
   ],
   "language": "it",
   "ogPublishedYear": 1985,
@@ -16,5 +16,9 @@
   "format": "Paperback",
   "publisher": "Ponte alle Grazie",
   "rating": 2,
-  "image": ".jpg"
+  "image": "Il Racconto dell_Ancella.jpg",
+	"reviewSlug": "recensione-il-racconto-dellancella-margaret-atwood",
+  "readDate": "26-10-2020",
+  "publishedYear": 2019,
+  "series": [{"series": "Il racconto dell'ancella", "numInSeries": 1}]
 }

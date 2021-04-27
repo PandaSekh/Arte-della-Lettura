@@ -5,7 +5,6 @@
 	"synopsis": "",
 	"author": [""],
 	"genres": [""],
-	"series": [{}],
 	"language": "",
 	"ogPublishedYear": "",
 	"pages": "",
@@ -15,5 +14,6 @@
 	"image": ".jpg",
 	"reviewSlug": "",
   "readDate": "",
-  "publishedYear": ""
+  "publishedYear": "",
+	"series": [{"series": "", "numInSeries": 1}]
 }

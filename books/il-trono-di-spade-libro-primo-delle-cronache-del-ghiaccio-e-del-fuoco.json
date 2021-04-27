@@ -7,14 +7,17 @@
     "George R. R. Martin"
   ],
   "genres": [
-    "Fiction",
     "Fantasy"
   ],
   "language": "it",
   "ogPublishedYear": 1996,
   "pages": 849,
   "format": "Hardcover",
-  "publisher": "Arnoldo Mondadori",
+  "publisher": "Mondadori",
   "rating": 5,
-  "image": ".jpg"
+  "image": "TronoDiSpade_1.jpg",
+	"reviewSlug": "recensione-il-trono-di-spade-libro-primo-george-martin",
+  "readDate": "11-12-2018",
+  "publishedYear": 2012,
+  "series": [{"series": "Il Trono di Spade", "numInSeries": 1},{"series": "Cronache del ghiaccio e del fuoco", "numInSeries": 1}]
 }

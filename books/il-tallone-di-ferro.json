@@ -1,0 +1,16 @@
+{
+  "title": "Il tallone di ferro",
+  "isbn": "8807900335",
+  "isbn13": "9788807900334",
+  "author": ["Jack London"],
+  "genres": ["Distopia", "Classico"],
+  "ogPublishedYear": 1908,
+  "pages": 257,
+  "format": "Paperback",
+  "publisher": "Feltrinelli",
+  "rating": 2,
+  "image": "IlTalloneDiFerro.jpg",
+	"reviewSlug": "recensione-il-tallone-di-ferro-jack-london",
+  "readDate": "19-06-2019",
+  "publishedYear": 2014
+}

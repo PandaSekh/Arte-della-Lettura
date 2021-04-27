@@ -7,16 +7,16 @@
     "Marta Leandra Mandelli"
   ],
   "genres": [
-    "Fiction",
-    "Juvenile Fiction",
-    "Fantasy",
-    "Fantasy & Magic"
+    "Fantascienza"
   ],
   "language": "it",
-  "ogPublishedYear": null,
+  "ogPublishedYear": 2018,
   "pages": 328,
   "format": "Paperback",
   "publisher": "A.CAR. Edizioni",
   "rating": 0,
-  "image": ".jpg"
+  "image": "IlGattoEGliStivali.jpg",
+	"reviewSlug": "",
+  "readDate": "17-07-2019",
+  "publishedYear": 2018
 }

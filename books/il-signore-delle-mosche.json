@@ -7,7 +7,7 @@
     "William Golding"
   ],
   "genres": [
-    "Fiction"
+    "Distopia"
   ],
   "language": "it",
   "ogPublishedYear": 1954,
@@ -15,5 +15,8 @@
   "format": "Paperback",
   "publisher": "Mondadori ",
   "rating": 4,
-  "image": ".jpg"
+  "image": "IlSignoreDelleMosche.jpg",
+	"reviewSlug": "recensione-il-signore-delle-mosche",
+  "readDate": "25-10-2018",
+  "publishedYear": 2017
 }

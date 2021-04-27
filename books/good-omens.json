@@ -8,8 +8,8 @@
     "Neil Gaiman"
   ],
   "genres": [
-    "Fiction",
-    "Fantasy"
+    "Fantasy",
+    "Commedia"
   ],
   "language": "it",
   "ogPublishedYear": 1990,
@@ -17,5 +17,8 @@
   "format": "Paperback",
   "publisher": "Mondadori",
   "rating": 2,
-  "image": ".jpg"
+  "image": "GoodOmens.jpg",
+	"reviewSlug": "recensione-good-omens-pratchett-gaiman",
+  "readDate": "21-11-2019",
+  "publishedYear": 2019
 }
