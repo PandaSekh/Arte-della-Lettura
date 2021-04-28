@@ -7,7 +7,7 @@
     "Haruki Murakami"
   ],
   "genres": [
-    "Fiction"
+    "Narrativa"
   ],
   "language": "it",
   "ogPublishedYear": 2002,
@@ -15,5 +15,8 @@
   "format": "Paperback",
   "publisher": "Einaudi",
   "rating": 2,
-  "image": ".jpg"
+  "image": "KafkaSullaSpiaggia.jpg",
+	"reviewSlug": "recensione-kafka-sulla-spiaggia-murakami",
+  "readDate": "30-04-2020",
+  "publishedYear": 2013
 }

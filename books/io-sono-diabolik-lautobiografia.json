@@ -7,15 +7,16 @@
     "Diabolik"
   ],
   "genres": [
-    "Art",
-    "Cartooning",
-    "Techniques"
+    "Narrativa"
   ],
   "language": "it",
   "ogPublishedYear": 2010,
   "pages": 173,
-  "format": "Mass Market Paperback",
+  "format": "Paperback",
   "publisher": "Oscar Mondadori",
   "rating": 3,
-  "image": ".jpg"
+  "image": "Io sono Diabolik.jpg",
+	"reviewSlug": "recensione-io-sono-diabolik-lautobiografia-di-mario-gomboli",
+  "readDate": "21-11-2020",
+  "publishedYear": 2012
 }

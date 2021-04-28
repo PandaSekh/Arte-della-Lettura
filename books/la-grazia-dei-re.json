@@ -7,8 +7,7 @@
     "Ken Liu"
   ],
   "genres": [
-    "Fiction",
-    "Fantasy"
+        "Fantasy"
   ],
   "language": "it",
   "ogPublishedYear": 2015,
@@ -16,5 +15,9 @@
   "format": "Hardcover",
   "publisher": "Mondadori",
   "rating": 3,
-  "image": ".jpg"
+  "image": "LaGraziaDeiRe.jpg",
+	"reviewSlug": "recensione-la-grazia-dei-re-ken-liu",
+  "readDate": "7-06-2020",
+  "publishedYear": 2020,
+	"series": [{"series": "The Dandelion Dynasty", "numInSeries": 1}]
 }

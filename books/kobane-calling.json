@@ -7,9 +7,8 @@
     "Zerocalcare"
   ],
   "genres": [
-    "Comics & Graphic Novels",
-    "Political Science",
-    "Political Freedom"
+    "Graphic Novel",
+    "Biografia"
   ],
   "language": "it",
   "ogPublishedYear": 2016,
@@ -17,5 +16,8 @@
   "format": "Hardcover",
   "publisher": "Bao Publishing",
   "rating": 5,
-  "image": ".jpg"
+  "image": "KobaneCallingOggi.jpg",
+	"reviewSlug": "recensione-kobane-calling-zerocalcare",
+  "readDate": "11-04-2020",
+  "publishedYear": 2016
 }

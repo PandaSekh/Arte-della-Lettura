@@ -7,14 +7,17 @@
     "George R. R. Martin"
   ],
   "genres": [
-    "Fiction",
     "Fantasy"
   ],
   "language": "it",
   "ogPublishedYear": 2000,
   "pages": 1213,
   "format": "Hardcover",
-  "publisher": "Arnoldo Mondadori",
+  "publisher": "Mondadori",
   "rating": 5,
-  "image": ".jpg"
+  "image": "TdS_3.jpg",
+	"reviewSlug": "recensione-il-trono-di-spade-libro-terzo-george-martin",
+  "readDate": "6-03-2019",
+  "publishedYear": 2013,
+	  "series": [{"series": "Il Trono di Spade", "numInSeries": 1},{"series": "Cronache del ghiaccio e del fuoco", "numInSeries": 3}]
 }

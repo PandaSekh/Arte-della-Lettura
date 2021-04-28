@@ -7,8 +7,7 @@
     "Stephen King"
   ],
   "genres": [
-    "Fiction",
-    "Horror"
+    "Fantasy"
   ],
   "language": "it",
   "ogPublishedYear": 1987,
@@ -16,5 +15,9 @@
   "format": "Paperback",
   "publisher": "Sperling & Kupfer",
   "rating": 4,
-  "image": ".jpg"
+  "image": "LaChiamataDeiTre.jpg",
+	"reviewSlug": "recensione-la-chiamata-dei-tre",
+  "readDate": "13-01-2019",
+  "publishedYear": 2017,
+	"series": [{"series": "La Torre Nera", "numInSeries": 2}]
 }
