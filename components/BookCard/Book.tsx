@@ -31,9 +31,10 @@ export default function BookElement({ slug }: { slug: string }) {
 							>
 								<a>{singleAuthor}</a>
 							</Link>
-						)), ",")
+						)), ", ")
 					}
 					<br />
+					{/* @TODO add url to series too */}
 					{book.series && (
 						<>
 							<strong>Serie:</strong> {book.series.map(series => series.series).reduce((a: string, b: string) => a + ", " + b)}
@@ -63,7 +64,7 @@ export default function BookElement({ slug }: { slug: string }) {
 							>
 								<a>{genre}</a>
 							</Link>
-						)), ",")}
+						)), ", ")}
 					<br />
 					<strong>Formato:</strong> {book.format}
 					<br />
