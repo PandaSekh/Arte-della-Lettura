@@ -12,6 +12,7 @@ import DateUnderPost from "../components/Post/DateUnderPost";
 import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 import { GetStaticPaths } from "next";
 import { MdxRemote } from "next-mdx-remote/types";
+import PostContent from "../components/Post/PostContent";
 
 const components = {
 	InternalLink: dynamic(() =>
@@ -53,22 +54,21 @@ export default function PostPage({ source, frontMatter }: {
 					{frontMatter.title}
 				</h1>
 				<DateUnderPost date={frontMatter.publishedAt} />
-				{content}
-				<style>{`
-				<style jsx>details summary {
-					cursor: pointer;
+				{content}<style>{`
+					article details summary {
+						cursor: pointer;
 					}
 
-					details summary > * {
+					article details summary > * {
 						display: inline;
 					}
-					summary {list - style: none}
-					summary::-webkit-details-marker {display: none; }
-					details summary::before {
+					article summary {list - style: none}
+					article summary::-webkit-details-marker {display: none; }
+					article details summary::before {
 						content:"⚠️";
 					}
 
-					ul > li::before {
+					article ul > li::before {
 						content: "";
 						position: absolute;
 						background-color: #d1d5db;
@@ -79,16 +79,15 @@ export default function PostPage({ source, frontMatter }: {
 						left: 0.25em;
 					}
 
-					ul > li {
+					article ul > li {
 						position: relative;
 						padding-left: 1.75em;
 					}
 
-					ul {
+					article ul {
 						margin - top: 1.25em;
 							margin-bottom: 1.25em;
 					}
-
 				`}
 				</style>
 			</article>

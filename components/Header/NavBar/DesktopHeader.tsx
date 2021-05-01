@@ -13,7 +13,7 @@ export default function DesktopHeader() {
       </ul>
       <style jsx>
         {`
-        ul, li {
+        ul, li{
           list-style: none;
           padding: 0;
         }
