@@ -5,7 +5,7 @@ module.exports = {
 			preset: "lighthouse:recommended",
 		},
 		collect: {
-			staticDir: "./.next",
+			staticDistDir: "./.next",
 		},
 		// ...
 	},
