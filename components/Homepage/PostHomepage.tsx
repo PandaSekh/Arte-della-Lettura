@@ -21,8 +21,6 @@ export default function PostHomepage({ post, data }: { post: string, data: { [ke
 						<Image
 							src={`/static/images/books/${data.image}`}
 							loading="lazy"
-							// width={300}
-							// height={460}
 							alt={data.title}
 							layout="fill"
 							objectFit="contain"
