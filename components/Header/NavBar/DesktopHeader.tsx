@@ -4,7 +4,7 @@ import NavUrl from "./NavUrl";
 
 export default function DesktopHeader() {
   const router = useRouter();
-  const urls = config.urls.map(url => <NavUrl path={url.path} name={url.name} router={router} extraClass={"navbar-link hover:text-customBlue text-lg hover:border-b-2 font-medium"} liClass="navbar-li inline p-3 text-center" />)
+  const urls = config.urls.map((url, index) => <NavUrl key={index} path={url.path} name={url.name} router={router} extraClass={"navbar-link hover:text-customBlue text-lg hover:border-b-2 font-medium"} liClass="navbar-li inline p-3 text-center" />)
 
   return (
     <nav className="main-nav-desktop" id="main-nav-desktop">

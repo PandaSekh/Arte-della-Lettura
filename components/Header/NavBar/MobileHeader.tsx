@@ -16,7 +16,7 @@ export default function MobileHeader() {
       document.querySelector(".switch")!.classList.toggle("isOpen");
     }
   }
-  const urls = config.urls.map(url => <NavUrl path={url.path} name={url.name} router={router} onClickFunction={handleMenuClick} />)
+  const urls = config.urls.map((url, index) => <NavUrl key={index} path={url.path} name={url.name} router={router} onClickFunction={handleMenuClick} />)
 
   return (
     <>
