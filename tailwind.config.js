@@ -20,7 +20,7 @@ module.exports = {
 			fontFace: true,
 		},
 	},
-	darkMode: "class", // or 'media' or 'class'
+	darkMode: "class",
 	//https://javisperez.github.io/tailwindcolorshades/?lochmara=018fd9
 	theme: {
 		colors: {

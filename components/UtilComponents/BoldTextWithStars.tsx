@@ -2,14 +2,14 @@ import Stars from "../BookCard/Stars"
 
 export default function BoldTextWithStars({ text, rating }: { text: string, rating: number }) {
 	return (
-		<p>
+		<span>
 			<strong>
 				{text}
 			</strong>
 			<Stars rating={rating} />
 			<style jsx>
 				{`
-				p {
+				span {
 					display: flex;
 					align-items: center;
 					margin: 0px;
@@ -19,6 +19,6 @@ export default function BoldTextWithStars({ text, rating }: { text: string, rati
 				}
 				`}
 			</style>
-		</p>
+		</span>
 	)
 }

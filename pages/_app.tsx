@@ -1,13 +1,21 @@
 import "../styles/style.css";
 import Head from "next/head";
+import Router from 'next/router'
 import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import SEO from "../seo.config";
 import Navbar from "../components/Header/NavBar/Navbar";
 import Footer from "../components/Footer/Footer";
 import DarkModeButton from "../components/Header/DarkModeButton";
+import NProgress from 'nprogress'
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+
+	Router.events.on('routeChangeStart', () => NProgress.start())
+	Router.events.on('routeChangeComplete', () => NProgress.done())
+	Router.events.on('routeChangeError', () => NProgress.done())
+	
 	return (
 		<>
 			<Head>
@@ -58,7 +66,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 					color="#5bbad5"
 				/>
 				<link rel="shortcut icon" href="/favicon.png" />
-				{/* <script
+				<script
 					dangerouslySetInnerHTML={{
 						__html: `(function(a,b,c){var d=a.history,e=document,f=navigator||{},g=localStorage,
 					h=encodeURIComponent,i=d.pushState,k=function(){return Math.random().toString(36)},
@@ -77,9 +85,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 					d.onpushstate({state:r}),setTimeout(n,c.delay||10),i.apply(d,arguments)},n(),
 					a.ma={trackEvent:function o(r,s,t,u){return n("event",r,s,t,u)},
 					trackException:function q(r,s){return n("exception",null,null,null,null,r,s)}}})
-					(window,"XX-XXXXXXXXX-X",{anonymizeIp:true,colorDepth:true,characterSet:true,screenSize:true,language:true});`,
+					(window,${process.env.GA_ANALYTICS_CODE},{anonymizeIp:true,colorDepth:true,characterSet:true,screenSize:true,language:true});`,
 					}}
-				/> */}
+				/>
 			</Head>
 			<DefaultSeo {...SEO} />
 			<DarkModeButton />
@@ -117,39 +125,79 @@ function MyApp({ Component, pageProps }: AppProps) {
 						position: fixed;
 					}
 
-					details summary {
-						cursor: pointer;
-					}
+					/* Make clicks pass-through */
+#nprogress {
+  pointer-events: none;
+}
 
-					details summary > * {
-						display: inline;
-					}
-					summary {list-style: none}
-					summary::-webkit-details-marker {display: none; }
-					details summary::before {
-						content:"⚠️";
-					}
+#nprogress .bar {
+  background: #29d;
 
-					ul > li::before {
-						content: "";
-						position: absolute;
-						background-color: #d1d5db;
-						border-radius: 50%;
-						width: 0.375em;
-						height: 0.375em;
-						top: calc(0.875em - 0.1875em);
-						left: 0.25em;
-					}
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
 
-					ul > li {
-						position: relative;
-						padding-left: 1.75em;
-					}
+  width: 100%;
+  height: 2px;
+}
 
-					ul {
-							margin-top: 1.25em;
-							margin-bottom: 1.25em;
-					}
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+      -ms-transform: rotate(3deg) translate(0px, -4px);
+          transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+          animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes nprogress-spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 				`}
 			</style>
