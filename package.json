@@ -15,11 +15,13 @@
     "next-mdx-remote": "^2.1.4",
     "next-pwa": "^5.0.0",
     "next-seo": "^4.24.0",
+    "nprogress": "^0.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "tslib": "^2.2.0"
   },
   "devDependencies": {
+    "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.3",
     "postcss": "^8.1.14",
     "postcss-preset-env": "^6.7.0",
