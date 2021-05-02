@@ -4,6 +4,9 @@ module.exports = {
 		assert: {
 			preset: "lighthouse:recommended",
 		},
+		collect: {
+			staticDir: "./.next",
+		},
 		// ...
 	},
 };
