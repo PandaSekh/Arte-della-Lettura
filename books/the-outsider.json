@@ -7,9 +7,8 @@
     "Stephen King"
   ],
   "genres": [
-    "Fiction",
     "Thriller",
-    "Suspense"
+    "Horror"
   ],
   "language": "it",
   "ogPublishedYear": 2018,
@@ -17,5 +16,8 @@
   "format": "Hardcover",
   "publisher": "Sperling & Kupfer",
   "rating": 3,
-  "image": ".jpg"
+  "image": "TheOutsider.jpg",
+	"reviewSlug": "recensione-the-outsider-king",
+  "readDate": "7-01-2019",
+  "publishedYear": 2018
 }

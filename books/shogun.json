@@ -7,8 +7,7 @@
     "James Clavell"
   ],
   "genres": [
-    "Fiction",
-    "Historical"
+    "Narrativa","Storico"
   ],
   "language": "it",
   "ogPublishedYear": 1975,
@@ -16,5 +15,9 @@
   "format": "Paperback",
   "publisher": "Bompiani",
   "rating": 5,
-  "image": ".jpg"
+  "image": "Shogun.jpg",
+	"reviewSlug": "recensione-shogun-james-clavell",
+  "readDate": "4-06-2019",
+  "publishedYear": 2018,
+	"series": [{"series": "Saga Asiatica", "numInSeries": 1}]
 }

@@ -7,9 +7,7 @@
     "Neal Shusterman"
   ],
   "genres": [
-    "Fiction",
-    "Juvenile Fiction",
-    "Fantascienza",
+    "Distopia",
     "Fantascienza"
   ],
   "language": "it",
@@ -18,5 +16,9 @@
   "format": "Hardcover",
   "publisher": "Mondadori",
   "rating": 4,
-  "image": ".jpg"
+  "image": "Thunderhead.jpg",
+	"reviewSlug": "recensione-thunderhead-neal-shusterman",
+  "readDate": "21-10-2020",
+  "publishedYear": 2020,
+	"series": [{"series": "Trilogia della Falce", "numInSeries": 2}]
 }

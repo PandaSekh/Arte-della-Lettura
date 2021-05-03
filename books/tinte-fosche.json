@@ -1,21 +1,22 @@
 {
   "title": "Tinte fosche",
-  "isbn": "",
+  "isbn": "8831456288",
   "isbn13": "9788831456289",
   "synopsis": "«E se qualcuno venisse in possesso di questa cartelletta? Se ne vedesse il contenuto? Proverei imbarazzo e vergogna... i miei quadri sempre così luminosi, vividi, rassicuranti... e ora questi acquerelli che hanno portato alla luce le tinte fosche del mio animo che forse non conosco ancora...» Molti anni fa, uno sconosciuto artista realizzò 40 acquerelli dalle \"tinte fosche\" che, assieme a 10 racconti gotici di grandi autori del passato, l'hanno accompagnato nel corso di una profonda crisi esistenziale. Unica testimonianza di ciò: una vecchia cartelletta ritrovata da Arrigo d'Onofrio e ora finalmente pubblicata. Tinte Fosche è il volume inaugurale della collana Sinistre Suggestioni. All'interno 40 stupendi acquerelli di Daniele Serra e 10 racconti curati da Enrico De Luca: L. Capuana La redenzione dei capilavori, E. Wilkinson Peattie La Casa che non c'era, Emilio Salgari L'apparizione del naufrago, H. P. Lovecraft I gatti di Ulthar, C. Dickens Una storia di spettri, U. I. Tarchetti Un osso di morto, E. A. Poe Il ritratto ovale, E. Duffin La festa privata, G. de Maupassant Lettera di un pazzo, A. Bierce Una sera d'estate.",
   "author": [
-    "Arrigo D'Onofrio"
+    "Arrigo D'Onofrio", "Enrico de Luca"
   ],
   "genres": [
-    "Fiction",
-    "Literary Collections",
-    "Horror"
+    "Horror", "Antologia"
   ],
   "language": "it",
-  "ogPublishedYear": null,
+  "ogPublishedYear": 2020,
   "pages": 144,
   "format": "Paperback",
   "publisher": "Caravaggio Editore",
   "rating": 3,
-  "image": ".jpg"
+  "image": "Tinte fosche.jpg",
+	"reviewSlug": "recensione-tinte-fosche-enrico-de-luca",
+  "readDate": "24-11-2020",
+  "publishedYear": 2020
 }

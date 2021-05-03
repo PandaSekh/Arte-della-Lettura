@@ -7,8 +7,7 @@
     "Charles Bukowski"
   ],
   "genres": [
-    "Letteratura di viaggio",
-    "Essays & Travelogues"
+    "Letteratura di viaggio"
   ],
   "language": "it",
   "ogPublishedYear": 1979,
@@ -16,5 +15,8 @@
   "format": "Paperback",
   "publisher": "Feltrinelli",
   "rating": 4,
-  "image": ".jpg"
+  "image": "ShakespeareBukowski.jpg",
+	"reviewSlug": "recensione-shakespeare-non-ha-mai-fatto-bukowski",
+  "readDate": "2-04-2019",
+  "publishedYear": 2013
 }

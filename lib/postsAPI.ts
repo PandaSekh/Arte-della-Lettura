@@ -60,10 +60,10 @@ export function getPublishedPosts(sliceFrom: number | undefined = undefined, sli
 		.slice(sliceFrom, sliceTo);
 }
 
-export function getPublishedPostsForHoepage(
+export function getPublishedPostsForHomepage(
 	sliceFrom: number | undefined = undefined,
 	sliceTo: number | undefined = undefined
-) {
+): { data: { [key: string]: any; }; filePath: string; }[] {
 	return getPublishedPostPath()
 		.map(filePath => {
 			const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
