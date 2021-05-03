@@ -7,13 +7,16 @@
     "Charles Bukowski"
   ],
   "genres": [
-    "Poetry"
+    "Poesia"
   ],
   "language": "it",
-  "ogPublishedYear": null,
+  "ogPublishedYear": 1997,
   "pages": 208,
   "format": "Paperback",
   "publisher": "Feltrinelli",
   "rating": 1,
-  "image": ".jpg"
+  "image": "QuandoEravamoGiovani.jpg",
+	"reviewSlug": "recensione-quando-eravamo-giovani-bukowski",
+  "readDate": "17-11-2019",
+  "publishedYear": 2015
 }

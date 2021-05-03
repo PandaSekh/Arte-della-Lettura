@@ -7,9 +7,8 @@
     "Zerocalcare"
   ],
   "genres": [
-    "Comics & Graphic Novels",
-    "Fiction",
-    "Mystery & Detective"
+    "Graphic Novel",
+    "Fumetto"
   ],
   "language": "it",
   "ogPublishedYear": 2020,
@@ -17,5 +16,8 @@
   "format": "Hardcover",
   "publisher": "BAO Publishing",
   "rating": 5,
-  "image": ".jpg"
+  "image": "Scheletri.jpg",
+	"reviewSlug": "recensione-scheletri-zerocalcare",
+  "readDate": "25-08-2020",
+  "publishedYear": 2020
 }

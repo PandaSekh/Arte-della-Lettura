@@ -7,7 +7,6 @@
     "Jay Kristoff"
   ],
   "genres": [
-    "Fiction",
     "Fantasy",
     "Young Adult"
   ],
@@ -15,7 +14,11 @@
   "ogPublishedYear": 2017,
   "pages": 467,
   "format": "Hardcover",
-  "publisher": "Mondadori ",
+  "publisher": "Mondadori",
   "rating": 5,
-  "image": ".jpg"
+  "image": "Nevernight_2.jpg",
+	"reviewSlug": "recensione-i-grandi-giochi-nevernight",
+  "readDate": "23-03-2020",
+  "publishedYear": 2020,
+	"series": [{"series": "Gli accadimenti di Illuminotte", "numInSeries": 2}]
 }

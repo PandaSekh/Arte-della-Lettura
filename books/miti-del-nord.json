@@ -7,9 +7,6 @@
     "Neil Gaiman"
   ],
   "genres": [
-    "Fiction",
-    "Fiction",
-    "Short Stories (single author)",
     "Mitologia e Leggende"
   ],
   "language": "it",
@@ -18,5 +15,8 @@
   "format": "Hardcover",
   "publisher": "Mondadori",
   "rating": 4,
-  "image": ".jpg"
+  "image": "MitiDelNord.jpg",
+	"reviewSlug": "recensione-miti-del-nord",
+  "readDate": "13-12-2018",
+  "publishedYear": 2018
 }

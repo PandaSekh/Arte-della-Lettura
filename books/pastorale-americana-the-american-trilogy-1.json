@@ -1,5 +1,5 @@
 {
-  "title": "Pastorale Americana (The American Trilogy, #1)",
+  "title": "Pastorale Americana",
   "isbn": "8806218034",
   "isbn13": "9788806218034",
   "synopsis": "Seymour Levov è un ricco americano di successo: al liceo lo chiamano \"lo Svedese\". Ciò che pare attenderlo negli anni Cinquanta è una vita di successi professionali e gioie familiari. Finché le contraddizioni del conflitto in Vietnam non coinvolgono anche lui e l'adorata figlia Merry, decisa a portare la guerra in casa, letteralmente. Un libro sull'amore e sull'odio per l'America, sul desiderio di appartenere a un sogno di pace, prosperità e ordine, sul rifiuto dell'ipocrisia e della falsità celate in quello stesso sogno.",
@@ -7,7 +7,7 @@
     "Philip Roth"
   ],
   "genres": [
-    "Fiction"
+    "Narrativa"
   ],
   "language": "it",
   "ogPublishedYear": 1997,
@@ -15,5 +15,9 @@
   "format": "Paperback",
   "publisher": "Einaudi",
   "rating": 2,
-  "image": ".jpg"
+  "image": "PastoraleAmericana.jpg",
+	"reviewSlug": "recensione-pastorale-americana",
+  "readDate": "14-11-2018",
+  "publishedYear": 2013,
+	"series": [{"series": "Trilogia Americana", "numInSeries": 1}]
 }

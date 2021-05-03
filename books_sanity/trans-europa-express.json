@@ -2,12 +2,16 @@
   "title": "Trans Europa Express",
   "isbn": "8807019272",
   "isbn13": "9788807019272",
-  "author": [],
-  "genres": [],
+  "author": ["Paolo Rumiz"],
+  "genres": ["Narrativa di Viaggio"],
   "ogPublishedYear": 2012,
   "pages": 231,
   "format": "Paperback",
   "publisher": "Feltrinelli",
-  "rating": 0,
-  "image": ".jpg"
+  "rating": 3,
+  "image": "Trans Europa Express.jpg",
+	"reviewSlug": "",
+  "readDate": "",
+  "publishedYear": 0,
+	"synopsis": ""
 }

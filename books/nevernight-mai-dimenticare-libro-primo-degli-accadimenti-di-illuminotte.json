@@ -7,7 +7,6 @@
     "Jay Kristoff"
   ],
   "genres": [
-    "Fiction",
     "Fantasy",
     "Young Adult"
   ],
@@ -15,7 +14,11 @@
   "ogPublishedYear": 2016,
   "pages": 462,
   "format": "Hardcover",
-  "publisher": "Mondadori ",
+  "publisher": "Mondadori",
   "rating": 4,
-  "image": ".jpg"
+  "image": "Nevernight_1.jpg",
+	"reviewSlug": "mai-dimenticare-nevernight-jay-kristoff",
+  "readDate": "24-08-2019",
+  "publishedYear": 2019,
+	"series": [{"series": "Gli accadimenti di Illuminotte", "numInSeries": 1}]
 }

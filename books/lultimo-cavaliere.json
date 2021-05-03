@@ -7,8 +7,7 @@
     "Stephen King"
   ],
   "genres": [
-    "Fiction",
-    "Horror"
+    "Fantasy"
   ],
   "language": "it",
   "ogPublishedYear": 1982,
@@ -16,5 +15,8 @@
   "format": "Paperback",
   "publisher": "Sperling & Kupfer",
   "rating": 2,
-  "image": ".jpg"
+  "image": "UltimoCavaliere.jpg",
+	"reviewSlug": "recensione-ultimo-cavaliere",
+  "readDate": "10-10-2018",
+  "publishedYear": 2020,"series": [{"series": "La Torre Nera", "numInSeries": 1}]
 }

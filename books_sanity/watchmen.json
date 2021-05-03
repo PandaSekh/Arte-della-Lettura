@@ -8,8 +8,8 @@
     "Alan Moore"
   ],
   "genres": [
-    "Comics & Graphic Novels",
-    "Superheroes"
+    "Graphic Novel",
+    "Fumetto"
   ],
   "language": "it",
   "ogPublishedYear": 1987,
@@ -17,5 +17,8 @@
   "format": "Hardcover",
   "publisher": "RW Edizioni",
   "rating": 5,
-  "image": ".jpg"
+  "image": "Watchmen.jpg",
+	"reviewSlug": "recensione-watchmen-alan-moore",
+  "readDate": "9-03-2020",
+  "publishedYear": 2016
 }

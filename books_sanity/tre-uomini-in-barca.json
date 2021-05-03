@@ -7,15 +7,18 @@
     "Jerome K. Jerome"
   ],
   "genres": [
-    "Humor",
-    "Classics",
-    null
+    "Umoristico",
+    "Classico"
   ],
   "language": "it",
-  "ogPublishedYear": 2013,
+  "ogPublishedYear": 1889,
   "pages": 208,
   "format": "Paperback",
   "publisher": "Feltrinelli",
   "rating": 5,
-  "image": ".jpg"
+  "image": "TreUominiInBarca.jpg",
+	"reviewSlug": "recensione-tre-uomini-in-barca-di-jerome-k-jerome",
+  "readDate": "19-06-2018",
+  "publishedYear": 2013,
+  "series": [{"series": "Tre uomini", "numInSeries": 1}]
 }

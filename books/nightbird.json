@@ -7,14 +7,16 @@
     "Lucia Patrizi"
   ],
   "genres": [
-    "Fiction",
     "Horror"
   ],
   "language": "it",
-  "ogPublishedYear": null,
-  "pages": null,
+  "ogPublishedYear": 2018,
+  "pages": 281,
   "format": "Paperback",
   "publisher": "Acheron Books",
   "rating": 1,
-  "image": ".jpg"
+  "image": "Nightbird.jpg",
+	"reviewSlug": "recensione-nightbird-lucia-patrizi",
+  "readDate": "21-05-2019",
+  "publishedYear": 2018
 }
