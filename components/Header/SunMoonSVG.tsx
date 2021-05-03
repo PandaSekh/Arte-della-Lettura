@@ -1,5 +1,6 @@
 export default function SunMoon() {
-  return <svg id="sunmoon" viewBox="0 0 100 100">
+  return <svg id="sunmoon" viewBox="0 0 100 100" aria-hidden="true" aria-labelledby="sunmoon">
+    <title id="sunmoon">Simbolo sole e luna per Dark Mode</title>
     <defs>
       <mask id="hole">
         <rect width="100%" height="100%" fill="white" />

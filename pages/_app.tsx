@@ -85,7 +85,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 					d.onpushstate({state:r}),setTimeout(n,c.delay||10),i.apply(d,arguments)},n(),
 					a.ma={trackEvent:function o(r,s,t,u){return n("event",r,s,t,u)},
 					trackException:function q(r,s){return n("exception",null,null,null,null,r,s)}}})
-					(window,${process.env.GA_ANALYTICS_CODE},{anonymizeIp:true,colorDepth:true,characterSet:true,screenSize:true,language:true});`,
+					(window,"${process.env.GA_ANALYTICS_CODE}",{anonymizeIp:true,colorDepth:true,characterSet:true,screenSize:true,language:true});`,
 					}}
 				/>
 			</Head>

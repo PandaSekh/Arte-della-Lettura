@@ -26,7 +26,8 @@ module.exports = {
 		colors: {
 			customBlue: {
 				light: "#4db1e4",
-				DEFAULT: "#018fd9",
+				DEFAULT: "#01A2F9",
+				// DEFAULT: "#018fd9",
 				lighter: "#99d2f0",
 				darker: "#016ba3",
 			},
