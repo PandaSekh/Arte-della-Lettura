@@ -9,13 +9,13 @@ import Footer from "../components/Footer/Footer";
 import DarkModeButton from "../components/Header/DarkModeButton";
 import NProgress from 'nprogress'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
 
 
 	Router.events.on('routeChangeStart', () => NProgress.start())
 	Router.events.on('routeChangeComplete', () => NProgress.done())
 	Router.events.on('routeChangeError', () => NProgress.done())
-	
+
 	return (
 		<>
 			<Head>
@@ -93,10 +93,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<DarkModeButton />
 			<Navbar />
 			<main className="flex flex-wrap container mx-auto sm:px-16 justify-between">
-				<Component {...pageProps} />
+				<Component {...pageProps} key={router.route} />
 				{/* <Sidebar /> */}
 			</main>
 			<Footer />
+
 			<style jsx global>
 				{`
 					:root {
@@ -157,7 +158,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           transform: rotate(3deg) translate(0px, -4px);
 }
 
-/* Remove these to get rid of the spinner */
 #nprogress .spinner {
   display: block;
   position: fixed;
