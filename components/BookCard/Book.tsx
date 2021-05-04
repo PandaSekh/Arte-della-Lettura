@@ -34,61 +34,61 @@ export default function BookElement({ slug }: { slug: string }) {
 						)), ", ")
 					}
 					<br />
-					<strong>Serie:</strong>{" "}
-					<Link
-						key={getKey()}
-						href={`/case-editrici/${encodeURIComponent(
-							stringToSlug(book.series[0].series)
-						)}`}
-					>
-						<a>{book.series[0].series} #{book.series[0].numInSeries}</a>
-						</Link>
-
-						<br />
-						<strong>Casa Editrice:</strong>{" "}
+					{book.series && (<><strong>Serie:</strong> 
 						<Link
 							key={getKey()}
 							href={`/case-editrici/${encodeURIComponent(
-								stringToSlug(book.publisher)
+								stringToSlug(book.series[0].series)
 							)}`}
 						>
-							<a>{book.publisher}</a>
+							<a>{book.series[0].series} #{book.series[0].numInSeries}</a>
 						</Link>
-						<br />
-						<strong>
-							{book.genres.length === 1 ? "Genere" : "Generi"}:
+
+						<br /></>)}
+					<strong>Casa Editrice:</strong>{" "}
+					<Link
+						key={getKey()}
+						href={`/case-editrici/${encodeURIComponent(
+							stringToSlug(book.publisher)
+						)}`}
+					>
+						<a>{book.publisher}</a>
+					</Link>
+					<br />
+					<strong>
+						{book.genres.length === 1 ? "Genere" : "Generi"}:
 					</strong>{" "}
-						{intersperse(book.genres
-							.map((genre: string) => (
-								<Link
-									key={getKey()}
-									href={`/generi/${encodeURIComponent(
-										stringToSlug(genre)
-									)}`}
-								>
-									<a>{genre}</a>
-								</Link>
-							)), ", ")}
-						<br />
-						<strong>Formato:</strong> {book.format}
-						<br />
-						<strong>Pagine:</strong> {book.pages}
-						<br />
-						<BoldTextWithStars
-							text="Valutazione: "
-							rating={book.rating}
-						/>
-						<style jsx>
-							{`
+					{intersperse(book.genres
+						.map((genre: string) => (
+							<Link
+								key={getKey()}
+								href={`/generi/${encodeURIComponent(
+									stringToSlug(genre)
+								)}`}
+							>
+								<a>{genre}</a>
+							</Link>
+						)), ", ")}
+					<br />
+					<strong>Formato:</strong> {book.format}
+					<br />
+					<strong>Pagine:</strong> {book.pages}
+					<br />
+					<BoldTextWithStars
+						text="Valutazione: "
+						rating={book.rating}
+					/>
+					<style jsx>
+						{`
 							p {
 								margin: 0px;
 							}
 						`}
-						</style>
+					</style>
 				</p>
-					<blockquote>{book.synopsis}</blockquote>
+				<blockquote>{book.synopsis}</blockquote>
 			</div><div className="clear-both"></div>
-				<hr className="my-6 border-dark-grayText dark:border-customBlue-light border-opacity-40 border-t-2 w-4/12 mx-auto" />
+			<hr className="my-6 border-dark-grayText dark:border-customBlue-light border-opacity-40 border-t-2 w-4/12 mx-auto" />
 		</>
 	);
 }
