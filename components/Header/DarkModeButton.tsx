@@ -1,7 +1,9 @@
-import SunMoon from "./SunMoonSVG";
+import dynamic from "next/dynamic";
+// import SunMoon from "./SunMoonSVG";
 
 export default function DarkModeButton() {
 	let isDark = true;
+	const SunMoon = dynamic(() => import("./SunMoonSVG"))
 
 	if (typeof window !== "undefined") {
 		var htmlTag = document.querySelector("html")!

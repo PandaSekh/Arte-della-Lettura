@@ -1,9 +1,15 @@
-import Link from "next/link";
-import Image from "next/image";
-import DateUnderPost from "../Post/DateUnderPost";
-import ReadMore from "./ReadMore";
+// import Link from "next/link";
+// import Image from "next/image";
+// import DateUnderPost from "../Post/DateUnderPost";
+// import ReadMore from "./ReadMore";
+import dynamic from "next/dynamic";
 
 export default function PostHomepage({ post, data }: { post: string, data: { [key: string]: any } }) {
+	const Link = dynamic(() => import("next/link"))
+	const Image = dynamic(() => import("next/image"))
+	const DateUnderPost = dynamic(() => import("../Post/DateUnderPost"))
+	const ReadMore = dynamic(() => import("./ReadMore"))
+
 	return (
 		<div className="singlePostHomepage m-auto w-11/12 mb-8 grid">
 			<Link href={`/${encodeURIComponent(data.slug)}`}>
