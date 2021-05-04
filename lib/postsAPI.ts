@@ -16,28 +16,11 @@ export function getPostBySlug(slug: string) {
 
 export function getPublishedPostPath() {
 	return postFilePaths
-		.map(filePath => {
-			const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
-			const { content, data } = matter(source);
-
-			if (data.isPublished === false || !content) return null;
-			else return filePath;
-		})
-		.filter((filePath): filePath is string => filePath !== null && filePath !== undefined)
 		.filter(filePath => /\.mdx?$/.test(filePath));
 }
 
 export function getPublishedPostSlug() {
-	return postFilePaths
-		.map(filePath => {
-			const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
-			const { content, data } = matter(source);
-
-			if (data.isPublished === false || !content) return null;
-			else return filePath;
-		})
-		.filter((filePath): filePath is string => filePath !== null && filePath !== undefined)
-		.filter(filePath => /\.mdx?$/.test(filePath))
+	return getPublishedPostPath()
 		.map(path => path.replace(/\.mdx?$/, ""))
 		.map(slug => ({ params: { slug } }));
 }
