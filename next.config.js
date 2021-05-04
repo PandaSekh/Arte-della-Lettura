@@ -25,8 +25,5 @@ const PWA = require("next-pwa")({
 		disable: process.env.NODE_ENV === "development",
 	},
 });
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-	enabled: true,
-});
 
-module.exports = withPlugins([PWA, withBundleAnalyzer], nextConfiguration);
+module.exports = withPlugins([PWA], nextConfiguration);
