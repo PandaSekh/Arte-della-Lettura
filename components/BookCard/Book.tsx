@@ -42,7 +42,7 @@ export default function BookElement({ slug }: { slug: string }) {
 					{book.series && (<><strong>Serie:</strong> 
 						<Link
 							key={getKey()}
-							href={`/case-editrici/${encodeURIComponent(
+							href={`/serie/${encodeURIComponent(
 								stringToSlug(book.series[0].series)
 							)}`}
 						>
