@@ -14,21 +14,19 @@ export default function PostHomepage({ post, data }: { post: string, data: { [ke
 				</a>
 			</Link>
 			<DateUnderPost date={data.publishedAt} />
-			<div className="homePageImage grid m-auto my-2 w-72 h-80 relative transition-opacity opacity-100 hover:opacity-80">
-				<Link href={`/${encodeURIComponent(data.slug)}`}>
-					<a>
-						{/* <div className="homePageImage"> */}
-						<Image
-							src={`/static/images/books/${data.image}`}
-							loading="lazy"
-							alt={data.title}
-							layout="fill"
-							objectFit="contain"
-						/>
-						{/* </div> */}
-					</a>
-				</Link>
-			</div>
+				<div className="homePageImage grid m-auto my-2 w-72 h-80 relative transition-opacity opacity-100 hover:opacity-80" >
+					<Link href={`/${encodeURIComponent(data.slug)}`}>
+						<a>
+							<Image
+								src={`/static/images/books/${data.image}`}
+								loading="lazy"
+								alt={data.title}
+								layout="fill"
+								objectFit="contain"
+							/>
+						</a>
+					</Link>
+				</div>
 			<p className="extract">
 				{data.extract
 					? data.extract?.slice(0, 400)
