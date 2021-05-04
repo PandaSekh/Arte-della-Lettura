@@ -4,17 +4,21 @@ import Router from 'next/router'
 import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import SEO from "../seo.config";
+import dynamic from "next/dynamic";
 import Navbar from "../components/Header/NavBar/Navbar";
-import Footer from "../components/Footer/Footer";
-import DarkModeButton from "../components/Header/DarkModeButton";
+// import Footer from "../components/Footer/Footer";
+// import DarkModeButton from "../components/Header/DarkModeButton";
 import NProgress from 'nprogress'
 
 function MyApp({ Component, pageProps, router }: AppProps) {
-
-
 	Router.events.on('routeChangeStart', () => NProgress.start())
 	Router.events.on('routeChangeComplete', () => NProgress.done())
 	Router.events.on('routeChangeError', () => NProgress.done())
+
+	// const Head = dynamic(() => import("next/head"))
+	// const Navbar = dynamic(() => import("../components/Header/NavBar/Navbar"))
+	const Footer = dynamic(() => import("../components/Footer/Footer"))
+	const DarkModeButton = dynamic(() => import("../components/Header/DarkModeButton"))
 
 	return (
 		<>

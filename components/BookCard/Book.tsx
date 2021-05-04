@@ -1,13 +1,18 @@
-import Image from "next/image";
-import Link from "next/link";
+// import Image from "next/image";
+// import Link from "next/link";
 import Book from "../../interfaces/Book";
 import getKey from "../../lib/keyGen";
 import { intersperse } from "../../lib/genericUtils";
 import stringToSlug from "../../lib/stringToSlug";
-import BoldTextWithStars from "../UtilComponents/BoldTextWithStars";
+// import BoldTextWithStars from "../UtilComponents/BoldTextWithStars";
+import dynamic from "next/dynamic";
 
 export default function BookElement({ slug }: { slug: string }) {
 	const book: Book = require(`../../books/${slug}.json`);
+	const Link = dynamic(() => import("next/link"))
+	const Image = dynamic(() => import("next/image"))
+	const BoldTextWithStars = dynamic(() => import("../UtilComponents/BoldTextWithStars"))
+	// const Image = dynamic(() => import(""))
 
 	return (
 		<>

@@ -1,25 +1,25 @@
 import matter from "gray-matter";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
-import Head from "next/head";
+// import Head from "next/head";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 // import InternalLink from "../components/UtilComponents/InternalLink";
-import DateUnderPost from "../components/Post/DateUnderPost";
+// import DateUnderPost from "../components/Post/DateUnderPost";
 // import Book from "../components/BookCard/Book";
 // import CustomImage from "../components/Post/Image";
 import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 import { GetStaticPaths } from "next";
 import { MdxRemote } from "next-mdx-remote/types";
-import PostContent from "../components/Post/PostContent";
+// import PostContent from "../components/Post/PostContent";
 
 const components = {
 	InternalLink: dynamic(() =>
 		import("../components/UtilComponents/InternalLink")
 	),
 	Book: dynamic(() => import("../components/BookCard/Book")),
-	Head,
+	Head: dynamic(() => import("next/head")),
 	Image: dynamic(() => import("../components/Post/Image")),
 	Stars: dynamic(() => import("../components/BookCard/Stars")),
 	BoldTextWithStars: dynamic(() =>
@@ -34,6 +34,9 @@ export default function PostPage({ source, frontMatter }: {
 }) {
 	const router = useRouter();
 	const content = hydrate(source, { components });
+
+	const DateUnderPost = dynamic(() => import("../components/Post/DateUnderPost"))
+
 	return (
 		<>
 			<NextSeo
