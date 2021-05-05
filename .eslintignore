@@ -1,0 +1,14 @@
+node_modules
+dist
+coverage
+drafts
+posts
+books
+samples
+public
+postcss.config.js
+next.config.js
+seo.config.js
+tailwind.config.js
+vercel.json
+website.config.js

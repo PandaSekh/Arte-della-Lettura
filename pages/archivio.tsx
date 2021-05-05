@@ -1,18 +1,22 @@
 import BookTitleWithStars from "../components/Archives/BookTitleWithStars";
 import BookTitleSlug from "../interfaces/BookTitleSlug";
-import { getBooks } from "../lib/archivesAPI"
+import { getBooks } from "../lib/archivesAPI";
 
 export default function Archivio({ data }: { data: Array<BookTitleSlug> }) {
-	const prettyPrintData = data.map(book => {
-		return <ul><BookTitleWithStars bookTitleSlug={book} /></ul>
-	})
+  const prettyPrintData = data.map((book) => {
+    return (
+      <ul>
+        <BookTitleWithStars bookTitleSlug={book} />
+      </ul>;
+    );
+  });
 
-	return (
-		<div className="mx-auto archive">
-			<h2 className="text-center mx-auto">Archivio Recensioni</h2>
-			{prettyPrintData}
-			<style>
-				{`
+  return (
+    <div className="mx-auto archive">
+      <h2 className="text-center mx-auto">Archivio Recensioni</h2>
+      {prettyPrintData}
+      <style>
+        {`
         .archive ul > li::before {
 						content: "";
 						position: absolute;
@@ -34,13 +38,13 @@ export default function Archivio({ data }: { data: Array<BookTitleSlug> }) {
 						margin-bottom: 1.25em;
 					}
         `}
-			</style>
-		</div>
-	);
+      </style>
+    </div>
+  );
 }
 
 export const getStaticProps = async () => {
-	const data: Array<BookTitleSlug> = getBooks()
+  const data: Array<BookTitleSlug> = getBooks();
 
-	return { props: { data } };
+  return { props: { data } };
 };

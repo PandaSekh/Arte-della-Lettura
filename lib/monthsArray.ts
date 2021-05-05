@@ -1,4 +1,4 @@
-const months: Array<String> = [];
+const months: Array<string> = [];
 months[1] = "Gennaio";
 months[2] = "Febbraio";
 months[3] = "Marzo";
@@ -12,4 +12,4 @@ months[10] = "Ottobre";
 months[11] = "Novembre";
 months[12] = "Dicembre";
 
-export default months
+export default months;

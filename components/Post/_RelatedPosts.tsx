@@ -26,4 +26,4 @@
 // 	return points;
 // }
 
-export { }
+export {};

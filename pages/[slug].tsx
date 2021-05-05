@@ -4,54 +4,54 @@ import renderToString from "next-mdx-remote/render-to-string";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 import { GetStaticPaths } from "next";
 import { MdxRemote } from "next-mdx-remote/types";
+import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 
 const components = {
-	InternalLink: dynamic(() =>
-		import("../components/UtilComponents/InternalLink")
-	),
-	Book: dynamic(() => import("../components/BookCard/Book")),
-	Head: dynamic(() => import("next/head")),
-	Image: dynamic(() => import("../components/Post/Image")),
-	Stars: dynamic(() => import("../components/BookCard/Stars")),
-	BoldTextWithStars: dynamic(() =>
-		import("../components/UtilComponents/BoldTextWithStars")
-	),
+  InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
+  Book: dynamic(() => import("../components/BookCard/Book")),
+  Head: dynamic(() => import("next/head")),
+  Image: dynamic(() => import("../components/Post/Image")),
+  Stars: dynamic(() => import("../components/BookCard/Stars")),
+  BoldTextWithStars: dynamic(() => import("../components/UtilComponents/BoldTextWithStars")),
 };
 
-export default function PostPage({ source, frontMatter }: {
-	source: MdxRemote.Source, frontMatter: {
-		[key: string]: any;
-	}
+export default function PostPage({
+  source,
+  frontMatter,
+}: {
+  source: MdxRemote.Source;
+  frontMatter: {
+    [key: string]: any;
+  };
 }) {
-	const router = useRouter();
-	const content = hydrate(source, { components });
+  const router = useRouter();
+  const content = hydrate(source, { components });
 
-	const DateUnderPost = dynamic(() => import("../components/Post/DateUnderPost"))
+  const DateUnderPost = dynamic(() => import("../components/Post/DateUnderPost"));
 
-	return (
-		<>
-			<NextSeo
-				title={frontMatter.title}
-				openGraph={{
-					title: frontMatter.title,
-					url: router.pathname,
-					type: "article",
-					article: {
-						publishedTime: frontMatter.publishedAt,
-						modifiedTime: frontMatter.updatedAt,
-						authors: ["Alessio Franceschi"],
-					},
-				}}
-			/>
-			<article className="w-9/12 mx-auto my-0">
-				<h1 className="text-center font-extralight">
-					{frontMatter.title}
-				</h1>
-				<DateUnderPost date={frontMatter.publishedAt} />
-				{content}<style>{`
+  return (
+    <>
+      <NextSeo
+        title={frontMatter.title}
+        openGraph={{
+          title: frontMatter.title,
+          url: router.pathname,
+          type: "article",
+          article: {
+            publishedTime: frontMatter.publishedAt,
+            modifiedTime: frontMatter.updatedAt,
+            authors: ["Alessio Franceschi"],
+          },
+        }}
+      />
+      <article className="w-9/12 mx-auto my-0">
+        <h1 className="text-center font-extralight">{frontMatter.title}</h1>
+        <DateUnderPost date={frontMatter.publishedAt} />
+        {content}
+        <style>
+          {`
 					article details summary {
 						cursor: pointer;
 					}
@@ -86,43 +86,45 @@ export default function PostPage({ source, frontMatter }: {
 						margin-bottom: 1.25em;
 					}
 				`}
-				</style>
-			</article>
-		</>
-	);
+        </style>
+      </article>
+    </>
+  );
 }
 
-export const getStaticProps = async ({ params }: {
-	params: {
-		slug: string;
-	}
+export const getStaticProps = async ({
+  params,
+}: {
+  params: {
+    slug: string;
+  };
 }) => {
-	const source = getPostBySlug(params.slug);
+  const source = getPostBySlug(params.slug);
 
-	const { content, data } = matter(source);
+  const { content, data } = matter(source);
 
-	const mdxSource = await renderToString(content, {
-		components,
-		mdxOptions: {
-			remarkPlugins: [],
-			rehypePlugins: [],
-		},
-		scope: data,
-	});
+  const mdxSource = await renderToString(content, {
+    components,
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [],
+    },
+    scope: data,
+  });
 
-	return {
-		props: {
-			source: mdxSource,
-			frontMatter: data,
-		},
-	};
+  return {
+    props: {
+      source: mdxSource,
+      frontMatter: data,
+    },
+  };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = getPublishedPostSlug();
+  const paths = getPublishedPostSlug();
 
-	return {
-		paths,
-		fallback: false,
-	};
+  return {
+    paths,
+    fallback: false,
+  };
 };

@@ -1,7 +1,11 @@
 import { ReactNode } from "react";
 
 export default function PostContent({ content }: { content: ReactNode }) {
-  return <>{content}<style jsx>{`
+	return (
+    <>
+      {content}
+      <style jsx>
+        {`
 					details summary {
 						cursor: pointer;
 					}
@@ -36,5 +40,6 @@ export default function PostContent({ content }: { content: ReactNode }) {
 							margin-bottom: 1.25em;
 					}
 				`}
-  </style></>
+	</style></>;
+  );
 }

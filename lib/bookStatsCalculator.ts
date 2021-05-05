@@ -13,10 +13,9 @@ const BOOKS: Array<Book> = getBooks();
  * Get all the books
  */
 function getBooks(): Array<Book> {
-  return fs.readdirSync(BOOKS_PATH)
-    .map(bookPath => {
-      return JSON.parse(String(fs.readFileSync(path.join(BOOKS_PATH, bookPath))));
-    });
+  return fs.readdirSync(BOOKS_PATH).map((bookPath) => {
+    return JSON.parse(String(fs.readFileSync(path.join(BOOKS_PATH, bookPath))));
+  });
 }
 
 /**
@@ -24,8 +23,8 @@ function getBooks(): Array<Book> {
  */
 function getAverageNumOfPages(): number {
   let totalPages = 0;
-  BOOKS.forEach(book => totalPages += getBookPages(book));
-  return Math.floor((totalPages / BOOKS.length));
+  BOOKS.forEach((book) => (totalPages += getBookPages(book)));
+  return Math.floor(totalPages / BOOKS.length);
 }
 
 /**
@@ -33,13 +32,13 @@ function getAverageNumOfPages(): number {
  */
 function getBooksReadPerMonth() {
   const booksPerMonthMap = new Map<number, number>();
-  BOOKS.forEach(book => {
+  BOOKS.forEach((book) => {
     if (!book.readDate) return;
     const monthRead = getMonthFromDate(book.readDate);
     let booksReadPerMonth = booksPerMonthMap.get(monthRead);
     booksReadPerMonth ??= 0; // if undefined, assign 0
-    booksPerMonthMap.set(monthRead, booksReadPerMonth + 1)
-  })
+    booksPerMonthMap.set(monthRead, booksReadPerMonth + 1);
+  });
   return new Map([...booksPerMonthMap.entries()].sort((a, b) => a[0] - b[0])); // Sort the arrat per month, from 1 to 12
 }
 
@@ -48,6 +47,5 @@ export default function getStatistics(): Statistics {
     totalBooks: BOOKS.length,
     averagePages: getAverageNumOfPages(),
     booksPerMonth: mapToJSON(getBooksReadPerMonth()),
-  }
+  };
 }
-
