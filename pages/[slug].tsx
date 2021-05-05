@@ -1,18 +1,12 @@
 import matter from "gray-matter";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
-// import Head from "next/head";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-// import InternalLink from "../components/UtilComponents/InternalLink";
-// import DateUnderPost from "../components/Post/DateUnderPost";
-// import Book from "../components/BookCard/Book";
-// import CustomImage from "../components/Post/Image";
 import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 import { GetStaticPaths } from "next";
 import { MdxRemote } from "next-mdx-remote/types";
-// import PostContent from "../components/Post/PostContent";
 
 const components = {
 	InternalLink: dynamic(() =>
@@ -88,8 +82,8 @@ export default function PostPage({ source, frontMatter }: {
 					}
 
 					article ul {
-						margin - top: 1.25em;
-							margin-bottom: 1.25em;
+						margin-top: 1.25em;
+						margin-bottom: 1.25em;
 					}
 				`}
 				</style>

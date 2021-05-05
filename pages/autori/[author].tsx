@@ -4,7 +4,6 @@ import config from "../../website.config.json";
 import RenderPosts from "../../components/Homepage/RenderPosts";
 import { GetStaticPaths } from "next";
 
-
 export default function Index({ posts }: {
   posts: {
     content: string
