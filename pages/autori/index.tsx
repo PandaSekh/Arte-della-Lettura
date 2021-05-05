@@ -2,6 +2,7 @@ import stringToSlug from "../../lib/stringToSlug";
 import { getAuthorBookTitleSlug, getAuthors } from "../../lib/archivesAPI";
 import BookTitleSlug from "../../interfaces/BookTitleSlug";
 import Link from "next/link";
+import keygen from "../../lib/keyGen"
 
 export default function Index({ authorBookJSON }: {
   authorBookJSON: string
@@ -23,18 +24,18 @@ export default function Index({ authorBookJSON }: {
     // for each author pretty print their books
     authorsWithBooks.forEach((books: Array<BookTitleSlug>, author: string) => {
       const bookTitles = books.map(book => {
-        return <li><Link href={book.reviewSlug}><a className="text-customBlue hover:underline ">{book.title}</a></Link></li>
+        return <li key={keygen()}><Link href={book.reviewSlug}><a className="text-customBlue hover:underline">{book.title}</a></Link></li>
       })
-      authorsMapped.push(<p>{author}: <ul>{bookTitles}</ul></p>)
+      authorsMapped.push(<div key={keygen()}><Link href={"autori/" + stringToSlug(author)}><a className="underline">{author}</a></Link>: <ul>{bookTitles}</ul></div>)
     })
 
     // print the letter and the authors with books
-    toBePrinted.push(<div className="my-4"><h3>{char}</h3>{authorsMapped}</div>)
+    toBePrinted.push(<div className="my-4" key={keygen()}><h3>{char}</h3>{authorsMapped}</div>)
   })
 
   return (
-    <div className="archive">
-      <h2 className="center mx-auto">Recensioni per Autore</h2>
+    <div className="archive mx-auto">
+      <h2 className="text-center mx-auto">Recensioni per Autore</h2>
       {toBePrinted}
       <style>
         {`

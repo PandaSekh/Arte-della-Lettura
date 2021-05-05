@@ -66,6 +66,17 @@ export function getPublishedPostsForHomepage(
 		.slice(sliceFrom, sliceTo);
 }
 
+export function getPostsForHomepageBySlug(slug: string): { data: { [key: string]: any; }; filePath: string; } {
+	const filePath = getPublishedPostPath().map(path => path.replace(/\.mdx?$/, "")).find(filePath => filePath === slug) || ""
+	const source = fs.readFileSync(path.join(POSTS_PATH, filePath + ".mdx"));
+	const { data } = matter(source);
+
+	return {
+		data,
+		filePath,
+	};
+}
+
 interface PostWithFilepath {
 	content: string,
 	data: {

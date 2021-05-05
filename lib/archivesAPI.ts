@@ -3,7 +3,9 @@ import path from "path";
 import matter from "gray-matter";
 import Book from "../interfaces/Book";
 import BookTitleSlug from "../interfaces/BookTitleSlug";
-import stringToSlug from "./stringToSlug"
+import stringToSlug from "./stringToSlug";
+import { getDateFrom_MM_DD_YYYY } from "./timeUtils";
+import { getPostsForHomepageBySlug } from "./postsAPI";
 
 export const POSTS_PATH = path.join(process.cwd(), "posts");
 export const BOOKS_PATH = path.join(process.cwd(), "books");
@@ -28,9 +30,23 @@ export function getAuthors() {
   return authors.filter((slug, index) => authors.indexOf(slug) == index)
 }
 
-function getBooks(): Array<BookTitleSlug> {
+export function getBooks(): Array<BookTitleSlug> {
   const booksJSON: Array<Book> = bookPath.map(book => JSON.parse(String(fs.readFileSync(path.join(BOOKS_PATH, book)))));
-  return booksJSON.map(book => { return { title: book.title, reviewSlug: book.reviewSlug, author: book.author } })
+  return booksJSON.map(book => { return { title: book.title, reviewSlug: book.reviewSlug, author: book.author, rating: book.rating } })
+}
+
+export function getFullBooksFromAuthorSlug(authorSlug: string): Array<{
+  data: {
+    [key: string]: any;
+  };
+  filePath: string;
+}> {
+  const booksAuthor = getAuthorBookTitleSlug(authorSlug);
+  const reviews: { data: { [key: string]: any; }; filePath: string; }[] = []
+  booksAuthor.map(book => {
+    reviews.push(getPostsForHomepageBySlug(book.reviewSlug))
+  })
+  return reviews;
 }
 
 export function getAuthorBookTitleSlug(authorSlug: string): Array<BookTitleSlug> {
