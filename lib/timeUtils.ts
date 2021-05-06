@@ -1,4 +1,4 @@
-export function getDateFrom_MM_DD_YYYY(date: string): Date {
+export function getDateFromStringMMDDYYYY(date: string): Date {
   const parts = date.split("-");
   return new Date(`${parts[1]}-${parts[0]}-${parts[2]}`);
 }
@@ -9,5 +9,5 @@ export function getDateFrom_MM_DD_YYYY(date: string): Date {
  */
 export function getMonthFromDate(date: string): number {
   const parts = date.split("-");
-  return Number.parseInt(parts[1]);
+  return Number.parseInt(parts[1], 10);
 }

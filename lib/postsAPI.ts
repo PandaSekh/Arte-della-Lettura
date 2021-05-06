@@ -1,28 +1,41 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { getDateFrom_MM_DD_YYYY } from "./timeUtils";
+import { getDateFromStringMMDDYYYY } from "./timeUtils";
 
 export const POSTS_PATH = path.join(process.cwd(), "posts");
 
-export const postFilePaths = fs.readdirSync(POSTS_PATH).filter((path) => /\.mdx?$/.test(path));
+export const postFilePaths = fs.readdirSync(POSTS_PATH).filter((postPath) => /\.mdx?$/.test(postPath));
 
-export function getPostBySlug(slug: string) {
+export function getPostBySlug(slug: string): Buffer {
   const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`);
   return fs.readFileSync(postFilePath);
 }
 
-export function getPublishedPostPath() {
+export function getPublishedPostPath(): string[] {
   return postFilePaths.filter((filePath) => /\.mdx?$/.test(filePath));
 }
 
-export function getPublishedPostSlug() {
+export function getPublishedPostSlug(): {
+  params: {
+    slug: string;
+  };
+}[] {
   return getPublishedPostPath()
-    .map((path) => path.replace(/\.mdx?$/, ""))
+    .map((postPath) => postPath.replace(/\.mdx?$/, ""))
     .map((slug) => ({ params: { slug } }));
 }
 
-export function getPublishedPosts(sliceFrom: number | undefined = undefined, sliceTo: number | undefined = undefined) {
+export function getPublishedPosts(
+  sliceFrom: number | undefined = undefined,
+  sliceTo: number | undefined = undefined
+): {
+  content: string;
+  data: {
+    [key: string]: unknown;
+  };
+  filePath: string;
+}[] {
   return getPublishedPostPath()
     .map((filePath) => {
       const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
@@ -37,7 +50,8 @@ export function getPublishedPosts(sliceFrom: number | undefined = undefined, sli
     .filter((post) => post)
     .sort(
       (a: PostWithFilepath, b: PostWithFilepath) =>
-        getDateFrom_MM_DD_YYYY(b.data.publishedAt).getTime() - getDateFrom_MM_DD_YYYY(a.data.publishedAt).getTime()
+        getDateFromStringMMDDYYYY(b.data.publishedAt).getTime() -
+        getDateFromStringMMDDYYYY(a.data.publishedAt).getTime()
     )
     .slice(sliceFrom, sliceTo);
 }
@@ -45,7 +59,7 @@ export function getPublishedPosts(sliceFrom: number | undefined = undefined, sli
 export function getPublishedPostsForHomepage(
   sliceFrom: number | undefined = undefined,
   sliceTo: number | undefined = undefined
-): { data: { [key: string]: any }; filePath: string }[] {
+): { data: { [key: string]: unknown }; filePath: string }[] {
   return getPublishedPostPath()
     .map((filePath) => {
       const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
@@ -59,7 +73,8 @@ export function getPublishedPostsForHomepage(
     .filter((post) => post)
     .sort(
       (a, b) =>
-        getDateFrom_MM_DD_YYYY(b.data.publishedAt).getTime() - getDateFrom_MM_DD_YYYY(a.data.publishedAt).getTime()
+        getDateFromStringMMDDYYYY(b.data.publishedAt).getTime() -
+        getDateFromStringMMDDYYYY(a.data.publishedAt).getTime()
     )
     .slice(sliceFrom, sliceTo);
 }
@@ -67,8 +82,8 @@ export function getPublishedPostsForHomepage(
 export function getPostsForHomepageBySlug(slug: string): { data: { [key: string]: any }; filePath: string } {
   const filePath =
     getPublishedPostPath()
-      .map((path) => path.replace(/\.mdx?$/, ""))
-      .find((filePath) => filePath === slug) || "";
+      .map((postPath) => postPath.replace(/\.mdx?$/, ""))
+      .find((postFilePath) => postFilePath === slug) || "";
   const source = fs.readFileSync(path.join(POSTS_PATH, `${filePath}.mdx`));
   const { data } = matter(source);
 

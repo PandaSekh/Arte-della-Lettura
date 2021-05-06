@@ -1,6 +1,6 @@
 import Book from "../interfaces/Book";
 
-export function getBookPages(book: Book) {
+export default function getBookPages(book: Book): number {
   const { pages } = book;
-  return typeof pages === "string" ? Number.parseInt(pages) : pages;
+  return typeof pages === "string" ? Number.parseInt(pages, 10) : pages;
 }

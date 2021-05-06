@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-export default function InlineStars({ rating, Component }: { rating: number; Component: JSX.Element }) {
+export default function InlineStars({ rating, Component }: { rating: number; Component: JSX.Element }): JSX.Element {
   const Stars = dynamic(() => import("../BookCard/Stars"));
   return (
     <span>

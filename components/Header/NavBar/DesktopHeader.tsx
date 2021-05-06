@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import config from "../../../website.config.json";
 import NavUrl from "./NavUrl";
+import keygen from "../../../lib/keyGen";
 
-export default function DesktopHeader() {
+export default function DesktopHeader(): JSX.Element {
   const router = useRouter();
-  const urls = config.urls.map((url, index) => (
+  const urls = config.urls.map((url) => (
     <NavUrl
-      key={index}
+      key={keygen()}
       path={url.path}
       name={url.name}
       router={router}

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { NextRouter } from "next/router";
 import { MouseEventHandler } from "react";
 import Link from "next/link";
@@ -16,15 +18,15 @@ export default function NavUrl({
   extraClass?: string;
   onClickFunction?: MouseEventHandler<HTMLAnchorElement>;
   router: NextRouter;
-}) {
+}): JSX.Element {
   return (
-    <li className={liClass || ""}>
+    <li className={liClass}>
       <Link href={`${path}`} prefetch={false}>
         <a
           onClick={onClickFunction}
-          className={
-            router.pathname == `${path}` ? `border-b-2 text-customBlue ${extraClass || ""}` : `${extraClass || ""}`
-          }
+          role="link"
+          tabIndex={0}
+          className={router.pathname === `${path}` ? `border-b-2 text-customBlue ${extraClass}` : `${extraClass}`}
         >
           {name}
         </a>
@@ -32,3 +34,9 @@ export default function NavUrl({
     </li>
   );
 }
+
+NavUrl.defaultProps = {
+  liClass: "",
+  extraClass: "",
+  onClickFunction: () => {},
+};

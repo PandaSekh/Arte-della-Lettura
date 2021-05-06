@@ -1,5 +1,5 @@
 {
-	"postsPerPage": 6,
+	"postsPerPage": 100,
 	"urls": [
 		{
 			"path": "/",

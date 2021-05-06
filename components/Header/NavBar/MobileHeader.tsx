@@ -2,27 +2,29 @@ import { useRouter } from "next/router";
 import { createRef } from "react";
 import config from "../../../website.config.json";
 import NavUrl from "./NavUrl";
+import keygen from "../../../lib/keyGen";
 
-export default function MobileHeader() {
+export default function MobileHeader(): JSX.Element {
   const burgerRef = createRef<HTMLButtonElement>();
   const navRef = createRef<HTMLElement>();
   const router = useRouter();
+  const documentSwitch = document.querySelector(".switch");
 
   function handleMenuClick() {
-    if (burgerRef && navRef) {
-      burgerRef.current!.classList.toggle("isOpen");
-      navRef.current!.classList.toggle("isOpen");
+    if (burgerRef.current && navRef.current && documentSwitch) {
+      burgerRef.current.classList.toggle("isOpen");
+      navRef.current.classList.toggle("isOpen");
       document.body.classList.toggle("lockBody");
-      document.querySelector(".switch")!.classList.toggle("isOpen");
+      documentSwitch.classList.toggle("isOpen");
     }
   }
-  const urls = config.urls.map((url, index) => (
-    <NavUrl key={index} path={url.path} name={url.name} router={router} onClickFunction={handleMenuClick} />
+  const urls = config.urls.map((url) => (
+    <NavUrl key={keygen()} path={url.path} name={url.name} router={router} onClickFunction={handleMenuClick} />
   ));
 
   return (
     <>
-      <button ref={burgerRef} id="burger" className="openMainNav hidden" onClick={handleMenuClick}>
+      <button ref={burgerRef} id="burger" className="openMainNav hidden" onClick={handleMenuClick} type="button">
         <span className="burger" />
         <style jsx>
           {`

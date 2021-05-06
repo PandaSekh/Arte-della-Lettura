@@ -9,11 +9,11 @@ export default function Index({
   posts: {
     content: string;
     data: {
-      [key: string]: any;
+      [key: string]: unknown;
     };
     filePath: string;
   }[];
-}) {
+}): JSX.Element {
   return <RenderPosts posts={posts} />;
 }
 

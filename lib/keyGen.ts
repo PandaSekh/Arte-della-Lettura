@@ -3,5 +3,5 @@ export default function getKey(length = 10): string {
   return n
     .toString()
     .replace(".", "")
-    .substring(0, ++length);
+    .substring(0, length + 1);
 }

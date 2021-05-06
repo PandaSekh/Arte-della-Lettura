@@ -23,12 +23,18 @@
   "ignorePatterns": ["*public/*", ".eslintrc.json", ".prettierc", "seo.config.js", "postcss.config.js", "next.config.js", "tailwind.config.js", "website.config.js", "vercel.json"],
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "indent": ["error", 2],
-    "linebreak-style": ["error", "windows"],
-    "quotes": ["error", "double"],
-    "semi": ["error", "always"],
+    "prettier/prettier": "error",
+    // "indent": ["error", 2],
+    // "linebreak-style": ["error", "windows"],
+    // "quotes": ["error", "double"],
+    // "semi": ["error", "always"],
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/anchor-is-valid": [ "error", {
+  "components": [ "Link" ],
+  "specialLink": [ "hrefLeft", "hrefRight" ],
+  "aspects": [ "invalidHref", "preferButton" ]
+}]
   },
   "settings": {
     "react": {

@@ -2,12 +2,11 @@ import fs from "fs";
 import path from "path";
 import Book from "../interfaces/Book";
 import Statistics from "../interfaces/Statistics";
-import { getBookPages } from "./bookUtils";
+import getBookPages from "./bookUtils";
 import { mapToJSON } from "./genericUtils";
 import { getMonthFromDate } from "./timeUtils";
 
 const BOOKS_PATH = path.join(process.cwd(), "books");
-const BOOKS: Array<Book> = getBooks();
 
 /**
  * Get all the books
@@ -18,12 +17,16 @@ function getBooks(): Array<Book> {
   });
 }
 
+const BOOKS: Array<Book> = getBooks();
+
 /**
  * Returns the average number of pages read
  */
 function getAverageNumOfPages(): number {
   let totalPages = 0;
-  BOOKS.forEach((book) => (totalPages += getBookPages(book)));
+  BOOKS.forEach((book) => {
+    totalPages += getBookPages(book);
+  });
   return Math.floor(totalPages / BOOKS.length);
 }
 

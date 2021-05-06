@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import "../styles/style.css";
 import Head from "next/head";
 import Router from "next/router";
@@ -6,15 +7,13 @@ import { DefaultSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import NProgress from "nprogress";
 import SEO from "../seo.config";
-import Navbar from "../components/Header/NavBar/Navbar";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   Router.events.on("routeChangeStart", () => NProgress.start());
   Router.events.on("routeChangeComplete", () => NProgress.done());
   Router.events.on("routeChangeError", () => NProgress.done());
 
-  // const Head = dynamic(() => import("next/head"))
-  // const Navbar = dynamic(() => import("../components/Header/NavBar/Navbar"))
+  const Navbar = dynamic(() => import("../components/Header/NavBar/Navbar"));
   const Footer = dynamic(() => import("../components/Footer/Footer"));
   const DarkModeButton = dynamic(() => import("../components/Header/DarkModeButton"));
 
@@ -39,6 +38,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="shortcut icon" href="/favicon.png" />
         <script
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `(function(a,b,c){var d=a.history,e=document,f=navigator||{},g=localStorage,
 					h=encodeURIComponent,i=d.pushState,k=function(){return Math.random().toString(36)},

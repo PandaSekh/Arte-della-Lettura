@@ -23,9 +23,9 @@ export default function PostPage({
 }: {
   source: MdxRemote.Source;
   frontMatter: {
-    [key: string]: any;
+    [key: string]: string;
   };
-}) {
+}): JSX.Element {
   const router = useRouter();
   const content = hydrate(source, { components });
 
@@ -92,13 +92,22 @@ export default function PostPage({
   );
 }
 
-export const getStaticProps = async ({
+interface Props {
+  props: {
+    source: MdxRemote.Source;
+    frontMatter: {
+      [key: string]: unknown;
+    };
+  };
+}
+
+export async function getStaticProps({
   params,
 }: {
   params: {
     slug: string;
   };
-}) => {
+}): Promise<Props> {
   const source = getPostBySlug(params.slug);
 
   const { content, data } = matter(source);
@@ -118,7 +127,7 @@ export const getStaticProps = async ({
       frontMatter: data,
     },
   };
-};
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getPublishedPostSlug();

@@ -1,13 +1,14 @@
+import { GetStaticProps } from "next";
 import BookTitleWithStars from "../components/Archives/BookTitleWithStars";
 import BookTitleSlug from "../interfaces/BookTitleSlug";
 import { getBooks } from "../lib/archivesAPI";
 
-export default function Archivio({ data }: { data: Array<BookTitleSlug> }) {
+export default function Archivio({ data }: { data: Array<BookTitleSlug> }): JSX.Element {
   const prettyPrintData = data.map((book) => {
     return (
       <ul>
         <BookTitleWithStars bookTitleSlug={book} />
-      </ul>;
+      </ul>
     );
   });
 
@@ -43,7 +44,7 @@ export default function Archivio({ data }: { data: Array<BookTitleSlug> }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const data: Array<BookTitleSlug> = getBooks();
 
   return { props: { data } };

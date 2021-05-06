@@ -1,4 +1,4 @@
-export default function Stars({ rating, className }: { rating: number | string; className?: string }) {
+export default function Stars({ rating, className }: { rating: number | string; className?: string }): JSX.Element {
   return (
     <span className={`stars ${className}`} data-stars={rating}>
       <svg height="25" width="23" className="star rating" data-rating="1">
@@ -42,3 +42,7 @@ export default function Stars({ rating, className }: { rating: number | string; 
     </span>
   );
 }
+
+Stars.defaultProps = {
+  className: "",
+};

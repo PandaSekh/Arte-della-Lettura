@@ -14,7 +14,7 @@ export default function CustomImage({
   height: number;
   layout: "fixed" | "intrinsic" | "responsive" | undefined;
   center: boolean;
-}) {
+}): JSX.Element {
   return (
     <div
       style={{

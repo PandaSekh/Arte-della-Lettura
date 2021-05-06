@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function ReadMore({ slug }: { slug: string }) {
+export default function ReadMore({ slug }: { slug: string }): JSX.Element {
   return (
     <div className="readMoreButton text-center m-auto w-max p-3 bg-customBlue hover:bg-customBlue-light mt-4 rounded ease-in-out duration-300 cursor-pointer">
       <Link href={`/${encodeURIComponent(slug)}`}>

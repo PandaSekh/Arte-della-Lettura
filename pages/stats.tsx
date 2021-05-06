@@ -1,7 +1,8 @@
 import { GetStaticProps } from "next";
+import Statistics from "../interfaces/Statistics";
 import getStatistics from "../lib/bookStatsCalculator";
 
-export default function Statistiche({ stats }: { stats: any }) {
+export default function Statistiche({ stats }: { stats: Statistics }): JSX.Element {
   return <p>{stats.totalBooks}</p>;
 }
 

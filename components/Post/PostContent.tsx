@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
-export default function PostContent({ content }: { content: ReactNode }) {
-	return (
+export default function PostContent({ content }: { content: ReactNode }): JSX.Element {
+  return (
     <>
       {content}
       <style jsx>
@@ -40,6 +40,7 @@ export default function PostContent({ content }: { content: ReactNode }) {
 							margin-bottom: 1.25em;
 					}
 				`}
-	</style></>;
+      </style>
+    </>
   );
 }

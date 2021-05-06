@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 // import Stars from "../BookCard/Stars"
 
-export default function BoldTextWithStars({ text, rating }: { text: string; rating: number }) {
+export default function BoldTextWithStars({ text, rating }: { text: string; rating: number }): JSX.Element {
   const Stars = dynamic(() => import("../BookCard/Stars"));
   return (
     <span>

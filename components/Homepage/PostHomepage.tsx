@@ -1,10 +1,6 @@
-// import Link from "next/link";
-// import Image from "next/image";
-// import DateUnderPost from "../Post/DateUnderPost";
-// import ReadMore from "./ReadMore";
 import dynamic from "next/dynamic";
 
-export default function PostHomepage({ post, data }: { post: string; data: { [key: string]: any } }) {
+export default function PostHomepage({ post, data }: { post: string; data: { [key: string]: any } }): JSX.Element {
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));
   const DateUnderPost = dynamic(() => import("../Post/DateUnderPost"));

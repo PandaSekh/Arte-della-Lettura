@@ -3,4 +3,4 @@ export default interface BookTitleSlug {
   reviewSlug: string;
   author: Array<string>;
   rating: number;
-};;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+}
