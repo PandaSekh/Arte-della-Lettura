@@ -20,7 +20,7 @@ export default function PostHomepage({ post, data }: { post: string; data: { [ke
         <Link href={`/${encodeURIComponent(data.slug)}`}>
           <a>
             <Image
-              src={`/static/images/books/${data.image}`}
+              src={data.type === "Libro" ? `/static/images/books/${data.image}` : `/static/images/${data.image}`}
               loading="lazy"
               alt={data.title}
               layout="fill"
