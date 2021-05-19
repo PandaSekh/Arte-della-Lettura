@@ -1,10 +1,10 @@
-import dynamic from "next/dynamic";
+import { useEffect, useRef } from "react";
 
 export default function DarkModeButton(): JSX.Element {
   let isDark = true;
-  const SunMoon = dynamic(() => import("./SunMoonSVG"));
   const htmlTag = document.querySelector("html");
-  const overlay = document.querySelector("#overlay");
+  let overlay = document.querySelector("#overlay");
+  const overlayRef = useRef(null);
 
   if (typeof window !== "undefined" && htmlTag && overlay) {
     isDark = localStorage.getItem("theme") === "dark";
@@ -26,6 +26,19 @@ export default function DarkModeButton(): JSX.Element {
     }
   }
 
+  useEffect(() => {
+    overlay = document.querySelector("#overlay");
+    if (typeof window !== "undefined" && htmlTag && overlay) {
+      isDark = localStorage.getItem("theme") === "dark";
+      if (isDark) {
+        htmlTag.classList.add("dark");
+        overlay.classList.add("mooned");
+      }
+      document.documentElement.style.setProperty("--hamb-color", isDark ? "#FFFFFF" : "#3a3a3a");
+      document.documentElement.style.setProperty("--header-bg-color", isDark ? "#3a3a3a" : "#ffffff");
+    }
+  }, [overlayRef]);
+
   return (
     <div
       onClick={toggleDarkMode}
@@ -38,7 +51,23 @@ export default function DarkModeButton(): JSX.Element {
         className="ball  w-6 h-6 rounded-full absolute top-1 left-1.5 transform transition-all dark:translate-x-7 duration-500 ease-in-out"
         aria-label="Switch per Dark Mode"
       >
-        <SunMoon />
+        <svg id="sunmoon" viewBox="0 0 100 100" aria-hidden="true" aria-labelledby="sunmoon">
+          <title id="sunmoon">Simbolo sole e luna per Dark Mode</title>
+          <defs>
+            <mask id="hole">
+              <rect width="100%" height="100%" fill="white" />
+              <circle ref={overlayRef} id="overlay" r="60" cx="185" cy="-75" fill="black" />
+            </mask>
+
+            <filter id="blur">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+            </filter>
+          </defs>
+
+          <g filter="url(#blur)">
+            <circle fill="gold" id="donut" r="45" cx="50" cy="50" mask="url(#hole)" />
+          </g>
+        </svg>
       </div>
       <style jsx>
         {`
@@ -50,6 +79,12 @@ export default function DarkModeButton(): JSX.Element {
               transform: translateY(0%);
               transition: all 0.375s;
             }
+          }
+          svg .mooned {
+            transform: translate(-90px, 90px);
+          }
+          svg #overlay {
+            transition: all 0.3s ease-in-out;
           }
         `}
       </style>

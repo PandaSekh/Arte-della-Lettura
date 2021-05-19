@@ -29,16 +29,12 @@ export default function PostHomepage({ post, data }: { post: string; data: { [ke
           </a>
         </Link>
       </div>
-      <p className="extract">
+      <p className="extract m-auto max-w-full">
         {data.extract ? data.extract?.slice(0, 400) : post.slice(0, 400)}
         ...
       </p>
       <style jsx>
         {`
-          .extract {
-            max-width: 100%;
-            margin: auto;
-          }
           @media (max-width: 768px) {
             .homePageImage {
               height: 24rem;

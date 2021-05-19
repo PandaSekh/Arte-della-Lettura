@@ -1,23 +1,11 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 export default function PostContent({ content }: { content: ReactNode }): JSX.Element {
   return (
     <>
       {content}
-      <style jsx>
+      {/* <style jsx>
         {`
-					details summary {
-						cursor: pointer;
-					}
-
-					details summary > * {
-						display: inline;
-					}
-					summary {list - style: none}
-					summary::-webkit-details-marker {display: none; }
-					details summary::before {
-						content:"⚠️";
-					}
 
 					ul > li::before {
 						content: "";
@@ -40,7 +28,7 @@ export default function PostContent({ content }: { content: ReactNode }): JSX.El
 							margin-bottom: 1.25em;
 					}
 				`}
-      </style>
+      </style> */}
     </>
   );
 }

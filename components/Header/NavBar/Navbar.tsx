@@ -34,6 +34,9 @@ export default function Navbar(): JSX.Element {
               width: 66.66%;
             }
           }
+          header {
+            user-select: none;
+          }
         `}
       </style>
     </header>

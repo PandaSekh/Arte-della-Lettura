@@ -1,11 +1,11 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import matter from "gray-matter";
-import hydrate from "next-mdx-remote/hydrate";
-import renderToString from "next-mdx-remote/render-to-string";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
-import { MdxRemote } from "next-mdx-remote/types";
 import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 
 const components = {
@@ -15,19 +15,11 @@ const components = {
   Image: dynamic(() => import("../components/Post/Image")),
   Stars: dynamic(() => import("../components/BookCard/Stars")),
   BoldTextWithStars: dynamic(() => import("../components/UtilComponents/BoldTextWithStars")),
+  Spoiler: dynamic(() => import("../components/UtilComponents/SpoilerText")),
 };
 
-export default function PostPage({
-  source,
-  frontMatter,
-}: {
-  source: MdxRemote.Source;
-  frontMatter: {
-    [key: string]: string;
-  };
-}): JSX.Element {
+export default function PostPage({ source, frontMatter }: Props): JSX.Element {
   const router = useRouter();
-  const content = hydrate(source, { components });
 
   const DateUnderPost = dynamic(() => import("../components/Post/DateUnderPost"));
 
@@ -49,55 +41,17 @@ export default function PostPage({
       <article className="w-9/12 mx-auto my-0">
         <h1 className="text-center font-extralight">{frontMatter.title}</h1>
         <DateUnderPost date={frontMatter.publishedAt} />
-        {content}
-        <style>
-          {`
-					article details summary {
-						cursor: pointer;
-					}
-
-					article details summary > * {
-						display: inline;
-					}
-					article summary {list - style: none}
-					article summary::-webkit-details-marker {display: none; }
-					article details summary::before {
-						content:"⚠️";
-					}
-
-					article ul > li::before {
-						content: "";
-						position: absolute;
-						background-color: #d1d5db;
-						border-radius: 50%;
-						width: 0.375em;
-						height: 0.375em;
-						top: calc(0.875em - 0.1875em);
-						left: 0.25em;
-					}
-
-					article ul > li {
-						position: relative;
-						padding-left: 1.75em;
-					}
-
-					article ul {
-						margin-top: 1.25em;
-						margin-bottom: 1.25em;
-					}
-				`}
-        </style>
+        {/* {content} */}
+        <MDXRemote {...source} components={components} />
       </article>
     </>
   );
 }
 
 interface Props {
-  props: {
-    source: MdxRemote.Source;
-    frontMatter: {
-      [key: string]: unknown;
-    };
+  source: MDXRemoteSerializeResult;
+  frontMatter: {
+    [key: string]: string;
   };
 }
 
@@ -107,19 +61,11 @@ export async function getStaticProps({
   params: {
     slug: string;
   };
-}): Promise<Props> {
+}): Promise<{ props: Props }> {
   const source = getPostBySlug(params.slug);
 
   const { content, data } = matter(source);
-
-  const mdxSource = await renderToString(content, {
-    components,
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
-    },
-    scope: data,
-  });
+  const mdxSource = await serialize(content);
 
   return {
     props: {

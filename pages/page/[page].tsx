@@ -13,12 +13,26 @@ export default function Index({
     };
     filePath: string;
   }[];
-}) {
+}): JSX.Element {
   return <RenderPosts posts={posts} />;
 }
 
-export const getStaticProps = async ({ params }: { params: { page: string } }) => {
-  const pageMinusOne = Number.parseInt(params.page) - 1;
+export const getStaticProps = async ({
+  params,
+}: {
+  params: { page: string };
+}): Promise<{
+  props: {
+    posts: {
+      content: string;
+      data: {
+        [key: string]: unknown;
+      };
+      filePath: string;
+    }[];
+  };
+}> => {
+  const pageMinusOne = Number.parseInt(params.page, 10) - 1;
   const posts = getPublishedPosts(pageMinusOne, pageMinusOne + config.postsPerPage);
   return { props: { posts } };
 };
@@ -28,7 +42,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const numberOfPages = Math.ceil(postsCount / config.postsPerPage);
   const paths = [];
 
-  for (let page = 1; page <= numberOfPages; page++) {
+  for (let page = 1; page <= numberOfPages; page + 1) {
     paths.push({ params: { page: String(page) } });
   }
 

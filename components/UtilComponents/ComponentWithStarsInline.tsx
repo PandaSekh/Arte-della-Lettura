@@ -5,13 +5,16 @@ export default function InlineStars({ rating, Component }: { rating: number; Com
   return (
     <span>
       {Component}
-      <Stars className="m-3" rating={rating} />
+      <Stars className="m-3 stars" rating={rating} />
       <style jsx>
         {`
           span {
             display: flex;
             align-items: center;
             margin: 0px;
+          }
+          .stars{
+            margin-left: 10px;
           }
         `}
       </style>
