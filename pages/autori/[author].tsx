@@ -36,6 +36,10 @@ export async function getStaticProps({ params }: { params: Params }): Promise<Pr
 
   const posts = DataSingleton.getInstance().getFullBooksFromAuthorSlug(author);
 
+  if (author === "haruki-murakami") {
+    console.log(posts);
+  }
+
   return { props: { posts, authorParam } };
 }
 
