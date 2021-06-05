@@ -41,13 +41,19 @@ export const getStaticProps = async ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // const postsCount = getPublishedPostPath().length;
+  // console.log("Generating paths");
   const postsCount = PostDataSingleton.getInstance().getSlugs().length;
+  // console.log("postsCount: ", postsCount);
   const numberOfPages = Math.ceil(postsCount / config.postsPerPage);
+  // console.log("numberOfPages: ", numberOfPages);
   const paths = [];
 
-  for (let page = 1; page <= numberOfPages; page + 1) {
+  for (let page = 1; page <= numberOfPages; page++) {
+    // console.log("Paths loop num: ", page);
     paths.push({ params: { page: String(page) } });
   }
+
+  // console.log("paths: ", paths);
 
   return {
     paths,
