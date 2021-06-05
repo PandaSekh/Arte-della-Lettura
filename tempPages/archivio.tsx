@@ -1,17 +1,19 @@
 import { GetStaticProps } from "next";
 import BookTitleWithStars from "../components/Archives/BookTitleWithStars";
-import BookTitleSlug from "../interfaces/BookTitleSlug";
-import { getBooks } from "../lib/archivesAPI";
-import keygen from "../lib/keyGen"
+// import BookTitleSlug from "../interfaces/BookTitleSlug";
+// import { getBooks } from "../lib/archivesAPI";
+import keygen from "../lib/keyGen";
 
-export default function Archivio({ data }: { data: Array<BookTitleSlug> }): JSX.Element {
+import DataSingleton, { BookWithTitleSlugAuthorRating } from "../dataAPIs/postsData";
+
+export default function Archivio({ data }: { data: Array<BookWithTitleSlugAuthorRating> }): JSX.Element {
   const prettyPrintData = data.map((book) => {
     return (
       <li key={keygen()}>
         <BookTitleWithStars bookTitleSlug={book} />
         <style jsx>
           {`
-          li::before {
+            li::before {
               content: "";
               position: absolute;
               background-color: #d1d5db;
@@ -31,7 +33,7 @@ export default function Archivio({ data }: { data: Array<BookTitleSlug> }): JSX.
               margin-top: 1.25em;
               margin-bottom: 1.25em;
             }
-        `}
+          `}
         </style>
       </li>
     );
@@ -40,15 +42,13 @@ export default function Archivio({ data }: { data: Array<BookTitleSlug> }): JSX.
   return (
     <div className="mx-auto archive">
       <h2 className="text-center mx-auto">Archivio Recensioni</h2>
-      <ul>
-        {prettyPrintData}
-      </ul>
+      <ul>{prettyPrintData}</ul>
     </div>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data: Array<BookTitleSlug> = getBooks();
+  const data: Array<BookWithTitleSlugAuthorRating> = DataSingleton.getInstance().getBooks();
 
   return { props: { data } };
 };

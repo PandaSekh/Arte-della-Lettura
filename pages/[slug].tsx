@@ -6,7 +6,8 @@ import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
-import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
+// import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
+import PostDataSingleton from "../dataAPIs/postsData";
 
 const components = {
   InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
@@ -62,7 +63,8 @@ export async function getStaticProps({
     slug: string;
   };
 }): Promise<{ props: Props }> {
-  const source = getPostBySlug(params.slug);
+  // const source = getPostBySlug(params.slug);
+  const source = PostDataSingleton.getPostBySlug(params.slug);
 
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
@@ -76,7 +78,8 @@ export async function getStaticProps({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getPublishedPostSlug();
+  // const paths = getPublishedPostSlug();
+  const paths = PostDataSingleton.getInstance().getSlugs();
 
   return {
     paths,

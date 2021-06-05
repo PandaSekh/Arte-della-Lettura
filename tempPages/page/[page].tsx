@@ -1,7 +1,8 @@
 import { GetStaticPaths } from "next";
-import { getPublishedPostPath, getPublishedPosts } from "../../lib/postsAPI";
+// import { getPublishedPostPath, getPublishedPosts } from "../../lib/postsAPI";
 import config from "../../website.config.json";
 import RenderPosts from "../../components/Homepage/RenderPosts";
+import PostDataSingleton from "../../dataAPIs/postsData";
 
 export default function Index({
   posts,
@@ -33,12 +34,14 @@ export const getStaticProps = async ({
   };
 }> => {
   const pageMinusOne = Number.parseInt(params.page, 10) - 1;
-  const posts = getPublishedPosts(pageMinusOne, pageMinusOne + config.postsPerPage);
+  // const posts = getPublishedPosts(pageMinusOne, pageMinusOne + config.postsPerPage);
+  const posts = PostDataSingleton.getInstance().getPosts(pageMinusOne, pageMinusOne + config.postsPerPage);
   return { props: { posts } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const postsCount = getPublishedPostPath().length;
+  // const postsCount = getPublishedPostPath().length;
+  const postsCount = PostDataSingleton.getInstance().getSlugs().length;
   const numberOfPages = Math.ceil(postsCount / config.postsPerPage);
   const paths = [];
 

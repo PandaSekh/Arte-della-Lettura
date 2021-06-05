@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import stringToSlug from "../../lib/stringToSlug";
-import { getAuthorBookTitleSlug, getAuthors } from "../../lib/archivesAPI";
-import BookTitleSlug from "../../interfaces/BookTitleSlug";
+// import { getAuthorBookTitleSlug, getAuthors } from "../../lib/archivesAPI";
+// import BookTitleSlug from "../../interfaces/BookTitleSlug";
 import keygen from "../../lib/keyGen";
+
+import DataSingleton, { BookWithTitleSlugAuthorRating } from "../../dataAPIs/postsData";
 
 // create a map with a letter as key and authors as values
 function mapAuthorsWithInitials(authors: Array<string>) {
@@ -18,7 +20,7 @@ function mapAuthorsWithInitials(authors: Array<string>) {
 }
 
 export default function Index({ authorBookJSON }: { authorBookJSON: string }): JSX.Element {
-  const authorsBooksMap: Map<string, Array<BookTitleSlug>> = new Map(JSON.parse(authorBookJSON));
+  const authorsBooksMap: Map<string, Array<BookWithTitleSlugAuthorRating>> = new Map(JSON.parse(authorBookJSON));
   const authorsWithAlphabet = new Map([...mapAuthorsWithInitials(Array.from(authorsBooksMap.keys())).entries()].sort());
   const toBePrinted: Array<JSX.Element> = [];
 
@@ -27,14 +29,17 @@ export default function Index({ authorBookJSON }: { authorBookJSON: string }): J
     const authorsMapped: Array<JSX.Element> = [];
 
     // get the books for each author
-    const authorsWithBooks: Map<string, Array<BookTitleSlug>> = new Map<string, Array<BookTitleSlug>>();
+    const authorsWithBooks: Map<string, Array<BookWithTitleSlugAuthorRating>> = new Map<
+      string,
+      Array<BookWithTitleSlugAuthorRating>
+    >();
     authors.forEach((author) => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       authorsWithBooks.set(author, authorsBooksMap.get(author)!);
     });
 
     // for each author pretty print their books
-    authorsWithBooks.forEach((books: Array<BookTitleSlug>, author: string) => {
+    authorsWithBooks.forEach((books: Array<BookWithTitleSlugAuthorRating>, author: string) => {
       const bookTitles = books.map((book) => {
         return (
           <li key={keygen()}>
@@ -99,9 +104,13 @@ export default function Index({ authorBookJSON }: { authorBookJSON: string }): J
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const authors = getAuthors();
-  const authorAndBooks = new Map<string, Array<BookTitleSlug>>();
-  authors.forEach((author) => authorAndBooks.set(author, getAuthorBookTitleSlug(stringToSlug(author))));
+  // const authors = getAuthors();
+  const authors = DataSingleton.getInstance().getAuthorsArray();
+  const authorAndBooks = new Map<string, Array<BookWithTitleSlugAuthorRating>>();
+  // authors.forEach((author) => authorAndBooks.set(author, getAuthorBookTitleSlug(stringToSlug(author))));
+  authors.forEach((author) =>
+    authorAndBooks.set(author, DataSingleton.getInstance().getAuthorBookTitleSlug(stringToSlug(author)))
+  );
   const authorBookJSON = JSON.stringify([...authorAndBooks]);
   return { props: { authorBookJSON } };
 };

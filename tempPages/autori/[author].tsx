@@ -1,9 +1,11 @@
 import { GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
-import { getFullBooksFromAuthorSlug, getAuthorsSlug, getAuthorBookTitleSlug } from "../../lib/archivesAPI";
+// import { getFullBooksFromAuthorSlug, getAuthorsSlug, getAuthorBookTitleSlug } from "../../lib/archivesAPI";
 import RenderPosts from "../../components/Homepage/RenderPosts";
-import BookTitleSlug from "../../interfaces/BookTitleSlug";
+// import BookTitleSlug from "../../interfaces/BookTitleSlug";
 import stringToSlug from "../../lib/stringToSlug";
+
+import DataSingleton, { BookWithTitleSlugAuthorRating } from "../../dataAPIs/postsData";
 
 export default function Index({
   posts,
@@ -28,17 +30,17 @@ export default function Index({
 
 export async function getStaticProps({ params }: { params: Params }): Promise<Props> {
   const { author } = params;
-  const data: Array<BookTitleSlug> = getAuthorBookTitleSlug(author);
+  const data: Array<BookWithTitleSlugAuthorRating> = DataSingleton.getInstance().getAuthorBookTitleSlug(author);
   // from the book authors, get the name (NOT SLUG) of the author we're referring in this page
   const authorParam = data[0].author.find((singleAuthor) => stringToSlug(singleAuthor) === author);
 
-  const posts = getFullBooksFromAuthorSlug(author);
+  const posts = DataSingleton.getInstance().getFullBooksFromAuthorSlug(author);
 
   return { props: { posts, authorParam } };
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const authors = getAuthorsSlug();
+  const authors = DataSingleton.getInstance().getAuthorSlugs();
   const paths = authors.map((author) => {
     return { params: { author: String(author) } };
   });

@@ -13,7 +13,7 @@ export default function InlineStars({ rating, Component }: { rating: number; Com
             align-items: center;
             margin: 0px;
           }
-          .stars{
+          .stars {
             margin-left: 10px;
           }
         `}
