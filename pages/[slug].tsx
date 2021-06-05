@@ -12,6 +12,7 @@ import PostDataSingleton from "../dataAPIs/postsData";
 const components = {
   InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
   Book: dynamic(() => import("../components/BookCard/Book")),
+  Audiobook: dynamic(() => import("../components/BookCard/Audiobook")),
   Head: dynamic(() => import("next/head")),
   Image: dynamic(() => import("../components/Post/Image")),
   Stars: dynamic(() => import("../components/BookCard/Stars")),

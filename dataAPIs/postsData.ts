@@ -105,7 +105,7 @@ export default class PostsDataSingleton {
   public getPostsForHomepageBySlug(slug: string): HomepagePostData {
     const filePath =
       this.publishedPostsPath
-        .map((postPath) => postPath.replace(/\.mdx?$/, ""))
+        .map((postPath) => postPath.replace(new RegExp(/\.mdx?$/, "ig"), ""))
         .find((postFilePath) => postFilePath === slug) || "";
     const source = fs.readFileSync(path.join(POSTS_PATH, `${filePath}.mdx`));
     const { data } = matter(source);
@@ -122,7 +122,7 @@ export default class PostsDataSingleton {
    */
   private getPublishedPostSlug(): Array<SlugParam> {
     return this.publishedPostsPath
-      .map((postPath) => postPath.replace(/\.mdx?$/, ""))
+      .map((postPath) => postPath.replace(new RegExp(/\.mdx?$/, "ig"), ""))
       .map((slug) => ({ params: { slug } }));
   }
 
@@ -131,7 +131,7 @@ export default class PostsDataSingleton {
    * @returns Array of all posts filename
    */
   private static getPublishedPostPath(): string[] {
-    return fs.readdirSync(POSTS_PATH).filter((filePath) => /\.mdx?$/.test(filePath));
+    return fs.readdirSync(POSTS_PATH).filter((filePath) => new RegExp(/\.mdx?$/, "ig").test(filePath));
   }
 
   /**
