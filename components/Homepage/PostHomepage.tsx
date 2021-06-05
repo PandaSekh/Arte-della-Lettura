@@ -6,6 +6,8 @@ export default function PostHomepage({ post, data }: { post: string; data: { [ke
   const DateUnderPost = dynamic(() => import("../Post/DateUnderPost"));
   const ReadMore = dynamic(() => import("./ReadMore"));
 
+  const imageSrc = data.category === "Recensioni" ? `/static/images/books/${data.image}` : `/static/images/${data.image}`
+
   return (
     <div className="singlePostHomepage m-auto w-11/12 mb-8 grid">
       <Link href={`/${encodeURIComponent(data.slug)}`}>
@@ -20,7 +22,7 @@ export default function PostHomepage({ post, data }: { post: string; data: { [ke
         <Link href={`/${encodeURIComponent(data.slug)}`}>
           <a>
             <Image
-              src={data.category === "Recensione" ? `/static/images/books/${data.image}` : `/static/images/${data.image}`}
+              src={imageSrc}
               loading="lazy"
               alt={data.title}
               layout="fill"
