@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import stringToSlug from "../../lib/stringToSlug";
-// import { getAuthorBookTitleSlug, getAuthors } from "../../lib/archivesAPI";
-// import BookTitleSlug from "../../interfaces/BookTitleSlug";
 import keygen from "../../lib/keyGen";
 
 import DataSingleton, { BookWithTitleSlugAuthorRating } from "../../dataAPIs/postsData";
@@ -104,10 +102,8 @@ export default function Index({ authorBookJSON }: { authorBookJSON: string }): J
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const authors = getAuthors();
   const authors = DataSingleton.getInstance().getAuthorsArray();
   const authorAndBooks = new Map<string, Array<BookWithTitleSlugAuthorRating>>();
-  // authors.forEach((author) => authorAndBooks.set(author, getAuthorBookTitleSlug(stringToSlug(author))));
   authors.forEach((author) =>
     authorAndBooks.set(author, DataSingleton.getInstance().getAuthorBookTitleSlug(stringToSlug(author)))
   );

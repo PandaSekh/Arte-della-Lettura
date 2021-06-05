@@ -1,8 +1,6 @@
 import { GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
-// import { getFullBooksFromAuthorSlug, getAuthorsSlug, getAuthorBookTitleSlug } from "../../lib/archivesAPI";
 import RenderPosts from "../../components/Homepage/RenderPosts";
-// import BookTitleSlug from "../../interfaces/BookTitleSlug";
 import stringToSlug from "../../lib/stringToSlug";
 
 import DataSingleton, { BookWithTitleSlugAuthorRating } from "../../dataAPIs/postsData";
@@ -35,10 +33,6 @@ export async function getStaticProps({ params }: { params: Params }): Promise<Pr
   const authorParam = data[0].author.find((singleAuthor) => stringToSlug(singleAuthor) === author);
 
   const posts = DataSingleton.getInstance().getFullBooksFromAuthorSlug(author);
-
-  if (author === "haruki-murakami") {
-    console.log(posts);
-  }
 
   return { props: { posts, authorParam } };
 }
