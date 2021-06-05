@@ -58,7 +58,6 @@ export default class PostsDataSingleton {
    * @returns Array<Post>
    */
   public getPosts(sliceFrom: number | undefined = undefined, sliceTo: number | undefined = undefined): Array<Post> {
-    // console.log("Called method: getPosts");
     return this.posts.slice(sliceFrom, sliceTo);
   }
 
@@ -76,7 +75,6 @@ export default class PostsDataSingleton {
    * @returns Buffer
    */
   public static getPostBySlug(slug: string): Buffer {
-    // console.log("Called method: getPostBySlug");
     const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`);
     return fs.readFileSync(postFilePath);
   }
