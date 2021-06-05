@@ -30,7 +30,8 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
             ))}
           />
           <br />
-          <strong>Letto da</strong> <Intersperse sep=", " arr={audiobook.reader.map((singleReader) => singleReader)} />
+          <strong>Narratore</strong>:{" "}
+          <Intersperse sep=", " arr={audiobook.reader.map((singleReader) => singleReader)} />
           <br />
           {audiobook.series && (
             <>
