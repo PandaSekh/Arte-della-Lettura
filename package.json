@@ -27,6 +27,11 @@
       "prettier --write"
     ]
   },
+  "config": {
+    "commitizen": {
+      "path": "commitiquette"
+    }
+  },
   "dependencies": {
     "gray-matter": "^4.0.2",
     "next": "^10.0.3",

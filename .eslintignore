@@ -12,3 +12,4 @@ seo.config.js
 tailwind.config.js
 vercel.json
 website.config.js
+commitlint.config.js
