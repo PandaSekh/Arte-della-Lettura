@@ -53,6 +53,10 @@ export default class PostsDataSingleton {
     return this.books;
   }
 
+  public getBookByReviewSlug(slug: string): Book | undefined {
+    return this.books.find((book) => book.reviewSlug === slug);
+  }
+
   /**
    * Returns all the posts
    * @returns Array<Post>
