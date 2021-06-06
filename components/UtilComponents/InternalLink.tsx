@@ -4,7 +4,7 @@ export default function CustomLink({ slug, text }: { slug: string; text: string 
   return (
     <>
       <Link href={`/${encodeURIComponent(slug)}`}>
-        <a>{text}</a>
+        <a className="link">{text}</a>
       </Link>
     </>
   );

@@ -6,8 +6,8 @@ import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
-// import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 import PostDataSingleton from "../dataAPIs/postsData";
+import ArticleSchema from "../schemas/ArticleSchema";
 
 const components = {
   InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
@@ -22,7 +22,6 @@ const components = {
 
 export default function PostPage({ source, frontMatter }: Props): JSX.Element {
   const router = useRouter();
-
   const DateUnderPost = dynamic(() => import("../components/Post/DateUnderPost"));
 
   return (
@@ -31,7 +30,7 @@ export default function PostPage({ source, frontMatter }: Props): JSX.Element {
         title={frontMatter.title}
         openGraph={{
           title: frontMatter.title,
-          url: router.pathname,
+          url: router.asPath,
           type: "article",
           article: {
             publishedTime: frontMatter.publishedAt,
@@ -40,11 +39,15 @@ export default function PostPage({ source, frontMatter }: Props): JSX.Element {
           },
         }}
       />
+      <ArticleSchema postMetadata={frontMatter} />
       <article className="w-9/12 mx-auto my-0">
         <h1 className="text-center font-extralight">{frontMatter.title}</h1>
         <DateUnderPost date={frontMatter.publishedAt} />
+        <meta content={frontMatter.publishedAt} />
         {/* {content} */}
-        <MDXRemote {...source} components={components} />
+        <div>
+          <MDXRemote {...source} components={components} />
+        </div>
       </article>
     </>
   );
@@ -64,7 +67,6 @@ export async function getStaticProps({
     slug: string;
   };
 }): Promise<{ props: Props }> {
-  // const source = getPostBySlug(params.slug);
   const source = PostDataSingleton.getPostBySlug(params.slug);
 
   const { content, data } = matter(source);
@@ -79,7 +81,6 @@ export async function getStaticProps({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const paths = getPublishedPostSlug();
   const paths = PostDataSingleton.getInstance().getSlugs();
 
   return {

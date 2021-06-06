@@ -12,9 +12,11 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));
   const BoldTextWithStars = dynamic(() => import("../UtilComponents/BoldTextWithStars"));
+  const BookSchema = dynamic(() => import("../../schemas/BookSchema"));
 
   return (
     <>
+      <BookSchema book={book} />
       <div className="mt-6 max-w-7xl">
         <div className="mr-4 float-left">
           <Image src={`/static/images/books/${book.image}`} width={275} height={420} />

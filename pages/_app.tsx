@@ -7,6 +7,9 @@ import { DefaultSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import NProgress from "nprogress";
 import SEO from "../seo.config";
+import SiteNavSchema from "../schemas/SiteNavSchema";
+import LogoSchema from "../schemas/LogoSchema";
+import BreadcrumbsSchema from "../schemas/BreadcrumbsSchema";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   Router.events.on("routeChangeStart", () => NProgress.start());
@@ -62,6 +65,9 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
         />
       </Head>
       <DefaultSeo {...SEO} />
+      <SiteNavSchema />
+      <LogoSchema />
+      <BreadcrumbsSchema url={router.asPath} />
       <DarkModeButton />
       <Navbar />
       <main className="flex flex-wrap container mx-auto sm:px-16 justify-between">
