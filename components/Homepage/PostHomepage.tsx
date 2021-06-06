@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function PostHomepage({ post, data }: { post: string; data: { [key: string]: any } }): JSX.Element {
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));

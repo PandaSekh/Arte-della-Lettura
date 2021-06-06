@@ -1,21 +1,16 @@
 import { GetStaticPaths } from "next";
-// import { getPublishedPostPath, getPublishedPosts } from "../../lib/postsAPI";
 import config from "../../website.config.json";
 import RenderPosts from "../../components/Homepage/RenderPosts";
 import PostDataSingleton from "../../dataAPIs/postsData";
+import Pagination from "../../components/Pagination/Pagination";
 
-export default function Index({
-  posts,
-}: {
-  posts: {
-    content: string;
-    data: {
-      [key: string]: any;
-    };
-    filePath: string;
-  }[];
-}): JSX.Element {
-  return <RenderPosts posts={posts} />;
+export default function Index({ posts, postsCount }: { posts: Array<Post>; postsCount: number }): JSX.Element {
+  return (
+    <>
+      <RenderPosts posts={posts} />
+      <Pagination totalCount={postsCount} />
+    </>
+  );
 }
 
 export const getStaticProps = async ({
@@ -24,39 +19,37 @@ export const getStaticProps = async ({
   params: { page: string };
 }): Promise<{
   props: {
-    posts: {
-      content: string;
-      data: {
-        [key: string]: unknown;
-      };
-      filePath: string;
-    }[];
+    posts: Post[];
+    postsCount: number;
   };
 }> => {
   const pageMinusOne = Number.parseInt(params.page, 10) - 1;
-  // const posts = getPublishedPosts(pageMinusOne, pageMinusOne + config.postsPerPage);
   const posts = PostDataSingleton.getInstance().getPosts(pageMinusOne, pageMinusOne + config.postsPerPage);
-  return { props: { posts } };
+
+  const postsCount = PostDataSingleton.getInstance().getSlugs().length;
+
+  return { props: { posts, postsCount } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const postsCount = getPublishedPostPath().length;
-  // console.log("Generating paths");
   const postsCount = PostDataSingleton.getInstance().getSlugs().length;
-  // console.log("postsCount: ", postsCount);
   const numberOfPages = Math.ceil(postsCount / config.postsPerPage);
-  // console.log("numberOfPages: ", numberOfPages);
   const paths = [];
 
   for (let page = 1; page <= numberOfPages; page++) {
-    // console.log("Paths loop num: ", page);
     paths.push({ params: { page: String(page) } });
   }
-
-  // console.log("paths: ", paths);
 
   return {
     paths,
     fallback: false,
   };
 };
+
+interface Post {
+  content: string;
+  data: {
+    [key: string]: unknown;
+  };
+  filePath: string;
+}

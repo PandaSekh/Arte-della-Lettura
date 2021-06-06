@@ -1,15 +1,17 @@
 {
-	"postsPerPage": 100,
-	"urls": [
-		{
-			"path": "/",
-			"name": "Home"
-		},{
-			"path": "/archivio",
-			"name": "Archivio"
-		},{
-			"path": "/about",
-			"name": "About"
-		}
-	]
+  "postsPerPage": 6,
+  "urls": [
+    {
+      "path": "/",
+      "name": "Home"
+    },
+    {
+      "path": "/archivio",
+      "name": "Archivio"
+    },
+    {
+      "path": "/about",
+      "name": "About"
+    }
+  ]
 }

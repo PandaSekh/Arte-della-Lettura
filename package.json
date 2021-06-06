@@ -34,8 +34,10 @@
     "tslib": "^2.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.3",
+    "@types/react-paginate": "^7.1.0",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "autoprefixer": "^10.2.5",
@@ -58,8 +60,5 @@
   },
   "browserslist": [
     "> 5% in IT"
-  ],
-  "peerDependencies": {
-    "@babel/core": "^7.0.0"
-  }
+  ]
 }

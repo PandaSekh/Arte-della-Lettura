@@ -1,11 +1,12 @@
 import { GetStaticProps } from "next";
-// import { getPublishedPosts } from "../lib/postsAPI";
 import RenderPosts from "../components/Homepage/RenderPosts";
 import config from "../website.config.json";
 import PostDataSingleton from "../dataAPIs/postsData";
+import Pagination from "../components/Pagination/Pagination";
 
 export default function Index({
   posts,
+  postsCount,
 }: {
   posts: {
     content: string;
@@ -14,12 +15,18 @@ export default function Index({
     };
     filePath: string;
   }[];
+  postsCount: number;
 }): JSX.Element {
-  return <RenderPosts posts={posts} />;
+  return (
+    <>
+      <RenderPosts posts={posts} />
+      <Pagination totalCount={postsCount} />
+    </>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const posts = getPublishedPosts(0, config.postsPerPage);
   const posts = PostDataSingleton.getInstance().getPosts(0, config.postsPerPage);
-  return { props: { posts } };
+  const postsCount = PostDataSingleton.getInstance().getSlugs().length;
+  return { props: { posts, postsCount } };
 };

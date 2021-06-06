@@ -225,6 +225,7 @@ interface Post {
 interface PostWithFilepath {
   content: string;
   data: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: string]: any;
   };
   filePath: string;
@@ -237,6 +238,7 @@ interface SlugParam {
 }
 
 interface HomepagePostData {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: { [key: string]: any };
   filePath: string;
 }

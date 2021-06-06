@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ArticleSchema({ postMetadata }: { postMetadata: any }): JSX.Element {
   const imageSrc =
     postMetadata.category === "Recensioni"
