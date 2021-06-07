@@ -6,6 +6,7 @@ import { getDateFromStringMMDDYYYY } from "../lib/timeUtils";
 import stringToSlug from "../lib/stringToSlug";
 
 import Book from "../interfaces/Book";
+import Post from "../interfaces/Post";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
 const BOOKS_PATH = path.join(process.cwd(), "books");
@@ -213,15 +214,6 @@ export default class PostsDataSingleton {
     return authors.filter((slug, index) => authors.indexOf(slug) === index);
   }
 }
-
-interface Post {
-  content: string;
-  data: {
-    [key: string]: unknown;
-  };
-  filePath: string;
-}
-
 interface PostWithFilepath {
   content: string;
   data: {
