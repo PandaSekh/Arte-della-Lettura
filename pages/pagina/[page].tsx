@@ -24,8 +24,10 @@ export const getStaticProps = async ({
   };
 }> => {
   const pageMinusOne = Number.parseInt(params.page, 10) - 1;
-  const posts = PostDataSingleton.getInstance().getPosts(pageMinusOne, pageMinusOne + config.postsPerPage);
-
+  const posts = PostDataSingleton.getInstance().getPosts(
+    pageMinusOne * config.postsPerPage,
+    pageMinusOne * config.postsPerPage + config.postsPerPage
+  );
   const postsCount = PostDataSingleton.getInstance().getSlugs().length;
 
   return { props: { posts, postsCount } };
