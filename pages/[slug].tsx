@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
 import PostDataSingleton from "../dataAPIs/postsData";
 import ArticleSchema from "../schemas/ArticleSchema";
+import RelatedPostsSingleton, { RelatedPost } from "../dataAPIs/relatedPostsData";
 
 const components = {
   InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
@@ -20,7 +21,7 @@ const components = {
   Spoiler: dynamic(() => import("../components/UtilComponents/SpoilerText")),
 };
 
-export default function PostPage({ source, frontMatter }: Props): JSX.Element {
+export default function PostPage({ source, frontMatter, relatedPosts }: Props): JSX.Element {
   const router = useRouter();
   const DateUnderPost = dynamic(() => import("../components/Post/DateUnderPost"));
 
@@ -44,11 +45,12 @@ export default function PostPage({ source, frontMatter }: Props): JSX.Element {
         <h1 className="text-center font-extralight">{frontMatter.title}</h1>
         <DateUnderPost date={frontMatter.publishedAt} />
         <meta content={frontMatter.publishedAt} />
-        {/* {content} */}
-        <div>
-          <MDXRemote {...source} components={components} />
-        </div>
+        <MDXRemote {...source} components={components} />
       </article>
+      <p>Related posts: </p>
+      {relatedPosts.map((relatedPost) => (
+        <p>{relatedPost.title}</p>
+      ))}
     </>
   );
 }
@@ -58,6 +60,7 @@ interface Props {
   frontMatter: {
     [key: string]: string;
   };
+  relatedPosts: Array<RelatedPost>;
 }
 
 export async function getStaticProps({
@@ -69,6 +72,8 @@ export async function getStaticProps({
 }): Promise<{ props: Props }> {
   const source = PostDataSingleton.getPostBySlug(params.slug);
 
+  const relatedPosts = RelatedPostsSingleton.getInstance().getRelatedPosts(params.slug);
+
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
 
@@ -76,6 +81,7 @@ export async function getStaticProps({
     props: {
       source: mdxSource,
       frontMatter: data,
+      relatedPosts,
     },
   };
 }
