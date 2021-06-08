@@ -19,6 +19,14 @@ export default function Index({
 }): JSX.Element {
   return (
     <>
+      <button
+        type="button"
+        onClick={() => {
+          fetch("http://localhost:3000/api/getComments");
+        }}
+      >
+        FECTh
+      </button>
       <RenderPosts posts={posts} />
       <Pagination totalCount={postsCount} />
     </>
@@ -28,5 +36,6 @@ export default function Index({
 export const getStaticProps: GetStaticProps = async () => {
   const posts = PostDataSingleton.getInstance().getPosts(0, config.postsPerPage);
   const postsCount = PostDataSingleton.getInstance().getSlugs().length;
+
   return { props: { posts, postsCount } };
 };
