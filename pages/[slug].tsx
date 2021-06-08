@@ -10,6 +10,8 @@ import PostDataSingleton from "../dataFetchers/postsData";
 import ArticleSchema from "../schemas/ArticleSchema";
 import RelatedPostsSingleton, { RelatedPost } from "../dataFetchers/relatedPostsData";
 import RelatedPosts from "../components/RelatedPosts/RelatedPosts";
+import CommentBlock from "../components/comments/CommentBlock";
+import Comment from "../interfaces/Comment";
 
 const components = {
   InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
@@ -22,7 +24,7 @@ const components = {
   Spoiler: dynamic(() => import("../components/UtilComponents/SpoilerText")),
 };
 
-export default function PostPage({ source, frontMatter, relatedPosts }: Props): JSX.Element {
+export default function PostPage({ source, frontMatter, relatedPosts, commentsData }: Props): JSX.Element {
   const router = useRouter();
   const DateUnderPost = dynamic(() => import("../components/Post/DateUnderPost"));
 
@@ -49,6 +51,7 @@ export default function PostPage({ source, frontMatter, relatedPosts }: Props): 
         <MDXRemote {...source} components={components} />
       </article>
       <RelatedPosts posts={relatedPosts} />
+      <CommentBlock slug={frontMatter.slug} comments={commentsData} />
     </>
   );
 }
@@ -59,6 +62,7 @@ interface Props {
     [key: string]: string;
   };
   relatedPosts: Array<RelatedPost>;
+  commentsData: Array<Comment>;
 }
 
 export async function getStaticProps({
@@ -75,15 +79,17 @@ export async function getStaticProps({
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
 
-  // fetch(`http://localhost:3000/api/getComments/${params.slug}`)
-  //   .then((res) => res.json())
-  //   .then(console.log);
+  const comments = await fetch(`http://localhost:3000/api/getComments/${params.slug}`).then((res) => res.json());
+  console.log("Comments: ", comments);
+  const t = JSON.parse(comments);
+  console.log("parse: ", t);
 
   return {
     props: {
       source: mdxSource,
       frontMatter: data,
       relatedPosts,
+      commentsData: comments,
     },
   };
 }

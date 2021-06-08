@@ -9,15 +9,20 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
       const comments = await request("GET /repos/{owner}/{repo}/contents/{path}", {
         headers: {
           authorization: `token ${process.env.GITHUB_TOKEN}`,
-          accept: "application/vnd.github.VERSION.raw",
+          accept: "application/vnd.github.v3.raw",
         },
+        // mediaType: {
+        //   format: "application/vnd.github.v3.raw",
+        // },
         owner: "PandaSekh",
         repo: "arte-della-lettura",
         path: `comments/${slug}.json`,
         ref: "comments",
       });
-      // console.log(JSON.stringify(comments, null, 2));
-      res.status(200).json(JSON.stringify(comments.data));
+      const { data } = comments;
+      console.log(data);
+      console.log(typeof data);
+      res.status(200).json(JSON.stringify(data));
       resolve();
     } catch (e) {
       res.status(404).json(e);
