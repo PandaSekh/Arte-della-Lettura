@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
+    "@octokit/types": "^6.16.2",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.3",
     "@types/react-paginate": "^7.1.0",

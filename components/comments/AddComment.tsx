@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState, SyntheticEvent } from "react";
 
-export default function AddComment({ slug }): JSX.Element {
+export default function AddComment({ slug }: { slug: string }): JSX.Element {
   const [username, setUsername] = useState("");
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
@@ -13,13 +13,19 @@ export default function AddComment({ slug }): JSX.Element {
     }
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();
-    fetch(`/api/putComment/${slug}`);
+    fetch(`http://localhost:3000/api/putComment/${slug}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ username }),
+    });
   }
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form>
       <label htmlFor="username">
         Nome:
         <input
@@ -31,6 +37,9 @@ export default function AddComment({ slug }): JSX.Element {
           onChange={handleChange}
         />
       </label>
+      <button type="submit" onKeyDown={(e) => handleSubmit(e)} onClick={(e) => handleSubmit(e)}>
+        Invia
+      </button>
     </form>
   );
 }

@@ -4,4 +4,6 @@ export default interface Comment {
   date: string | Date;
   email: string;
   content: string;
+  children: Array<Comment>;
+  parentCommentId: string;
 }

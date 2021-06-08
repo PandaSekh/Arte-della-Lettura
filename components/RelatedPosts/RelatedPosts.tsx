@@ -26,9 +26,9 @@ function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
 
 export default function RenderPosts({ posts }: { posts: RelatedPost[] }): JSX.Element {
   return (
-    <div className="mx-auto my-8 w-full">
+    <div className="mx-auto my-8 w-full ">
       <p className="mx-auto text-center font-bold	">Post Correlati</p>
-      <div className=" mx-auto my-4 grid md:grid-cols-4 grid-cols-2">
+      <div className=" mx-auto my-4 grid md:grid-cols-4 grid-cols-2 shadow-lg">
         {posts.map((post) => (
           <SingleRelatedPost post={post} key={getKey()} />
         ))}

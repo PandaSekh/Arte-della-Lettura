@@ -20,8 +20,6 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
         ref: "comments",
       });
       const { data } = comments;
-      console.log(data);
-      console.log(typeof data);
       res.status(200).json(JSON.stringify(data));
       resolve();
     } catch (e) {

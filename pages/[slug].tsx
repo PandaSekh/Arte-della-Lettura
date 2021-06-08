@@ -80,16 +80,13 @@ export async function getStaticProps({
   const mdxSource = await serialize(content);
 
   const comments = await fetch(`http://localhost:3000/api/getComments/${params.slug}`).then((res) => res.json());
-  console.log("Comments: ", comments);
-  const t = JSON.parse(comments);
-  console.log("parse: ", t);
 
   return {
     props: {
       source: mdxSource,
       frontMatter: data,
       relatedPosts,
-      commentsData: comments,
+      commentsData: JSON.parse(comments),
     },
   };
 }
