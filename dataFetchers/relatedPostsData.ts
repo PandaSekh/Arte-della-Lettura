@@ -49,7 +49,7 @@ export default class RelatedPostsSingleton {
       const post = PostsDataSingleton.getInstance().getPostsForHomepageBySlug(slug);
       return {
         title: post.data.title,
-        image: post.data.image,
+        image: `/static/images/books/${post.data.image}`,
         slug: post.data.slug,
       };
     });
@@ -158,7 +158,9 @@ export default class RelatedPostsSingleton {
       if (bookReview) posts.splice(posts.indexOf(bookReview), 1);
       const fullData: PostWithFullData = {
         title: bookReview?.data?.title ? bookReview?.data?.title : book.title,
-        image: bookReview?.data?.image ? bookReview?.data?.image : book.image,
+        image: bookReview?.data?.image
+          ? `/static/images/books/${bookReview?.data?.image}`
+          : `/static/images/books/${bookReview?.data?.image}`,
         slug: bookReview?.data?.slug ? bookReview?.data?.slug : book.reviewSlug,
         keywords: RelatedPostsSingleton.getKeywords(book.title),
         category: "Recensione",
@@ -178,7 +180,7 @@ export default class RelatedPostsSingleton {
     posts.forEach((post) =>
       this.postsMetadataMap.set(post.data.slug, {
         title: post.data.title,
-        image: post.data.image,
+        image: `/static/images/${post.data.image}`,
         slug: post.data.slug,
         keywords: RelatedPostsSingleton.getKeywords(post.data.title),
         category: post.data.category,

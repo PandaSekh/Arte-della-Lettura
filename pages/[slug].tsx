@@ -6,9 +6,10 @@ import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
-import PostDataSingleton from "../dataAPIs/postsData";
+import PostDataSingleton from "../dataFetchers/postsData";
 import ArticleSchema from "../schemas/ArticleSchema";
-import RelatedPostsSingleton, { RelatedPost } from "../dataAPIs/relatedPostsData";
+import RelatedPostsSingleton, { RelatedPost } from "../dataFetchers/relatedPostsData";
+import RelatedPosts from "../components/RelatedPosts/RelatedPosts";
 
 const components = {
   InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
@@ -41,16 +42,13 @@ export default function PostPage({ source, frontMatter, relatedPosts }: Props): 
         }}
       />
       <ArticleSchema postMetadata={frontMatter} />
-      <article className="w-9/12 mx-auto my-0">
+      <article className="w-10/12 mx-auto my-0">
         <h1 className="text-center font-extralight">{frontMatter.title}</h1>
         <DateUnderPost date={frontMatter.publishedAt} />
         <meta content={frontMatter.publishedAt} />
         <MDXRemote {...source} components={components} />
       </article>
-      <p>Related posts: </p>
-      {relatedPosts.map((relatedPost) => (
-        <p>{relatedPost.title}</p>
-      ))}
+      <RelatedPosts posts={relatedPosts} />
     </>
   );
 }
@@ -76,6 +74,10 @@ export async function getStaticProps({
 
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
+
+  // fetch(`http://localhost:3000/api/getComments/${params.slug}`)
+  //   .then((res) => res.json())
+  //   .then(console.log);
 
   return {
     props: {

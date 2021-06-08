@@ -4,7 +4,7 @@ import BookTitleWithStars from "../components/Archives/BookTitleWithStars";
 // import { getBooks } from "../lib/archivesAPI";
 import keygen from "../lib/keyGen";
 
-import DataSingleton, { BookWithTitleSlugAuthorRating } from "../dataAPIs/postsData";
+import DataSingleton, { BookWithTitleSlugAuthorRating } from "../dataFetchers/postsData";
 
 export default function Archivio({ data }: { data: Array<BookWithTitleSlugAuthorRating> }): JSX.Element {
   const prettyPrintData = data.map((book) => {

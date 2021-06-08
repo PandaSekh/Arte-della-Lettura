@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import RenderPosts from "../components/Homepage/RenderPosts";
 import config from "../website.config.json";
-import PostDataSingleton from "../dataAPIs/postsData";
+import PostDataSingleton from "../dataFetchers/postsData";
 import Pagination from "../components/Pagination/Pagination";
 
 export default function Index({
@@ -19,14 +19,6 @@ export default function Index({
 }): JSX.Element {
   return (
     <>
-      <button
-        type="button"
-        onClick={() => {
-          fetch("http://localhost:3000/api/getComments");
-        }}
-      >
-        FECTh
-      </button>
       <RenderPosts posts={posts} />
       <Pagination totalCount={postsCount} />
     </>

@@ -3,7 +3,7 @@ import { ParsedUrlQuery } from "querystring";
 import RenderPosts from "../../components/Homepage/RenderPosts";
 import stringToSlug from "../../lib/stringToSlug";
 
-import DataSingleton, { BookWithTitleSlugAuthorRating } from "../../dataAPIs/postsData";
+import DataSingleton, { BookWithTitleSlugAuthorRating } from "../../dataFetchers/postsData";
 
 export default function Index({
   posts,
