@@ -1,19 +1,26 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-async-promise-executor */
 import { request } from "@octokit/request";
 import type { NextApiRequest, NextApiResponse } from "next";
 import Comment from "../../../interfaces/Comment";
+import { encrypt } from "../../../lib/encryption/crypto";
 
-function appendNewComment(newComment: Comment, oldComments: Array<Comment>): Array<Comment> {
-  const parent = oldComments.find((comments) => comments.id === newComment.parentCommentId);
-  if (!parent) throw new Error("No parent found, something bad");
-  oldComments.splice(oldComments.indexOf(parent), 1);
-  parent.children.push(newComment);
-  oldComments.push(parent);
-  return oldComments;
+function appendToParent(comments: Array<Comment>, newComment: Comment): Array<Comment> {
+  const modifiedComments = comments;
+
+  modifiedComments.forEach((comment) => {
+    if (comment.id === newComment.parentCommentId) {
+      comment.children.push(newComment);
+    } else if (comment.children && comment.children.length > 0) {
+      comment.children = appendToParent(comment.children, newComment);
+    }
+  });
+  return modifiedComments;
 }
 
 export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
-  const newComment = req.body;
+  const newComment: Comment = req.body;
+  newComment.email = encrypt(newComment.email as string);
   return new Promise(async (resolve) => {
     const { slug } = req.query;
     try {
@@ -28,6 +35,8 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
         repo: "arte-della-lettura",
         path: `comments/${slug}.json`,
         ref: "comments",
+      }).catch((e) => {
+        if (e.status !== 404) throw new Error(e);
       });
 
       // if no file is present, there's no comments. We need two different routes
@@ -42,7 +51,7 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
         const { sha } = originalComments.data;
         // add the new comment
         if (newComment.parentCommentId) {
-          data = appendNewComment(newComment, data);
+          data = appendToParent(data, newComment);
         } else {
           data.push(newComment);
         }
@@ -57,11 +66,18 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           repo: "arte-della-lettura",
           path: `comments/${slug}.json`,
           branch: "comments",
-          message: `New comment on post${slug}`,
+          message: `Updated comment on post ${slug}`,
           sha,
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });
 
+        fetch("http://localhost:3000/api/sendEmail", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
         res.status(200).json(JSON.stringify(update));
         resolve();
       } else {
@@ -76,7 +92,7 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           repo: "arte-della-lettura",
           path: `comments/${slug}.json`,
           branch: "comments",
-          message: `New comment on post${slug}`,
+          message: `New comment on post ${slug}`,
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });
 

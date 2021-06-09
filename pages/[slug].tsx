@@ -9,9 +9,10 @@ import { GetStaticPaths } from "next";
 import PostDataSingleton from "../dataFetchers/postsData";
 import ArticleSchema from "../schemas/ArticleSchema";
 import RelatedPostsSingleton, { RelatedPost } from "../dataFetchers/relatedPostsData";
-import RelatedPosts from "../components/RelatedPosts/RelatedPosts";
-import CommentBlock from "../components/comments/CommentBlock";
+// import RelatedPosts from "../components/RelatedPosts/RelatedPosts";
+// import CommentBlock from "../components/Comments/CommentBlock";
 import Comment from "../interfaces/Comment";
+import getComments from "../dataFetchers/getComments";
 
 const components = {
   InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
@@ -27,6 +28,8 @@ const components = {
 export default function PostPage({ source, frontMatter, relatedPosts, commentsData }: Props): JSX.Element {
   const router = useRouter();
   const DateUnderPost = dynamic(() => import("../components/Post/DateUnderPost"));
+  const CommentBlock = dynamic(() => import("../components/Comments/CommentBlock"));
+  const RelatedPosts = dynamic(() => import("../components/RelatedPosts/RelatedPosts"));
 
   return (
     <>
@@ -62,7 +65,7 @@ interface Props {
     [key: string]: string;
   };
   relatedPosts: Array<RelatedPost>;
-  commentsData: Array<Comment>;
+  commentsData: Array<Comment> | null;
 }
 
 export async function getStaticProps({
@@ -79,14 +82,14 @@ export async function getStaticProps({
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
 
-  const comments = await fetch(`http://localhost:3000/api/getComments/${params.slug}`).then((res) => res.json());
+  const comments = await getComments(params.slug);
 
   return {
     props: {
       source: mdxSource,
       frontMatter: data,
       relatedPosts,
-      commentsData: JSON.parse(comments),
+      commentsData: comments,
     },
   };
 }
