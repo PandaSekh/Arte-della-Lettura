@@ -72,10 +72,8 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
       <Navbar />
       <main className="flex flex-wrap container mx-auto sm:px-16 justify-between">
         <Component {...pageProps} key={router.route} />
-        {/* <Sidebar /> */}
       </main>
       <Footer />
-
       <style jsx global>
         {`
           :root {
