@@ -9,8 +9,6 @@ import { GetStaticPaths } from "next";
 import PostDataSingleton from "../dataFetchers/postsData";
 import ArticleSchema from "../schemas/ArticleSchema";
 import RelatedPostsSingleton, { RelatedPost } from "../dataFetchers/relatedPostsData";
-// import RelatedPosts from "../components/RelatedPosts/RelatedPosts";
-// import CommentBlock from "../components/Comments/CommentBlock";
 import Comment from "../interfaces/Comment";
 import getComments from "../dataFetchers/getComments";
 

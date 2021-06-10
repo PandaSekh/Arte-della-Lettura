@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import IComment from "../../interfaces/Comment";
 import getKey from "../../lib/keyGen";
-import LoadingComponent from "../UtilComponents/LoadingSpinner";
 
 export default function CommentBlock({
   slug,
@@ -21,11 +20,7 @@ export default function CommentBlock({
       <div className="w-full">
         <p className="mx-auto text-center font-bold	">Commenti</p>
         {comments ? (
-          Comment ? (
-            comments.map((c) => <Comment comment={c} key={getKey()} slug={slug} />)
-          ) : (
-            <LoadingComponent />
-          )
+          comments.map((c) => <Comment comment={c} key={getKey()} slug={slug} />)
         ) : (
           <p className="mx-auto text-center">Non c&apos;è ancora nessun commento :(</p>
         )}

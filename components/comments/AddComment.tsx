@@ -1,14 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Comment from "../../interfaces/Comment";
 import getKey from "../../lib/keyGen";
-import LoadingComponent from "../UtilComponents/LoadingSpinner";
 
 export default function AddComment({ slug, parentCommentId }: { slug: string; parentCommentId?: string }): JSX.Element {
   const [commentSent, setCommentSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const LoadingComponent = dynamic(() => import("../UtilComponents/LoadingSpinner"));
 
   const {
     register,
@@ -58,7 +59,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                 role="alert"
               >
                 <span className="flex rounded-full bg-dark-white uppercase px-2 py-1 text-xs font-bold mr-3">
-                  INVIATO|
+                  INVIATO!
                 </span>
                 <span className="font-semibold mr-2 text-left flex-auto ">
                   Il tuo commento è stato inviato. Una volta approvato comparirà qui

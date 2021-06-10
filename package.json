@@ -8,19 +8,6 @@
     "start": "next start",
     "lint": "npx eslint --fix . --ext .js,.jsx,.ts,.tsx ."
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --quiet --fix"
-    ],
-    "*.{json,md,html, mdx, css}": [
-      "prettier --write"
-    ]
-  },
   "dependencies": {
     "@octokit/request": "^5.5.0",
     "gray-matter": "^4.0.2",
@@ -33,7 +20,6 @@
     "nodemailer": "^6.6.1",
     "nprogress": "^0.2.0",
     "react": "^17.0.1",
-    "react-content-loader": "^6.0.3",
     "react-dom": "^17.0.1",
     "react-hook-form": "^7.8.3",
     "tslib": "^2.2.0"
@@ -55,8 +41,6 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
     "postcss": "^8.1.14",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.3.1",

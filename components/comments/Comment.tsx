@@ -5,8 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import IComment from "../../interfaces/Comment";
 import getKey from "../../lib/keyGen";
 import { decrypt, Hash } from "../../lib/encryption/crypto";
-// import AddComment from "./AddComment";
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const jdenticon = require("jdenticon");
 
@@ -14,7 +12,6 @@ export default function Comment({ comment, slug }: { comment: IComment; slug: st
   const [reply, setReply] = useState(false);
   const isAdmin =
     comment.username === process.env.ADMIN_NAME && decrypt(comment.email as Hash) === process.env.ADMIN_EMAIL;
-  // const isAdmin = comment.username === process.env.ADMIN_NAME;
 
   const AddComment = dynamic(() => import("./AddComment"));
 

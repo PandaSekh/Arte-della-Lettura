@@ -22,7 +22,6 @@ const encrypt = (text: string): Hash => {
 };
 
 const decrypt = (hash: Hash): string => {
-  console.log("Decrypting: ", hash);
   const secretKey = process.env.CRYPTO_SECRET_KEY;
   if (secretKey) {
     const decipher = crypto.createDecipheriv(

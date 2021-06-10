@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 import RenderPosts from "../components/Homepage/RenderPosts";
 import config from "../website.config.json";
 import PostDataSingleton from "../dataFetchers/postsData";
-import Pagination from "../components/Pagination/Pagination";
 
 export default function Index({
   posts,
@@ -17,6 +17,8 @@ export default function Index({
   }[];
   postsCount: number;
 }): JSX.Element {
+  const Pagination = dynamic(() => import("../components/Pagination/Pagination"));
+
   return (
     <>
       <RenderPosts posts={posts} />

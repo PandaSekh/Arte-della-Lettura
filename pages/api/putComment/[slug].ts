@@ -71,15 +71,16 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });
 
-        fetch("http://localhost:3000/api/sendEmail", {
+        fetch(`http://localhost:3000/api/sendEmail/${slug}`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ allComments: data, newComment, isChild: true }),
+        }).then(() => {
+          res.status(200).json(JSON.stringify(update));
+          resolve();
         });
-        res.status(200).json(JSON.stringify(update));
-        resolve();
       } else {
         const data = [newComment];
         // save the new comment to git
@@ -93,11 +94,19 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           path: `comments/${slug}.json`,
           branch: "comments",
           message: `New comment on post ${slug}`,
-          content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
+          content: Buffer.from(JSON.stringify({ allComments: data, isChild: false }), "ascii").toString("base64"),
         });
 
-        res.status(200).json(JSON.stringify(update));
-        resolve();
+        fetch(`http://localhost:3000/api/sendEmail/${slug}`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }).then(() => {
+          res.status(200).json(JSON.stringify(update));
+          resolve();
+        });
       }
     } catch (e) {
       res.status(500).json(e);

@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import Audiobook from "../../interfaces/Audiobook";
 import getKey from "../../lib/keyGen";
 import stringToSlug from "../../lib/stringToSlug";
-import Intersperse from "../UtilComponents/Intersperse";
 
 export default function BookElement({ slug }: { slug: string }): JSX.Element {
   const audiobook: Audiobook = require(`../../books/${slug}.json`);
@@ -13,6 +12,7 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
   const Image = dynamic(() => import("next/image"));
   const BoldTextWithStars = dynamic(() => import("../UtilComponents/BoldTextWithStars"));
   const BookSchema = dynamic(() => import("../../schemas/BookSchema"));
+  const Intersperse = dynamic(() => import("../UtilComponents/Intersperse"));
 
   return (
     <>

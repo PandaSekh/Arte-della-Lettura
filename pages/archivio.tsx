@@ -1,7 +1,5 @@
 import { GetStaticProps } from "next";
 import BookTitleWithStars from "../components/Archives/BookTitleWithStars";
-// import BookTitleSlug from "../interfaces/BookTitleSlug";
-// import { getBooks } from "../lib/archivesAPI";
 import keygen from "../lib/keyGen";
 
 import DataSingleton, { BookWithTitleSlugAuthorRating } from "../dataFetchers/postsData";
