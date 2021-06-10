@@ -5,6 +5,7 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Comment from "../../interfaces/Comment";
 import getKey from "../../lib/keyGen";
+import config from "../../website.config.json";
 
 export default function AddComment({ slug, parentCommentId }: { slug: string; parentCommentId?: string }): JSX.Element {
   const [commentSent, setCommentSent] = useState(false);
@@ -29,7 +30,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
       content: data.content,
       children: [],
     };
-    fetch(`http://localhost:3000/api/putComment/${slug}`, {
+    fetch(`${config.baseurl}/api/putComment/${slug}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

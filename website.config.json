@@ -1,4 +1,5 @@
 {
+  "baseurl": "http://localhost:3000",
   "postsPerPage": 6,
   "urls": [
     {

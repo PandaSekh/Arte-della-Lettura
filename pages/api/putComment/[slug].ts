@@ -4,6 +4,7 @@ import { request } from "@octokit/request";
 import type { NextApiRequest, NextApiResponse } from "next";
 import Comment from "../../../interfaces/Comment";
 import { encrypt } from "../../../lib/encryption/crypto";
+import config from "../../../website.config.json";
 
 function appendToParent(comments: Array<Comment>, newComment: Comment): Array<Comment> {
   const modifiedComments = comments;
@@ -71,7 +72,7 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });
 
-        fetch(`http://localhost:3000/api/sendEmail/${slug}`, {
+        fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -97,7 +98,7 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           content: Buffer.from(JSON.stringify({ allComments: data, isChild: false }), "ascii").toString("base64"),
         });
 
-        fetch(`http://localhost:3000/api/sendEmail/${slug}`, {
+        fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
