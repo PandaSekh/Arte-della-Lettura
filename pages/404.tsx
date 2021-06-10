@@ -28,8 +28,8 @@ export default function Custom404(): JSX.Element {
           `}
         </style>
       </div>
-      <div className="w-5/6 h-auto	relative m-auto">
-        <Image src="/static/images/gif/sad_panda.gif" layout="fill" objectFit="contain" />
+      <div className="w-5/6 h-auto m-auto">
+        <Image src="/static/images/gif/sad_panda.gif" layout="intrinsic" objectFit="contain" width={250} height={300} />
       </div>
     </>
   );

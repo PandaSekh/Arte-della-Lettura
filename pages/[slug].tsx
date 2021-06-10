@@ -6,9 +6,11 @@ import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
-import PostDataSingleton from "../dataAPIs/postsData";
+import PostDataSingleton from "../dataFetchers/postsData";
 import ArticleSchema from "../schemas/ArticleSchema";
-import RelatedPostsSingleton, { RelatedPost } from "../dataAPIs/relatedPostsData";
+import RelatedPostsSingleton, { RelatedPost } from "../dataFetchers/relatedPostsData";
+import Comment from "../interfaces/Comment";
+import getComments from "../dataFetchers/getComments";
 
 const components = {
   InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
@@ -21,9 +23,11 @@ const components = {
   Spoiler: dynamic(() => import("../components/UtilComponents/SpoilerText")),
 };
 
-export default function PostPage({ source, frontMatter, relatedPosts }: Props): JSX.Element {
+export default function PostPage({ source, frontMatter, relatedPosts, commentsData }: Props): JSX.Element {
   const router = useRouter();
   const DateUnderPost = dynamic(() => import("../components/Post/DateUnderPost"));
+  const CommentBlock = dynamic(() => import("../components/Comments/CommentBlock"));
+  const RelatedPosts = dynamic(() => import("../components/RelatedPosts/RelatedPosts"));
 
   return (
     <>
@@ -41,16 +45,14 @@ export default function PostPage({ source, frontMatter, relatedPosts }: Props): 
         }}
       />
       <ArticleSchema postMetadata={frontMatter} />
-      <article className="w-9/12 mx-auto my-0">
+      <article className="w-10/12 mx-auto my-0">
         <h1 className="text-center font-extralight">{frontMatter.title}</h1>
         <DateUnderPost date={frontMatter.publishedAt} />
         <meta content={frontMatter.publishedAt} />
         <MDXRemote {...source} components={components} />
       </article>
-      <p>Related posts: </p>
-      {relatedPosts.map((relatedPost) => (
-        <p>{relatedPost.title}</p>
-      ))}
+      <RelatedPosts posts={relatedPosts} />
+      <CommentBlock slug={frontMatter.slug} comments={commentsData} />
     </>
   );
 }
@@ -61,6 +63,7 @@ interface Props {
     [key: string]: string;
   };
   relatedPosts: Array<RelatedPost>;
+  commentsData: Array<Comment> | null;
 }
 
 export async function getStaticProps({
@@ -77,11 +80,14 @@ export async function getStaticProps({
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
 
+  const comments = await getComments(params.slug);
+
   return {
     props: {
       source: mdxSource,
       frontMatter: data,
       relatedPosts,
+      commentsData: comments,
     },
   };
 }
