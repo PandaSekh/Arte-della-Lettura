@@ -9,7 +9,7 @@ import getKey from "../../lib/keyGen";
 export default function AddComment({ slug, parentCommentId }: { slug: string; parentCommentId?: string }): JSX.Element {
   const [commentSent, setCommentSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const LoadingComponent = dynamic(() => import("../UtilComponents/LoadingSpinner"));
+  const LoadingComponent = dynamic(() => import("../Loaders/LoadingSpinner"));
 
   const {
     register,
