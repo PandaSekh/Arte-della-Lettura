@@ -72,7 +72,7 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });
 
-        fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
+        await fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -95,15 +95,15 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           path: `comments/${slug}.json`,
           branch: "comments",
           message: `New comment on post ${slug}`,
-          content: Buffer.from(JSON.stringify({ allComments: data, isChild: false }), "ascii").toString("base64"),
+          content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });
 
-        fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
+        await fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ allComments: data, newComment, isChild: false }),
         }).then(() => {
           res.status(200).json(JSON.stringify(update));
           resolve();

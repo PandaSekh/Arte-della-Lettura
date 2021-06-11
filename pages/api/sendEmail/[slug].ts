@@ -109,16 +109,15 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 
     const request: RequestBody = req.body;
     const { slug } = req.query;
+    const post: HomepagePostData = PostsDataSingleton.getInstance().getPostsForHomepageBySlug(slug as string);
 
     if (!request.isChild) {
-      sendEmailToAdmin({ postTitle: slug as string, postSlug: slug as string }, transporter).then(() => {
+      sendEmailToAdmin({ postTitle: post.data.title, postSlug: slug as string }, transporter).then(() => {
         res.status(200);
         resolve();
       });
     } else {
       const emails = getEmails(request.allComments, request.newComment);
-
-      const post: HomepagePostData = PostsDataSingleton.getInstance().getPostsForHomepageBySlug(slug as string);
 
       const emailPromises: Array<Promise<void>> = [];
 

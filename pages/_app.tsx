@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="shortcut icon" href="/favicon.png" />
-        <script
+        {/* <script
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `(function(a,b,c){var d=a.history,e=document,f=navigator||{},g=localStorage,
@@ -62,7 +62,8 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
 					trackException:function q(r,s){return n("exception",null,null,null,null,r,s)}}})
 					(window,"${process.env.GA_ANALYTICS_CODE}",{anonymizeIp:true,colorDepth:true,characterSet:true,screenSize:true,language:true});`,
           }}
-        />
+        /> */}
+        <script data-goatcounter="https://artedellalettura.goatcounter.com/count" async src="//gc.zgo.at/count.js" />
       </Head>
       <DefaultSeo {...SEO} />
       <SiteNavSchema />
