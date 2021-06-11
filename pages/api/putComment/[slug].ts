@@ -72,16 +72,15 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });
 
-        await fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
+        fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
           body: JSON.stringify({ allComments: data, newComment, isChild: true }),
-        }).then(() => {
-          res.status(200).json(JSON.stringify(update));
-          resolve();
         });
+        res.status(200).json(JSON.stringify(update));
+        resolve();
       } else {
         const data = [newComment];
         // save the new comment to git
@@ -98,16 +97,15 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });
 
-        await fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
+        fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
           body: JSON.stringify({ allComments: data, newComment, isChild: false }),
-        }).then(() => {
-          res.status(200).json(JSON.stringify(update));
-          resolve();
         });
+        res.status(200).json(JSON.stringify(update));
+        resolve();
       }
     } catch (e) {
       res.status(500).json(e);
