@@ -6,6 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Comment from "../../interfaces/Comment";
 import getKey from "../../lib/keyGen";
 import config from "../../website.config.json";
+import InternalLink from "../UtilComponents/InternalLink";
 
 export default function AddComment({ slug, parentCommentId }: { slug: string; parentCommentId?: string }): JSX.Element {
   const [commentSent, setCommentSent] = useState(false);
@@ -81,7 +82,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-md "
                 />
                 {errors.username && errors.username.type === "minLength" && (
-                  <span style={{ color: "red" }} className=" text-xs italic">
+                  <span className="text-red-500" className=" text-xs italic">
                     Il nome deve essere di almeno 3 caratteri.
                   </span>
                 )}
@@ -89,7 +90,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
 
               <div className="mb-4">
                 <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
-                  Email<span style={{ color: "red" }}>*</span>
+                  Email<span className="text-red-500">*</span>
                 </label>
                 <input
                   placeholder="Email"
@@ -99,7 +100,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-md"
                 />
                 {errors.email && (
-                  <span style={{ color: "red" }} className=" text-xs italic">
+                  <span className="text-red-500" className=" text-xs italic">
                     Email obbligatoria
                   </span>
                 )}
@@ -107,7 +108,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
 
               <div className="mb-4">
                 <label htmlFor="content" className="block text-gray-700 text-sm font-bold mb-2">
-                  Commento<span style={{ color: "red" }}>*</span>
+                  Commento<span className="text-red-500">*</span>
                 </label>
                 <textarea
                   placeholder="Ciao!"
@@ -118,12 +119,10 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-md"
                 />
                 {errors.content && errors.content.type === "required" && (
-                  <span style={{ color: "red" }} className=" text-xs italic">
-                    Commento obbligatorio
-                  </span>
+                  <span className=" text-xs italic text-red-500">Commento obbligatorio</span>
                 )}
                 {errors.content && errors.content.type === "maxLength" && (
-                  <span style={{ color: "red" }} className=" text-xs italic">
+                  <span className=" text-xs italic text-red-500">
                     Commento troppo breve. Lunghezza massima: 5000 caratteri.
                   </span>
                 )}
@@ -131,6 +130,21 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                   <span className={`text-xs italic text-red-500 ${errors.content ? "border-red-500" : ""}`}>
                     Commento troppo breve. Lunghezza minima: 15 caratteri.
                   </span>
+                )}
+              </div>
+
+              <div className="mb-4 flex items-center	">
+                <input type="checkbox" {...register("email", { required: true })} key={getKey()} />{" "}
+                <label htmlFor="email" className="text-gray-700 text-sm font-bold ml-2">
+                  Commentando accetti la{" "}
+                  <span className="underline text-customBlue-light">
+                    <InternalLink text="Privacy Policy" slug="privacy-policy" />
+                  </span>{" "}
+                  del blog.
+                  <span className="text-red-500">*</span>
+                </label>
+                {errors.email && (
+                  <span className=" text-xs italic text-red-500">Devi accettare i termini prima di commentare.</span>
                 )}
               </div>
 
