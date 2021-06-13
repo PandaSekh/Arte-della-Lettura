@@ -82,9 +82,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-md "
                 />
                 {errors.username && errors.username.type === "minLength" && (
-                  <span className="text-red-500" className=" text-xs italic">
-                    Il nome deve essere di almeno 3 caratteri.
-                  </span>
+                  <span className=" text-xs italic text-red-500">Il nome deve essere di almeno 3 caratteri.</span>
                 )}
               </div>
 
@@ -99,11 +97,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                   key={getKey()}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-md"
                 />
-                {errors.email && (
-                  <span className="text-red-500" className=" text-xs italic">
-                    Email obbligatoria
-                  </span>
-                )}
+                {errors.email && <span className=" text-xs italic text-red-500">Email obbligatoria</span>}
               </div>
 
               <div className="mb-4">
