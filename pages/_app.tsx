@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
       <BreadcrumbsSchema url={router.asPath} />
       <DarkModeButton />
       <Navbar />
-      <main className="flex flex-wrap container mx-auto sm:px-16 justify-between">
+      <main className="flex flex-wrap container mx-auto sm:px-16 justify-between p-4">
         <Component {...pageProps} key={router.route} />
       </main>
       <Footer />

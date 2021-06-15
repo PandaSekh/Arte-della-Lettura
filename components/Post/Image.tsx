@@ -24,7 +24,6 @@ export default function CustomImage({
     >
       <Image
         src={`/static/images/${url}`}
-        loading="lazy"
         width={width || 300}
         height={height || 460}
         alt={alt || "Copertina Libro"}

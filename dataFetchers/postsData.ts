@@ -32,18 +32,32 @@ export default class PostsDataSingleton {
 
   private editorsSlug: Array<string>;
 
+  private genres: Array<string>;
+
+  private genresSlug: Array<string>;
+
+  private series: Array<string>;
+
+  private seriesSlug: Array<string>;
+
   private constructor() {
     this.publishedPostsPath = PostsDataSingleton.getPublishedPostPath();
     this.publishedPostsSlug = this.getPublishedPostSlug();
     this.posts = this.getPostsMethod();
 
     this.bookPath = PostsDataSingleton.getBooksPath();
-    this.books = this.bookPath.map((book) => JSON.parse(String(fs.readFileSync(path.join(BOOKS_PATH, book)))));
+    this.books = this.bookPath.map((book) => JSON.parse(String(fs.readFileSync(path.join(BOOKS_PATH, book))))).sort();
     this.authors = this.getAuthors();
     this.authorSlugs = this.authors.map((author) => stringToSlug(author));
 
     this.editors = this.calcEditors();
     this.editorsSlug = this.editors.map((editor) => stringToSlug(editor));
+
+    this.genres = this.calcGenres();
+    this.genresSlug = this.genres.map((genre) => stringToSlug(genre));
+
+    this.series = this.calcSeries();
+    this.seriesSlug = this.series.map((serie) => stringToSlug(serie));
   }
 
   public static getInstance(): PostsDataSingleton {
@@ -67,6 +81,22 @@ export default class PostsDataSingleton {
 
   public getCaseEditriciSlug(): Array<string> {
     return this.editorsSlug;
+  }
+
+  public getGenres(): Array<string> {
+    return this.genres;
+  }
+
+  public getGenresSlug(): Array<string> {
+    return this.genresSlug;
+  }
+
+  public getSeries(): Array<string> {
+    return this.series;
+  }
+
+  public getSeriesSlug(): Array<string> {
+    return this.seriesSlug;
   }
 
   public getBookByReviewSlug(slug: string): Book | undefined {
@@ -249,6 +279,64 @@ export default class PostsDataSingleton {
     const booksEditors = this.getBookFromEditorSlug(editorSlug);
     const reviews: Array<HomepagePostData> = [];
     booksEditors.forEach((book) => {
+      reviews.push(this.getPostsForHomepageBySlug(book.reviewSlug));
+    });
+    return reviews;
+  }
+
+  /// ///////////////////////////////
+  /// Genres
+  /// ///////////////////////////////
+
+  private calcGenres(): string[] {
+    const genres: Set<string> = new Set();
+    this.books.forEach((book) => {
+      book.genres.forEach((genre) => genres.add(genre.trim()));
+    });
+    return Array.from(genres);
+  }
+
+  public getBookFromGenreSlug(genreSlug: string): Array<Book> {
+    return this.books.filter((book) => {
+      const genres = book.genres.map((genre) => stringToSlug(genre));
+      return genres.includes(genreSlug);
+    });
+  }
+
+  public getFullBooksReviewsFromGenreSlug(genreSlug: string): Array<HomepagePostData> {
+    const booksGenres = this.getBookFromGenreSlug(genreSlug);
+    const reviews: Array<HomepagePostData> = [];
+    booksGenres.forEach((book) => {
+      reviews.push(this.getPostsForHomepageBySlug(book.reviewSlug));
+    });
+    return reviews;
+  }
+
+  /// ///////////////////////////////
+  /// Series
+  /// ///////////////////////////////
+
+  private calcSeries(): string[] {
+    const series: Set<string> = new Set();
+    this.books.forEach((book) => {
+      if (book.series) {
+        book.series.forEach((serie) => series.add(serie.series.trim()));
+      }
+    });
+    return Array.from(series);
+  }
+
+  public getBookFromSerieSlug(serieSlug: string): Array<Book> {
+    return this.books.filter((book) => {
+      const series = book.series?.map((serie) => stringToSlug(serie.series));
+      return series?.includes(serieSlug);
+    });
+  }
+
+  public getFullBooksReviewsFromSerieSlug(serieSlug: string): Array<HomepagePostData> {
+    const booksSeries = this.getBookFromSerieSlug(serieSlug);
+    const reviews: Array<HomepagePostData> = [];
+    booksSeries.forEach((book) => {
       reviews.push(this.getPostsForHomepageBySlug(book.reviewSlug));
     });
     return reviews;
