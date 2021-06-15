@@ -28,6 +28,10 @@ export default class PostsDataSingleton {
 
   private authorSlugs: Array<string>;
 
+  private editors: Array<string>;
+
+  private editorsSlug: Array<string>;
+
   private constructor() {
     this.publishedPostsPath = PostsDataSingleton.getPublishedPostPath();
     this.publishedPostsSlug = this.getPublishedPostSlug();
@@ -37,6 +41,9 @@ export default class PostsDataSingleton {
     this.books = this.bookPath.map((book) => JSON.parse(String(fs.readFileSync(path.join(BOOKS_PATH, book)))));
     this.authors = this.getAuthors();
     this.authorSlugs = this.authors.map((author) => stringToSlug(author));
+
+    this.editors = this.calcEditors();
+    this.editorsSlug = this.editors.map((editor) => stringToSlug(editor));
   }
 
   public static getInstance(): PostsDataSingleton {
@@ -52,6 +59,14 @@ export default class PostsDataSingleton {
 
   public getBooks(): Array<Book> {
     return this.books;
+  }
+
+  public getCaseEditrici(): Array<string> {
+    return this.editors;
+  }
+
+  public getCaseEditriciSlug(): Array<string> {
+    return this.editorsSlug;
   }
 
   public getBookByReviewSlug(slug: string): Book | undefined {
@@ -212,6 +227,31 @@ export default class PostsDataSingleton {
       book.author.forEach((author) => authors.push(author));
     });
     return authors.filter((slug, index) => authors.indexOf(slug) === index);
+  }
+
+  /// ///////////////////////////////
+  /// EDITORS
+  /// ///////////////////////////////
+
+  private calcEditors(): string[] {
+    const editors: Set<string> = new Set();
+    this.books.forEach((book) => {
+      editors.add(book.publisher.trim());
+    });
+    return Array.from(editors);
+  }
+
+  public getBookFromEditorSlug(editorSlug: string): Array<Book> {
+    return this.books.filter((book) => stringToSlug(book.publisher) === editorSlug);
+  }
+
+  public getFullBooksReviewsFromEditorSlug(editorSlug: string): Array<HomepagePostData> {
+    const booksEditors = this.getBookFromEditorSlug(editorSlug);
+    const reviews: Array<HomepagePostData> = [];
+    booksEditors.forEach((book) => {
+      reviews.push(this.getPostsForHomepageBySlug(book.reviewSlug));
+    });
+    return reviews;
   }
 }
 interface PostWithFilepath {
