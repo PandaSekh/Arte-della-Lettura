@@ -29,6 +29,7 @@ export default function CustomImage({
         height={height || 460}
         alt={alt || "Copertina Libro"}
         layout={layout || "intrinsic"}
+        priority
       />
     </div>
   );

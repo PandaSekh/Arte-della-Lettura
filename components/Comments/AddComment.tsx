@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Comment from "../../interfaces/Comment";
+import { Hash } from "../../lib/encryption/crypto";
 import getKey from "../../lib/keyGen";
 import config from "../../website.config.json";
 import InternalLink from "../UtilComponents/InternalLink";
@@ -20,29 +21,66 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
     formState: { errors },
   } = useForm<FormData>();
 
+  useEffect(() => {
+    const loadScriptByURL = (id: string, url: string) => {
+      const scriptExist = document.getElementById(id);
+
+      if (!scriptExist) {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        script.id = id;
+        document.body.appendChild(script);
+      }
+    };
+
+    loadScriptByURL(
+      "recaptcha-key",
+      `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`
+    );
+  }, []);
+
   function sendData(data: FormData) {
     setIsLoading(true);
-    const fullData: Comment = {
-      date: new Date().toLocaleDateString("it-IT"),
-      parentCommentId: parentCommentId || undefined,
-      id: getKey(),
-      username: data.username || "Anonimo",
-      email: data.email,
-      content: data.content,
-      children: [],
-    };
-    fetch(`${config.baseurl}/api/putComment/${slug}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(fullData),
-    }).then((res) => {
-      if (res.ok) {
-        setCommentSent(true);
-        setIsLoading(false);
-        reset({ username: "", email: "", content: "" });
-      }
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: Unreachable code error
+    window.grecaptcha.ready(() => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore: Unreachable code error
+      window.grecaptcha
+        .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, { action: "submit" })
+        .then((token: string) => {
+          const fullData: NewCommentData = {
+            date: new Date().toLocaleDateString("it-IT"),
+            parentCommentId: parentCommentId || undefined,
+            id: getKey(),
+            username: data.username || "Anonimo",
+            email: data.email,
+            content: data.content,
+            children: [],
+            token,
+          };
+          fetch(`${config.baseurl}/api/putComment/${slug}`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(fullData),
+          })
+            .then((res) => {
+              if (res.ok) {
+                setCommentSent(true);
+                setIsLoading(false);
+                reset({ username: "", email: "", content: "" });
+              }
+            })
+            .catch(() => {
+              setCommentSent(true);
+              setIsLoading(false);
+              reset({ username: "", email: "", content: "" });
+            });
+        });
     });
   }
 
@@ -64,7 +102,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                   INVIATO!
                 </span>
                 <span className="font-semibold mr-2 text-left flex-auto ">
-                  Il tuo commento è stato inviato. Una volta approvato comparirà qui
+                  Il tuo commento è stato inviato. Una volta approvato comparirà qui :)
                 </span>
               </div>
             </div>
@@ -75,6 +113,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                   Nome
                 </label>
                 <input
+                  id="username"
                   maxLength={12}
                   placeholder="Anonimo"
                   {...register("username", { minLength: 3, maxLength: 12 })}
@@ -93,6 +132,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                 <input
                   placeholder="Email"
                   type="email"
+                  id="email"
                   {...register("email", { required: true })}
                   key={getKey()}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-md"
@@ -106,6 +146,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                 </label>
                 <textarea
                   placeholder="Ciao!"
+                  id="content"
                   rows={6}
                   maxLength={5000}
                   {...register("content", { required: true, maxLength: 5000, minLength: 15 })}
@@ -128,8 +169,8 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
               </div>
 
               <div className="mb-4 flex items-center	">
-                <input type="checkbox" {...register("email", { required: true })} key={getKey()} />{" "}
-                <label htmlFor="email" className="text-gray-700 text-sm font-bold ml-2">
+                <input type="checkbox" id="terms" {...register("terms", { required: true })} key={getKey()} />{" "}
+                <label htmlFor="terms" className="text-gray-700 text-sm font-bold ml-2">
                   Commentando accetti la{" "}
                   <span className="underline text-customBlue-light">
                     <InternalLink text="Privacy Policy" slug="privacy-policy" />
@@ -137,6 +178,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                   del blog.
                   <span className="text-red-500">*</span>
                 </label>
+                <br />
                 {errors.email && (
                   <span className=" text-xs italic text-red-500">Devi accettare i termini prima di commentare.</span>
                 )}
@@ -163,7 +205,20 @@ type FormData = {
   email: string;
   content: string;
   parentCommentId: string;
+  terms: boolean;
 };
+
+export interface NewCommentData {
+  id: string;
+  username: string;
+  date: string | Date;
+  email: Hash | string;
+  content: string;
+  children: Array<Comment>;
+  parentCommentId?: string;
+  userimageUrl?: string;
+  token: string;
+}
 
 AddComment.defaultProps = {
   parentCommentId: undefined,

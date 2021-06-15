@@ -21,7 +21,7 @@ export default function Comment({ comment, slug }: { comment: IComment; slug: st
   }, [comment]);
 
   return (
-    <div className={`border my-3 mr-2 shadow-lg p-4 w-full ${comment.parentCommentId ? "child" : ""}`}>
+    <div className={`rounded border my-3 mr-2 shadow-lg p-4 w-full ${comment.parentCommentId ? "child" : ""}`}>
       <div className="my-1 flex ">
         {isAdmin ? (
           <Image src="/Panda.svg" width={50} height={50} />
@@ -33,11 +33,11 @@ export default function Comment({ comment, slug }: { comment: IComment; slug: st
           <span className="font-semibold">{comment.username}</span>
         </div>
       </div>
-      <p className="my-1">{comment.content}</p>{" "}
+      <p className="my-1 break-all">{comment.content}</p>{" "}
       <button
         type="button"
         onClick={() => setReply(!reply)}
-        className="hover:text-customBlue outline-none appearance-none select-none	focus:outline-none border-b"
+        className="hover:text-customBlue outline-none appearance-none select-none	focus:outline-none border-b mb-2"
       >
         Rispondi
       </button>

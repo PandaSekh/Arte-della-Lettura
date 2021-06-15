@@ -11,7 +11,7 @@ export default async function getComments(slug: string): Promise<Array<Comment> 
       owner: "PandaSekh",
       repo: "arte-della-lettura",
       path: `comments/${slug}.json`,
-      ref: "comments",
+      ref: "dev",
     });
 
     return JSON.parse(comments.data as unknown as string);

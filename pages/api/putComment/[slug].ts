@@ -2,6 +2,7 @@
 /* eslint-disable no-async-promise-executor */
 import { request } from "@octokit/request";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { NewCommentData } from "../../../components/Comments/AddComment";
 import Comment from "../../../interfaces/Comment";
 import { encrypt } from "../../../lib/encryption/crypto";
 import config from "../../../website.config.json";
@@ -20,9 +21,31 @@ function appendToParent(comments: Array<Comment>, newComment: Comment): Array<Co
 }
 
 export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
-  const newComment: Comment = req.body;
-  newComment.email = encrypt(newComment.email as string);
   return new Promise(async (resolve) => {
+    const requestData: NewCommentData = req.body;
+    const isSpam = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${requestData.token}`,
+      {
+        method: "POST",
+      }
+    )
+      .then((googleRes) => googleRes.json())
+      .then((json) => {
+        return !json.success;
+      });
+
+    const newComment: Comment = {
+      date: requestData.date,
+      parentCommentId: requestData.parentCommentId,
+      id: requestData.id,
+      username: requestData.username,
+      email: requestData.email,
+      content: requestData.content,
+      children: requestData.children,
+    };
+
+    newComment.email = encrypt(newComment.email as string);
+
     const { slug } = req.query;
     try {
       // get the original file with comments
@@ -56,7 +79,6 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
         } else {
           data.push(newComment);
         }
-
         // save the new comment to git
         const update = await request("PUT /repos/{owner}/{repo}/contents/{path}", {
           headers: {
@@ -66,12 +88,11 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           owner: "PandaSekh",
           repo: "arte-della-lettura",
           path: `comments/${slug}.json`,
-          branch: "dev",
+          branch: isSpam ? "commentSpam" : "dev",
           message: `Updated comment on post ${slug}`,
           sha,
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });
-
         fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
           method: "POST",
           headers: {
@@ -92,11 +113,10 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           owner: "PandaSekh",
           repo: "arte-della-lettura",
           path: `comments/${slug}.json`,
-          branch: "dev",
+          branch: isSpam ? "commentSpam" : "dev",
           message: `New comment on post ${slug}`,
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });
-
         fetch(`${config.baseurl}/api/sendEmail/${slug}`, {
           method: "POST",
           headers: {
