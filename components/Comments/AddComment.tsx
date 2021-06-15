@@ -95,7 +95,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
           {commentSent ? (
             <div className="text-center py-4 lg:px-4 ">
               <div
-                className="p-2 bg-customBlue items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
+                className="p-2 bg-customBlue items-center text-indigo-100 leading-none rounded lg:rounded-full flex lg:inline-flex"
                 role="alert"
               >
                 <span className="flex rounded-full bg-dark-white uppercase px-2 py-1 text-xs font-bold mr-3">
@@ -184,12 +184,14 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                 )}
               </div>
 
-              <button
-                type="submit"
-                className="py-2 px-4 rounded border hover:pointer hover:text-customBlue outline-none appearance-none select-none	focus:outline-none"
-              >
-                Invia
-              </button>
+              <div className="m-auto w-min">
+                <button
+                  type="submit"
+                  className="py-2 px-4 rounded border hover:pointer hover:text-customBlue outline-none appearance-none select-none	focus:outline-none"
+                >
+                  Invia
+                </button>
+              </div>
             </form>
           )}
         </>

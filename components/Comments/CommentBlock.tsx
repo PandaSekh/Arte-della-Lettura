@@ -17,7 +17,7 @@ export default function CommentBlock({
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full p-4">
         <p className="mx-auto text-center font-bold	">Commenti</p>
         {comments ? (
           comments.map((c) => <Comment comment={c} key={getKey()} slug={slug} />)
