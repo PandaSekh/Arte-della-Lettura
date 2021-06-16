@@ -16,7 +16,7 @@ export default function RenderPosts({
   return (
     <div className="content grid-cols-1 md:grid-cols-2 grid">
       {posts.map((post) => (
-        <article key={getKey()} className="mx-auto my-0">
+        <article key={getKey()} className="mx-auto my-0 px-6">
           <PostHomepage post={post.content} data={post.data} />
         </article>
       ))}

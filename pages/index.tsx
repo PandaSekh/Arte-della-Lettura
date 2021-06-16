@@ -20,10 +20,10 @@ export default function Index({
   const Pagination = dynamic(() => import("../components/Pagination/Pagination"));
 
   return (
-    <>
+    <div>
       <RenderPosts posts={posts} />
       <Pagination totalCount={postsCount} />
-    </>
+    </div>
   );
 }
 

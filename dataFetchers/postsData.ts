@@ -7,6 +7,7 @@ import stringToSlug from "../lib/stringToSlug";
 
 import Book from "../interfaces/Book";
 import Post from "../interfaces/Post";
+import getArraySample from "../lib/random/arraySample";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
 const BOOKS_PATH = path.join(process.cwd(), "books");
@@ -340,6 +341,14 @@ export default class PostsDataSingleton {
       reviews.push(this.getPostsForHomepageBySlug(book.reviewSlug));
     });
     return reviews;
+  }
+
+  /// ///////////////////////////////
+  /// Random
+  /// ///////////////////////////////
+
+  public getRandomBooks(number: number): Array<Book> {
+    return getArraySample(this.books, number);
   }
 }
 interface PostWithFilepath {

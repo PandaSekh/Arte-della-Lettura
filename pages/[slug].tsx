@@ -30,7 +30,7 @@ export default function PostPage({ source, frontMatter, relatedPosts, commentsDa
   const RelatedPosts = dynamic(() => import("../components/RelatedPosts/RelatedPosts"));
 
   return (
-    <>
+    <div>
       <NextSeo
         title={frontMatter.title}
         openGraph={{
@@ -53,7 +53,7 @@ export default function PostPage({ source, frontMatter, relatedPosts, commentsDa
       </article>
       <RelatedPosts posts={relatedPosts} />
       <CommentBlock slug={frontMatter.slug} comments={commentsData} />
-    </>
+    </div>
   );
 }
 

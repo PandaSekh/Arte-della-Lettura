@@ -6,15 +6,21 @@ import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import NProgress from "nprogress";
+import { useEffect } from "react";
 import SEO from "../seo.config";
 import SiteNavSchema from "../schemas/SiteNavSchema";
 import LogoSchema from "../schemas/LogoSchema";
 import BreadcrumbsSchema from "../schemas/BreadcrumbsSchema";
+import Book from "../interfaces/Book";
+import Sidebar from "../components/Sidebar/Sidebar";
+import randomPosts from "../src/data/random-posts.json";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
-  Router.events.on("routeChangeStart", () => NProgress.start());
-  Router.events.on("routeChangeComplete", () => NProgress.done());
-  Router.events.on("routeChangeError", () => NProgress.done());
+  useEffect(() => {
+    Router.events.on("routeChangeStart", () => NProgress.start());
+    Router.events.on("routeChangeComplete", () => NProgress.done());
+    Router.events.on("routeChangeError", () => NProgress.done());
+  }, [router, Router]);
 
   const Navbar = dynamic(() => import("../components/Header/NavBar/Navbar"));
   const Footer = dynamic(() => import("../components/Footer/Footer"));
@@ -40,29 +46,6 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="shortcut icon" href="/favicon.png" />
-        {/* <script
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `(function(a,b,c){var d=a.history,e=document,f=navigator||{},g=localStorage,
-					h=encodeURIComponent,i=d.pushState,k=function(){return Math.random().toString(36)},
-					l=function(){return g.cid||(g.cid=k()),g.cid},m=function(r){var s=[];for(var t in r)
-					r.hasOwnProperty(t)&&void 0!==r[t]&&s.push(h(t)+"="+h(r[t]));return s.join("&")},
-					n=function(r,s,t,u,v,w,x){var z="https://www.google-analytics.com/collect",
-					A=m({v:"1",ds:"web",aip:c.anonymizeIp?1:void 0,tid:b,cid:l(),t:r||"pageview",
-					sd:c.colorDepth&&screen.colorDepth?screen.colorDepth+"-bits":void 0,dr:e.referrer||
-					void 0,dt:e.title,dl:e.location.origin+e.location.pathname+e.location.search,ul:c.language?
-					(f.language||"").toLowerCase():void 0,de:c.characterSet?e.characterSet:void 0,
-					sr:c.screenSize?(a.screen||{}).width+"x"+(a.screen||{}).height:void 0,vp:c.screenSize&&
-					a.visualViewport?(a.visualViewport||{}).width+"x"+(a.visualViewport||{}).height:void 0,
-					ec:s||void 0,ea:t||void 0,el:u||void 0,ev:v||void 0,exd:w||void 0,exf:"undefined"!=typeof x&&
-					!1==!!x?0:void 0});if(f.sendBeacon)f.sendBeacon(z,A);else{var y=new XMLHttpRequest;
-					y.open("POST",z,!0),y.send(A)}};d.pushState=function(r){return"function"==typeof d.onpushstate&&
-					d.onpushstate({state:r}),setTimeout(n,c.delay||10),i.apply(d,arguments)},n(),
-					a.ma={trackEvent:function o(r,s,t,u){return n("event",r,s,t,u)},
-					trackException:function q(r,s){return n("exception",null,null,null,null,r,s)}}})
-					(window,"${process.env.GA_ANALYTICS_CODE}",{anonymizeIp:true,colorDepth:true,characterSet:true,screenSize:true,language:true});`,
-          }}
-        /> */}
         <script data-goatcounter="https://artedellalettura.goatcounter.com/count" async src="//gc.zgo.at/count.js" />
       </Head>
       <DefaultSeo {...SEO} />
@@ -71,8 +54,10 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
       <BreadcrumbsSchema url={router.asPath} />
       <DarkModeButton />
       <Navbar />
-      <main className="flex flex-wrap container mx-auto sm:px-16 justify-between p-4">
+      <main className="flex container mx-auto justify-between px-8">
+        {/* <main className="flex flex-wrap container mx-auto sm:px-16 justify-between p-2"> */}
         <Component {...pageProps} key={router.route} />
+        <Sidebar randomPosts={randomPosts as unknown as Array<Book>} />
       </main>
       <Footer />
       <style jsx global>

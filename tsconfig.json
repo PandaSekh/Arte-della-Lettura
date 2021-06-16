@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "downlevelIteration": true,
     "importHelpers": true,
@@ -23,7 +23,14 @@
     "dataFetchers/**/*",
     "interfaces/**/*",
     "lib/**/*",
-    "schemas/**/*"
+    "schemas/**/*",
+    "src/**/*",
+    "@types/**/*"
   ],
-  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx", "**/*.spec.js"]
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx", "**/*.spec.js"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
 }
