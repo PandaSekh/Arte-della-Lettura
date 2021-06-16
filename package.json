@@ -3,14 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepareData": "yarn genRandomPosts && yarn genSearchIndex && yarn genSearchData",
     "genRandomPosts": "ts-node src/lib/generateRandomPosts.ts",
-    "dev": "yarn genRandomPosts && next dev",
+    "genSearchIndex": "ts-node src/lib/generateFuseIndex.ts",
+    "genSearchData": "ts-node src/lib/generateFuseData.ts",
+    "dev": "yarn prepareData && next dev",
     "build": "yarn genRandomPosts && next build",
     "start": "next start",
     "lint": "npx eslint --fix . --ext .js,.jsx,.ts,.tsx ."
   },
   "dependencies": {
     "@octokit/request": "^5.5.0",
+    "fuse.js": "^6.4.6",
     "gray-matter": "^4.0.2",
     "jdenticon": "^3.1.0",
     "next": "^10.0.3",
