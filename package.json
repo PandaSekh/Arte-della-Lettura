@@ -10,7 +10,7 @@
     "dev": "yarn prepareData && next dev",
     "build": "yarn prepareData && next build",
     "start": "next start",
-    "lint": "npx eslint --fix . --ext .js,.jsx,.ts,.tsx ."
+    "lint": "next lint"
   },
   "dependencies": {
     "@octokit/request": "^5.5.0",
@@ -42,6 +42,7 @@
     "autoprefixer": "^10.2.5",
     "eslint": "^7.25.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-next": "^11.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
