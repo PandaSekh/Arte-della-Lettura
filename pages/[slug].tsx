@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
+// import { motion } from "framer-motion";
 import PostDataSingleton from "../dataFetchers/postsData";
 import ArticleSchema from "../schemas/ArticleSchema";
 import RelatedPostsSingleton, { RelatedPost } from "../dataFetchers/relatedPostsData";

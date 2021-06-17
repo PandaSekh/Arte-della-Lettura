@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
+
 export default function GoodReads(): JSX.Element {
   return (
-    <div className="w-10 h-10">
+    <motion.div className="w-10 h-10" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
       <a href="https://www.goodreads.com/user/show/82308411-alessio">
         <svg xmlns="http://www.w3.org/2000/svg" aria-label="Goodreads" role="img" viewBox="0 0 512 512">
           <rect width="512" height="512" rx="15%" fill="#ece9d4" />
@@ -10,6 +12,6 @@ export default function GoodReads(): JSX.Element {
           />
         </svg>
       </a>
-    </div>
+    </motion.div>
   );
 }

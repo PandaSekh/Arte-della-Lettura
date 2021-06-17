@@ -12,18 +12,15 @@
 // });
 
 const nextConfiguration = {
-	poweredByHeader: false,
-	future: {
-		webpack5: true,
-	},
+  poweredByHeader: false,
 };
 
 const withPlugins = require("next-compose-plugins");
 const PWA = require("next-pwa")({
-	pwa: {
-		dest: "public",
-		disable: process.env.NODE_ENV === "development",
-	},
+  pwa: {
+    dest: "public",
+    disable: process.env.NODE_ENV === "development",
+  },
 });
 
 module.exports = withPlugins([PWA], nextConfiguration);

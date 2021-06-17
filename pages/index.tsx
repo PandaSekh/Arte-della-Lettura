@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import RenderPosts from "../components/Homepage/RenderPosts";
 import config from "../website.config.json";
 import PostDataSingleton from "../dataFetchers/postsData";
+import SearchSchema from "../schemas/SearchSchema";
 
 export default function Index({
   posts,
@@ -23,6 +24,7 @@ export default function Index({
     <div>
       <RenderPosts posts={posts} />
       <Pagination totalCount={postsCount} />
+      <SearchSchema />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-
+// import { motion } from "framer-motion";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function PostHomepage({ post, data }: { post: string; data: { [key: string]: any } }): JSX.Element {
   const Link = dynamic(() => import("next/link"));
@@ -23,7 +23,9 @@ export default function PostHomepage({ post, data }: { post: string; data: { [ke
       <div className="homePageImage grid m-auto my-2 w-72 h-80 relative transition-opacity opacity-100 hover:opacity-80">
         <Link href={`/${encodeURIComponent(data.slug)}`}>
           <a>
+            {/* <motion.figure layoutId={`image-${data.slug}`}> */}
             <Image src={imageSrc} loading="lazy" alt={data.title} layout="fill" objectFit="contain" />
+            {/* </motion.figure> */}
           </a>
         </Link>
       </div>

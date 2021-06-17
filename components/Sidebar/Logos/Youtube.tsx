@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
+
 export default function Youtube(): JSX.Element {
   return (
-    <div className="w-10 h-10">
+    <motion.div className="w-10 h-10" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
       <a href="https://www.youtube.com/channel/UCwy9OpiuWjhZyBcAjuXz02w">
         <svg xmlns="http://www.w3.org/2000/svg" aria-label="YouTube" role="img" viewBox="0 0 512 512" fill="#ed1d24">
           <rect width="512" height="512" rx="15%" />
@@ -11,6 +13,6 @@ export default function Youtube(): JSX.Element {
           <path d="m220 203v106l93-53" />
         </svg>
       </a>
-    </div>
+    </motion.div>
   );
 }
