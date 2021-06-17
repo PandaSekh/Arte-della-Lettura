@@ -1,5 +1,4 @@
 export default function SvgHeader(): JSX.Element {
-  console.log("header render");
   return (
     <svg
       width="588.15"

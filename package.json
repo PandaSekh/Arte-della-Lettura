@@ -9,7 +9,8 @@
     "genSearchData": "ts-node src/lib/generateFuseData.ts",
     "dev": "yarn prepareData && next dev",
     "build": "yarn prepareData && next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@octokit/request": "^5.5.0",
@@ -17,7 +18,7 @@
     "fuse.js": "^6.4.6",
     "gray-matter": "^4.0.2",
     "jdenticon": "^3.1.0",
-    "next": "10.2.3",
+    "next": "^11.0.0",
     "next-compose-plugins": "^2.2.1",
     "next-mdx-remote": "^3.0.2",
     "next-pwa": "^5.0.0",

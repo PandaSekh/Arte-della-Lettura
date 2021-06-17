@@ -8,7 +8,7 @@ import Input from "../components/Search/Input";
 import PostHomepage from "../components/Homepage/PostHomepage";
 
 export default function Search(): JSX.Element {
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<Post[]>([]);
   const options = {
     keys: ["title", "content"],
     minMatchCharLength: 2,
