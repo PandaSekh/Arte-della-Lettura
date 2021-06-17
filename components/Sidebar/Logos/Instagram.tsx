@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
+
 export default function Instagram(): JSX.Element {
   return (
-    <div className="w-10 h-10">
+    <motion.div className="w-10 h-10" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
       <a href="https://www.instagram.com/arte_della_lettura/">
         <svg xmlns="http://www.w3.org/2000/svg" aria-label="Instagram" role="img" viewBox="0 0 512 512">
           <rect width="512" height="512" rx="15%" id="b" />
@@ -22,6 +24,6 @@ export default function Instagram(): JSX.Element {
           </g>
         </svg>
       </a>
-    </div>
+    </motion.div>
   );
 }

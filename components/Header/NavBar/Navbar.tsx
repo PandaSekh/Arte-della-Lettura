@@ -1,10 +1,13 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import SvgHeader from "../SvgHeader";
+import AnimatedHeader from "../AnimatedHeader";
+// import SvgHeader from "../SvgHeader";
+import DesktopHeader from "./DesktopHeader";
+// import MobileHeader from "./MobileHeader";
 
 export default function Navbar(): JSX.Element {
   const MobileHeader = dynamic(() => import("./MobileHeader"));
-  const DesktopHeader = dynamic(() => import("./DesktopHeader"));
+  // const DesktopHeader = dynamic(() => import("./DesktopHeader"));
 
   return (
     <header>
@@ -14,7 +17,8 @@ export default function Navbar(): JSX.Element {
       <div className="logo max-h-full w-4/6 m-auto lg:w-2/5">
         <Link href="/" prefetch={false}>
           <a>
-            <SvgHeader />
+            {/* <SvgHeader /> */}
+            <AnimatedHeader />
           </a>
         </Link>
       </div>

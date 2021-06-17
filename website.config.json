@@ -13,6 +13,10 @@
     {
       "path": "/about",
       "name": "About"
+    },
+    {
+      "path": "/cerca",
+      "name": "Cerca"
     }
   ]
 }

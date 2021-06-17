@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import dynamic from "next/dynamic";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import IComment from "../../interfaces/Comment";
 import getKey from "../../lib/keyGen";
 
@@ -24,19 +25,21 @@ export default function CommentBlock({
         ) : (
           <p className="mx-auto text-center">Non c&apos;è ancora nessun commento :(</p>
         )}
-        {showAddComment ? (
-          <AddComment slug={slug} />
-        ) : (
-          <div className="mx-auto flex my-6">
-            <button
-              type="submit"
-              className="mx-auto py-2 px-4 rounded border hover:pointer hover:text-customBlue outline-none appearance-none select-none	focus:outline-none"
-              onClick={() => setShowAddComment(true)}
-            >
-              Commenta
-            </button>
-          </div>
-        )}
+        <AnimatePresence>
+          {showAddComment ? (
+            <AddComment slug={slug} />
+          ) : (
+            <div className="mx-auto flex my-6">
+              <button
+                type="submit"
+                className="mx-auto py-2 px-4 rounded border hover:pointer hover:text-customBlue outline-none appearance-none select-none	focus:outline-none"
+                onClick={() => setShowAddComment(true)}
+              >
+                Commenta
+              </button>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );

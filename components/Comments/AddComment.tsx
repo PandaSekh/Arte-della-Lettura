@@ -1,18 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { motion } from "framer-motion";
 import Comment from "../../interfaces/Comment";
 import { Hash } from "../../lib/encryption/crypto";
 import getKey from "../../lib/keyGen";
 import config from "../../website.config.json";
 import InternalLink from "../UtilComponents/InternalLink";
+import LoadingComponent from "../Loaders/LoadingSpinner";
 
 export default function AddComment({ slug, parentCommentId }: { slug: string; parentCommentId?: string }): JSX.Element {
   const [commentSent, setCommentSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const LoadingComponent = dynamic(() => import("../Loaders/LoadingSpinner"));
 
   const {
     register,
@@ -22,11 +22,12 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
   } = useForm<FormData>();
 
   useEffect(() => {
+    let script: HTMLScriptElement;
     const loadScriptByURL = (id: string, url: string) => {
       const scriptExist = document.getElementById(id);
 
       if (!scriptExist) {
-        const script = document.createElement("script");
+        script = document.createElement("script");
         script.type = "text/javascript";
         script.src = url;
         script.id = id;
@@ -38,6 +39,10 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
       "recaptcha-key",
       `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`
     );
+
+    return () => {
+      script.parentElement?.removeChild(script);
+    };
   }, []);
 
   function sendData(data: FormData) {
@@ -93,21 +98,32 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
       ) : (
         <>
           {commentSent ? (
-            <div className="text-center py-4 lg:px-4 ">
+            <motion.div
+              className="text-center py-4 lg:px-4 "
+              initial={{ opacity: 0, y: 50, scale: 0.3 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
+            >
               <div
-                className="p-2 bg-customBlue items-center text-indigo-100 leading-none rounded lg:rounded-full flex lg:inline-flex"
+                className="p-2  items-center text-indigo-100 leading-none rounded lg:rounded-full flex lg:inline-flex border bg-dark-white"
                 role="alert"
               >
-                <span className="flex rounded-full bg-dark-white uppercase px-2 py-1 text-xs font-bold mr-3">
+                <span className="flex rounded-full  uppercase px-2 py-1 text-xs font-bold mr-3 bg-customBlue">
                   INVIATO!
                 </span>
                 <span className="font-semibold mr-2 text-left flex-auto ">
                   Il tuo commento è stato inviato. Una volta approvato comparirà qui :)
                 </span>
               </div>
-            </div>
+            </motion.div>
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border">
+            <motion.form
+              onSubmit={handleSubmit(onSubmit)}
+              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border"
+              initial={{ opacity: 0, y: 50, scale: 0.3 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
+            >
               <div className="mb-4">
                 <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">
                   Nome
@@ -169,7 +185,13 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
               </div>
 
               <div className="mb-4 flex items-center	">
-                <input type="checkbox" id="terms" {...register("terms", { required: true })} key={getKey()} />{" "}
+                <input
+                  type="checkbox"
+                  id="terms"
+                  {...register("terms", { required: true })}
+                  key={getKey()}
+                  className="h-5 w-5 border border-gray-300 rounded-md checked:bg-blue-600 checked:border-transparent focus:outline-none"
+                />{" "}
                 <label htmlFor="terms" className="text-gray-700 text-sm font-bold ml-2">
                   Commentando accetti la{" "}
                   <span className="underline text-customBlue-light">
@@ -192,7 +214,7 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
                   Invia
                 </button>
               </div>
-            </form>
+            </motion.form>
           )}
         </>
       )}

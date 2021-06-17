@@ -8,9 +8,9 @@ export default function MobileHeader(): JSX.Element {
   const burgerRef = createRef<HTMLButtonElement>();
   const navRef = createRef<HTMLElement>();
   const router = useRouter();
-  const documentSwitch = document.querySelector(".switch");
 
   function handleMenuClick() {
+    const documentSwitch = document.querySelector(".switch");
     if (burgerRef.current && navRef.current && documentSwitch) {
       burgerRef.current.classList.toggle("isOpen");
       navRef.current.classList.toggle("isOpen");
