@@ -1,6 +1,6 @@
 {
   "name": "arte-della-lettura",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "prepareData": "yarn genRandomPosts && yarn genSearchIndex && yarn genSearchData",

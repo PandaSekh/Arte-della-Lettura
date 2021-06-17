@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BookWithTitleSlugAuthorRating } from "../../dataFetchers/postsData";
-import InlineStars from "../UtilComponents/ComponentWithStarsInline";
+import InlineStars from "./InlineStars";
 
 export default function BookTitleWithStars({
   bookTitleSlug,
@@ -13,5 +13,5 @@ export default function BookTitleWithStars({
     </Link>
   );
 
-  return <InlineStars Component={LinkComponent} rating={bookTitleSlug.rating} />;
+  return <InlineStars Component={LinkComponent} rating={bookTitleSlug.rating} type="book" />;
 }
