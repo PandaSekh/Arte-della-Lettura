@@ -100,8 +100,9 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
           {commentSent ? (
             <motion.div
               className="text-center py-4 lg:px-4 "
-              animate={{ scale: [0, 1] }}
-              transition={{ duration: 0.2, ease: "easeIn" }}
+              initial={{ opacity: 0, y: 50, scale: 0.3 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
             >
               <div
                 className="p-2  items-center text-indigo-100 leading-none rounded lg:rounded-full flex lg:inline-flex border bg-dark-white"
@@ -119,8 +120,9 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
             <motion.form
               onSubmit={handleSubmit(onSubmit)}
               className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border"
-              animate={{ opacity: [0.2, 1] }}
-              transition={{ duration: 0.2, ease: "easeIn" }}
+              initial={{ opacity: 0, y: 50, scale: 0.3 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
             >
               <div className="mb-4">
                 <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">
