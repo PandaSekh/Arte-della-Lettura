@@ -1,34 +1,44 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import "../styles/style.css";
-import Head from "next/head";
-import Router from "next/router";
+// import Head from "next/head";
+// import Router from "next/router";
 import { AppProps } from "next/app";
-import { DefaultSeo } from "next-seo";
-import dynamic from "next/dynamic";
-import NProgress from "nprogress";
-import { useEffect } from "react";
-import SEO from "../seo.config";
-import SiteNavSchema from "../schemas/SiteNavSchema";
-import LogoSchema from "../schemas/LogoSchema";
-import BreadcrumbsSchema from "../schemas/BreadcrumbsSchema";
-import Book from "../interfaces/Book";
-import Sidebar from "../components/Sidebar/Sidebar";
-import randomPosts from "../src/data/random-posts.json";
+// import { DefaultSeo } from "next-seo";
+// import dynamic from "next/dynamic";
+// import NProgress from "nprogress";
+// import { useEffect, memo } from "react";
+// import { AnimateSharedLayout } from "framer-motion";
+// import SEO from "../seo.config";
+// import SiteNavSchema from "../schemas/SiteNavSchema";
+// import LogoSchema from "../schemas/LogoSchema";
+// import BreadcrumbsSchema from "../schemas/BreadcrumbsSchema";
+// import Book from "../interfaces/Book";
+// import Sidebar from "../components/Sidebar/Sidebar";
+// import randomPosts from "../src/data/random-posts.json";
+// import Navbar from "../components/Header/NavBar/Navbar";
+import Layout from "../components/Layout/Layout";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
-  useEffect(() => {
-    Router.events.on("routeChangeStart", () => NProgress.start());
-    Router.events.on("routeChangeComplete", () => NProgress.done());
-    Router.events.on("routeChangeError", () => NProgress.done());
-  }, [router, Router]);
+  // useEffect(() => {
+  //   Router.events.on("routeChangeStart", () => NProgress.start());
+  //   Router.events.on("routeChangeComplete", () => NProgress.done());
+  //   Router.events.on("routeChangeError", () => NProgress.done());
+  // }, [router, Router]);
 
-  const Navbar = dynamic(() => import("../components/Header/NavBar/Navbar"));
-  const Footer = dynamic(() => import("../components/Footer/Footer"));
-  const DarkModeButton = dynamic(() => import("../components/Header/DarkModeButton"));
+  // const Navbar = dynamic(() => import("../components/Header/NavBar/Navbar"));
+  // const Footer = dynamic(() => import("../components/Footer/Footer"));
+  // const DarkModeButton = dynamic(() => import("../components/Header/DarkModeButton"));
+
+  // const MemoNavbar = memo(() => {
+  //   return <Navbar />;
+  // });
 
   return (
     <>
-      <Head>
+      <Layout>
+        <Component {...pageProps} router={router} />
+      </Layout>
+      {/* <Head>
         <meta name="application-name" content="Arte della Lettura" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -51,15 +61,17 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
       <DefaultSeo {...SEO} />
       <SiteNavSchema />
       <LogoSchema />
-      <BreadcrumbsSchema url={router.asPath} />
-      <DarkModeButton />
-      <Navbar />
-      <main className="flex container mx-auto justify-between px-8">
-        {/* <main className="flex flex-wrap container mx-auto sm:px-16 justify-between p-2"> */}
-        <Component {...pageProps} key={router.route} />
-        <Sidebar randomPosts={randomPosts as unknown as Array<Book>} />
-      </main>
-      <Footer />
+      <BreadcrumbsSchema url={router.asPath} />{" "}
+      <AnimateSharedLayout>
+        <DarkModeButton />
+        {/* <Navbar /> */}
+      {/* <MemoNavbar />
+        <main className="flex container mx-auto justify-between px-8">
+          <Component {...pageProps} key={router.route} />
+          <Sidebar randomPosts={randomPosts as unknown as Array<Book>} />
+        </main>
+        <Footer />
+      </AnimateSharedLayout> */}
       <style jsx global>
         {`
           :root {
