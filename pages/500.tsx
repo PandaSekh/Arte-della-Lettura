@@ -8,7 +8,13 @@ export default function Custom500(): JSX.Element {
     <div className="flex flex-col">
       <h1>500 - Qualcosa di strano è successo</h1>
       <h4>
-        <button onClick={() => router.back()} onKeyPress={() => router.back()} type="button" role="link">
+        <button
+          onClick={() => router.back()}
+          onKeyPress={() => router.back()}
+          type="button"
+          role="link"
+          aria-roledescription="link"
+        >
           👈 Torna indietro
         </button>
       </h4>

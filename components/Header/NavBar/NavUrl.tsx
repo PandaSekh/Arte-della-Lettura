@@ -25,6 +25,7 @@ export default function NavUrl({
         <a
           onClick={onClickFunction}
           role="link"
+          aria-roledescription="link"
           tabIndex={0}
           className={router.pathname === `${path}` ? `border-b-2 text-customBlue ${extraClass}` : `${extraClass}`}
         >
@@ -38,5 +39,5 @@ export default function NavUrl({
 NavUrl.defaultProps = {
   liClass: "",
   extraClass: "",
-  onClickFunction: () => {},
+  onClickFunction: () => { },
 };
