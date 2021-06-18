@@ -39,5 +39,5 @@ export default function NavUrl({
 NavUrl.defaultProps = {
   liClass: "",
   extraClass: "",
-  onClickFunction: () => { },
+  onClickFunction: () => {},
 };

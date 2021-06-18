@@ -35,6 +35,8 @@ export default function EmojiBlock({
   ));
 
   return (
-    <div className="flex flex-row mx-auto content-between gap-12 flex-wrap my-12 justify-center	px-4">{mappedReactions}</div>
+    <div className="flex flex-row mx-auto content-between gap-12 flex-wrap my-12 justify-center	px-4">
+      {mappedReactions}
+    </div>
   );
 }
