@@ -8,6 +8,7 @@ export default function SvgHeader(): JSX.Element {
       className="stroke-current fill-current text-dark-black dark:text-dark-white mx-auto my-10 w-full"
       aria-labelledby="artedellaletturaTitle"
       role="img"
+      aria-roledescription="figure"
     >
       <title id="artedellaletturaTitle">Arte della Lettura</title>
       <g

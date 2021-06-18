@@ -1,7 +1,15 @@
 import dynamic from "next/dynamic";
 // import { motion } from "framer-motion";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function PostHomepage({ post, data }: { post: string; data: { [key: string]: any } }): JSX.Element {
+export default function PostHomepage({
+  post,
+  data,
+  mainPost,
+}: {
+  post: string;
+  data: { [key: string]: any };
+  mainPost?: boolean;
+}): JSX.Element {
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));
   const DateUnderPost = dynamic(() => import("../Post/DateUnderPost"));
@@ -24,7 +32,13 @@ export default function PostHomepage({ post, data }: { post: string; data: { [ke
         <Link href={`/${encodeURIComponent(data.slug)}`}>
           <a>
             {/* <motion.figure layoutId={`image-${data.slug}`}> */}
-            <Image src={imageSrc} loading="lazy" alt={data.title} layout="fill" objectFit="contain" />
+            <Image
+              src={imageSrc}
+              loading={mainPost ? "eager" : "lazy"}
+              alt={data.title}
+              layout="fill"
+              objectFit="contain"
+            />
             {/* </motion.figure> */}
           </a>
         </Link>
@@ -57,3 +71,7 @@ export default function PostHomepage({ post, data }: { post: string; data: { [ke
     </div>
   );
 }
+
+PostHomepage.defaultProps = {
+  mainPost: false,
+};

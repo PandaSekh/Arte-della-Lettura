@@ -23,6 +23,7 @@ export default function AnimatedHeader(): JSX.Element {
       className="item stroke-current fill-current text-dark-black dark:text-dark-white mx-auto my-10 w-full"
       aria-labelledby="artedellaletturaTitle"
       role="img"
+      aria-roledescription="figure"
     >
       <motion.g
         id="svgGroup"

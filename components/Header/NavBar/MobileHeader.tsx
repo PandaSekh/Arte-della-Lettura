@@ -24,7 +24,14 @@ export default function MobileHeader(): JSX.Element {
 
   return (
     <>
-      <button ref={burgerRef} id="burger" className="openMainNav hidden" onClick={handleMenuClick} type="button">
+      <button
+        ref={burgerRef}
+        id="burger"
+        className="openMainNav hidden"
+        onClick={handleMenuClick}
+        type="button"
+        aria-label="menu"
+      >
         <span className="burger" />
         <style jsx>
           {`

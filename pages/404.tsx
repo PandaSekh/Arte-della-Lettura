@@ -8,7 +8,13 @@ export default function Custom404(): JSX.Element {
     <div className="flex flex-col">
       <h1>404 - La pagina non esiste!</h1>
       <h4 className="underline">
-        <button onClick={() => router.back()} onKeyPress={() => router.back()} type="button" role="link">
+        <button
+          onClick={() => router.back()}
+          onKeyPress={() => router.back()}
+          type="button"
+          role="link"
+          aria-roledescription="link"
+        >
           👈 Torna indietro
         </button>
       </h4>
