@@ -14,3 +14,7 @@ export interface EmojiAction {
   type: "i";
   emoji: EmojiInterface;
 }
+
+export interface Reactions {
+  [key: string]: number;
+}

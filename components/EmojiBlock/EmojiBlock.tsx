@@ -23,7 +23,10 @@ export default function EmojiBlock({
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ label: emoji.label, counter: emoji.counter }),
+      body: JSON.stringify({
+        label: emoji.label,
+        counter: emoji.counter,
+      }),
     });
   }
 
@@ -31,5 +34,7 @@ export default function EmojiBlock({
     <EmojiCounter key={emoji.label} emoji={emoji} value={emoji.counter} onUpdate={updateEmoji} />
   ));
 
-  return <div className="flex flex-row mx-auto content-between gap-x-12 w-max flex-wrap my-12">{mappedReactions}</div>;
+  return (
+    <div className="flex flex-row mx-auto content-between gap-12 flex-wrap my-12 justify-center	">{mappedReactions}</div>
+  );
 }

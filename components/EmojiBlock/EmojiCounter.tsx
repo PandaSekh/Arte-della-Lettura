@@ -75,7 +75,7 @@ export default function EmojiCounter({
     clearTimeout(delayDebounceFn);
     delayDebounceFn = setTimeout(() => {
       onUpdate({ emoji: emoji.emoji, label: emoji.label, counter: emojiCount });
-    }, 1500);
+    }, 1000);
   }, [emojiCount]);
 
   return (
@@ -98,7 +98,7 @@ export default function EmojiCounter({
         className="rounded-full h-8 w-8 flex absolute -top-5 -left-2.5 border border-black border-solid"
         style={{ backgroundColor: "#f55742", color: "#fefefe", zIndex: -5 }}
       >
-        <span className="m-auto font-bold ">{emojiCount}</span>
+        <span className="m-auto font-bold select-none">{emojiCount}</span>
       </div>
     </span>
   );

@@ -58,7 +58,7 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
         owner: "PandaSekh",
         repo: "arte-della-lettura",
         path: `comments/${slug}.json`,
-        ref: "dev",
+        ref: "prod",
       }).catch((e) => {
         if (e.status !== 404) throw new Error(e);
       });
@@ -88,7 +88,7 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           owner: "PandaSekh",
           repo: "arte-della-lettura",
           path: `comments/${slug}.json`,
-          branch: isSpam ? "commentSpam" : "dev",
+          branch: isSpam ? "commentSpam" : "prod",
           message: `Updated comment on post ${slug}`,
           sha,
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
@@ -113,7 +113,7 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           owner: "PandaSekh",
           repo: "arte-della-lettura",
           path: `comments/${slug}.json`,
-          branch: isSpam ? "commentSpam" : "dev",
+          branch: isSpam ? "commentSpam" : "prod",
           message: `New comment on post ${slug}`,
           content: Buffer.from(JSON.stringify(data), "ascii").toString("base64"),
         });

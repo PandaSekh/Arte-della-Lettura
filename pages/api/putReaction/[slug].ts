@@ -2,6 +2,7 @@
 /* eslint-disable no-async-promise-executor */
 import { request } from "@octokit/request";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { Reactions } from "../../../components/EmojiBlock/types";
 
 // function merge(array: Array<EmojiGit>, newEmoji: EmojiGit): Array<EmojiGit> {
 //   const { label } = newEmoji;
@@ -17,22 +18,24 @@ import type { NextApiRequest, NextApiResponse } from "next";
 //   return array;
 // }
 
-function merge(map: Map<string, number>, newEmoji: EmojiBody): Map<string, number> {
-  if (map.has(newEmoji.label)) {
-    // TODO
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    let count = map.get(newEmoji.label)!;
-    count += newEmoji.counter;
-    map.set(newEmoji.label, count);
+function merge(map: Reactions, newEmoji: EmojiBody): Reactions {
+  // console.log(`Merge map: ${JSON.stringify(map, null, 2)}`);
+  // console.log(`newEmoji: ${JSON.stringify(newEmoji, null, 2)}`);
+  if (map[newEmoji.label]) {
+    let count = map[newEmoji.label];
+    count = newEmoji.counter;
+    map[newEmoji.label] = count;
   } else {
-    map.set(newEmoji.label, newEmoji.counter);
+    map[newEmoji.label] = newEmoji.counter;
   }
+  // console.log(`End Merge map: ${JSON.stringify(map, null, 2)}`);
   return map;
 }
 
 export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   return new Promise(async (resolve) => {
     const updatedEmoji: EmojiBody = req.body;
+    // console.log("UpdatedEmoji: ", JSON.stringify(updatedEmoji, null, 2));
     const { slug } = req.query;
 
     try {
@@ -46,10 +49,12 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
         owner: "PandaSekh",
         repo: "arte-della-lettura",
         path: `reactions/${slug}.json`,
-        ref: "dev",
+        ref: "prod",
       }).catch((e) => {
         if (e.status !== 404) throw new Error(e);
       });
+
+      // console.log("prevReactions: ", JSON.stringify(prevReactions, null, 2));
 
       if (prevReactions) {
         // get the data from the base64 encoded content. Disabling things because it actually exist. Might need to update this once I understand how this library handles types
@@ -62,7 +67,8 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
         const { sha } = prevReactions.data;
 
         // merge
-        const dataToSave: Map<string, number> = merge(data, updatedEmoji);
+        const dataToSave: Reactions = merge(data, updatedEmoji);
+        // console.log("after merge: ", JSON.stringify(dataToSave, null, 2));
         // save the new comment to git
         request("PUT /repos/{owner}/{repo}/contents/{path}", {
           headers: {
@@ -72,18 +78,21 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           owner: "PandaSekh",
           repo: "arte-della-lettura",
           path: `reactions/${slug}.json`,
-          branch: "dev",
+          branch: "prod",
           message: `Updated reactions on post ${slug}`,
           sha,
           content: Buffer.from(JSON.stringify(dataToSave), "ascii").toString("base64"),
         }).then((response) => {
-          res.status(response.status);
+          res.status(response.status).json(JSON.stringify(response.data.commit.message));
           resolve();
         });
       } else {
+        // console.log("no prev data");
         // merge
-        const dataToSave = new Map<string, number>();
-        dataToSave.set(updatedEmoji.label, updatedEmoji.counter);
+        const dataToSave: Reactions = {};
+        dataToSave[updatedEmoji.label] = updatedEmoji.counter;
+
+        // console.log("Uploading this: ", dataToSave);
         // save the new comment to git
         request("PUT /repos/{owner}/{repo}/contents/{path}", {
           headers: {
@@ -93,7 +102,7 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           owner: "PandaSekh",
           repo: "arte-della-lettura",
           path: `reactions/${slug}.json`,
-          branch: "dev",
+          branch: "prod",
           message: `Updated reactions on post ${slug}`,
           content: Buffer.from(JSON.stringify(dataToSave), "ascii").toString("base64"),
         }).then((response) => {

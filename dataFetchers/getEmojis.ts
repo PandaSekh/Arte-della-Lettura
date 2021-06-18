@@ -33,15 +33,19 @@ export default async function getReactions(slug: string): Promise<Array<EmojiInt
       ref: "dev",
     });
 
-    const emojiData: Map<string, number> = JSON.parse(reactions.data as unknown as string);
+    const emojiData: Reactions = JSON.parse(reactions.data as unknown as string);
     const emojiArray: Array<EmojiInterface> = [];
 
-    emojiData.forEach((count, label) => {
-      emojiArray.push({ emoji: getEmoji(label), label, counter: count });
+    Object.entries(emojiData).forEach(([label, counter]) => {
+      emojiArray.push({ emoji: getEmoji(label), label, counter });
     });
 
     return emojiArray;
   } catch (e) {
     return null;
   }
+}
+
+interface Reactions {
+  [key: string]: number;
 }

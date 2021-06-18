@@ -54,7 +54,7 @@ export default function Layout({ children }: { children: { props: AppProps } }):
       <BreadcrumbsSchema url={children.props.router.asPath} />
       <DarkModeButton />
       <Navbar />
-      <main className="flex container mx-auto justify-between md:px-8 px-4">
+      <main className="flex container mx-auto justify-between md:px-8">
         {children}
         <Sidebar randomPosts={randomPosts as unknown as Array<Book>} />
       </main>

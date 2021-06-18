@@ -39,7 +39,7 @@
     @apply cursor-pointer underline;
   }
   blockquote {
-    @apply mt-4 pr-20 pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
+    @apply mt-4 md:pr-20 pr-4  pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
   }
 }
 
