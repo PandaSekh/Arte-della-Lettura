@@ -6,10 +6,10 @@ import Pagination from "../../components/Pagination/Pagination";
 
 export default function Index({ posts, postsCount }: { posts: Array<Post>; postsCount: number }): JSX.Element {
   return (
-    <>
+    <div>
       <RenderPosts posts={posts} />
       <Pagination totalCount={postsCount} />
-    </>
+    </div>
   );
 }
 
