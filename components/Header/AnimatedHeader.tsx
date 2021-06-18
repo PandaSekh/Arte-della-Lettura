@@ -10,7 +10,7 @@ export default function AnimatedHeader(): JSX.Element {
     visible: {
       opacity: 1,
       pathLength: 1,
-      fill: "rgba(0, 0, 0, 1)",
+      fill: "currentColor",
     },
   };
 
