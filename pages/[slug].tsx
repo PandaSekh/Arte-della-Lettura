@@ -12,6 +12,8 @@ import ArticleSchema from "../schemas/ArticleSchema";
 import RelatedPostsSingleton, { RelatedPost } from "../dataFetchers/relatedPostsData";
 import Comment from "../interfaces/Comment";
 import getComments from "../dataFetchers/getComments";
+import getReactions from "../dataFetchers/getEmojis";
+import { EmojiInterface } from "../components/EmojiBlock/types";
 
 const components = {
   InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
@@ -24,7 +26,7 @@ const components = {
   Spoiler: dynamic(() => import("../components/UtilComponents/SpoilerText")),
 };
 
-export default function PostPage({ source, frontMatter, relatedPosts, commentsData }: Props): JSX.Element {
+export default function PostPage({ source, frontMatter, relatedPosts, commentsData, reactions }: Props): JSX.Element {
   const router = useRouter();
   const DateUnderPost = dynamic(() => import("../components/Post/DateUnderPost"));
   const CommentBlock = dynamic(() => import("../components/Comments/CommentBlock"));
@@ -53,15 +55,7 @@ export default function PostPage({ source, frontMatter, relatedPosts, commentsDa
         <meta content={frontMatter.publishedAt} />
         <MDXRemote {...source} components={components} />
       </article>
-      <EmojiBlock
-        emojis={[
-          {
-            emoji: "📚",
-            label: "libro",
-            counter: 55,
-          },
-        ]}
-      />
+      <EmojiBlock emojis={reactions} slug={frontMatter.slug} />
       <RelatedPosts posts={relatedPosts} />
       <CommentBlock slug={frontMatter.slug} comments={commentsData} />
     </div>
@@ -75,6 +69,7 @@ interface Props {
   };
   relatedPosts: Array<RelatedPost>;
   commentsData: Array<Comment> | null;
+  reactions: Array<EmojiInterface> | null;
 }
 
 export async function getStaticProps({
@@ -92,6 +87,7 @@ export async function getStaticProps({
   const mdxSource = await serialize(content);
 
   const comments = await getComments(params.slug);
+  const reactions = await getReactions(params.slug);
 
   return {
     props: {
@@ -99,6 +95,7 @@ export async function getStaticProps({
       frontMatter: data,
       relatedPosts,
       commentsData: comments,
+      reactions,
     },
   };
 }

@@ -3,9 +3,15 @@ import EmojiCounter from "./EmojiCounter";
 import config from "../../website.config.json";
 import type { EmojiInterface } from "./types";
 
-export default function EmojiBlock({ emojis, slug }: { emojis: Array<EmojiInterface>; slug: string }): JSX.Element {
+export default function EmojiBlock({
+  emojis,
+  slug,
+}: {
+  emojis: Array<EmojiInterface> | null;
+  slug: string;
+}): JSX.Element {
   const fullEmojis = defaults.map((emoji) => {
-    const emojiFromData = emojis.find((emojiData) => emojiData.label === emoji.label);
+    const emojiFromData = emojis?.find((emojiData) => emojiData.label === emoji.label);
     const emojiFromDefaults = emoji;
     emojiFromDefaults.counter = emojiFromData?.counter || 0;
     return emojiFromDefaults;
