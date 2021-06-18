@@ -10,7 +10,8 @@
     "dev": "yarn prepareData && next dev",
     "build": "yarn prepareData && next build",
     "start": "next start",
-    "lint": "next lint"
+    "prebuild": "yarn lint",
+    "lint": "next lint --fix"
   },
   "dependencies": {
     "@octokit/request": "^5.5.0",

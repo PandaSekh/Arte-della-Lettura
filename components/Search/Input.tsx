@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 
 export default function Input({ setResultsCallback }: { setResultsCallback: (arg0: string) => void }): JSX.Element {
   const router = useRouter();
-  const { query } = router.query;
+  const { q } = router.query;
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    setSearchQuery((query as string) || "");
-  }, [query]);
+    setSearchQuery((q as string) || "");
+  }, [q]);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
