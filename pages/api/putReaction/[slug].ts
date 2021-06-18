@@ -2,9 +2,9 @@
 /* eslint-disable no-async-promise-executor */
 import { request } from "@octokit/request";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { EmojiInterface } from "../../../components/EmojiBlock/types";
+import { EmojiGit } from "../../../components/EmojiBlock/types";
 
-function merge(array: Array<EmojiInterface>, newEmoji: EmojiInterface): Array<EmojiInterface> {
+function merge(array: Array<EmojiGit>, newEmoji: EmojiGit): Array<EmojiGit> {
   const { label } = newEmoji;
   const toRemove = array.find((e) => e.label === label);
   if (toRemove) {
@@ -17,7 +17,7 @@ function merge(array: Array<EmojiInterface>, newEmoji: EmojiInterface): Array<Em
 
 export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   return new Promise(async (resolve) => {
-    const updatedEmoji: EmojiInterface = req.body;
+    const updatedEmoji: EmojiGit = req.body;
     const { slug } = req.query;
 
     try {

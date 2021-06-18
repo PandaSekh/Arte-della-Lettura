@@ -23,7 +23,7 @@ export default function EmojiBlock({
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(emoji),
+      body: JSON.stringify({ label: emoji.label, counter: emoji.counter }),
     });
   }
 
