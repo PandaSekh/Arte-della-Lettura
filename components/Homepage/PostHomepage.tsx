@@ -31,7 +31,6 @@ export default function PostHomepage({
       <div className="homePageImage grid m-auto my-2 w-72 h-80 relative transition-opacity opacity-100 hover:opacity-80">
         <Link href={`/${encodeURIComponent(data.slug)}`}>
           <a>
-            {/* <motion.figure layoutId={`image-${data.slug}`}> */}
             <Image
               src={imageSrc}
               loading={mainPost ? "eager" : "lazy"}
@@ -39,7 +38,6 @@ export default function PostHomepage({
               layout="fill"
               objectFit="contain"
             />
-            {/* </motion.figure> */}
           </a>
         </Link>
       </div>

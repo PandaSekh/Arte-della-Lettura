@@ -15,7 +15,7 @@ export default function Navbar(): JSX.Element {
       <DesktopHeader />
 
       <div className="logo max-h-full w-4/6 m-auto lg:w-2/5">
-        <Link href="/" prefetch={false}>
+        <Link href="/" prefetch aria-label="homepage">
           <a aria-label="homepage">
             {/* <SvgHeader /> */}
             <AnimatedHeader />
