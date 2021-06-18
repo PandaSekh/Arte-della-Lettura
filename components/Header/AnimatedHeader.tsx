@@ -21,7 +21,7 @@ export default function AnimatedHeader(): JSX.Element {
       viewBox="0 0 588.15 72.72"
       xmlns="http://www.w3.org/2000/svg"
       className="item stroke-current fill-current text-dark-black dark:text-dark-white mx-auto my-10 w-full"
-      aria-labelledby="artedellaletturaTitle"
+      aria-label="homepage link"
       role="img"
       aria-roledescription="figure"
     >
