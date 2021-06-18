@@ -14,7 +14,3 @@ export interface EmojiAction {
   type: "i";
   emoji: EmojiInterface;
 }
-export interface EmojiGit {
-  label: string;
-  counter: number;
-}

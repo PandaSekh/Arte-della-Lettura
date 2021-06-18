@@ -7,6 +7,8 @@ function getRandomRotation() {
   return Math.random() * (30 - 10) + 10;
 }
 
+let delayDebounceFn: NodeJS.Timeout;
+
 function GhostEmoji({ emoji }: { emoji: EmojiInterface }): JSX.Element {
   return (
     <motion.span
@@ -15,11 +17,11 @@ function GhostEmoji({ emoji }: { emoji: EmojiInterface }): JSX.Element {
       initial={{ opacity: 0, top: 0, scale: 0 }}
       animate={{
         opacity: 0.3,
-        top: -200,
+        top: -300,
         scale: [1, 0.95, 0.93, 0.9, 0.88],
         rotate: [-getRandomRotation(), getRandomRotation(), -getRandomRotation(), getRandomRotation()],
       }}
-      transition={{ duration: 0.9 }}
+      transition={{ duration: 2 }}
       exit={{ opacity: 0 }}
     >
       {emoji.emoji}
@@ -40,7 +42,6 @@ export default function EmojiCounter({
   const [maxReached, setMaxReached] = useState(false);
   const [ghosts, setGhosts] = useState<JSX.Element[]>([]);
   const maxNumberOfInteractions = 10;
-  let delayDebounceFn: NodeJS.Timeout;
 
   function addGhost() {
     const key = getKey();
@@ -56,7 +57,7 @@ export default function EmojiCounter({
         old.splice(old.indexOf(myGhost), 1);
         return old;
       });
-    }, 900);
+    }, 1000);
   }
 
   function incrementEmojiCount() {
@@ -71,11 +72,10 @@ export default function EmojiCounter({
       setMaxReached(true);
       return;
     }
-
     clearTimeout(delayDebounceFn);
     delayDebounceFn = setTimeout(() => {
       onUpdate({ emoji: emoji.emoji, label: emoji.label, counter: emojiCount });
-    }, 1000);
+    }, 1500);
   }, [emojiCount]);
 
   return (

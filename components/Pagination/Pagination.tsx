@@ -18,7 +18,7 @@ export function PageButton({
       type="button"
       onClick={() => onClickCallback(value)}
       onKeyPress={() => onClickCallback(value)}
-      className={`flex flex-col items-center text-xl m-4 justify-center cursor-pointer text-grayText rounded-md h-11 md: p-0.5 p-2 hover:text-customBlue ${
+      className={`flex flex-col items-center text-xl m-4 justify-center cursor-pointer text-grayText rounded-md h-11 md: focus:outline-none p-2 hover:text-customBlue ${
         value === currentPage ? "underline text-customBlue" : ""
       }`}
     >

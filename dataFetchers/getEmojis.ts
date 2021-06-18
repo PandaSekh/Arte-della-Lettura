@@ -1,5 +1,5 @@
 import { request } from "@octokit/request";
-import { EmojiInterface, EmojiGit } from "../components/EmojiBlock/types";
+import { EmojiInterface } from "../components/EmojiBlock/types";
 
 function getEmoji(label: string) {
   switch (label) {
@@ -33,10 +33,14 @@ export default async function getReactions(slug: string): Promise<Array<EmojiInt
       ref: "dev",
     });
 
-    const emojiData: EmojiGit[] = JSON.parse(reactions.data as unknown as string);
-    return emojiData.map((gitEmoji) => {
-      return { emoji: getEmoji(gitEmoji.label), label: gitEmoji.label, counter: gitEmoji.counter };
+    const emojiData: Map<string, number> = JSON.parse(reactions.data as unknown as string);
+    const emojiArray: Array<EmojiInterface> = [];
+
+    emojiData.forEach((count, label) => {
+      emojiArray.push({ emoji: getEmoji(label), label, counter: count });
     });
+
+    return emojiArray;
   } catch (e) {
     return null;
   }

@@ -2,22 +2,37 @@
 /* eslint-disable no-async-promise-executor */
 import { request } from "@octokit/request";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { EmojiGit } from "../../../components/EmojiBlock/types";
 
-function merge(array: Array<EmojiGit>, newEmoji: EmojiGit): Array<EmojiGit> {
-  const { label } = newEmoji;
-  const toRemove = array.find((e) => e.label === label);
-  if (toRemove) {
-    array.splice(array.indexOf(toRemove), 1);
-    array.push(newEmoji);
+// function merge(array: Array<EmojiGit>, newEmoji: EmojiGit): Array<EmojiGit> {
+//   const { label } = newEmoji;
+//   console.log(`To add: ${newEmoji.label}`);
+//   const toRemove = array.find((e) => e.label === label);
+//   console.log(`To toRemove: ${toRemove?.label}`);
+//   if (toRemove) {
+//     console.log("To remove");
+//     array.splice(array.indexOf(toRemove), 1, newEmoji);
+//     console.log("Array after: ", JSON.stringify(array, null, 2));
+//   }
+//   array.push(newEmoji);
+//   return array;
+// }
+
+function merge(map: Map<string, number>, newEmoji: EmojiBody): Map<string, number> {
+  if (map.has(newEmoji.label)) {
+    // TODO
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    let count = map.get(newEmoji.label)!;
+    count += newEmoji.counter;
+    map.set(newEmoji.label, count);
+  } else {
+    map.set(newEmoji.label, newEmoji.counter);
   }
-  array.push(newEmoji);
-  return array;
+  return map;
 }
 
 export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   return new Promise(async (resolve) => {
-    const updatedEmoji: EmojiGit = req.body;
+    const updatedEmoji: EmojiBody = req.body;
     const { slug } = req.query;
 
     try {
@@ -47,9 +62,9 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
         const { sha } = prevReactions.data;
 
         // merge
-        const dataToSave = merge(data, updatedEmoji);
+        const dataToSave: Map<string, number> = merge(data, updatedEmoji);
         // save the new comment to git
-        const update = await request("PUT /repos/{owner}/{repo}/contents/{path}", {
+        request("PUT /repos/{owner}/{repo}/contents/{path}", {
           headers: {
             authorization: `token ${process.env.GITHUB_TOKEN}`,
             accept: "application/vnd.github.v3+json",
@@ -61,15 +76,16 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           message: `Updated reactions on post ${slug}`,
           sha,
           content: Buffer.from(JSON.stringify(dataToSave), "ascii").toString("base64"),
+        }).then((response) => {
+          res.status(response.status);
+          resolve();
         });
-
-        res.status(200).json(JSON.stringify(update));
-        resolve();
       } else {
         // merge
-        const dataToSave = [updatedEmoji];
+        const dataToSave = new Map<string, number>();
+        dataToSave.set(updatedEmoji.label, updatedEmoji.counter);
         // save the new comment to git
-        const update = await request("PUT /repos/{owner}/{repo}/contents/{path}", {
+        request("PUT /repos/{owner}/{repo}/contents/{path}", {
           headers: {
             authorization: `token ${process.env.GITHUB_TOKEN}`,
             accept: "application/vnd.github.v3+json",
@@ -80,10 +96,10 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           branch: "dev",
           message: `Updated reactions on post ${slug}`,
           content: Buffer.from(JSON.stringify(dataToSave), "ascii").toString("base64"),
+        }).then((response) => {
+          res.status(response.status);
+          resolve();
         });
-
-        res.status(200).json(JSON.stringify(update));
-        resolve();
       }
     } catch (e) {
       res.status(500).json(e);
@@ -91,3 +107,8 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
     }
   });
 };
+
+interface EmojiBody {
+  label: string;
+  counter: number;
+}
