@@ -11,7 +11,7 @@
 	"orientation": "portrait",
 	"icons": [
 		{
-			"src": "/images/panda-logo.png",
+			"src": "/panda-logo.png",
 			"type": "image/png",
 			"sizes": "1001x1001"
 		},

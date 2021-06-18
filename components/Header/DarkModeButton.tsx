@@ -1,55 +1,93 @@
-import SunMoon from "./SunMoonSVG";
+import { useEffect, useRef } from "react";
 
-export default function DarkModeButton() {
-	let isDark = true;
+export default function DarkModeButton(): JSX.Element {
+  let isDark = true;
+  const htmlTag = document.querySelector("html");
+  let overlay = document.querySelector("#overlay");
+  const overlayRef = useRef(null);
 
-	if (typeof window !== "undefined") {
-		var htmlTag = document.querySelector("html")!
-		var overlay = document.querySelector("#overlay")!
-		isDark = localStorage.getItem("theme") === "dark" ? true : false;
-		if (isDark) {
-			htmlTag.classList.add("dark");
-			overlay.classList.add("mooned");
-		}
-		document.documentElement.style.setProperty(
-			"--hamb-color",
-			isDark ? "#FFFFFF" : "#3a3a3a"
-		);
-		document.documentElement.style.setProperty(
-			"--header-bg-color",
-			isDark ? "#3a3a3a" : "#ffffff"
-		);
-	}
+  if (typeof window !== "undefined" && htmlTag && overlay) {
+    isDark = localStorage.getItem("theme") === "dark";
+    if (isDark) {
+      htmlTag.classList.add("dark");
+      overlay.classList.add("mooned");
+    }
+    document.documentElement.style.setProperty("--hamb-color", isDark ? "#FFFFFF" : "#3a3a3a");
+    document.documentElement.style.setProperty("--header-bg-color", isDark ? "#3a3a3a" : "#ffffff");
+  }
 
-	function toggleDarkMode() {
-		isDark = !isDark;
-		htmlTag.classList.toggle("dark");
-		overlay.classList.toggle("mooned");
-		document.documentElement.style.setProperty(
-			"--hamb-color",
-			isDark ? "#FFFFFF" : "#3a3a3a"
-		);
-		localStorage.setItem("theme", isDark ? "dark" : "");
-	}
+  function toggleDarkMode() {
+    if (htmlTag && overlay) {
+      isDark = !isDark;
+      htmlTag.classList.toggle("dark");
+      overlay.classList.toggle("mooned");
+      document.documentElement.style.setProperty("--hamb-color", isDark ? "#FFFFFF" : "#3a3a3a");
+      localStorage.setItem("theme", isDark ? "dark" : "");
+    }
+  }
 
-	return (
-		<div onClick={toggleDarkMode} className="switch rounded-full h-8 w-16 bg-dark-black dark:bg-customBlue absolute right-8 top-4 shadow-2xl hover:ring ring-customBlue ring-opacity-50">
-			<div className="ball  w-6 h-6 rounded-full absolute top-1 left-1.5 transform transition-all dark:translate-x-7 duration-500 ease-in-out" aria-label="Switch per Dark Mode">
-				<SunMoon />
-			</div>
-			<style jsx>
-				{`
-        @media (max-width: 768px) {
-          	.switch {
-							transform: translate(-200%);
-						}
-						.switch.isOpen {
-							transform: translateY(0%);
-							transition: all 0.375s;
-						}
-        }
+  useEffect(() => {
+    overlay = document.querySelector("#overlay");
+    if (typeof window !== "undefined" && htmlTag && overlay) {
+      isDark = localStorage.getItem("theme") === "dark";
+      if (isDark) {
+        htmlTag.classList.add("dark");
+        overlay.classList.add("mooned");
+      }
+      document.documentElement.style.setProperty("--hamb-color", isDark ? "#FFFFFF" : "#3a3a3a");
+      document.documentElement.style.setProperty("--header-bg-color", isDark ? "#3a3a3a" : "#ffffff");
+    }
+  }, [overlayRef]);
+
+  return (
+    <div
+      onClick={toggleDarkMode}
+      onKeyPress={toggleDarkMode}
+      role="button"
+      tabIndex={0}
+      className="switch rounded-full h-8 w-16 bg-dark-black dark:bg-customBlue absolute right-8 top-4 shadow-2xl hover:ring ring-customBlue ring-opacity-50"
+    >
+      <div
+        className="ball  w-6 h-6 rounded-full absolute top-1 left-1.5 transform transition-all dark:translate-x-7 duration-500 ease-in-out"
+        aria-label="Switch per Dark Mode"
+      >
+        <svg id="sunmoon" viewBox="0 0 100 100" aria-hidden="true" aria-labelledby="sunmoon">
+          <title id="sunmoon">Simbolo sole e luna per Dark Mode</title>
+          <defs>
+            <mask id="hole">
+              <rect width="100%" height="100%" fill="white" />
+              <circle ref={overlayRef} id="overlay" r="60" cx="185" cy="-75" fill="black" />
+            </mask>
+
+            <filter id="blur">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+            </filter>
+          </defs>
+
+          <g filter="url(#blur)">
+            <circle fill="gold" id="donut" r="45" cx="50" cy="50" mask="url(#hole)" />
+          </g>
+        </svg>
+      </div>
+      <style jsx>
+        {`
+          @media (max-width: 768px) {
+            .switch {
+              transform: translate(-200%);
+            }
+            .switch.isOpen {
+              transform: translateY(0%);
+              transition: all 0.375s;
+            }
+          }
+          svg .mooned {
+            transform: translate(-90px, 90px);
+          }
+          svg #overlay {
+            transition: all 0.3s ease-in-out;
+          }
         `}
-			</style>
-		</div>
-	);
+      </style>
+    </div>
+  );
 }

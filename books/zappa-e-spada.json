@@ -1,0 +1,23 @@
+{
+  "title": "Zappa e spada",
+  "isbn": "8899216703",
+  "isbn13": "9788899216702",
+  "synopsis": "Cajelli, De Feo, Fantoni, Gonnella, Hoffmann, Lanzoni, Leonardi, Mala Spina, Mana, Mazza, Nerdheim, Vicenzi. Questa la lista dei rinnegati che hanno dato ; vita a \"Zappa e Spada\" la prima antologia al mondo di racconti Spaghetti Fantasy! Ecco la fantasia eroica all'italiana, quella con pochi soldi per gli effetti speciali, ambientata in una contrada fantastica popolata da furfanti e villani, avventurieri senz'arte né parte e paladini male in arnese, fratacchioni e fattucchiere... Insomma: braccia rubate all'agricoltura e restituite al campo di battaglia. Perché quando l'uomo con la zappa incontra l'uomo con la spada... nasce lo spaghetti fantasy!",
+  "author": [ "Mauro Longo", "Mala Spina", "Nerdheim", "F.T. Hoffmann", "Davide Mana", 
+    "Luca Mazza", "Federica Leonardi", "Jari Lanzoni", "Michele Gonnella",
+     "Lorenzo Fantoni", "Giovanni De Feo", "Diego Cajelli", "Alessandro Vicenzi"],
+  "genres": [
+    "Antologia",
+    "Fantasy"
+  ],
+  "language": "it",
+  "ogPublishedYear": 2018,
+  "pages": 260,
+  "format": "Paperback",
+  "publisher": "Acheron Books",
+  "rating": 3,
+  "image": "ZappaESpada.jpg",
+	"reviewSlug": "recensione-zappa-e-spada-di-mauro-longo",
+  "readDate": "20-06-2020",
+  "publishedYear": 2018
+}

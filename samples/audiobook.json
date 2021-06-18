@@ -1,0 +1,20 @@
+{
+	"title": "",
+	"isbn": "",
+	"isbn13": "",
+	"synopsis": "",
+	"author": [""],
+  "reader": [""],
+	"genres": [""],
+	"language": "",
+	"ogPublishedYear": "",
+	"duration": "",
+	"format": "Audiolibro",
+	"publisher": "",
+	"rating": 5,
+	"image": ".jpg",
+	"reviewSlug": "",
+  "readDate": "",
+  "publishedYear": 0,
+	"series": [{"series": "", "numInSeries": 1}]
+}

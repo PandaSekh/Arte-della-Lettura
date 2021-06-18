@@ -1,5 +1,5 @@
 export default interface Statistics {
-  totalBooks?: number,
-  averagePages?: number,
-  booksPerMonth?: string
+  totalBooks?: number;
+  averagePages?: number;
+  booksPerMonth?: string;
 }

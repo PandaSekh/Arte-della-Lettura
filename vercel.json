@@ -2,6 +2,7 @@
   "regions": ["cdg1"],
   "trailingSlash": false,
    "github": {
-    "silent": true
+    "silent": true,
+    "autoJobCancelation": true
   }
 }

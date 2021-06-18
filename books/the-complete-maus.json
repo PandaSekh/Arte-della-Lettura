@@ -1,0 +1,20 @@
+{
+  "title": "Maus",
+  "isbn": "8806154958",
+  "isbn13": "9788806154950",
+  "synopsis": "La storia di una famiglia ebraica tra gli anni del dopoguerra e il presente, fra la Germania nazista e gli Stati Uniti. Un padre, scampato all'Olocausto, una madre che non c'è più da troppo tempo e un figlio che fa il cartoonist e cerca di trovare un ponte che lo leghi alla vicenda indicibile del padre e gli permetta di ristabilire un rapporto con il genitore anziano. Una storia familiare sullo sfondo della più immane tragedia del Novecento. Raccontato nella forma del fumetto dove gli ebrei sono topi e i nazisti gatti.",
+  "author": [
+    "Art Spiegelman"
+  ],
+  "genres": ["Fumetto", "Graphic Novel"],
+  "language": "it",
+  "ogPublishedYear": 1980,
+  "pages": 296,
+  "format": "Paperback",
+  "publisher": "Einaudi",
+  "rating": 5,
+  "image": "MAUS.jpg",
+	"reviewSlug": "recensione-maus-art-spiegelman",
+  "readDate": "2-11-2019",
+  "publishedYear": 2000
+}

@@ -1,0 +1,22 @@
+{
+  "title": "L'ultimo cavaliere",
+  "isbn": "8868363666",
+  "isbn13": "9788868363666",
+  "synopsis": "\"L'ultimo cavaliere\" è il primo romanzo della serie \"La Torre Nera\", che ha impegnato il genio creativo di Stephen King per oltre trent'anni: una saga fantastica, ambientata in un mondo di sinistre atmosfere e macabre minacce, che appare come lo specchio oscuro di quello reale... Qui, in uno sconfinato paesaggio apocalittico, l'eterno, epico scontro fra il Bene e il Male s'incarna in uno dei più evocativi personaggi concepiti dall'autore: il pistolero Roland di Gilead, l'ultimo cavaliere di un mondo \"che è andato avanti\", leggendaria figura di eroe solitario sulle tracce di un enigmatico uomo in nero, verso una misteriosa Torre al centro dell'universo.",
+  "author": [
+    "Stephen King"
+  ],
+  "genres": [
+    "Fantasy"
+  ],
+  "language": "it",
+  "ogPublishedYear": 1982,
+  "pages": 224,
+  "format": "Paperback",
+  "publisher": "Sperling & Kupfer",
+  "rating": 2,
+  "image": "UltimoCavaliere.jpg",
+	"reviewSlug": "recensione-ultimo-cavaliere",
+  "readDate": "10-10-2018",
+  "publishedYear": 2020,"series": [{"series": "La Torre Nera", "numInSeries": 1}]
+}

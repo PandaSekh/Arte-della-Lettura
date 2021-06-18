@@ -1,24 +1,10 @@
-import Stars from "../BookCard/Stars"
+import Stars from "../BookCard/Stars";
 
-export default function BoldTextWithStars({ text, rating }: { text: string, rating: number }) {
-	return (
-		<span>
-			<strong>
-				{text}
-			</strong>
-			<Stars rating={rating} />
-			<style jsx>
-				{`
-				span {
-					display: flex;
-					align-items: center;
-					margin: 0px;
-				}
-				strong {
-					margin-right: 0.5rem
-				}
-				`}
-			</style>
-		</span>
-	)
+export default function BoldTextWithStars({ text, rating }: { text: string; rating: number }): JSX.Element {
+  return (
+    <span className="flex flex-row md:items-center	m-0">
+      <strong className="mr-2">{text}</strong>
+      <Stars rating={rating} />
+    </span>
+  );
 }

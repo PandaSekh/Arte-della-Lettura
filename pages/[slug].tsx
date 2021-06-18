@@ -1,131 +1,110 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import matter from "gray-matter";
-import hydrate from "next-mdx-remote/hydrate";
-import renderToString from "next-mdx-remote/render-to-string";
-import Head from "next/head";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-// import InternalLink from "../components/UtilComponents/InternalLink";
-import DateUnderPost from "../components/Post/DateUnderPost";
-// import Book from "../components/BookCard/Book";
-// import CustomImage from "../components/Post/Image";
-import { getPublishedPostSlug, getPostBySlug } from "../lib/postsAPI";
 import { GetStaticPaths } from "next";
-import { MdxRemote } from "next-mdx-remote/types";
-import PostContent from "../components/Post/PostContent";
+import PostDataSingleton from "../dataFetchers/postsData";
+import ArticleSchema from "../schemas/ArticleSchema";
+import RelatedPostsSingleton, { RelatedPost } from "../dataFetchers/relatedPostsData";
+import Comment from "../interfaces/Comment";
+import getComments from "../dataFetchers/getComments";
+import getReactions from "../dataFetchers/getEmojis";
+import { EmojiInterface } from "../components/EmojiBlock/types";
+import DateUnderPost from "../components/Post/DateUnderPost";
 
 const components = {
-	InternalLink: dynamic(() =>
-		import("../components/UtilComponents/InternalLink")
-	),
-	Book: dynamic(() => import("../components/BookCard/Book")),
-	Head,
-	Image: dynamic(() => import("../components/Post/Image")),
-	Stars: dynamic(() => import("../components/BookCard/Stars")),
-	BoldTextWithStars: dynamic(() =>
-		import("../components/UtilComponents/BoldTextWithStars")
-	),
+  InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
+  Audiobook: dynamic(() => import("../components/BookCard/Audiobook")),
+  Head: dynamic(() => import("next/head")),
+  Image: dynamic(() => import("../components/Post/Image")),
+  Stars: dynamic(() => import("../components/BookCard/Stars")),
+  BoldTextWithStars: dynamic(() => import("../components/UtilComponents/BoldTextWithStars")),
+  Spoiler: dynamic(() => import("../components/UtilComponents/SpoilerText")),
+  Book: dynamic(() => import("../components/BookCard/Book")),
 };
 
-export default function PostPage({ source, frontMatter }: {
-	source: MdxRemote.Source, frontMatter: {
-		[key: string]: any;
-	}
-}) {
-	const router = useRouter();
-	const content = hydrate(source, { components });
-	return (
-		<>
-			<NextSeo
-				title={frontMatter.title}
-				openGraph={{
-					title: frontMatter.title,
-					url: router.pathname,
-					type: "article",
-					article: {
-						publishedTime: frontMatter.publishedAt,
-						modifiedTime: frontMatter.updatedAt,
-						authors: ["Alessio Franceschi"],
-					},
-				}}
-			/>
-			<article className="w-9/12 mx-auto my-0">
-				<h1 className="text-center font-extralight">
-					{frontMatter.title}
-				</h1>
-				<DateUnderPost date={frontMatter.publishedAt} />
-				{content}<style>{`
-					article details summary {
-						cursor: pointer;
-					}
+export default function PostPage({ source, frontMatter, relatedPosts, commentsData, reactions }: Props): JSX.Element {
+  const router = useRouter();
 
-					article details summary > * {
-						display: inline;
-					}
-					article summary {list - style: none}
-					article summary::-webkit-details-marker {display: none; }
-					article details summary::before {
-						content:"⚠️";
-					}
+  const CommentBlock = dynamic(() => import("../components/Comments/CommentBlock"));
+  const RelatedPosts = dynamic(() => import("../components/RelatedPosts/RelatedPosts"));
+  const EmojiBlock = dynamic(() => import("../components/EmojiBlock/EmojiBlock"));
 
-					article ul > li::before {
-						content: "";
-						position: absolute;
-						background-color: #d1d5db;
-						border-radius: 50%;
-						width: 0.375em;
-						height: 0.375em;
-						top: calc(0.875em - 0.1875em);
-						left: 0.25em;
-					}
-
-					article ul > li {
-						position: relative;
-						padding-left: 1.75em;
-					}
-
-					article ul {
-						margin - top: 1.25em;
-							margin-bottom: 1.25em;
-					}
-				`}
-				</style>
-			</article>
-		</>
-	);
+  return (
+    <div>
+      <NextSeo
+        title={frontMatter.title}
+        openGraph={{
+          title: frontMatter.title,
+          url: router.asPath,
+          type: "article",
+          article: {
+            publishedTime: frontMatter.publishedAt,
+            modifiedTime: frontMatter.updatedAt,
+            authors: ["Alessio Franceschi"],
+          },
+        }}
+      />
+      <ArticleSchema postMetadata={frontMatter} />
+      <article className="w-10/12 mx-auto my-0">
+        <h1 className="text-center font-extralight">{frontMatter.title}</h1>
+        <DateUnderPost date={frontMatter.publishedAt} />
+        <meta content={frontMatter.publishedAt} />
+        <MDXRemote {...source} components={components} />
+      </article>
+      <EmojiBlock emojis={reactions} slug={frontMatter.slug} />
+      <RelatedPosts posts={relatedPosts} />
+      <CommentBlock slug={frontMatter.slug} comments={commentsData} />
+    </div>
+  );
 }
 
-export const getStaticProps = async ({ params }: {
-	params: {
-		slug: string;
-	}
-}) => {
-	const source = getPostBySlug(params.slug);
+interface Props {
+  source: MDXRemoteSerializeResult;
+  frontMatter: {
+    [key: string]: string;
+  };
+  relatedPosts: Array<RelatedPost>;
+  commentsData: Array<Comment> | null;
+  reactions: Array<EmojiInterface> | null;
+}
 
-	const { content, data } = matter(source);
+export async function getStaticProps({
+  params,
+}: {
+  params: {
+    slug: string;
+  };
+}): Promise<{ props: Props }> {
+  const source = PostDataSingleton.getPostBySlug(params.slug);
 
-	const mdxSource = await renderToString(content, {
-		components,
-		mdxOptions: {
-			remarkPlugins: [],
-			rehypePlugins: [],
-		},
-		scope: data,
-	});
+  const relatedPosts = RelatedPostsSingleton.getInstance().getRelatedPosts(params.slug);
 
-	return {
-		props: {
-			source: mdxSource,
-			frontMatter: data,
-		},
-	};
-};
+  const { content, data } = matter(source);
+  const mdxSource = await serialize(content);
+
+  const comments = await getComments(params.slug);
+  const reactions = await getReactions(params.slug);
+
+  return {
+    props: {
+      source: mdxSource,
+      frontMatter: data,
+      relatedPosts,
+      commentsData: comments,
+      reactions,
+    },
+  };
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = getPublishedPostSlug();
+  const paths = PostDataSingleton.getInstance().getSlugs();
 
-	return {
-		paths,
-		fallback: false,
-	};
+  return {
+    paths,
+    fallback: false,
+  };
 };

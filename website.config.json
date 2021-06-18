@@ -1,15 +1,22 @@
 {
-	"postsPerPage": 100,
-	"urls": [
-		{
-			"path": "/",
-			"name": "Home"
-		},{
-			"path": "/archivio",
-			"name": "Archivio"
-		},{
-			"path": "/about",
-			"name": "About"
-		}
-	]
+  "baseurl": "http://localhost:3000",
+  "postsPerPage": 6,
+  "urls": [
+    {
+      "path": "/",
+      "name": "Home"
+    },
+    {
+      "path": "/archivio",
+      "name": "Archivio"
+    },
+    {
+      "path": "/about",
+      "name": "About"
+    },
+    {
+      "path": "/cerca",
+      "name": "Cerca"
+    }
+  ]
 }

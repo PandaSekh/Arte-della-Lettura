@@ -1,0 +1,22 @@
+{
+  "title": "Piccola guida tascabile agli animali pericolosi in letteratura. Ovvero la zoologia come espediente per la letteratura",
+  "isbn": "8865513004",
+  "isbn13": "9788865513002",
+  "synopsis": "(...) A vederlo così, un libro è l'immagine della tranquillità, ma non tutti i suoi abitanti rispecchiano la sua placida natura. Perché lupi, serpenti, ragni e altri abomìni non abitano solo tra i merli diroccati di antiche torri, o nelle tremende selve dimenticate; essi sono soprattutto frequenti tra le pagine ingiallite di splendidi racconti, spesso dimenticati. Esistono terre abitate da creature abominevoli; altre, docili all'apparenza, lo diventano allo scatenarsi di forze oscure. E questa magica energia plasmatrice altro non è che la scrittura. E allora cosa aspettate? Questo libro è per noi, Indiana Jones in bermuda, Jacques Cousteau in ciabatte e calzini, Lara Croft con copertina termica e guantini. Per sopravvivere anche alle più spaventose creature che la natura (o la letteratura) abbia immaginato... senza bisogno di alzarsi dal divano.",
+  "author": ["W.W. Jacobs", "Marcel Schwob", "Guy de Maupassant",
+     "J. Sheridan Le Fanu", "Ambrose Bierce", "M.R. James", 
+     "Adolfo Albertazzi","Katherine Mansfield", "Franz Kafka"],
+  "genres": [
+    "Antologia"
+  ],
+  "language": "it",
+  "ogPublishedYear": 2019,
+  "pages": 196,
+  "format": "Paperback",
+  "publisher": "ABEditore",
+  "rating": 5,
+  "image": "PiccolaGuidaTascabile_Animali.jpg",
+	"reviewSlug": "recensione-piccola-guida-tascabile-agli-animali-pericolosi-in-letteratura",
+  "readDate": "13-06-2019",
+  "publishedYear": 2019
+}
