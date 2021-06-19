@@ -17,7 +17,11 @@ import randomPosts from "../../src/data/random-posts.json";
 import Navbar from "../Header/NavBar/Navbar";
 import Footer from "../Footer/Footer";
 
-export default function Layout({ children }: { children: { props: AppProps } }): JSX.Element {
+export default function Layout({
+  children,
+}: {
+  children: { props: AppProps };
+}): JSX.Element {
   useEffect(() => {
     Router.events.on("routeChangeStart", () => NProgress.start());
     Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -33,7 +37,10 @@ export default function Layout({ children }: { children: { props: AppProps } }):
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Arte della Lettura" />
-        <meta name="description" content="Quattro chiacchiere su libri e fumetti." />
+        <meta
+          name="description"
+          content="Quattro chiacchiere su libri e fumetti."
+        />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
@@ -41,12 +48,30 @@ export default function Layout({ children }: { children: { props: AppProps } }):
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="theme-color" content="#018fd9" />
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="shortcut icon" href="/favicon.png" />
-        <script data-goatcounter="https://artedellalettura.goatcounter.com/count" async src="//gc.zgo.at/count.js" />
+        <script
+          data-goatcounter="https://artedellalettura.goatcounter.com/count"
+          async
+          src="//gc.zgo.at/count.js"
+        />
       </Head>
       <DefaultSeo {...SEO} />
       <SiteNavSchema />

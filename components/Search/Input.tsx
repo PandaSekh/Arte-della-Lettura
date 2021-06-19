@@ -1,7 +1,11 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export default function Input({ setResultsCallback }: { setResultsCallback: (arg0: string) => void }): JSX.Element {
+export default function Input({
+  setResultsCallback,
+}: {
+  setResultsCallback: (arg0: string) => void;
+}): JSX.Element {
   const router = useRouter();
   const { q } = router.query;
   const [searchQuery, setSearchQuery] = useState("");

@@ -1,7 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 import { useEffect, useState } from "react";
-import { DeepMap, FieldError, SubmitHandler, useForm, UseFormHandleSubmit, UseFormRegister } from "react-hook-form";
+import {
+  DeepMap,
+  FieldError,
+  SubmitHandler,
+  useForm,
+  UseFormHandleSubmit,
+  UseFormRegister,
+} from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import Comment from "../../interfaces/Comment";
 import { Hash } from "../../lib/encryption/crypto";
@@ -30,7 +37,10 @@ function CommentForm({
       exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
     >
       <div className="mb-4">
-        <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">
+        <label
+          htmlFor="username"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
           Nome
         </label>
         <input
@@ -42,12 +52,17 @@ function CommentForm({
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-md "
         />
         {errors.username && errors.username.type === "minLength" && (
-          <span className="text-xs italic text-red-500">Il nome deve essere di almeno 3 caratteri.</span>
+          <span className="text-xs italic text-red-500">
+            Il nome deve essere di almeno 3 caratteri.
+          </span>
         )}
       </div>
 
       <div className="mb-4">
-        <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
+        <label
+          htmlFor="email"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
           Email<span className="text-red-500">*</span>
         </label>
         <input
@@ -58,11 +73,18 @@ function CommentForm({
           key={getKey()}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-md"
         />
-        {errors.email && <span className=" text-xs italic text-red-500">Email obbligatoria</span>}
+        {errors.email && (
+          <span className=" text-xs italic text-red-500">
+            Email obbligatoria
+          </span>
+        )}
       </div>
 
       <div className="mb-4">
-        <label htmlFor="content" className="block text-gray-700 text-sm font-bold mb-2">
+        <label
+          htmlFor="content"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
           Commento<span className="text-red-500">*</span>
         </label>
         <textarea
@@ -70,12 +92,18 @@ function CommentForm({
           id="content"
           rows={6}
           maxLength={5000}
-          {...register("content", { required: true, maxLength: 5000, minLength: 15 })}
+          {...register("content", {
+            required: true,
+            maxLength: 5000,
+            minLength: 15,
+          })}
           key={getKey()}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-md"
         />
         {errors.content && errors.content.type === "required" && (
-          <span className=" text-xs italic text-red-500">Commento obbligatorio</span>
+          <span className=" text-xs italic text-red-500">
+            Commento obbligatorio
+          </span>
         )}
         {errors.content && errors.content.type === "maxLength" && (
           <span className=" text-xs italic text-red-500">
@@ -83,7 +111,11 @@ function CommentForm({
           </span>
         )}
         {errors.content && errors.content.type === "minLength" && (
-          <span className={`text-xs italic text-red-500 ${errors.content ? "border-red-500" : ""}`}>
+          <span
+            className={`text-xs italic text-red-500 ${
+              errors.content ? "border-red-500" : ""
+            }`}
+          >
             Commento troppo breve. Lunghezza minima: 15 caratteri.
           </span>
         )}
@@ -107,7 +139,9 @@ function CommentForm({
         </label>
         <br />
         {errors.email && (
-          <span className=" text-xs italic text-red-500">Devi accettare i termini prima di commentare.</span>
+          <span className=" text-xs italic text-red-500">
+            Devi accettare i termini prima di commentare.
+          </span>
         )}
       </div>
 
@@ -123,11 +157,22 @@ function CommentForm({
   );
 }
 
-function Notification({ keyProp, onRemove }: { keyProp: string; onRemove: (notifKey: string) => void }): JSX.Element {
+function Notification({
+  keyProp,
+  onRemove,
+}: {
+  keyProp: string;
+  onRemove: (notifKey: string) => void;
+}): JSX.Element {
   return (
     <motion.div
       className="flex justify-center items-center m-1 font-medium py-1 px-2 bg-dark-white rounded-md"
-      style={{ backgroundColor: "#9ae6b4", color: "#2f855a", borderWidth: "1px", borderColor: "#2f855a" }}
+      style={{
+        backgroundColor: "#9ae6b4",
+        color: "#2f855a",
+        borderWidth: "1px",
+        borderColor: "#2f855a",
+      }}
       initial={{ y: 300, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 300, opacity: 0 }}
@@ -179,7 +224,13 @@ function Notification({ keyProp, onRemove }: { keyProp: string; onRemove: (notif
   );
 }
 
-export default function AddComment({ slug, parentCommentId }: { slug: string; parentCommentId?: string }): JSX.Element {
+export default function AddComment({
+  slug,
+  parentCommentId,
+}: {
+  slug: string;
+  parentCommentId?: string;
+}): JSX.Element {
   const [commentSent, setCommentSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [notif, setNotif] = useState<JSX.Element[]>([]);
@@ -222,7 +273,14 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
   useEffect(() => {
     if (commentSent) {
       const key = getKey();
-      setNotif((prev) => [...prev, <Notification keyProp={key} key={key} onRemove={() => onNotifRemove(key)} />]);
+      setNotif((prev) => [
+        ...prev,
+        <Notification
+          keyProp={key}
+          key={key}
+          onRemove={() => onNotifRemove(key)}
+        />,
+      ]);
     }
   }, [commentSent]);
 
@@ -234,7 +292,9 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: Unreachable code error
       window.grecaptcha
-        .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, { action: "submit" })
+        .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, {
+          action: "submit",
+        })
         .then((token: string) => {
           const fullData: NewCommentData = {
             date: new Date().toLocaleDateString("it-IT"),
@@ -276,9 +336,16 @@ export default function AddComment({ slug, parentCommentId }: { slug: string; pa
       {isLoading ? (
         <LoadingComponent />
       ) : (
-        <CommentForm onSubmit={onSubmit} register={register} handleSubmit={handleSubmit} errors={errors} />
+        <CommentForm
+          onSubmit={onSubmit}
+          register={register}
+          handleSubmit={handleSubmit}
+          errors={errors}
+        />
       )}
-      <AnimatePresence>{notif.map((notification) => notification)}</AnimatePresence>
+      <AnimatePresence>
+        {notif.map((notification) => notification)}
+      </AnimatePresence>
     </>
   );
 }

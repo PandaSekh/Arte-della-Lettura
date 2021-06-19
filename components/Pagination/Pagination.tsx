@@ -27,9 +27,15 @@ export function PageButton({
   );
 }
 
-export default function Pagination({ totalCount }: { totalCount: number }): JSX.Element {
+export default function Pagination({
+  totalCount,
+}: {
+  totalCount: number;
+}): JSX.Element {
   const router = useRouter();
-  const currentPage = router.query.page ? Number.parseInt(router.query.page as string, 10) : 1;
+  const currentPage = router.query.page
+    ? Number.parseInt(router.query.page as string, 10)
+    : 1;
   const numberOfPages = Math.ceil(totalCount / config.postsPerPage);
 
   const pageNumberComponent = [];
@@ -40,17 +46,39 @@ export default function Pagination({ totalCount }: { totalCount: number }): JSX.
   }
 
   pageNumberComponent.push(
-    <PageButton key={getKey()} text="<" value={currentPage - 1} currentPage={currentPage} onClickCallback={goToPage} />
+    <PageButton
+      key={getKey()}
+      text="<"
+      value={currentPage - 1}
+      currentPage={currentPage}
+      onClickCallback={goToPage}
+    />
   );
 
-  for (let i = currentPage - 2 > 0 ? currentPage - 2 : 1; i < currentPage + 3 && i <= numberOfPages; i++) {
+  for (
+    let i = currentPage - 2 > 0 ? currentPage - 2 : 1;
+    i < currentPage + 3 && i <= numberOfPages;
+    i++
+  ) {
     pageNumberComponent.push(
-      <PageButton key={getKey()} text={`${i}`} value={i} currentPage={currentPage} onClickCallback={goToPage} />
+      <PageButton
+        key={getKey()}
+        text={`${i}`}
+        value={i}
+        currentPage={currentPage}
+        onClickCallback={goToPage}
+      />
     );
   }
 
   pageNumberComponent.push(
-    <PageButton key={getKey()} text=">" value={currentPage + 1} currentPage={currentPage} onClickCallback={goToPage} />
+    <PageButton
+      key={getKey()}
+      text=">"
+      value={currentPage + 1}
+      currentPage={currentPage}
+      onClickCallback={goToPage}
+    />
   );
 
   return (

@@ -18,9 +18,15 @@ function mapEditorsWithInitials(editors: Array<string>) {
   return alphabetMap;
 }
 
-export default function Index({ booksJSON }: { booksJSON: string }): JSX.Element {
+export default function Index({
+  booksJSON,
+}: {
+  booksJSON: string;
+}): JSX.Element {
   const books: Map<string, Array<Book>> = new Map(JSON.parse(booksJSON));
-  const editorsAlphabet = new Map([...mapEditorsWithInitials(Array.from(books.keys())).entries()].sort());
+  const editorsAlphabet = new Map(
+    [...mapEditorsWithInitials(Array.from(books.keys())).entries()].sort()
+  );
   const toBePrinted: Array<JSX.Element> = [];
 
   // for each letter
@@ -28,7 +34,10 @@ export default function Index({ booksJSON }: { booksJSON: string }): JSX.Element
     const authorsMapped: Array<JSX.Element> = [];
 
     // get the books for each author
-    const authorsWithBooks: Map<string, Array<Book>> = new Map<string, Array<Book>>();
+    const authorsWithBooks: Map<string, Array<Book>> = new Map<
+      string,
+      Array<Book>
+    >();
     editors.forEach((editor) => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       authorsWithBooks.set(editor, books.get(editor)!);
@@ -103,7 +112,10 @@ export const getStaticProps: GetStaticProps = async () => {
   const publishers = DataSingleton.getInstance().getCaseEditrici();
   const books = new Map<string, Array<Book>>();
   publishers.forEach((publisher) =>
-    books.set(publisher, DataSingleton.getInstance().getBookFromEditorSlug(stringToSlug(publisher)))
+    books.set(
+      publisher,
+      DataSingleton.getInstance().getBookFromEditorSlug(stringToSlug(publisher))
+    )
   );
   const booksJSON = JSON.stringify([...books]);
   return { props: { booksJSON } };

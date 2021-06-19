@@ -6,7 +6,8 @@ export default function Footer(): JSX.Element {
   return (
     <footer className="pt-6	mb-4 text-center left-2/4 mx-auto">
       <small>
-        &copy; Copyright {year}, Alessio Franceschi. <InternalLink text="Privacy Policy" slug="privacy-policy" />
+        &copy; Copyright {year}, Alessio Franceschi.{" "}
+        <InternalLink text="Privacy Policy" slug="privacy-policy" />
       </small>
     </footer>
   );

@@ -4,7 +4,8 @@ export interface EmojiInterface {
   counter: number;
 }
 
-export type FullEmojiInterface = Required<Pick<EmojiInterface, "counter">> & EmojiInterface;
+export type FullEmojiInterface = Required<Pick<EmojiInterface, "counter">> &
+  EmojiInterface;
 export type EmojiFN = (emoji: EmojiInterface) => void;
 
 export type UseEmoji = [EmojiInterface[], EmojiFN];

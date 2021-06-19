@@ -1,7 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
-import PostsDataSingleton, { HomepagePostData } from "../../../dataFetchers/postsData";
+import PostsDataSingleton, {
+  HomepagePostData,
+} from "../../../dataFetchers/postsData";
 import Comment from "../../../interfaces/Comment";
 import { decrypt, Hash } from "../../../lib/encryption/crypto";
 import config from "../../../website.config.json";
@@ -29,8 +31,13 @@ function getHTML(post: EmailData): string {
 `;
 }
 
-function getParent(comments: Array<Comment>, child: Comment): Comment | undefined {
-  return child.parentCommentId ? comments.find((comment) => comment.id === child.parentCommentId) : undefined;
+function getParent(
+  comments: Array<Comment>,
+  child: Comment
+): Comment | undefined {
+  return child.parentCommentId
+    ? comments.find((comment) => comment.id === child.parentCommentId)
+    : undefined;
 }
 
 function getEmails(comments: Array<Comment>, newComment: Comment): Set<string> {
@@ -109,10 +116,16 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 
     const request: RequestBody = req.body;
     const { slug } = req.query;
-    const post: HomepagePostData = PostsDataSingleton.getInstance().getPostsForHomepageBySlug(slug as string);
+    const post: HomepagePostData =
+      PostsDataSingleton.getInstance().getPostsForHomepageBySlug(
+        slug as string
+      );
 
     if (!request.isChild) {
-      sendEmailToAdmin({ postTitle: post.data.title, postSlug: slug as string }, transporter).then(() => {
+      sendEmailToAdmin(
+        { postTitle: post.data.title, postSlug: slug as string },
+        transporter
+      ).then(() => {
         res.status(200);
         resolve();
       });
@@ -121,9 +134,20 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 
       const emailPromises: Array<Promise<void>> = [];
 
-      emailPromises.push(sendEmailToAdmin({ postTitle: post.data.title, postSlug: post.data.slug }, transporter));
+      emailPromises.push(
+        sendEmailToAdmin(
+          { postTitle: post.data.title, postSlug: post.data.slug },
+          transporter
+        )
+      );
       emails.forEach((email) => {
-        emailPromises.push(sendEmail(email, { postTitle: post.data.title, postSlug: post.data.slug }, transporter));
+        emailPromises.push(
+          sendEmail(
+            email,
+            { postTitle: post.data.title, postSlug: post.data.slug },
+            transporter
+          )
+        );
       });
 
       Promise.all(emailPromises).then(() => {

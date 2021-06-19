@@ -10,7 +10,9 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
   const audiobook: Audiobook = require(`../../books/${slug}.json`);
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));
-  const BoldTextWithStars = dynamic(() => import("../UtilComponents/BoldTextWithStars"));
+  const BoldTextWithStars = dynamic(
+    () => import("../UtilComponents/BoldTextWithStars")
+  );
   const BookSchema = dynamic(() => import("../../schemas/BookSchema"));
   const Intersperse = dynamic(() => import("../UtilComponents/Intersperse"));
 
@@ -19,43 +21,71 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
       <BookSchema book={audiobook} />
       <div className="mt-6 max-w-7xl">
         <div className="mr-4 float-left">
-          <Image src={`/static/images/books/${audiobook.image}`} width={300} height={300} />
+          <Image
+            src={`/static/images/books/${audiobook.image}`}
+            width={300}
+            height={300}
+          />
         </div>
         <p>
           <strong>{audiobook.title}</strong> di{" "}
           <Intersperse
             sep=", "
             arr={audiobook.author.map((singleAuthor) => (
-              <Link key={getKey()} href={`/autori/${encodeURIComponent(stringToSlug(singleAuthor))}`}>
+              <Link
+                key={getKey()}
+                href={`/autori/${encodeURIComponent(
+                  stringToSlug(singleAuthor)
+                )}`}
+              >
                 <a>{singleAuthor}</a>
               </Link>
             ))}
           />
           <br />
           <strong>Narratore</strong>:{" "}
-          <Intersperse sep=", " arr={audiobook.reader.map((singleReader) => singleReader)} />
+          <Intersperse
+            sep=", "
+            arr={audiobook.reader.map((singleReader) => singleReader)}
+          />
           <br />
           {audiobook.series && (
             <>
               <strong>Serie:</strong>{" "}
-              <Link key={getKey()} href={`/serie/${encodeURIComponent(stringToSlug(audiobook.series[0].series))}`}>
+              <Link
+                key={getKey()}
+                href={`/serie/${encodeURIComponent(
+                  stringToSlug(audiobook.series[0].series)
+                )}`}
+              >
                 <a>
-                  {audiobook.series[0].series} #{audiobook.series[0].numInSeries}
+                  {audiobook.series[0].series} #
+                  {audiobook.series[0].numInSeries}
                 </a>
               </Link>
               <br />
             </>
           )}
           <strong>Casa Editrice:</strong>{" "}
-          <Link key={getKey()} href={`/case-editrici/${encodeURIComponent(stringToSlug(audiobook.publisher))}`}>
+          <Link
+            key={getKey()}
+            href={`/case-editrici/${encodeURIComponent(
+              stringToSlug(audiobook.publisher)
+            )}`}
+          >
             <a>{audiobook.publisher}</a>
           </Link>
           <br />
-          <strong>{audiobook.genres.length === 1 ? "Genere" : "Generi"}:</strong>{" "}
+          <strong>
+            {audiobook.genres.length === 1 ? "Genere" : "Generi"}:
+          </strong>{" "}
           <Intersperse
             sep=", "
             arr={audiobook.genres.map((genre: string) => (
-              <Link key={getKey()} href={`/generi/${encodeURIComponent(stringToSlug(genre))}`}>
+              <Link
+                key={getKey()}
+                href={`/generi/${encodeURIComponent(stringToSlug(genre))}`}
+              >
                 <a>{genre}</a>
               </Link>
             ))}

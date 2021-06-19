@@ -26,12 +26,21 @@ export default function Index({
   );
 }
 
-export async function getStaticProps({ params }: { params: Params }): Promise<Props> {
+export async function getStaticProps({
+  params,
+}: {
+  params: Params;
+}): Promise<Props> {
   const { genre } = params;
-  const data: Array<Book> = DataSingleton.getInstance().getBookFromGenreSlug(genre as string);
+  const data: Array<Book> = DataSingleton.getInstance().getBookFromGenreSlug(
+    genre as string
+  );
   // from the book authors, get the name (NOT SLUG) of the author we're referring in this page
-  const genreParam = data[0].genres.find((genreLoop) => stringToSlug(genreLoop) === genre);
-  const posts = DataSingleton.getInstance().getFullBooksReviewsFromGenreSlug(genre);
+  const genreParam = data[0].genres.find(
+    (genreLoop) => stringToSlug(genreLoop) === genre
+  );
+  const posts =
+    DataSingleton.getInstance().getFullBooksReviewsFromGenreSlug(genre);
   return { props: { posts, genreParam } };
 }
 

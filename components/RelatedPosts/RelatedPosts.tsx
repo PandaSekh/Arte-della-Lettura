@@ -16,7 +16,13 @@ function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
       <div className="grid m-auto my-2 w-auto h-48 relative transition-opacity opacity-100 hover:opacity-80 mb-0">
         <Link href={`/${encodeURIComponent(post.slug)}`}>
           <a>
-            <Image src={post.image} loading="lazy" alt={post.title} layout="fill" objectFit="contain" />
+            <Image
+              src={post.image}
+              loading="lazy"
+              alt={post.title}
+              layout="fill"
+              objectFit="contain"
+            />
           </a>
         </Link>
       </div>
@@ -24,7 +30,11 @@ function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
   );
 }
 
-export default function RenderPosts({ posts }: { posts: RelatedPost[] }): JSX.Element {
+export default function RenderPosts({
+  posts,
+}: {
+  posts: RelatedPost[];
+}): JSX.Element {
   return (
     <div className="mx-auto my-8 w-full ">
       <p className="mx-auto text-center font-bold	">Post Correlati</p>

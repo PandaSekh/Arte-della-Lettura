@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 
 export default function Youtube(): JSX.Element {
   return (
-    <motion.div className="w-10 h-10" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+    <motion.div
+      className="w-10 h-10"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+    >
       <a href="https://www.youtube.com/channel/UCwy9OpiuWjhZyBcAjuXz02w">
         <svg
           xmlns="http://www.w3.org/2000/svg"

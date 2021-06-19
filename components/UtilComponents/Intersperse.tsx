@@ -9,8 +9,10 @@ export default function Intersperse({
   sep: string | JSX.Element;
 }): JSX.Element {
   if (arr.length < 1) return <></>;
-  const merged: JSX.Element | string = arr.reduce((prev: JSX.Element | string, curr: JSX.Element | string) => (
-    <React.Fragment key={getKey()}>{[prev, sep, curr]}</React.Fragment>
-  ));
+  const merged: JSX.Element | string = arr.reduce(
+    (prev: JSX.Element | string, curr: JSX.Element | string) => (
+      <React.Fragment key={getKey()}>{[prev, sep, curr]}</React.Fragment>
+    )
+  );
   return <>{merged}</>;
 }

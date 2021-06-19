@@ -20,18 +20,30 @@ export default function Index({
 }): JSX.Element {
   return (
     <div className="mx-auto">
-      <h2 className="text-center mx-auto">Recensioni Libri della serie {seriesParam}</h2>
+      <h2 className="text-center mx-auto">
+        Recensioni Libri della serie {seriesParam}
+      </h2>
       <RenderPosts posts={posts} />
     </div>
   );
 }
 
-export async function getStaticProps({ params }: { params: Params }): Promise<Props> {
+export async function getStaticProps({
+  params,
+}: {
+  params: Params;
+}): Promise<Props> {
   const { serie } = params;
-  const data: Array<Book> = DataSingleton.getInstance().getBookFromSerieSlug(serie as string);
+  const data: Array<Book> = DataSingleton.getInstance().getBookFromSerieSlug(
+    serie as string
+  );
   // from the book authors, get the name (NOT SLUG) of the author we're referring in this page
-  const seriesParam = data[0].series.find((serieLoop) => stringToSlug(serieLoop.series) === serie)?.series;
-  const posts = DataSingleton.getInstance().getFullBooksReviewsFromSerieSlug(serie as string);
+  const seriesParam = data[0].series.find(
+    (serieLoop) => stringToSlug(serieLoop.series) === serie
+  )?.series;
+  const posts = DataSingleton.getInstance().getFullBooksReviewsFromSerieSlug(
+    serie as string
+  );
   return { props: { posts, seriesParam } };
 }
 

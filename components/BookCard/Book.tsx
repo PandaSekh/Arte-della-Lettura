@@ -11,7 +11,9 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
   const book: Book = require(`../../books/${slug}.json`);
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));
-  const BoldTextWithStars = dynamic(() => import("../UtilComponents/BoldTextWithStars"));
+  const BoldTextWithStars = dynamic(
+    () => import("../UtilComponents/BoldTextWithStars")
+  );
   const BookSchema = dynamic(() => import("../../schemas/BookSchema"));
   const Intersperse = dynamic(() => import("../UtilComponents/Intersperse"));
 
@@ -21,7 +23,11 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
       <div className="mt-6 max-w-7xl">
         <div className="mr-4 float-left">
           <motion.figure layoutId={`image-${book.reviewSlug}`}>
-            <Image src={`/static/images/books/${book.image}`} width={275} height={420} />
+            <Image
+              src={`/static/images/books/${book.image}`}
+              width={275}
+              height={420}
+            />
           </motion.figure>
         </div>
         <p>
@@ -29,7 +35,12 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
           <Intersperse
             sep=", "
             arr={book.author.map((singleAuthor) => (
-              <Link key={getKey()} href={`/autori/${encodeURIComponent(stringToSlug(singleAuthor))}`}>
+              <Link
+                key={getKey()}
+                href={`/autori/${encodeURIComponent(
+                  stringToSlug(singleAuthor)
+                )}`}
+              >
                 <a>{singleAuthor}</a>
               </Link>
             ))}
@@ -38,7 +49,12 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
           {book.series && (
             <>
               <strong>Serie:</strong>{" "}
-              <Link key={getKey()} href={`/serie/${encodeURIComponent(stringToSlug(book.series[0].series))}`}>
+              <Link
+                key={getKey()}
+                href={`/serie/${encodeURIComponent(
+                  stringToSlug(book.series[0].series)
+                )}`}
+              >
                 <a>
                   {book.series[0].series} #{book.series[0].numInSeries}
                 </a>
@@ -47,15 +63,25 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
             </>
           )}
           <strong>Casa Editrice:</strong>{" "}
-          <Link key={getKey()} href={`/case-editrici/${encodeURIComponent(stringToSlug(book.publisher))}`}>
+          <Link
+            key={getKey()}
+            href={`/case-editrici/${encodeURIComponent(
+              stringToSlug(book.publisher)
+            )}`}
+          >
             <a>{book.publisher}</a>
           </Link>
           <br />
-          <strong>{book.genres.length === 1 ? "Genere" : "Generi"}:</strong>{" "}
+          <strong>
+            {book.genres.length === 1 ? "Genere" : "Generi"}:
+          </strong>{" "}
           <Intersperse
             sep=", "
             arr={book.genres.map((genre: string) => (
-              <Link key={getKey()} href={`/generi/${encodeURIComponent(stringToSlug(genre))}`}>
+              <Link
+                key={getKey()}
+                href={`/generi/${encodeURIComponent(stringToSlug(genre))}`}
+              >
                 <a>{genre}</a>
               </Link>
             ))}

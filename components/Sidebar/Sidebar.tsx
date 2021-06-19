@@ -8,7 +8,11 @@ import Youtube from "./Logos/Youtube";
 import ApplePodcast from "./Logos/ApplePodcast";
 import SearchInput from "./SearchInput";
 
-export default function Sidebar({ randomPosts }: { randomPosts: Array<Book> }): JSX.Element {
+export default function Sidebar({
+  randomPosts,
+}: {
+  randomPosts: Array<Book>;
+}): JSX.Element {
   return (
     <div className="sidebar hidden w-10/12 lg:flex flex-col items-center max-w-min">
       <div className="flex flex-col items-center">
@@ -16,8 +20,9 @@ export default function Sidebar({ randomPosts }: { randomPosts: Array<Book> }): 
         <p className="text-2xl font-light ">Chi Sono</p>
         <Logo />
         <p className="text-base text-center">
-          Ciao, sono Alessio e su questo blog parlo di libri e fumetti. I miei generi preferiti sono distopico, fantasy
-          e narrativa di viaggio. Buona lettura!
+          Ciao, sono Alessio e su questo blog parlo di libri e fumetti. I miei
+          generi preferiti sono distopico, fantasy e narrativa di viaggio. Buona
+          lettura!
         </p>
       </div>
       <div className="flex flex-col items-center">

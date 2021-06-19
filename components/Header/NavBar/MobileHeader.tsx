@@ -19,7 +19,13 @@ export default function MobileHeader(): JSX.Element {
     }
   }
   const urls = config.urls.map((url) => (
-    <NavUrl key={keygen()} path={url.path} name={url.name} router={router} onClickFunction={handleMenuClick} />
+    <NavUrl
+      key={keygen()}
+      path={url.path}
+      name={url.name}
+      router={router}
+      onClickFunction={handleMenuClick}
+    />
   ));
 
   return (
@@ -98,7 +104,10 @@ export default function MobileHeader(): JSX.Element {
           `}
         </style>
       </button>
-      <nav className="mobileNav dark:bg-dark-grayText dark:bg-opacity-50 bg-opacity-80 bg-dark-white" ref={navRef}>
+      <nav
+        className="mobileNav dark:bg-dark-grayText dark:bg-opacity-50 bg-opacity-80 bg-dark-white"
+        ref={navRef}
+      >
         <ul>{urls}</ul>
         <style jsx global>
           {`

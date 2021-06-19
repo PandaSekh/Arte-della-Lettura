@@ -18,7 +18,9 @@ export default function Index({
   }[];
   postsCount: number;
 }): JSX.Element {
-  const Pagination = dynamic(() => import("../components/Pagination/Pagination"));
+  const Pagination = dynamic(
+    () => import("../components/Pagination/Pagination")
+  );
 
   return (
     <div>
@@ -30,7 +32,10 @@ export default function Index({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = PostDataSingleton.getInstance().getPosts(0, config.postsPerPage);
+  const posts = PostDataSingleton.getInstance().getPosts(
+    0,
+    config.postsPerPage
+  );
   const postsCount = PostDataSingleton.getInstance().getSlugs().length;
 
   return { props: { posts, postsCount } };

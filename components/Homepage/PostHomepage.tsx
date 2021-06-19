@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import dynamic from "next/dynamic";
-// import { motion } from "framer-motion";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export default function PostHomepage({
   post,
   data,
@@ -57,7 +57,6 @@ export default function PostHomepage({
             }
             .extract {
               max-width: 80%;
-              margin: auto;
             }
           }
           .homePageImage {

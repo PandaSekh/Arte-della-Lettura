@@ -8,7 +8,9 @@ import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
 import PostDataSingleton from "../dataFetchers/postsData";
 import ArticleSchema from "../schemas/ArticleSchema";
-import RelatedPostsSingleton, { RelatedPost } from "../dataFetchers/relatedPostsData";
+import RelatedPostsSingleton, {
+  RelatedPost,
+} from "../dataFetchers/relatedPostsData";
 import Comment from "../interfaces/Comment";
 import getComments from "../dataFetchers/getComments";
 import getReactions from "../dataFetchers/getEmojis";
@@ -16,22 +18,38 @@ import { EmojiInterface } from "../components/EmojiBlock/types";
 import DateUnderPost from "../components/Post/DateUnderPost";
 
 const components = {
-  InternalLink: dynamic(() => import("../components/UtilComponents/InternalLink")),
+  InternalLink: dynamic(
+    () => import("../components/UtilComponents/InternalLink")
+  ),
   Audiobook: dynamic(() => import("../components/BookCard/Audiobook")),
   Head: dynamic(() => import("next/head")),
   Image: dynamic(() => import("../components/Post/Image")),
   Stars: dynamic(() => import("../components/BookCard/Stars")),
-  BoldTextWithStars: dynamic(() => import("../components/UtilComponents/BoldTextWithStars")),
+  BoldTextWithStars: dynamic(
+    () => import("../components/UtilComponents/BoldTextWithStars")
+  ),
   Spoiler: dynamic(() => import("../components/UtilComponents/SpoilerText")),
   Book: dynamic(() => import("../components/BookCard/Book")),
 };
 
-export default function PostPage({ source, frontMatter, relatedPosts, commentsData, reactions }: Props): JSX.Element {
+export default function PostPage({
+  source,
+  frontMatter,
+  relatedPosts,
+  commentsData,
+  reactions,
+}: Props): JSX.Element {
   const router = useRouter();
 
-  const CommentBlock = dynamic(() => import("../components/Comments/CommentBlock"));
-  const RelatedPosts = dynamic(() => import("../components/RelatedPosts/RelatedPosts"));
-  const EmojiBlock = dynamic(() => import("../components/EmojiBlock/EmojiBlock"));
+  const CommentBlock = dynamic(
+    () => import("../components/Comments/CommentBlock")
+  );
+  const RelatedPosts = dynamic(
+    () => import("../components/RelatedPosts/RelatedPosts")
+  );
+  const EmojiBlock = dynamic(
+    () => import("../components/EmojiBlock/EmojiBlock")
+  );
 
   return (
     <div>
@@ -81,7 +99,9 @@ export async function getStaticProps({
 }): Promise<{ props: Props }> {
   const source = PostDataSingleton.getPostBySlug(params.slug);
 
-  const relatedPosts = RelatedPostsSingleton.getInstance().getRelatedPosts(params.slug);
+  const relatedPosts = RelatedPostsSingleton.getInstance().getRelatedPosts(
+    params.slug
+  );
 
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);

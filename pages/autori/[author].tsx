@@ -3,7 +3,9 @@ import { ParsedUrlQuery } from "querystring";
 import RenderPosts from "../../components/Homepage/RenderPosts";
 import stringToSlug from "../../lib/stringToSlug";
 
-import DataSingleton, { BookWithTitleSlugAuthorRating } from "../../dataFetchers/postsData";
+import DataSingleton, {
+  BookWithTitleSlugAuthorRating,
+} from "../../dataFetchers/postsData";
 
 export default function Index({
   posts,
@@ -26,11 +28,18 @@ export default function Index({
   );
 }
 
-export async function getStaticProps({ params }: { params: Params }): Promise<Props> {
+export async function getStaticProps({
+  params,
+}: {
+  params: Params;
+}): Promise<Props> {
   const { author } = params;
-  const data: Array<BookWithTitleSlugAuthorRating> = DataSingleton.getInstance().getAuthorBookTitleSlug(author);
+  const data: Array<BookWithTitleSlugAuthorRating> =
+    DataSingleton.getInstance().getAuthorBookTitleSlug(author);
   // from the book authors, get the name (NOT SLUG) of the author we're referring in this page
-  const authorParam = data[0].author.find((singleAuthor) => stringToSlug(singleAuthor) === author);
+  const authorParam = data[0].author.find(
+    (singleAuthor) => stringToSlug(singleAuthor) === author
+  );
 
   const posts = DataSingleton.getInstance().getFullBooksFromAuthorSlug(author);
 

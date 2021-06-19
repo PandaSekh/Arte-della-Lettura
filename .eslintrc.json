@@ -5,6 +5,8 @@
     "node": true
   },
   "extends": [
+    "plugin:@next/next/recommended",
+    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -34,10 +36,7 @@
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "prettier/prettier": "error",
-    // "indent": ["error", 2],
-    // "linebreak-style": ["error", "windows"],
-    // "quotes": ["error", "double"],
-    // "semi": ["error", "always"],
+    "react-hooks/exhaustive-deps": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/anchor-is-valid": [

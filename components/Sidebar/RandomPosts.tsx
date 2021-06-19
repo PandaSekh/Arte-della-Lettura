@@ -2,7 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import Book from "../../interfaces/Book";
 
-export default function RandomPosts({ randomBooks }: { randomBooks: Array<Book> }): JSX.Element {
+export default function RandomPosts({
+  randomBooks,
+}: {
+  randomBooks: Array<Book>;
+}): JSX.Element {
   const posts = randomBooks.map((book) => (
     <div
       className="lg:w-64 lg:h-72 w-52 h-56 relative my-4 transition-opacity opacity-100 hover:opacity-80"

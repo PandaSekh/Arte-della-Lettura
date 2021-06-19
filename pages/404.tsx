@@ -33,7 +33,13 @@ export default function Custom404(): JSX.Element {
         `}
       </style>
       <div className="w-auto h-auto m-auto">
-        <Image src="/static/images/gif/sad_panda.gif" layout="intrinsic" objectFit="contain" width={250} height={300} />
+        <Image
+          src="/static/images/gif/sad_panda.gif"
+          layout="intrinsic"
+          objectFit="contain"
+          width={250}
+          height={300}
+        />
       </div>
     </div>
   );
