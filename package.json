@@ -10,7 +10,7 @@
     "dev": "yarn prepareData && next dev",
     "build": "yarn prepareData && next build",
     "start": "next start",
-    "prebuild": "yarn lint",
+    "heavydev": "next build && next start",
     "lint": "next lint --fix"
   },
   "dependencies": {

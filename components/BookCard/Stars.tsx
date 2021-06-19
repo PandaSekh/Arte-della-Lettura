@@ -1,8 +1,15 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 
-export default function Stars({ rating, className }: { rating: number | string; className?: string }): JSX.Element {
-  const ratingNumber = typeof rating === "number" ? rating : Number.parseInt(rating, 10);
+export default function Stars({
+  rating,
+  className,
+}: {
+  rating: number | string;
+  className?: string;
+}): JSX.Element {
+  const ratingNumber =
+    typeof rating === "number" ? rating : Number.parseInt(rating, 10);
 
   const controls = useAnimation();
 
@@ -17,6 +24,9 @@ export default function Stars({ rating, className }: { rating: number | string; 
         delay: i * 0.3,
       },
     }));
+    // disabled because this should run only on component mount
+    // also follows the docs https://www.framer.com/api/motion/animation/
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

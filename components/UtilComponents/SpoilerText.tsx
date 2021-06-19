@@ -6,7 +6,11 @@ export default function Spoiler({ text }: { text: string }): JSX.Element {
   return (
     <span className="wrapper">
       <span className="clickMeText">⚠️ CLICCA PER MOSTRARE SPOILER ⚠️</span>
-      <p onKeyPress={() => setShowSpoiler(true)} onClick={() => setShowSpoiler(true)} className="spoiler">
+      <p
+        onKeyPress={() => setShowSpoiler(true)}
+        onClick={() => setShowSpoiler(true)}
+        className="spoiler"
+      >
         {text}
       </p>
       <style jsx>

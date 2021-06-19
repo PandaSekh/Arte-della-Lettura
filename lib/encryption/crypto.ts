@@ -9,7 +9,11 @@ const encrypt = (text: string): Hash => {
   if (!secretKey) throw new Error("No secret");
   const cipher = crypto.createCipheriv(
     algorithm,
-    crypto.createHash("sha256").update(String(secretKey)).digest("base64").substr(0, 32),
+    crypto
+      .createHash("sha256")
+      .update(String(secretKey))
+      .digest("base64")
+      .substr(0, 32),
     iv
   );
 
@@ -26,11 +30,18 @@ const decrypt = (hash: Hash): string => {
   if (secretKey) {
     const decipher = crypto.createDecipheriv(
       algorithm,
-      crypto.createHash("sha256").update(String(secretKey)).digest("base64").substr(0, 32),
+      crypto
+        .createHash("sha256")
+        .update(String(secretKey))
+        .digest("base64")
+        .substr(0, 32),
       Buffer.from(hash.iv, "hex")
     );
 
-    const decrpyted = Buffer.concat([decipher.update(Buffer.from(hash.content, "hex")), decipher.final()]);
+    const decrpyted = Buffer.concat([
+      decipher.update(Buffer.from(hash.content, "hex")),
+      decipher.final(),
+    ]);
 
     return decrpyted.toString();
   }

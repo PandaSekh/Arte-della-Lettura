@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import type { EmojiInterface } from "./types";
 import getKey from "../../lib/keyGen";
+import config from "../../website.config.json";
 
 function getRandomRotation() {
   return Math.random() * (30 - 10) + 10;
@@ -19,7 +20,12 @@ function GhostEmoji({ emoji }: { emoji: EmojiInterface }): JSX.Element {
         opacity: 0.3,
         top: -300,
         scale: [1, 0.95, 0.93, 0.9, 0.88],
-        rotate: [-getRandomRotation(), getRandomRotation(), -getRandomRotation(), getRandomRotation()],
+        rotate: [
+          -getRandomRotation(),
+          getRandomRotation(),
+          -getRandomRotation(),
+          getRandomRotation(),
+        ],
       }}
       transition={{ duration: 2 }}
       exit={{ opacity: 0 }}
@@ -32,16 +38,29 @@ function GhostEmoji({ emoji }: { emoji: EmojiInterface }): JSX.Element {
 export default function EmojiCounter({
   emoji,
   value,
-  onUpdate,
+  slug,
 }: {
   emoji: EmojiInterface;
   value: number;
-  onUpdate: (e: EmojiInterface) => Promise<Response>;
+  slug: string;
 }): JSX.Element {
   const [emojiCount, setEmojiCount] = useState(value);
   const [maxReached, setMaxReached] = useState(false);
   const [ghosts, setGhosts] = useState<JSX.Element[]>([]);
   const maxNumberOfInteractions = 10;
+
+  function updateEmoji(updatedEmoji: EmojiInterface) {
+    return fetch(`${config.baseurl}/api/putReaction/${slug}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        label: updatedEmoji.label,
+        counter: updatedEmoji.counter,
+      }),
+    });
+  }
 
   function addGhost() {
     const key = getKey();
@@ -74,7 +93,11 @@ export default function EmojiCounter({
     }
     clearTimeout(delayDebounceFn);
     delayDebounceFn = setTimeout(() => {
-      onUpdate({ emoji: emoji.emoji, label: emoji.label, counter: emojiCount });
+      updateEmoji({
+        emoji: emoji.emoji,
+        label: emoji.label,
+        counter: emojiCount,
+      });
     }, 1000);
   }, [emojiCount]);
 

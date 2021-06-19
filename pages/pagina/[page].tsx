@@ -4,7 +4,13 @@ import RenderPosts from "../../components/Homepage/RenderPosts";
 import PostDataSingleton from "../../dataFetchers/postsData";
 import Pagination from "../../components/Pagination/Pagination";
 
-export default function Index({ posts, postsCount }: { posts: Array<Post>; postsCount: number }): JSX.Element {
+export default function Index({
+  posts,
+  postsCount,
+}: {
+  posts: Array<Post>;
+  postsCount: number;
+}): JSX.Element {
   return (
     <div>
       <RenderPosts posts={posts} />

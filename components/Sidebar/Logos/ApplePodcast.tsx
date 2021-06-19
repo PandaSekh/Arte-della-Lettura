@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 
 export default function ApplePodcast(): JSX.Element {
   return (
-    <motion.div className="w-10 h-10" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+    <motion.div
+      className="w-10 h-10"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+    >
       <a href="https://podcasts.apple.com/us/podcast/arte-della-lettura-podcast/id1473677332">
         <svg
           xmlns="http://www.w3.org/2000/svg"

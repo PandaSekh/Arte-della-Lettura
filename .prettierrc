@@ -3,6 +3,5 @@
 	"trailingComma": "es5",
 	"arrowParens": "always",
 	"proseWrap": "preserve",
-	"endOfLine": "auto",
-	"printWidth": 120
+	"endOfLine": "auto"
 }

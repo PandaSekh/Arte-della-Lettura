@@ -18,9 +18,15 @@ function mapGenresWithInitials(genres: Array<string>) {
   return alphabetMap;
 }
 
-export default function Index({ booksJSON }: { booksJSON: string }): JSX.Element {
+export default function Index({
+  booksJSON,
+}: {
+  booksJSON: string;
+}): JSX.Element {
   const books: Map<string, Array<Book>> = new Map(JSON.parse(booksJSON));
-  const genresAlphabet = new Map([...mapGenresWithInitials(Array.from(books.keys())).entries()].sort());
+  const genresAlphabet = new Map(
+    [...mapGenresWithInitials(Array.from(books.keys())).entries()].sort()
+  );
   const toBePrinted: Array<JSX.Element> = [];
 
   // for each letter
@@ -28,7 +34,10 @@ export default function Index({ booksJSON }: { booksJSON: string }): JSX.Element
     const authorsMapped: Array<JSX.Element> = [];
 
     // get the books for each author
-    const authorsWithBooks: Map<string, Array<Book>> = new Map<string, Array<Book>>();
+    const authorsWithBooks: Map<string, Array<Book>> = new Map<
+      string,
+      Array<Book>
+    >();
     genres.forEach((genre) => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       authorsWithBooks.set(genre, books.get(genre)!);
@@ -102,7 +111,12 @@ export default function Index({ booksJSON }: { booksJSON: string }): JSX.Element
 export const getStaticProps: GetStaticProps = async () => {
   const genres = DataSingleton.getInstance().getGenres();
   const books = new Map<string, Array<Book>>();
-  genres.forEach((genre) => books.set(genre, DataSingleton.getInstance().getBookFromGenreSlug(stringToSlug(genre))));
+  genres.forEach((genre) =>
+    books.set(
+      genre,
+      DataSingleton.getInstance().getBookFromGenreSlug(stringToSlug(genre))
+    )
+  );
   const booksJSON = JSON.stringify([...books]);
   return { props: { booksJSON } };
 };

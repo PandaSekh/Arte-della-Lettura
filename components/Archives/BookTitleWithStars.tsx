@@ -13,5 +13,11 @@ export default function BookTitleWithStars({
     </Link>
   );
 
-  return <InlineStars Component={LinkComponent} rating={bookTitleSlug.rating} type="book" />;
+  return (
+    <InlineStars
+      Component={LinkComponent}
+      rating={bookTitleSlug.rating}
+      type="book"
+    />
+  );
 }

@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 
 export default function Instagram(): JSX.Element {
   return (
-    <motion.div className="w-10 h-10" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+    <motion.div
+      className="w-10 h-10"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+    >
       <a href="https://open.spotify.com/show/2yre1D5uOEIHFh0UcNyoTu">
         <svg
           xmlns="http://www.w3.org/2000/svg"

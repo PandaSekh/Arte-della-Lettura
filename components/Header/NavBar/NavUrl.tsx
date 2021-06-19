@@ -27,7 +27,11 @@ export default function NavUrl({
           role="link"
           aria-roledescription="link"
           tabIndex={0}
-          className={router.pathname === `${path}` ? `border-b-2 text-customBlue ${extraClass}` : `${extraClass}`}
+          className={
+            router.pathname === `${path}`
+              ? `border-b-2 text-customBlue ${extraClass}`
+              : `${extraClass}`
+          }
         >
           {name}
         </a>

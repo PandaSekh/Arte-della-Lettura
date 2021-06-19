@@ -18,9 +18,15 @@ function mapSeriesWithInitials(series: Array<string>) {
   return alphabetMap;
 }
 
-export default function Index({ booksJSON }: { booksJSON: string }): JSX.Element {
+export default function Index({
+  booksJSON,
+}: {
+  booksJSON: string;
+}): JSX.Element {
   const books: Map<string, Array<Book>> = new Map(JSON.parse(booksJSON));
-  const seriesAlphabet = new Map([...mapSeriesWithInitials(Array.from(books.keys())).entries()].sort());
+  const seriesAlphabet = new Map(
+    [...mapSeriesWithInitials(Array.from(books.keys())).entries()].sort()
+  );
   const toBePrinted: Array<JSX.Element> = [];
 
   // for each letter
@@ -28,7 +34,10 @@ export default function Index({ booksJSON }: { booksJSON: string }): JSX.Element
     const authorsMapped: Array<JSX.Element> = [];
 
     // get the books for each author
-    const authorsWithBooks: Map<string, Array<Book>> = new Map<string, Array<Book>>();
+    const authorsWithBooks: Map<string, Array<Book>> = new Map<
+      string,
+      Array<Book>
+    >();
     series.forEach((serie) => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       authorsWithBooks.set(serie, books.get(serie)!);
@@ -38,7 +47,10 @@ export default function Index({ booksJSON }: { booksJSON: string }): JSX.Element
     authorsWithBooks.forEach((booksValue: Array<Book>, author: string) => {
       const bookTitles = booksValue
         .sort((a: Book, b: Book) => {
-          return (a.series[0].numInSeries as number) - (b.series[0].numInSeries as number);
+          return (
+            (a.series[0].numInSeries as number) -
+            (b.series[0].numInSeries as number)
+          );
         })
         .map((book) => {
           return (
@@ -106,7 +118,12 @@ export default function Index({ booksJSON }: { booksJSON: string }): JSX.Element
 export const getStaticProps: GetStaticProps = async () => {
   const series = DataSingleton.getInstance().getSeries();
   const books = new Map<string, Array<Book>>();
-  series.forEach((serie) => books.set(serie, DataSingleton.getInstance().getBookFromSerieSlug(stringToSlug(serie))));
+  series.forEach((serie) =>
+    books.set(
+      serie,
+      DataSingleton.getInstance().getBookFromSerieSlug(stringToSlug(serie))
+    )
+  );
   const booksJSON = JSON.stringify([...books]);
   return { props: { booksJSON } };
 };

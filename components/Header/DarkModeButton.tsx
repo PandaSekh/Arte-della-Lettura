@@ -12,8 +12,14 @@ export default function DarkModeButton(): JSX.Element {
       htmlTag.classList.add("dark");
       overlay.classList.add("mooned");
     }
-    document.documentElement.style.setProperty("--hamb-color", isDark ? "#FFFFFF" : "#3a3a3a");
-    document.documentElement.style.setProperty("--header-bg-color", isDark ? "#3a3a3a" : "#ffffff");
+    document.documentElement.style.setProperty(
+      "--hamb-color",
+      isDark ? "#FFFFFF" : "#3a3a3a"
+    );
+    document.documentElement.style.setProperty(
+      "--header-bg-color",
+      isDark ? "#3a3a3a" : "#ffffff"
+    );
   }
 
   function toggleDarkMode() {
@@ -21,7 +27,10 @@ export default function DarkModeButton(): JSX.Element {
       isDark = !isDark;
       htmlTag.classList.toggle("dark");
       overlay.classList.toggle("mooned");
-      document.documentElement.style.setProperty("--hamb-color", isDark ? "#FFFFFF" : "#3a3a3a");
+      document.documentElement.style.setProperty(
+        "--hamb-color",
+        isDark ? "#FFFFFF" : "#3a3a3a"
+      );
       localStorage.setItem("theme", isDark ? "dark" : "");
     }
   }
@@ -34,8 +43,14 @@ export default function DarkModeButton(): JSX.Element {
         htmlTag.classList.add("dark");
         overlay.classList.add("mooned");
       }
-      document.documentElement.style.setProperty("--hamb-color", isDark ? "#FFFFFF" : "#3a3a3a");
-      document.documentElement.style.setProperty("--header-bg-color", isDark ? "#3a3a3a" : "#ffffff");
+      document.documentElement.style.setProperty(
+        "--hamb-color",
+        isDark ? "#FFFFFF" : "#3a3a3a"
+      );
+      document.documentElement.style.setProperty(
+        "--header-bg-color",
+        isDark ? "#3a3a3a" : "#ffffff"
+      );
     }
   }, [overlayRef]);
 
@@ -53,12 +68,24 @@ export default function DarkModeButton(): JSX.Element {
         aria-label="switch"
         aria-roledescription="switch"
       >
-        <svg id="sunmoon" viewBox="0 0 100 100" aria-hidden="true" aria-labelledby="sunmoon-title">
+        <svg
+          id="sunmoon"
+          viewBox="0 0 100 100"
+          aria-hidden="true"
+          aria-labelledby="sunmoon-title"
+        >
           <title id="sunmoon-title">Simbolo sole e luna per Dark Mode</title>
           <defs>
             <mask id="hole">
               <rect width="100%" height="100%" fill="white" />
-              <circle ref={overlayRef} id="overlay" r="60" cx="185" cy="-75" fill="black" />
+              <circle
+                ref={overlayRef}
+                id="overlay"
+                r="60"
+                cx="185"
+                cy="-75"
+                fill="black"
+              />
             </mask>
 
             <filter id="blur">
@@ -67,7 +94,14 @@ export default function DarkModeButton(): JSX.Element {
           </defs>
 
           <g filter="url(#blur)">
-            <circle fill="gold" id="donut" r="45" cx="50" cy="50" mask="url(#hole)" />
+            <circle
+              fill="gold"
+              id="donut"
+              r="45"
+              cx="50"
+              cy="50"
+              mask="url(#hole)"
+            />
           </g>
         </svg>
       </div>

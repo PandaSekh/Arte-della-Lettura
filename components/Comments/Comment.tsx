@@ -8,10 +8,17 @@ import { decrypt, Hash } from "../../lib/encryption/crypto";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const jdenticon = require("jdenticon");
 
-export default function Comment({ comment, slug }: { comment: IComment; slug: string }): JSX.Element {
+export default function Comment({
+  comment,
+  slug,
+}: {
+  comment: IComment;
+  slug: string;
+}): JSX.Element {
   const [reply, setReply] = useState(false);
   const isAdmin =
-    comment.username === process.env.ADMIN_NAME && decrypt(comment.email as Hash) === process.env.ADMIN_EMAIL;
+    comment.username === process.env.ADMIN_NAME &&
+    decrypt(comment.email as Hash) === process.env.ADMIN_EMAIL;
 
   const AddComment = dynamic(() => import("./AddComment"));
 
@@ -21,12 +28,21 @@ export default function Comment({ comment, slug }: { comment: IComment; slug: st
   }, [comment]);
 
   return (
-    <div className={`rounded border my-3 mr-2 shadow-lg p-4 w-full ${comment.parentCommentId ? "child" : ""}`}>
+    <div
+      className={`rounded border my-3 mr-2 shadow-lg p-4 w-full ${
+        comment.parentCommentId ? "child" : ""
+      }`}
+    >
       <div className="my-1 flex ">
         {isAdmin ? (
           <Image src="/Panda.svg" width={50} height={50} />
         ) : (
-          <svg data-jdenticon-value={comment.username + comment.id} height={50} ref={icon} width={50} />
+          <svg
+            data-jdenticon-value={comment.username + comment.id}
+            height={50}
+            ref={icon}
+            width={50}
+          />
         )}
         <div className="flex flex-col">
           <span className="text-sm ">{comment.date}</span>
@@ -42,7 +58,10 @@ export default function Comment({ comment, slug }: { comment: IComment; slug: st
         Rispondi
       </button>
       {reply && <AddComment slug={slug} parentCommentId={comment.id} />}
-      {comment.children && comment.children.map((child) => <Comment comment={child} key={getKey()} slug={slug} />)}
+      {comment.children &&
+        comment.children.map((child) => (
+          <Comment comment={child} key={getKey()} slug={slug} />
+        ))}
     </div>
   );
 }

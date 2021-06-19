@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import dynamic from "next/dynamic";
-// import { motion } from "framer-motion";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 export default function PostHomepage({
   post,
   data,
@@ -16,7 +16,9 @@ export default function PostHomepage({
   const ReadMore = dynamic(() => import("./ReadMore"));
 
   const imageSrc =
-    data.category === "Recensioni" ? `/static/images/books/${data.image}` : `/static/images/${data.image}`;
+    data.category === "Recensioni"
+      ? `/static/images/books/${data.image}`
+      : `/static/images/${data.image}`;
 
   return (
     <div className="singlePostHomepage m-auto w-11/12 mb-8 grid">
@@ -42,7 +44,9 @@ export default function PostHomepage({
         </Link>
       </div>
       <p className="extract m-auto max-w-full">
-        {data.extract && data.extract !== null ? data.extract?.slice(0, 400) : post.slice(0, 400)}
+        {data.extract && data.extract !== null
+          ? data.extract?.slice(0, 400)
+          : post.slice(0, 400)}
         ...
       </p>
       <style jsx>
@@ -57,7 +61,6 @@ export default function PostHomepage({
             }
             .extract {
               max-width: 80%;
-              margin: auto;
             }
           }
           .homePageImage {

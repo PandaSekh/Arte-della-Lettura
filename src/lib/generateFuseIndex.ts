@@ -6,7 +6,11 @@ function genIndex() {
   const data = PostsDataSingleton.getInstance()
     .getPosts()
     .map((post) => {
-      return { title: post.data.title, slug: post.data.slug, content: post.content };
+      return {
+        title: post.data.title,
+        slug: post.data.slug,
+        content: post.content,
+      };
     });
 
   const options = { keys: ["title", "content"] };
@@ -15,7 +19,10 @@ function genIndex() {
   const myIndex = Fuse.createIndex(options.keys, data);
 
   // Serialize and save it
-  fs.writeFileSync("./src/data/fuse-index.json", JSON.stringify(myIndex.toJSON()));
+  fs.writeFileSync(
+    "./src/data/fuse-index.json",
+    JSON.stringify(myIndex.toJSON())
+  );
 }
 
 function main() {
