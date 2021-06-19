@@ -11,7 +11,6 @@
     "build": "yarn prepareData && next build",
     "start": "next start",
     "heavydev": "next build && next start",
-    "prebuild": "yarn lint",
     "lint": "next lint --fix"
   },
   "dependencies": {

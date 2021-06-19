@@ -72,9 +72,10 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
       // if no file is present, there's no comments. We need two different routes
       if (originalComments) {
         // get the data from the base64 encoded content. Disabling things because it actually exist. Might need to update this once I understand how this library handles types
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore: Unreachable code error
+
         let data = JSON.parse(
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore: Unreachable code error
           Buffer.from(originalComments.data.content, "base64").toString("ascii")
         );
         // save the sha. Disabling things because it actually exist. Might need to update this once I understand how this library handles types

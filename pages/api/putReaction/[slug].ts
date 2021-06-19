@@ -61,9 +61,10 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 
       if (prevReactions) {
         // get the data from the base64 encoded content. Disabling things because it actually exist. Might need to update this once I understand how this library handles types
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore: Unreachable code error
+
         const data = JSON.parse(
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore: Unreachable code error
           Buffer.from(prevReactions.data.content, "base64").toString("ascii")
         );
         // save the sha. Disabling things because it actually exist. Might need to update this once I understand how this library handles types
