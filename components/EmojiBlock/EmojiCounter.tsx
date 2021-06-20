@@ -32,6 +32,8 @@ function GhostEmoji({ emoji }: { emoji: EmojiInterface }): JSX.Element {
   );
 }
 
+let numberOfClicks = 0;
+
 export default function EmojiCounter({
   emoji,
   onClickCallback,
@@ -61,8 +63,9 @@ export default function EmojiCounter({
   }
 
   function incrementEmojiCount() {
+    numberOfClicks += 1;
     if (maxReached) return;
-    if (emoji.counter + 1 >= emoji.counter + maxNumberOfInteractions) {
+    if (numberOfClicks >= numberOfClicks + maxNumberOfInteractions) {
       setMaxReached(true);
       return;
     }
@@ -86,7 +89,7 @@ export default function EmojiCounter({
       </motion.button>{" "}
       <AnimatePresence>{ghosts.map((ghost) => ghost)} </AnimatePresence>
       <div
-        className="rounded-full h-8 w-8 flex absolute -top-5 -left-2.5 border border-black border-solid"
+        className="rounded-full h-8 w-12 flex absolute -top-5 -left-2.5 border border-black border-solid"
         style={{ backgroundColor: "#f55742", color: "#fefefe", zIndex: -5 }}
       >
         <span className="m-auto font-bold select-none">{emoji.counter}</span>

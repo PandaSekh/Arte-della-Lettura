@@ -42,3 +42,6 @@ package-lock.json
 **/public/workbox-*.js
 **/public/sw.js
 .env
+src/data/related-posts/*.json
+src/data/*.json
+src/data/random-posts.json

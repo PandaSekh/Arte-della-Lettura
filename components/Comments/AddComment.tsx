@@ -13,7 +13,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Comment from "../../interfaces/Comment";
 import { Hash } from "../../lib/encryption/crypto";
 import getKey from "../../lib/keyGen";
-import config from "../../website.config.json";
 import InternalLink from "../UtilComponents/InternalLink";
 import LoadingComponent from "../Loaders/LoadingSpinner";
 
@@ -306,7 +305,7 @@ export default function AddComment({
             children: [],
             token,
           };
-          fetch(`${config.baseurl}/api/putComment/${slug}`, {
+          fetch(`/api/putComment/${slug}`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

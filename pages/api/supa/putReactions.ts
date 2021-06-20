@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createClient } from "@supabase/supabase-js";
 import { SupaEmoji } from "components/EmojiBlock/types";
@@ -9,18 +10,18 @@ export default async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
-  console.log("PutReaction request");
+  console.log("putReactions request")
   if (supabaseUrl && supabaseKey) {
     const emoji: SupaEmoji = req.body;
+    console.log("Received emoji: ", emoji)
     const supabaseClient = createClient(supabaseUrl, supabaseKey);
-    const { data, error } = await supabaseClient
+    const { error } = await supabaseClient
       .from<SupaEmoji>("reactions")
       .upsert(emoji);
 
     if (error) {
       res.status(500).json(JSON.stringify(error));
     }
-    console.log("Database updated ", data);
     res.status(204);
   } else res.status(500).json("Missing env variables");
 };

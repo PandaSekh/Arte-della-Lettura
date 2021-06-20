@@ -1,47 +1,33 @@
-/* eslint-disable no-param-reassign */
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import config from "website.config.json";
 import LoadingComponent from "../Loaders/LoadingSpinner";
 import EmojiCounter from "./EmojiCounter";
 import type { SupaEmoji } from "./types";
 
 let delayDebounceFn: NodeJS.Timeout;
+let isFirstRender = true;
 
 export default function EmojiBlock({ slug }: { slug: string }): JSX.Element {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPA_URL;
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPA_KEY;
-  let supabase: SupabaseClient;
-  const [emojis, setReactions] = useState<SupaEmoji | null>(null);
+  const [emojis, setEmojis] = useState<SupaEmoji>();
 
   useEffect(() => {
-    const getReactions = async () => {
-      if (supabaseUrl && supabaseKey) {
-        supabase = createClient(supabaseUrl, supabaseKey);
-        const { data: reactionsDB, error } = await supabase
-          .from<SupaEmoji>("reactions")
-          .select("*")
-          .eq("post_slug", slug);
-        if (error || !reactionsDB) {
-          throw new Error(error?.message || "No reactions found");
-        } else {
-          setReactions(reactionsDB[0]);
-        }
-      } else throw new Error("Issue with env");
-    };
-
-    getReactions();
-  }, []);
+    fetch(`/api/supa/getReactions/${slug}`).then(res => {
+      if (res.ok) {
+        return res.json();
+      } throw new Error("No data")
+    }).then(json => setEmojis(json));
+  }, [])
 
   async function updateDB(emojiToBeUpdated: SupaEmoji) {
-    console.log("updateDB called");
-    fetch(`${config.baseurl}/api/supa/putReaction`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(emojiToBeUpdated),
-    });
+    if (!isFirstRender) {
+      fetch(`/api/supa/putReactions`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(emojiToBeUpdated),
+      });
+    }
+    isFirstRender = false;
   }
 
   useEffect(() => {
@@ -50,38 +36,43 @@ export default function EmojiBlock({ slug }: { slug: string }): JSX.Element {
       if (emojis) {
         updateDB(emojis);
       }
-    }, 1000);
+    }, 1500);
   }, [emojis]);
 
-  function onClickEmoji(emojiLabel: string) {
-    setReactions((prevState) => {
-      if (prevState) {
-        switch (emojiLabel) {
-          case "libro":
-            prevState.libro += 1;
-            break;
-          case "estasiato":
-            prevState.estasiato += 1;
-            break;
-          case "risata":
-            prevState.risata += 1;
-            break;
-          case "assonnato":
-            prevState.assonnato += 1;
-            break;
-          case "furioso":
-            prevState.furioso += 1;
-            break;
-          case "preoccupato":
-            prevState.preoccupato += 1;
-            break;
-          default:
-            break;
-        }
-        return prevState;
+  function getData(label: string) {
+    if (emojis) {
+      const newEmojis = { ...emojis }
+      switch (label) {
+        case "libro":
+          newEmojis.libro += 1;
+          break;
+        case "estasiato":
+          newEmojis.estasiato += 1;
+          break;
+        case "risata":
+          newEmojis.risata += 1;
+          break;
+        case "assonnato":
+          newEmojis.assonnato += 1;
+          break;
+        case "furioso":
+          newEmojis.furioso += 1;
+          break;
+        case "preoccupato":
+          newEmojis.preoccupato += 1;
+          break;
+        default:
+          break;
       }
-      return prevState;
-    });
+      return newEmojis
+    } return undefined;
+  }
+
+  function onClickEmoji(emojiLabel: string) {
+    const data = getData(emojiLabel)
+    if (data) {
+      setEmojis(data);
+    }
   }
 
   return (
