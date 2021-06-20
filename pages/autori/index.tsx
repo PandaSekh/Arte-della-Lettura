@@ -2,7 +2,6 @@ import Link from "next/link";
 import { GetStaticProps } from "next";
 import stringToSlug from "../../lib/stringToSlug";
 import keygen from "../../lib/keyGen";
-
 import DataSingleton, {
   BookWithTitleSlugAuthorRating,
 } from "../../dataFetchers/postsData";

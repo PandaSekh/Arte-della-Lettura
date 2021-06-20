@@ -1,36 +1,142 @@
-import defaults from "./defaultEmojis.json";
+import { useEffect, useState } from "react";
+import LoadingComponent from "../Loaders/LoadingSpinner";
 import EmojiCounter from "./EmojiCounter";
+import type { SupaEmoji } from "./types";
 
-import type { EmojiInterface } from "./types";
+let delayDebounceFn: NodeJS.Timeout;
+let isFirstRender = true;
 
-export default function EmojiBlock({
-  emojis,
-  slug,
-}: {
-  emojis: Array<EmojiInterface> | null;
-  slug: string;
-}): JSX.Element {
-  const fullEmojis = defaults.map((emoji) => {
-    const emojiFromData = emojis?.find(
-      (emojiData) => emojiData.label === emoji.label
-    );
-    const emojiFromDefaults = emoji;
-    emojiFromDefaults.counter = emojiFromData?.counter || 0;
-    return emojiFromDefaults;
-  });
+export default function EmojiBlock({ slug }: { slug: string }): JSX.Element {
+  const [emojis, setEmojis] = useState<SupaEmoji>();
 
-  const mappedReactions = fullEmojis.map((emoji) => (
-    <EmojiCounter
-      key={emoji.label}
-      emoji={emoji}
-      value={emoji.counter}
-      slug={slug}
-    />
-  ));
+  useEffect(() => {
+    fetch(`/api/supa/getReactions/${slug}`).then(res => {
+      if (res.ok) {
+        return res.json();
+      } throw new Error("No data")
+    }).then(json => setEmojis(json));
+  }, [])
+
+  async function updateDB(emojiToBeUpdated: SupaEmoji) {
+    if (!isFirstRender) {
+      fetch(`/api/supa/putReactions`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(emojiToBeUpdated),
+      });
+    }
+    isFirstRender = false;
+  }
+
+  useEffect(() => {
+    clearTimeout(delayDebounceFn);
+    delayDebounceFn = setTimeout(() => {
+      if (emojis) {
+        updateDB(emojis);
+      }
+    }, 1500);
+  }, [emojis]);
+
+  function getData(label: string) {
+    if (emojis) {
+      const newEmojis = { ...emojis }
+      switch (label) {
+        case "libro":
+          newEmojis.libro += 1;
+          break;
+        case "estasiato":
+          newEmojis.estasiato += 1;
+          break;
+        case "risata":
+          newEmojis.risata += 1;
+          break;
+        case "assonnato":
+          newEmojis.assonnato += 1;
+          break;
+        case "furioso":
+          newEmojis.furioso += 1;
+          break;
+        case "preoccupato":
+          newEmojis.preoccupato += 1;
+          break;
+        default:
+          break;
+      }
+      return newEmojis
+    } return undefined;
+  }
+
+  function onClickEmoji(emojiLabel: string) {
+    const data = getData(emojiLabel)
+    if (data) {
+      setEmojis(data);
+    }
+  }
 
   return (
-    <div className="flex flex-row mx-auto content-between gap-12 flex-wrap my-12 justify-center	px-4">
-      {mappedReactions}
-    </div>
+    <>
+      {emojis ? (
+        <div className="flex flex-row mx-auto content-between gap-12 flex-wrap my-12 justify-center	px-4">
+          <EmojiCounter
+            key="libro"
+            emoji={{
+              emoji: "📚",
+              label: "libro",
+              counter: emojis.libro,
+            }}
+            onClickCallback={onClickEmoji}
+          />
+          <EmojiCounter
+            key="estasiato"
+            emoji={{
+              emoji: "🤩",
+              label: "estasiato",
+              counter: emojis.estasiato,
+            }}
+            onClickCallback={onClickEmoji}
+          />
+          <EmojiCounter
+            key="risata"
+            emoji={{
+              emoji: "🤣",
+              label: "risata",
+              counter: emojis.risata,
+            }}
+            onClickCallback={onClickEmoji}
+          />
+          <EmojiCounter
+            key="assonnato"
+            emoji={{
+              emoji: "😪",
+              label: "assonnato",
+              counter: emojis.assonnato,
+            }}
+            onClickCallback={onClickEmoji}
+          />
+          <EmojiCounter
+            key="furioso"
+            emoji={{
+              emoji: "😤",
+              label: "furioso",
+              counter: emojis.furioso,
+            }}
+            onClickCallback={onClickEmoji}
+          />
+          <EmojiCounter
+            key="preoccupato"
+            emoji={{
+              emoji: "😰",
+              label: "preoccupato",
+              counter: emojis.preoccupato,
+            }}
+            onClickCallback={onClickEmoji}
+          />
+        </div>
+      ) : (
+        <LoadingComponent />
+      )}
+    </>
   );
 }

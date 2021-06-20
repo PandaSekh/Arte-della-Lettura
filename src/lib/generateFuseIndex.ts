@@ -1,8 +1,9 @@
 import Fuse from "fuse.js";
-import fs from "fs";
+import { promises as fs } from 'fs';
+
 import PostsDataSingleton from "../../dataFetchers/postsData";
 
-function genIndex() {
+export default function genIndex(): Promise<void> {
   const data = PostsDataSingleton.getInstance()
     .getPosts()
     .map((post) => {
@@ -19,18 +20,8 @@ function genIndex() {
   const myIndex = Fuse.createIndex(options.keys, data);
 
   // Serialize and save it
-  fs.writeFileSync(
+  return fs.writeFile(
     "./src/data/fuse-index.json",
     JSON.stringify(myIndex.toJSON())
   );
 }
-
-function main() {
-  try {
-    genIndex();
-  } catch (err) {
-    throw new Error(err);
-  }
-}
-
-main();

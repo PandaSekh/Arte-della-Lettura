@@ -21,7 +21,7 @@ export default function NavUrl({
 }): JSX.Element {
   return (
     <li className={liClass}>
-      <Link href={`${path}`} prefetch={false}>
+      <Link href={`${path}`}>
         <a
           onClick={onClickFunction}
           role="link"
