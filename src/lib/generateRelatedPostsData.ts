@@ -1,6 +1,6 @@
 import Book from "@interfaces/Book";
 import Post from "@interfaces/Post";
-import fs from "fs";
+import { promises as fs } from 'fs';
 import PostsDataSingleton from "../../dataFetchers/postsData";
 /**
  * Split a string into single words
@@ -105,9 +105,9 @@ function calculateRelationshipPoints(
     (typeof postOne.publishedYear === "string"
       ? Number.parseInt(postOne.publishedYear, 10)
       : postOne.publishedYear) ===
-      (typeof postTwo.publishedYear === "string"
-        ? Number.parseInt(postTwo.publishedYear, 10)
-        : postTwo.publishedYear)
+    (typeof postTwo.publishedYear === "string"
+      ? Number.parseInt(postTwo.publishedYear, 10)
+      : postTwo.publishedYear)
   ) {
     points += 1;
   }
@@ -117,9 +117,9 @@ function calculateRelationshipPoints(
     (typeof postOne.ogPublishedYear === "string"
       ? Number.parseInt(postOne.ogPublishedYear, 10)
       : postOne.ogPublishedYear) ===
-      (typeof postTwo.ogPublishedYear === "string"
-        ? Number.parseInt(postTwo.ogPublishedYear, 10)
-        : postTwo.ogPublishedYear)
+    (typeof postTwo.ogPublishedYear === "string"
+      ? Number.parseInt(postTwo.ogPublishedYear, 10)
+      : postTwo.ogPublishedYear)
   ) {
     points += 1;
   }
@@ -159,14 +159,16 @@ function writeRelatedToDisk(
     };
   });
 
-  fs.writeFileSync(
+  return fs.writeFile(
     `./src/data/related-posts/${postSlug}.json`,
     JSON.stringify(data)
   );
 }
 
-function genRelated() {
+export default function genRelated(): Promise<void[]> {
   const postsMetadataMap: Map<string, PostWithFullData> = getMapData();
+
+  const promises: Array<Promise<void>> = [];
 
   postsMetadataMap.forEach((post, slug) => {
     const relatedPostSlugs: Map<string, number> = new Map();
@@ -180,19 +182,11 @@ function genRelated() {
       );
     });
 
-    writeRelatedToDisk(slug, relatedPostSlugs);
+    promises.push(writeRelatedToDisk(slug, relatedPostSlugs))
   });
-}
 
-function main() {
-  try {
-    genRelated();
-  } catch (err) {
-    throw new Error(err);
-  }
+  return Promise.all(promises);
 }
-
-main();
 
 interface PostWithFullData {
   title: string;
