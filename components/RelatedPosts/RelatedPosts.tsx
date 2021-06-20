@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import getKey from "../../lib/keyGen";
-import { RelatedPost } from "../../dataFetchers/relatedPostsData";
+import { RelatedPost } from "../../dataFetchers/getRelatedPosts";
 
 function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
   return (

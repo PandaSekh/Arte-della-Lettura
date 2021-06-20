@@ -5,7 +5,7 @@ export default function Custom500(): JSX.Element {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mx-auto text-center">
       <h1>500 - Qualcosa di strano è successo</h1>
       <h4>
         <button
@@ -14,25 +14,12 @@ export default function Custom500(): JSX.Element {
           type="button"
           role="link"
           aria-roledescription="link"
+          className="cursor-pointer"
         >
           👈 Torna indietro
         </button>
       </h4>
-      <style jsx>
-        {`
-          div {
-            margin: auto;
-            text-align: center;
-          }
-          img {
-            border-radius: 5px;
-          }
-          a {
-            cursor: pointer;
-          }
-        `}
-      </style>
-      <div className="w-auto h-auto m-auto">
+      <div className="w-auto h-auto mx-auto rounded">
         <Image
           src="/static/images/gif/angry_panda.gif"
           layout="intrinsic"

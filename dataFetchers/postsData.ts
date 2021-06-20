@@ -47,7 +47,11 @@ export default class PostsDataSingleton {
     this.posts = this.getPostsMethod();
 
     this.bookPath = PostsDataSingleton.getBooksPath();
-    this.books = this.bookPath.map((book) => JSON.parse(String(fs.readFileSync(path.join(BOOKS_PATH, book))))).sort();
+    this.books = this.bookPath
+      .map((book) =>
+        JSON.parse(String(fs.readFileSync(path.join(BOOKS_PATH, book))))
+      )
+      .sort();
     this.authors = this.getAuthors();
     this.authorSlugs = this.authors.map((author) => stringToSlug(author));
 
@@ -108,7 +112,10 @@ export default class PostsDataSingleton {
    * Returns all the posts
    * @returns Array<Post>
    */
-  public getPosts(sliceFrom: number | undefined = undefined, sliceTo: number | undefined = undefined): Array<Post> {
+  public getPosts(
+    sliceFrom: number | undefined = undefined,
+    sliceTo: number | undefined = undefined
+  ): Array<Post> {
     return this.posts.slice(sliceFrom, sliceTo);
   }
 
@@ -182,7 +189,9 @@ export default class PostsDataSingleton {
    * @returns Array of all posts filename
    */
   private static getPublishedPostPath(): string[] {
-    return fs.readdirSync(POSTS_PATH).filter((filePath) => new RegExp(/\.mdx?$/, "ig").test(filePath));
+    return fs
+      .readdirSync(POSTS_PATH)
+      .filter((filePath) => new RegExp(/\.mdx?$/, "ig").test(filePath));
   }
 
   /**
@@ -228,14 +237,18 @@ export default class PostsDataSingleton {
     return this.authorSlugs;
   }
 
-  public getAuthorBookTitleSlug(authorSlug: string): Array<BookWithTitleSlugAuthorRating> {
+  public getAuthorBookTitleSlug(
+    authorSlug: string
+  ): Array<BookWithTitleSlugAuthorRating> {
     return this.getBasicBooks().filter((book) => {
       const authors = book.author.map((author) => stringToSlug(author));
       return authors.includes(authorSlug);
     });
   }
 
-  public getFullBooksFromAuthorSlug(authorSlug: string): Array<HomepagePostData> {
+  public getFullBooksFromAuthorSlug(
+    authorSlug: string
+  ): Array<HomepagePostData> {
     const booksAuthor = this.getAuthorBookTitleSlug(authorSlug);
     const reviews: Array<HomepagePostData> = [];
     booksAuthor.forEach((book) => {
@@ -249,7 +262,9 @@ export default class PostsDataSingleton {
    * @returns Array of all posts filename
    */
   private static getBooksPath(): string[] {
-    return fs.readdirSync(BOOKS_PATH).filter((filePath) => /\.json?$/.test(filePath));
+    return fs
+      .readdirSync(BOOKS_PATH)
+      .filter((filePath) => /\.json?$/.test(filePath));
   }
 
   private getAuthors(): Array<string> {
@@ -273,10 +288,14 @@ export default class PostsDataSingleton {
   }
 
   public getBookFromEditorSlug(editorSlug: string): Array<Book> {
-    return this.books.filter((book) => stringToSlug(book.publisher) === editorSlug);
+    return this.books.filter(
+      (book) => stringToSlug(book.publisher) === editorSlug
+    );
   }
 
-  public getFullBooksReviewsFromEditorSlug(editorSlug: string): Array<HomepagePostData> {
+  public getFullBooksReviewsFromEditorSlug(
+    editorSlug: string
+  ): Array<HomepagePostData> {
     const booksEditors = this.getBookFromEditorSlug(editorSlug);
     const reviews: Array<HomepagePostData> = [];
     booksEditors.forEach((book) => {
@@ -304,7 +323,9 @@ export default class PostsDataSingleton {
     });
   }
 
-  public getFullBooksReviewsFromGenreSlug(genreSlug: string): Array<HomepagePostData> {
+  public getFullBooksReviewsFromGenreSlug(
+    genreSlug: string
+  ): Array<HomepagePostData> {
     const booksGenres = this.getBookFromGenreSlug(genreSlug);
     const reviews: Array<HomepagePostData> = [];
     booksGenres.forEach((book) => {
@@ -334,7 +355,9 @@ export default class PostsDataSingleton {
     });
   }
 
-  public getFullBooksReviewsFromSerieSlug(serieSlug: string): Array<HomepagePostData> {
+  public getFullBooksReviewsFromSerieSlug(
+    serieSlug: string
+  ): Array<HomepagePostData> {
     const booksSeries = this.getBookFromSerieSlug(serieSlug);
     const reviews: Array<HomepagePostData> = [];
     booksSeries.forEach((book) => {
@@ -379,4 +402,10 @@ interface BookWithTitleSlugAuthorRating {
   rating: number;
 }
 
-export type { Post, PostWithFilepath, SlugParam, HomepagePostData, BookWithTitleSlugAuthorRating };
+export type {
+  Post,
+  PostWithFilepath,
+  SlugParam,
+  HomepagePostData,
+  BookWithTitleSlugAuthorRating,
+};

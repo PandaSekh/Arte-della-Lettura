@@ -17,20 +17,20 @@ export default function DesktopHeader(): JSX.Element {
   ));
 
   return (
-    <nav className="main-nav-desktop" id="main-nav-desktop">
-      <ul className="navbar-ul list-none text-center mt-4">{urls}</ul>
+    <nav className="main-nav-desktop hidden md:block" id="main-nav-desktop">
+      <ul className="navbar-ul list-none text-center mt-4 p-0">{urls}</ul>
       <style jsx>
         {`
-          ul,
-          li {
-            list-style: none;
-            padding: 0;
-          }
-          @media (max-width: 768px) {
-            .main-nav-desktop {
-              display: none;
-            }
-          }
+          // ul,
+          // li {
+          //   list-style: none;
+          //   padding: 0;
+          // }
+          // @media (max-width: 768px) {
+          //   .main-nav-desktop {
+          //     display: none;
+          //   }
+          // }
         `}
       </style>
     </nav>
