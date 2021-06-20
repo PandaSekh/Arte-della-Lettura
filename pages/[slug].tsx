@@ -13,8 +13,6 @@ import RelatedPostsSingleton, {
 } from "../dataFetchers/relatedPostsData";
 import Comment from "../interfaces/Comment";
 import getComments from "../dataFetchers/getComments";
-import getReactions from "../dataFetchers/getEmojis";
-import { EmojiInterface } from "../components/EmojiBlock/types";
 import DateUnderPost from "../components/Post/DateUnderPost";
 
 const components = {
@@ -37,7 +35,6 @@ export default function PostPage({
   frontMatter,
   relatedPosts,
   commentsData,
-  reactions,
 }: Props): JSX.Element {
   const router = useRouter();
 
@@ -73,7 +70,7 @@ export default function PostPage({
         <meta content={frontMatter.publishedAt} />
         <MDXRemote {...source} components={components} />
       </article>
-      <EmojiBlock emojis={reactions} slug={frontMatter.slug} />
+      <EmojiBlock slug={frontMatter.slug} />
       <RelatedPosts posts={relatedPosts} />
       <CommentBlock slug={frontMatter.slug} comments={commentsData} />
     </div>
@@ -87,7 +84,7 @@ interface Props {
   };
   relatedPosts: Array<RelatedPost>;
   commentsData: Array<Comment> | null;
-  reactions: Array<EmojiInterface> | null;
+  // reactions: Array<EmojiInterface> | null;
 }
 
 export async function getStaticProps({
@@ -107,7 +104,7 @@ export async function getStaticProps({
   const mdxSource = await serialize(content);
 
   const comments = await getComments(params.slug);
-  const reactions = await getReactions(params.slug);
+  // const reactions = await getReactions(params.slug);
 
   return {
     props: {
@@ -115,7 +112,7 @@ export async function getStaticProps({
       frontMatter: data,
       relatedPosts,
       commentsData: comments,
-      reactions,
+      // reactions,
     },
   };
 }

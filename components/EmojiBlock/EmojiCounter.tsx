@@ -1,14 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
-import type { EmojiInterface } from "./types";
+import { useState } from "react";
+import { EmojiInterface } from "./types";
 import getKey from "../../lib/keyGen";
-import config from "../../website.config.json";
 
 function getRandomRotation() {
   return Math.random() * (30 - 10) + 10;
 }
-
-let delayDebounceFn: NodeJS.Timeout;
 
 function GhostEmoji({ emoji }: { emoji: EmojiInterface }): JSX.Element {
   return (
@@ -37,30 +34,14 @@ function GhostEmoji({ emoji }: { emoji: EmojiInterface }): JSX.Element {
 
 export default function EmojiCounter({
   emoji,
-  value,
-  slug,
+  onClickCallback,
 }: {
   emoji: EmojiInterface;
-  value: number;
-  slug: string;
+  onClickCallback: (label: string) => void;
 }): JSX.Element {
-  const [emojiCount, setEmojiCount] = useState(value);
   const [maxReached, setMaxReached] = useState(false);
   const [ghosts, setGhosts] = useState<JSX.Element[]>([]);
   const maxNumberOfInteractions = 10;
-
-  function updateEmoji(updatedEmoji: EmojiInterface) {
-    return fetch(`${config.baseurl}/api/putReaction/${slug}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        label: updatedEmoji.label,
-        counter: updatedEmoji.counter,
-      }),
-    });
-  }
 
   function addGhost() {
     const key = getKey();
@@ -81,32 +62,19 @@ export default function EmojiCounter({
 
   function incrementEmojiCount() {
     if (maxReached) return;
-    setEmojiCount((prevCount) => prevCount + 1);
-    addGhost();
-  }
-
-  useEffect(() => {
-    if (emojiCount === value || maxReached) return;
-    if (emojiCount >= value + maxNumberOfInteractions) {
+    if (emoji.counter + 1 >= emoji.counter + maxNumberOfInteractions) {
       setMaxReached(true);
       return;
     }
-    clearTimeout(delayDebounceFn);
-    delayDebounceFn = setTimeout(() => {
-      updateEmoji({
-        emoji: emoji.emoji,
-        label: emoji.label,
-        counter: emojiCount,
-      });
-    }, 1000);
-  }, [emojiCount]);
+    onClickCallback(emoji.label);
+    addGhost();
+  }
 
   return (
     <span className="relative">
       <motion.button
-        className={`select-none outline-none focus:outline-none text-4xl ${
-          maxReached ? "cursor-not-allowed" : "cursor-pointer"
-        }`}
+        className={`select-none outline-none focus:outline-none text-4xl ${maxReached ? "cursor-not-allowed" : "cursor-pointer"
+          }`}
         style={{ backfaceVisibility: "hidden" }}
         type="button"
         aria-label={emoji.label || "Emoji"}
@@ -121,7 +89,7 @@ export default function EmojiCounter({
         className="rounded-full h-8 w-8 flex absolute -top-5 -left-2.5 border border-black border-solid"
         style={{ backgroundColor: "#f55742", color: "#fefefe", zIndex: -5 }}
       >
-        <span className="m-auto font-bold select-none">{emojiCount}</span>
+        <span className="m-auto font-bold select-none">{emoji.counter}</span>
       </div>
     </span>
   );

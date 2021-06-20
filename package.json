@@ -10,11 +10,12 @@
     "dev": "yarn prepareData && next dev",
     "build": "yarn prepareData && next build",
     "start": "next start",
-    "heavydev": "next build && next start",
+    "heavydev": "yarn build && yarn start",
     "lint": "next lint --fix"
   },
   "dependencies": {
     "@octokit/request": "^5.5.0",
+    "@supabase/supabase-js": "^1.15.1",
     "framer-motion": "^4.1.17",
     "fuse.js": "^6.4.6",
     "gray-matter": "^4.0.2",

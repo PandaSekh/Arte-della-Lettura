@@ -375,22 +375,3 @@ export interface NewCommentData {
 AddComment.defaultProps = {
   parentCommentId: undefined,
 };
-
-// <motion.div
-//   className="text-center py-4 lg:px-4 "
-//   initial={{ opacity: 0, y: 50, scale: 0.3 }}
-//   animate={{ opacity: 1, y: 0, scale: 1 }}
-//   exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-// >
-//   <div
-//     className="p-2  items-center text-indigo-100 leading-none rounded lg:rounded-full flex lg:inline-flex border bg-dark-white"
-//     role="alert"
-//   >
-//     <span className="flex rounded-full  uppercase px-2 py-1 text-xs font-bold mr-3 bg-customBlue">
-//       INVIATO!
-//     </span>
-//     <span className="font-semibold mr-2 text-left flex-auto ">
-//       Il tuo commento è stato inviato. Una volta approvato comparirà qui :)
-//     </span>
-//   </div>
-// </motion.div>
