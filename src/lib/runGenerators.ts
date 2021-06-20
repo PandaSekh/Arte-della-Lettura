@@ -9,7 +9,7 @@ async function main() {
   const random = generateRandomPosts()
   const related = generateRelatedPostsData()
 
-  await Promise.all([fuseData, fuseIndex, random, related]);
+  await Promise.all([fuseData, fuseIndex, random, related]).catch(err => { throw new Error(err) });
 }
 
 main();
