@@ -3,8 +3,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { createClient } from "@supabase/supabase-js";
 import { SupaEmoji } from "components/EmojiBlock/types";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPA_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPA_KEY;
+const supabaseUrl = process.env.SUPA_URL;
+const supabaseKey = process.env.SUPA_KEY;
 
 export default async (
   req: NextApiRequest,
