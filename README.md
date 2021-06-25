@@ -30,7 +30,7 @@ So, I decided to remake my blog from the ground up.
 - Supabase - _Used for the free database only_
 - Framer Motion - _To make the website feel less boring_
 
-## Why did I decide to store -almost- everything on git?
+## Why did I decide to store -almost- everything on GitHub?
 
 <p align="center">
   <img src="https://media1.tenor.com/images/a3d9fc252280b3b89419b1bb728e8f2d/tenor.gif" >
