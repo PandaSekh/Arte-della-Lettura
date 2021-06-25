@@ -58,15 +58,15 @@ export default function DarkModeButton(): JSX.Element {
     <div
       onClick={toggleDarkMode}
       onKeyPress={toggleDarkMode}
-      role="button"
-      aria-roledescription="button"
+      aria-label="switch"
+      role="switch"
+      aria-checked="mixed"
+      aria-roledescription="switch"
       tabIndex={0}
       className="switch rounded-full h-8 w-16 bg-dark-black dark:bg-customBlue absolute right-8 top-4 shadow-2xl hover:ring ring-customBlue ring-opacity-50"
     >
       <div
         className="ball  w-6 h-6 rounded-full absolute top-1 left-1.5 transform transition-all dark:translate-x-7 duration-500 ease-in-out"
-        aria-label="switch"
-        aria-roledescription="switch"
       >
         <svg
           id="sunmoon"
