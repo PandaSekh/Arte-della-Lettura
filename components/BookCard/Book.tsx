@@ -21,7 +21,7 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
     <>
       <BookSchema book={book} />
       <div className="mt-6 max-w-7xl">
-        <div className="mr-4 float-left">
+        <div className="mr-4 md:float-left">
           <motion.figure layoutId={`image-${book.reviewSlug}`}>
             <Image
               src={`/static/images/books/${book.image}`}

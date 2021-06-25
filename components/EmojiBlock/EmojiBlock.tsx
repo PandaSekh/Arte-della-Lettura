@@ -29,8 +29,6 @@ export default function EmojiBlock({ slug }: { slug: string }): JSX.Element {
       });
   }, [])
 
-  useEffect(() => console.log(emojis), [emojis])
-
   async function updateDB(emojiToBeUpdated: SupaEmoji) {
     if (!isFirstRender) {
       fetch(`/api/supa/putReactions`, {

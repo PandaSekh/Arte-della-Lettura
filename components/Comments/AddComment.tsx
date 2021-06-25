@@ -87,7 +87,7 @@ function CommentForm({
           Commento<span className="text-red-500">*</span>
         </label>
         <textarea
-          placeholder="Ciao!"
+          placeholder="Scrivi il tuo commento..."
           id="content"
           rows={6}
           maxLength={5000}
@@ -111,9 +111,8 @@ function CommentForm({
         )}
         {errors.content && errors.content.type === "minLength" && (
           <span
-            className={`text-xs italic text-red-500 ${
-              errors.content ? "border-red-500" : ""
-            }`}
+            className={`text-xs italic text-red-500 ${errors.content ? "border-red-500" : ""
+              }`}
           >
             Commento troppo breve. Lunghezza minima: 15 caratteri.
           </span>
@@ -332,15 +331,16 @@ export default function AddComment({
 
   return (
     <>
-      {isLoading ? (
-        <LoadingComponent />
-      ) : (
+      {!isLoading && !commentSent && (
         <CommentForm
           onSubmit={onSubmit}
           register={register}
           handleSubmit={handleSubmit}
           errors={errors}
         />
+      )}
+      {isLoading && (
+        <LoadingComponent />
       )}
       <AnimatePresence>
         {notif.map((notification) => notification)}
