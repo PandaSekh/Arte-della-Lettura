@@ -20,6 +20,7 @@ export default async (
       .upsert(emoji);
 
     if (error) {
+      console.error(error)
       res.status(500).json(JSON.stringify(error));
     }
     res.status(204);

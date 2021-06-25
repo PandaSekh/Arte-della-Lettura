@@ -5,15 +5,17 @@ import { RelatedPost } from "../../dataFetchers/getRelatedPosts";
 
 function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
   return (
-    <div className="max-w-ws mx-auto md:p-2 p-4">
-      <Link href={`/${encodeURIComponent(post.slug)}`}>
-        <a>
-          <h3 className="text-center font-normal text-base mb-2 hover:text-customBlue mx-auto max-w-xs">
-            {post.title}
-          </h3>
-        </a>
-      </Link>
-      <div className="grid m-auto my-2 w-auto h-48 relative transition-opacity opacity-100 hover:opacity-80 mb-0">
+    <div className="max-w-ws mx-auto md:p-2 p-4 h-auto self-end">
+      <div>
+        <Link href={`/${encodeURIComponent(post.slug)}`}>
+          <a>
+            <h3 className="text-center font-normal text-base mb-2 hover:text-customBlue mx-auto max-w-xs">
+              {post.title}
+            </h3>
+          </a>
+        </Link>
+      </div>
+      <div className=" m-auto my-2 w-auto h-48 relative transition-opacity opacity-100 hover:opacity-80 mb-0">
         <Link href={`/${encodeURIComponent(post.slug)}`}>
           <a>
             <Image

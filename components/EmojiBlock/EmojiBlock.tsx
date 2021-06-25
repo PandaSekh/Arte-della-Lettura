@@ -10,16 +10,26 @@ export default function EmojiBlock({ slug }: { slug: string }): JSX.Element {
   const [emojis, setEmojis] = useState<SupaEmoji>();
 
   useEffect(() => {
-    fetch(`/api/supa/getReactions/${slug}`).then(res => {
-      if (res.ok) {
-        return res.json();
-      } throw new Error("No data")
-    }).then(json => setEmojis(json))
+    fetch(`/api/supa/getReactions/${slug}`)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } throw new Error("No data")
+      }).then(json => setEmojis(json))
       .catch(async () => {
-        const defaultEmojis = await import("./defaultEmojis.json")
-        setEmojis({ ...defaultEmojis, post_slug: slug })
+        setEmojis({
+          post_slug: slug,
+          libro: 0,
+          risata: 0,
+          estasiato: 0,
+          assonnato: 0,
+          furioso: 0,
+          preoccupato: 0
+        })
       });
   }, [])
+
+  useEffect(() => console.log(emojis), [emojis])
 
   async function updateDB(emojiToBeUpdated: SupaEmoji) {
     if (!isFirstRender) {
