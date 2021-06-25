@@ -12,7 +12,7 @@ export default function InlineStars({
   const emoji = type === "book" ? "📚" : "📺";
   return (
     <span className="flex md:flex-row flex-col md:items-center m-0 gap-2">
-      {emoji} {Component}
+      <div>{emoji} {Component}</div>
       <Stars className="m-0 stars" rating={rating} />
     </span>
   );

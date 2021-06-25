@@ -14,7 +14,11 @@ export default function EmojiBlock({ slug }: { slug: string }): JSX.Element {
       if (res.ok) {
         return res.json();
       } throw new Error("No data")
-    }).then(json => setEmojis(json));
+    }).then(json => setEmojis(json))
+      .catch(async () => {
+        const defaultEmojis = await import("./defaultEmojis.json")
+        setEmojis({ ...defaultEmojis, post_slug: slug })
+      });
   }, [])
 
   async function updateDB(emojiToBeUpdated: SupaEmoji) {

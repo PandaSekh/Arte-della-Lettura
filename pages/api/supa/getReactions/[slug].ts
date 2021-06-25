@@ -18,7 +18,7 @@ export default async (
       .from<SupaEmoji>("reactions")
       .select("*")
       .eq("post_slug", slug as string);
-    if (error || !reactions) {
+    if (error || !reactions || reactions.length <= 0) {
       res.status(404).json("Nothing found");
     } else {
       console.log("Data received from database: ", JSON.stringify(reactions, null, 2))

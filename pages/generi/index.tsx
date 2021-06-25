@@ -77,7 +77,7 @@ export default function Index({
   });
 
   return (
-    <div className="archive mx-auto">
+    <div className="archive md:mx-auto md:p-0 p-6 mx-6">
       <h2 className="text-center mx-auto">Recensioni per Genere</h2>
       {toBePrinted}
       <style>

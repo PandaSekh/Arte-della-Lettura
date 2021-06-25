@@ -13,7 +13,7 @@ export default function Archivio({
 }): JSX.Element {
   const prettyPrintData = data.map((book) => {
     return (
-      <li key={keygen()} className="relative pl-7 my-5">
+      <li key={keygen()} className="relative px-7 my-6">
         <BookTitleWithStars bookTitleSlug={book} />
       </li>
     );
@@ -21,7 +21,7 @@ export default function Archivio({
 
   const Archives = () => {
     return (
-      <div className="flex flex-row flex-wrap justify-center gap-5">
+      <div className="flex flex-row flex-wrap justify-center md:gap-5">
         <p>
           <Link href="/autori">
             <a className="text-customBlue hover:underline text-xl" type="link">

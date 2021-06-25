@@ -3,16 +3,10 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "prepareData": "yarn genRandomPosts && yarn genSearchIndex && yarn genSearchData && yarn genRelatedPosts",
-    "prepareData2": "ts-node src/lib/runGenerators.ts",
-    "genRandomPosts": "ts-node src/lib/generateRandomPosts.ts",
-    "genSearchIndex": "ts-node src/lib/generateFuseIndex.ts",
-    "genSearchData": "ts-node src/lib/generateFuseData.ts",
-    "genRelatedPosts": "ts-node src/lib/generateRelatedPostsData.ts",
+    "prepareData": "ts-node src/lib/runGenerators.ts",
     "dev": "yarn prepareData && next dev",
-    "build": "yarn prepareData2 && next build",
+    "build": "yarn prepareData && next build",
     "start": "next start",
-    "heavydev": "yarn build && yarn start",
     "lint": "next lint --fix"
   },
   "dependencies": {
