@@ -1,17 +1,7 @@
-import fs from "fs";
+import { promises as fs } from 'fs';
 import PostsDataSingleton from "../../dataFetchers/postsData";
 
-function generateRandomPost() {
+export default function generateRandomPost(): Promise<void> {
   const data = PostsDataSingleton.getInstance().getRandomBooks(5);
-  fs.writeFileSync("./src/data/random-posts.json", JSON.stringify(data));
+  return fs.writeFile("./src/data/random-posts.json", JSON.stringify(data));
 }
-
-function main() {
-  try {
-    generateRandomPost();
-  } catch (err) {
-    throw new Error(err);
-  }
-}
-
-main();

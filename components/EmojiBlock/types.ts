@@ -19,3 +19,13 @@ export interface EmojiAction {
 export interface Reactions {
   [key: string]: number;
 }
+
+export interface SupaEmoji {
+  post_slug: string;
+  libro: number;
+  risata: number;
+  estasiato: number;
+  assonnato: number;
+  furioso: number;
+  preoccupato: number;
+}

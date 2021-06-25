@@ -1,19 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import getKey from "../../lib/keyGen";
-import { RelatedPost } from "../../dataFetchers/relatedPostsData";
+import { RelatedPost } from "../../dataFetchers/getRelatedPosts";
 
 function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
   return (
-    <div className="max-w-ws mx-auto p-4">
-      <Link href={`/${encodeURIComponent(post.slug)}`}>
-        <a>
-          <h3 className="text-center font-normal text-base mb-2 hover:text-customBlue mx-auto max-w-xs">
-            {post.title}
-          </h3>
-        </a>
-      </Link>
-      <div className="grid m-auto my-2 w-auto h-48 relative transition-opacity opacity-100 hover:opacity-80 mb-0">
+    <div className="max-w-ws mx-auto md:p-2 p-4 h-auto self-end">
+      <div>
+        <Link href={`/${encodeURIComponent(post.slug)}`}>
+          <a>
+            <h3 className="text-center font-normal text-base mb-2 hover:text-customBlue mx-auto max-w-xs">
+              {post.title}
+            </h3>
+          </a>
+        </Link>
+      </div>
+      <div className=" m-auto my-2 w-auto h-48 relative transition-opacity opacity-100 hover:opacity-80 mb-0">
         <Link href={`/${encodeURIComponent(post.slug)}`}>
           <a>
             <Image
@@ -38,7 +40,7 @@ export default function RenderPosts({
   return (
     <div className="mx-auto my-8 w-full ">
       <p className="mx-auto text-center font-bold	">Post Correlati</p>
-      <div className=" mx-auto my-4 grid md:grid-cols-4 grid-cols-2 shadow-lg">
+      <div className="md:mx-auto my-4 grid md:grid-cols-4 grid-cols-2 shadow-lg mx-4">
         {posts.map((post) => (
           <SingleRelatedPost post={post} key={getKey()} />
         ))}

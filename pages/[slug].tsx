@@ -6,16 +6,13 @@ import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
+import RelatedPost from "@interfaces/RelatedPost";
+import Comment from "@interfaces/Comment";
 import PostDataSingleton from "../dataFetchers/postsData";
 import ArticleSchema from "../schemas/ArticleSchema";
-import RelatedPostsSingleton, {
-  RelatedPost,
-} from "../dataFetchers/relatedPostsData";
-import Comment from "../interfaces/Comment";
 import getComments from "../dataFetchers/getComments";
-import getReactions from "../dataFetchers/getEmojis";
-import { EmojiInterface } from "../components/EmojiBlock/types";
 import DateUnderPost from "../components/Post/DateUnderPost";
+import getRelatedPosts from "../dataFetchers/getRelatedPosts";
 
 const components = {
   InternalLink: dynamic(
@@ -37,7 +34,6 @@ export default function PostPage({
   frontMatter,
   relatedPosts,
   commentsData,
-  reactions,
 }: Props): JSX.Element {
   const router = useRouter();
 
@@ -73,7 +69,7 @@ export default function PostPage({
         <meta content={frontMatter.publishedAt} />
         <MDXRemote {...source} components={components} />
       </article>
-      <EmojiBlock emojis={reactions} slug={frontMatter.slug} />
+      <EmojiBlock slug={frontMatter.slug} />
       <RelatedPosts posts={relatedPosts} />
       <CommentBlock slug={frontMatter.slug} comments={commentsData} />
     </div>
@@ -87,7 +83,6 @@ interface Props {
   };
   relatedPosts: Array<RelatedPost>;
   commentsData: Array<Comment> | null;
-  reactions: Array<EmojiInterface> | null;
 }
 
 export async function getStaticProps({
@@ -99,15 +94,12 @@ export async function getStaticProps({
 }): Promise<{ props: Props }> {
   const source = PostDataSingleton.getPostBySlug(params.slug);
 
-  const relatedPosts = RelatedPostsSingleton.getInstance().getRelatedPosts(
-    params.slug
-  );
+  const relatedPosts = getRelatedPosts(params.slug);
 
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
 
   const comments = await getComments(params.slug);
-  const reactions = await getReactions(params.slug);
 
   return {
     props: {
@@ -115,7 +107,6 @@ export async function getStaticProps({
       frontMatter: data,
       relatedPosts,
       commentsData: comments,
-      reactions,
     },
   };
 }

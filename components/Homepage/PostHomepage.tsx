@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
+import ReadMore from "./ReadMore";
+import DateUnderPost from "../Post/DateUnderPost";
 
 export default function PostHomepage({
   post,
@@ -10,11 +13,6 @@ export default function PostHomepage({
   data: { [key: string]: any };
   mainPost?: boolean;
 }): JSX.Element {
-  const Link = dynamic(() => import("next/link"));
-  const Image = dynamic(() => import("next/image"));
-  const DateUnderPost = dynamic(() => import("../Post/DateUnderPost"));
-  const ReadMore = dynamic(() => import("./ReadMore"));
-
   const imageSrc =
     data.category === "Recensioni"
       ? `/static/images/books/${data.image}`

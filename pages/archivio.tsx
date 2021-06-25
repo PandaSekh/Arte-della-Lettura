@@ -2,7 +2,6 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import BookTitleWithStars from "../components/Archives/BookTitleWithStars";
 import keygen from "../lib/keyGen";
-
 import DataSingleton, {
   BookWithTitleSlugAuthorRating,
 } from "../dataFetchers/postsData";
@@ -14,39 +13,15 @@ export default function Archivio({
 }): JSX.Element {
   const prettyPrintData = data.map((book) => {
     return (
-      <li key={keygen()}>
+      <li key={keygen()} className="relative px-7 my-6">
         <BookTitleWithStars bookTitleSlug={book} />
-        <style jsx>
-          {`
-            // li::before {
-            //   content: "";
-            //   position: absolute;
-            //   background-color: #d1d5db;
-            //   border-radius: 50%;
-            //   width: 0.375em;
-            //   height: 0.375em;
-            //   top: calc(0.875em - 0.1875em);
-            //   left: 0.25em;
-            // }
-
-            li {
-              position: relative;
-              padding-left: 1.75em;
-            }
-
-            li {
-              margin-top: 1.25em;
-              margin-bottom: 1.25em;
-            }
-          `}
-        </style>
       </li>
     );
   });
 
   const Archives = () => {
     return (
-      <div className="flex flex-row flex-wrap justify-center gap-5">
+      <div className="flex flex-row flex-wrap justify-center md:gap-5">
         <p>
           <Link href="/autori">
             <a className="text-customBlue hover:underline text-xl" type="link">

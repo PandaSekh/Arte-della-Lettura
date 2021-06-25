@@ -11,13 +11,13 @@ export default function SearchInput(): JSX.Element {
 
   return (
     <form
-      className="pt-2 relative mx-auto text-gray-600"
+      className="pt-2 relative mx-auto "
       onSubmit={(e) => onSubmit(e)}
     >
       <input
-        className="border border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
         type="test"
         name="search"
+        className="border border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none text-dark-grayText dark:text-dark-grayText"
         placeholder="Cerca"
         value={value}
         onChange={(e) => setValue(e.target.value)}

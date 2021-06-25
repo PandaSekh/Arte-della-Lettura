@@ -1,16 +1,10 @@
 module.exports = {
+  // mode: "jit",
   purge: {
     enabled: true,
     content: [
-      "./components/**/*.js",
-      "./pages/**/*.js",
-      "./pages/*.js",
-      "./components/*.js",
-      "./components/**/*.ts",
-      "./pages/**/*.ts",
-      "./pages/*.ts",
-      "./components/*.ts",
       "./components/**/*.tsx",
+      "./components/**/**/*.tsx",
       "./pages/**/*.tsx",
       "./pages/*.tsx",
       "./components/*.tsx",
@@ -27,7 +21,6 @@ module.exports = {
       customBlue: {
         light: "#4db1e4",
         DEFAULT: "#01A2F9",
-        // DEFAULT: "#018fd9",
         lighter: "#99d2f0",
         darker: "#016ba3",
       },
@@ -39,6 +32,10 @@ module.exports = {
       },
       red: {
         500: "#f56565",
+      },
+      screens: {
+        md: "768px",
+        lg: "1024px",
       },
     },
     extend: {},
@@ -56,5 +53,20 @@ module.exports = {
   },
   corePlugins: {
     animation: false,
+    accessibility: false,
+    backdropBlur: false,
+    backdropBrightness: false,
+    backdropContrast: false,
+    backdropFilter: false,
+    backdropGrayscale: false,
+    backdropHueRotate: false,
+    backdropInvert: false,
+    backdropOpacity: false,
+    backdropSaturate: false,
+    backdropSepia: false,
+    sepia: false,
+    skew: false,
+    space: false,
+    saturate: false,
   },
 };

@@ -19,7 +19,7 @@ export default function Search(): JSX.Element {
 
   return (
     <div className="mx-auto w-full flex flex-col">
-      <Input
+      {/* <Input
         setResultsCallback={(query: string) => {
           setResults([
             ...fuse
@@ -28,6 +28,10 @@ export default function Search(): JSX.Element {
               .map((item) => item.item),
           ]);
         }}
+      /> */}
+      <Input
+        setResultsCallback={setResults}
+        fuse={fuse}
       />
       <div className="content grid-cols-1 md:grid-cols-2 grid">
         {results.map((post) => (

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { GetStaticProps } from "next";
 import stringToSlug from "../../lib/stringToSlug";
 import keygen from "../../lib/keyGen";
-
 import DataSingleton, {
   BookWithTitleSlugAuthorRating,
 } from "../../dataFetchers/postsData";
@@ -85,7 +84,7 @@ export default function Index({
   });
 
   return (
-    <div className="archive mx-auto">
+    <div className="archive md:mx-auto md:p-0 p-6 mx-6">
       <h2 className="text-center mx-auto">Recensioni per Autore</h2>
       {toBePrinted}
       <style>
