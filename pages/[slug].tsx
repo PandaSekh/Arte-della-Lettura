@@ -83,7 +83,6 @@ interface Props {
   };
   relatedPosts: Array<RelatedPost>;
   commentsData: Array<Comment> | null;
-  // reactions: Array<EmojiInterface> | null;
 }
 
 export async function getStaticProps({
@@ -101,7 +100,6 @@ export async function getStaticProps({
   const mdxSource = await serialize(content);
 
   const comments = await getComments(params.slug);
-  // const reactions = await getReactions(params.slug);
 
   return {
     props: {
@@ -109,7 +107,6 @@ export async function getStaticProps({
       frontMatter: data,
       relatedPosts,
       commentsData: comments,
-      // reactions,
     },
   };
 }
