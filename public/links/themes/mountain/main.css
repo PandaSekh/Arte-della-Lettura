@@ -1,0 +1,117 @@
+/* --- Variables --- */
+:root{
+  --text-color: #4CAF50;
+}
+
+/* --- Style --- */
+.logo{
+  border-radius: 50%;
+	width: 140px;
+	height: 140px;
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+}
+
+.logo_container{
+  padding: 30px;
+}
+
+html{
+  overflow-y: auto;
+}
+
+.content::before{
+  content: "";
+  position: fixed;
+  background-position: 100%;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  background-image: url(media/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  width: 100%;
+  height: 100%;
+
+  -webkit-filter: blur(7px);
+  -moz-filter: blur(7px);
+  -o-filter: blur(7px);
+  -ms-filter: blur(7px);
+  filter: blur(7px);
+}
+
+.links{
+  position: inherit;
+  z-index: 1;
+}
+
+.button:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  transform: scale(1.02);
+}
+
+a{
+	text-decoration: none;
+  font-family: 'Karla', sans-serif;
+}
+
+.button{
+  background-color: white; /* Green */
+  padding: 15px 32px;
+  display: block;
+  font-size: 20px;
+  width: 65%;
+  margin-bottom: 10px;
+  -webkit-transition-duration: 0.3s; /* Safari */
+  transition-duration: 0.3s;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: #4CAF50;
+  cursor:pointer;
+  border-radius: 10px;
+  border: 1px solid #4CAF50;
+  font-family: 'Karla', sans-serif;
+}
+
+.links{
+  margin-bottom: 125px;
+}
+
+@media (max-width: 768px){
+  .logo{
+    width: 100px;
+    height: 100px;
+  }
+  #footer p{
+    font-size: 1.2rem;
+  }
+}
+
+#footer a{
+  text-decoration: none;
+  color: #4CAF50;
+  font-family: 'Karla', sans-serif;
+}
+
+#footer p{
+  color: white;
+  font-family: 'Karla', sans-serif;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+html{
+  height: 100%;
+}
+
+#footer{
+  width: 100%;
+  bottom: 0px; 
+  left: 0px; 
+}
