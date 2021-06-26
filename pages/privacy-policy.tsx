@@ -1,6 +1,6 @@
 export default function PrivacyPolicy(): JSX.Element {
   return (
-    <div className="m-auto">
+    <div className="m-auto md:px-0 px-9">
       <h2 className="text-center">Privacy Policy</h2>
       <p className="text-center">
         <strong>

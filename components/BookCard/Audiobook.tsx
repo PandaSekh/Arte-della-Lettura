@@ -27,7 +27,7 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
             height={300}
           />
         </div>
-        <p>
+        <p className="m-0">
           <strong>{audiobook.title}</strong> di{" "}
           <Intersperse
             sep=", "
@@ -94,13 +94,6 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
           <strong>Durata:</strong> {audiobook.duration}
           <br />
           <BoldTextWithStars text="Valutazione: " rating={audiobook.rating} />
-          <style jsx>
-            {`
-              p {
-                margin: 0px;
-              }
-            `}
-          </style>
         </p>
         <blockquote>{audiobook.synopsis}</blockquote>
       </div>

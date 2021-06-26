@@ -7,7 +7,7 @@ export default function Navbar(): JSX.Element {
   const MobileHeader = dynamic(() => import("./MobileHeader"));
 
   return (
-    <header>
+    <header className="select-none ">
       <MobileHeader />
       <DesktopHeader />
 
@@ -33,9 +33,6 @@ export default function Navbar(): JSX.Element {
             .logo {
               width: 66.66%;
             }
-          }
-          header {
-            user-select: none;
           }
         `}
       </style>
