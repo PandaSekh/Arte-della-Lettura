@@ -1,3 +1,8 @@
+/**
+ * @deprecated
+ * To be removed
+ */
+
 import { request } from "@octokit/request";
 import { EmojiInterface } from "../components/EmojiBlock/types";
 
