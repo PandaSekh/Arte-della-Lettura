@@ -21,7 +21,7 @@ export default function Archivio({
 
   const Archives = () => {
     return (
-      <div className="flex flex-row flex-wrap justify-center md:gap-5">
+      <div className="flex flex-row flex-wrap justify-center md:gap-5 md:mx-auto mx-6">
         <p>
           <Link href="/autori">
             <a className="text-customBlue hover:underline text-xl" type="link">

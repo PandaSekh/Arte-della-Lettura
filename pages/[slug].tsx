@@ -14,19 +14,22 @@ import getComments from "../dataFetchers/getComments";
 import DateUnderPost from "../components/Post/DateUnderPost";
 import getRelatedPosts from "../dataFetchers/getRelatedPosts";
 
+import Image from "../components/Post/Image";
+import Book from "../components/BookCard/Book";
+
 const components = {
   InternalLink: dynamic(
     () => import("../components/UtilComponents/InternalLink")
   ),
   Audiobook: dynamic(() => import("../components/BookCard/Audiobook")),
   Head: dynamic(() => import("next/head")),
-  Image: dynamic(() => import("../components/Post/Image")),
+  Image,
   Stars: dynamic(() => import("../components/BookCard/Stars")),
   BoldTextWithStars: dynamic(
     () => import("../components/UtilComponents/BoldTextWithStars")
   ),
   Spoiler: dynamic(() => import("../components/UtilComponents/SpoilerText")),
-  Book: dynamic(() => import("../components/BookCard/Book")),
+  Book,
 };
 
 export default function PostPage({

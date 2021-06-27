@@ -30,7 +30,7 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
             />
           </motion.figure>
         </div>
-        <p>
+        <p className="m-0">
           <strong>{book.title}</strong> di{" "}
           <Intersperse
             sep=", "
@@ -92,13 +92,6 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
           <strong>Pagine:</strong> {book.pages}
           <br />
           <BoldTextWithStars text="Valutazione: " rating={book.rating} />
-          <style jsx>
-            {`
-              p {
-                margin: 0px;
-              }
-            `}
-          </style>
         </p>
         <blockquote>{book.synopsis}</blockquote>
       </div>
