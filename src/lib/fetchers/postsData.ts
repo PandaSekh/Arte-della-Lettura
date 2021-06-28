@@ -6,8 +6,8 @@ import Post from "@interfaces/Post";
 import { getDateFromStringMMDDYYYY, stringToSlug } from "@lib/utils";
 import getArraySample from "@lib/random/arraySample";
 
-const POSTS_PATH = path.join(process.cwd(), "posts");
-const BOOKS_PATH = path.join(process.cwd(), "books");
+const POSTS_PATH = path.join(process.cwd(), "src/data/posts");
+const BOOKS_PATH = path.join(process.cwd(), "src/data/books");
 
 export default class PostsDataSingleton {
   private static instance: PostsDataSingleton;

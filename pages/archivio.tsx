@@ -4,7 +4,7 @@ import DataSingleton, {
   BookWithTitleSlugAuthorRating,
 } from "@fetchers/postsData";
 import { getKey as keygen } from "@lib/utils";
-import BookTitleWithStars from "@components/Archives/BookTitleWithStars";
+import BookTitleWithStars from "@components/Stars/BookTitleWithStars";
 
 export default function Archivio({
   data,

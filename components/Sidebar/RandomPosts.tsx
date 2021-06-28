@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import Book from "../../interfaces/Book";
+import Book from "@interfaces/Book";
 
 export default function RandomPosts({
   randomBooks,

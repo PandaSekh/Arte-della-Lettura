@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookWithTitleSlugAuthorRating } from "../../dataFetchers/postsData";
+import { BookWithTitleSlugAuthorRating } from "@fetchers/postsData";
 import InlineStars from "./InlineStars";
 
 export default function BookTitleWithStars({

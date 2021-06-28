@@ -14,7 +14,7 @@ export default async function getComments(
         },
         owner: "PandaSekh",
         repo: "arte-della-lettura",
-        path: `comments/${slug}.json`,
+        path: `../../data/comments/${slug}.json`,
         ref: "dev",
       }
     );

@@ -24,9 +24,9 @@ const components = {
   Audiobook: dynamic(() => import("@components/BookCard/Audiobook")),
   Head: dynamic(() => import("next/head")),
   Image,
-  Stars: dynamic(() => import("@components/BookCard/Stars")),
+  Stars: dynamic(() => import("@components/Stars/Stars")),
   BoldTextWithStars: dynamic(
-    () => import("@components/UtilComponents/BoldTextWithStars")
+    () => import("@components/Stars/BoldTextWithStars")
   ),
   Spoiler: dynamic(() => import("@components/UtilComponents/SpoilerText")),
   Book,

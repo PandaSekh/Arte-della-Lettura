@@ -1,4 +1,4 @@
-import Post from "../../interfaces/Post";
+import Post from "@interfaces/Post";
 import RenderPosts from "../Homepage/RenderPosts";
 
 export default function Result({

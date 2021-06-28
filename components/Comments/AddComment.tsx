@@ -11,9 +11,9 @@ import {
 } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import useDynamicScript from "react-usedynamicscript";
-import Comment from "../../interfaces/Comment";
-import { Hash } from "../../lib/encryption/crypto";
-import getKey from "../../lib/keyGen";
+import Comment from "@interfaces/Comment";
+import { Hash } from "@lib/encryption/crypto";
+import { getKey } from "@lib/utils";
 import InternalLink from "../UtilComponents/InternalLink";
 import LoadingComponent from "../Loaders/LoadingSpinner";
 
@@ -264,6 +264,7 @@ export default function AddComment({
     // return () => {
     //   script.parentElement?.removeChild(script);
     // };
+    // TODO test this
     insertRecaptchaScript();
     return (() => removeRecaptchaScript());
   }, []);
