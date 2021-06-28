@@ -1,13 +1,10 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-
-import { getDateFromStringMMDDYYYY } from "../lib/timeUtils";
-import stringToSlug from "../lib/stringToSlug";
-
-import Book from "../interfaces/Book";
-import Post from "../interfaces/Post";
-import getArraySample from "../lib/random/arraySample";
+import Book from "@interfaces/Book";
+import Post from "@interfaces/Post";
+import { getDateFromStringMMDDYYYY, stringToSlug } from "@lib/utils";
+import getArraySample from "@lib/random/arraySample";
 
 const POSTS_PATH = path.join(process.cwd(), "posts");
 const BOOKS_PATH = path.join(process.cwd(), "books");

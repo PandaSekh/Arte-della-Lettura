@@ -10,6 +10,7 @@ import {
   UseFormRegister,
 } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
+import useDynamicScript from "react-usedynamicscript";
 import Comment from "../../interfaces/Comment";
 import { Hash } from "../../lib/encryption/crypto";
 import getKey from "../../lib/keyGen";
@@ -232,6 +233,7 @@ export default function AddComment({
   const [commentSent, setCommentSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [notif, setNotif] = useState<JSX.Element[]>([]);
+  const [insertRecaptchaScript, removeRecaptchaScript] = useDynamicScript(`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`, "recaptcha");
 
   const {
     register,
@@ -241,27 +243,29 @@ export default function AddComment({
   } = useForm<FormData>();
 
   useEffect(() => {
-    let script: HTMLScriptElement;
-    const loadScriptByURL = (id: string, url: string) => {
-      const scriptExist = document.getElementById(id);
+    // let script: HTMLScriptElement;
+    // const loadScriptByURL = (id: string, url: string) => {
+    //   const scriptExist = document.getElementById(id);
 
-      if (!scriptExist) {
-        script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = url;
-        script.id = id;
-        document.body.appendChild(script);
-      }
-    };
+    //   if (!scriptExist) {
+    //     script = document.createElement("script");
+    //     script.type = "text/javascript";
+    //     script.src = url;
+    //     script.id = id;
+    //     document.body.appendChild(script);
+    //   }
+    // };
 
-    loadScriptByURL(
-      "recaptcha-key",
-      `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`
-    );
+    // loadScriptByURL(
+    //   "recaptcha-key",
+    //   `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`
+    // );
 
-    return () => {
-      script.parentElement?.removeChild(script);
-    };
+    // return () => {
+    //   script.parentElement?.removeChild(script);
+    // };
+    insertRecaptchaScript();
+    return (() => removeRecaptchaScript());
   }, []);
 
   function onNotifRemove(notifKey: string) {

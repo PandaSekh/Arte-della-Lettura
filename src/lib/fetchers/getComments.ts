@@ -1,5 +1,5 @@
 import { request } from "@octokit/request";
-import Comment from "../interfaces/Comment";
+import Comment from "@interfaces/Comment";
 
 export default async function getComments(
   slug: string

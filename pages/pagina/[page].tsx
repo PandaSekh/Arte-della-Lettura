@@ -1,8 +1,8 @@
 import { GetStaticPaths } from "next";
-import config from "../../website.config.json";
-import RenderPosts from "../../components/Homepage/RenderPosts";
-import PostDataSingleton from "../../dataFetchers/postsData";
-import Pagination from "../../components/Pagination/Pagination";
+import PostDataSingleton from "@fetchers/postsData";
+import config from "website.config.json";
+import RenderPosts from "@components/Homepage/RenderPosts";
+import Pagination from "@components/Pagination/Pagination";
 
 export default function Index({
   posts,

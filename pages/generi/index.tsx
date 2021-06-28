@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { GetStaticProps } from "next";
-import stringToSlug from "../../lib/stringToSlug";
-import keygen from "../../lib/keyGen";
-
-import DataSingleton from "../../dataFetchers/postsData";
-import Book from "../../interfaces/Book";
+import DataSingleton from "@fetchers/postsData";
+import { stringToSlug, getKey as keygen } from "@lib/utils";
+import Book from "@interfaces/Book";
 
 // create a map with a letter as key and authors as values
 function mapGenresWithInitials(genres: Array<string>) {

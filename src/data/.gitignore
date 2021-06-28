@@ -1,2 +1,4 @@
-*.json
 /related-posts/*.json
+fuse-data.json
+fuse-index.json
+random-posts.json

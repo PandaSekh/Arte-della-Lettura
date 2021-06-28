@@ -1,7 +1,7 @@
 import Fuse from "fuse.js";
 import { promises as fs } from 'fs';
 
-import PostsDataSingleton from "../../dataFetchers/postsData";
+import PostsDataSingleton from "@fetchers/postsData";
 
 export default function genIndex(): Promise<void> {
   const data = PostsDataSingleton.getInstance()

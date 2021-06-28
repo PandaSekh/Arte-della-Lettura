@@ -8,27 +8,27 @@ import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
 import RelatedPost from "@interfaces/RelatedPost";
 import Comment from "@interfaces/Comment";
-import PostDataSingleton from "../dataFetchers/postsData";
-import ArticleSchema from "../schemas/ArticleSchema";
-import getComments from "../dataFetchers/getComments";
-import DateUnderPost from "../components/Post/DateUnderPost";
-import getRelatedPosts from "../dataFetchers/getRelatedPosts";
+import PostDataSingleton from "@fetchers/postsData";
+import getComments from "@fetchers/getComments";
+import getRelatedPosts from "@fetchers/getRelatedPosts";
+import ArticleSchema from "@schemas/ArticleSchema";
+import DateUnderPost from "@components/Post/DateUnderPost";
 
-import Image from "../components/Post/Image";
-import Book from "../components/BookCard/Book";
+import Image from "@components/Post/Image";
+import Book from "@components/BookCard/Book";
 
 const components = {
   InternalLink: dynamic(
-    () => import("../components/UtilComponents/InternalLink")
+    () => import("@components/UtilComponents/InternalLink")
   ),
-  Audiobook: dynamic(() => import("../components/BookCard/Audiobook")),
+  Audiobook: dynamic(() => import("@components/BookCard/Audiobook")),
   Head: dynamic(() => import("next/head")),
   Image,
-  Stars: dynamic(() => import("../components/BookCard/Stars")),
+  Stars: dynamic(() => import("@components/BookCard/Stars")),
   BoldTextWithStars: dynamic(
-    () => import("../components/UtilComponents/BoldTextWithStars")
+    () => import("@components/UtilComponents/BoldTextWithStars")
   ),
-  Spoiler: dynamic(() => import("../components/UtilComponents/SpoilerText")),
+  Spoiler: dynamic(() => import("@components/UtilComponents/SpoilerText")),
   Book,
 };
 
@@ -41,13 +41,13 @@ export default function PostPage({
   const router = useRouter();
 
   const CommentBlock = dynamic(
-    () => import("../components/Comments/CommentBlock")
+    () => import("@components/Comments/CommentBlock")
   );
   const RelatedPosts = dynamic(
-    () => import("../components/RelatedPosts/RelatedPosts")
+    () => import("@components/RelatedPosts/RelatedPosts")
   );
   const EmojiBlock = dynamic(
-    () => import("../components/EmojiBlock/EmojiBlock")
+    () => import("@components/EmojiBlock/EmojiBlock")
   );
 
   return (
