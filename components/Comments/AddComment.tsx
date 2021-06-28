@@ -10,7 +10,7 @@ import {
   UseFormRegister,
 } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
-import useDynamicScript from "react-usedynamicscript";
+import useDynamicScript from "usedynamicscript";
 import Comment from "@interfaces/Comment";
 import { Hash } from "@lib/encryption/crypto";
 import { getKey } from "@lib/utils";
@@ -243,28 +243,6 @@ export default function AddComment({
   } = useForm<FormData>();
 
   useEffect(() => {
-    // let script: HTMLScriptElement;
-    // const loadScriptByURL = (id: string, url: string) => {
-    //   const scriptExist = document.getElementById(id);
-
-    //   if (!scriptExist) {
-    //     script = document.createElement("script");
-    //     script.type = "text/javascript";
-    //     script.src = url;
-    //     script.id = id;
-    //     document.body.appendChild(script);
-    //   }
-    // };
-
-    // loadScriptByURL(
-    //   "recaptcha-key",
-    //   `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`
-    // );
-
-    // return () => {
-    //   script.parentElement?.removeChild(script);
-    // };
-    // TODO test this
     insertRecaptchaScript();
     return (() => removeRecaptchaScript());
   }, []);

@@ -8,14 +8,8 @@ import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
 import RelatedPost from "@interfaces/RelatedPost";
 import Comment from "@interfaces/Comment";
-import PostDataSingleton from "@fetchers/postsData";
-import getComments from "@fetchers/getComments";
-import getRelatedPosts from "@fetchers/getRelatedPosts";
 import ArticleSchema from "@schemas/ArticleSchema";
 import DateUnderPost from "@components/Post/DateUnderPost";
-
-import Image from "@components/Post/Image";
-import Book from "@components/BookCard/Book";
 
 const components = {
   InternalLink: dynamic(
@@ -23,13 +17,13 @@ const components = {
   ),
   Audiobook: dynamic(() => import("@components/BookCard/Audiobook")),
   Head: dynamic(() => import("next/head")),
-  Image,
+  Image: dynamic(() => import("@components/Post/Image")),
   Stars: dynamic(() => import("@components/Stars/Stars")),
   BoldTextWithStars: dynamic(
     () => import("@components/Stars/BoldTextWithStars")
   ),
   Spoiler: dynamic(() => import("@components/UtilComponents/SpoilerText")),
-  Book,
+  Book: dynamic(() => import("@components/BookCard/Book")),
 };
 
 export default function PostPage({
@@ -95,14 +89,14 @@ export async function getStaticProps({
     slug: string;
   };
 }): Promise<{ props: Props }> {
-  const source = PostDataSingleton.getPostBySlug(params.slug);
+  const source = (await import("@fetchers/postsData")).default.getPostBySlug(params.slug);
 
-  const relatedPosts = getRelatedPosts(params.slug);
+  const relatedPosts = (await import("@fetchers/getRelatedPosts")).default(params.slug);
 
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
 
-  const comments = await getComments(params.slug);
+  const comments = await (await import("@fetchers/getComments")).default(params.slug);
 
   return {
     props: {
@@ -115,7 +109,7 @@ export async function getStaticProps({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = PostDataSingleton.getInstance().getSlugs();
+  const paths = (await import("@fetchers/postsData")).default.getInstance().getSlugs();
 
   return {
     paths,

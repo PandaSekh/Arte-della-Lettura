@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const REL_POSTS_PATH = "../../data/related-posts";
+const REL_POSTS_PATH = path.join(process.cwd(), "src/data/related-posts");
 
 /**
  * Get the related posts given a post slug

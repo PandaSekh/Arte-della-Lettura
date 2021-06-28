@@ -6,7 +6,7 @@ import Audiobook from "@interfaces/Audiobook";
 import { getKey, stringToSlug } from "@lib/utils";
 
 export default function BookElement({ slug }: { slug: string }): JSX.Element {
-  const audiobook: Audiobook = require(`../../books/${slug}.json`);
+  const audiobook: Audiobook = require(`../../src/data/books/${slug}.json`);
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));
   const BoldTextWithStars = dynamic(

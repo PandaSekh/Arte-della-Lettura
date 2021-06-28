@@ -7,7 +7,7 @@ import { getKey, stringToSlug } from "@lib/utils";
 import Book from "@interfaces/Book";
 
 export default function BookElement({ slug }: { slug: string }): JSX.Element {
-  const book: Book = require(`../../books/${slug}.json`);
+  const book: Book = require(`../../src/data/books/${slug}.json`);
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));
   const BoldTextWithStars = dynamic(
