@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
-import config from "../../../website.config.json";
+import { getKey as keygen } from "@lib/utils";
+import config from "website.config.json";
 import NavUrl from "./NavUrl";
-import keygen from "../../../lib/keyGen";
 
 export default function DesktopHeader(): JSX.Element {
   const router = useRouter();

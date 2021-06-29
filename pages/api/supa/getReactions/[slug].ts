@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createClient } from "@supabase/supabase-js";
-import { SupaEmoji } from "components/EmojiBlock/types";
+import { SupaEmoji } from "@interfaces/Reactions";
 
 const supabaseUrl = process.env.SUPA_URL;
 const supabaseKey = process.env.SUPA_KEY;
@@ -19,7 +19,7 @@ export default async (
       .select("*")
       .eq("post_slug", slug as string);
     if (error || !reactions || reactions.length <= 0) {
-      res.status(404).json("Nothing found");
+      res.status(204).json("No Content");
     } else {
       console.log("Data received from database: ", JSON.stringify(reactions, null, 2))
       res.status(200).json(JSON.stringify(reactions[0]))

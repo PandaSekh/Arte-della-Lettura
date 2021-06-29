@@ -1,9 +1,9 @@
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import RenderPosts from "../components/Homepage/RenderPosts";
-import config from "../website.config.json";
-import PostDataSingleton from "../dataFetchers/postsData";
-import SearchSchema from "../schemas/SearchSchema";
+import PostDataSingleton from "@fetchers/postsData";
+import RenderPosts from "@components/Homepage/RenderPosts";
+import config from "website.config.json";
+import SearchSchema from "@schemas/SearchSchema";
 
 export default function Index({
   posts,

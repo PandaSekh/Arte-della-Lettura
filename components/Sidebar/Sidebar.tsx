@@ -1,11 +1,11 @@
-import Book from "../../interfaces/Book";
+import Book from "@interfaces/Book";
 import Logo from "./Logo";
 import RandomPosts from "./RandomPosts";
-import Instagram from "./Logos/Instagram";
-import Spotify from "./Logos/Spotify";
-import GoodReads from "./Logos/GoodReads";
-import Youtube from "./Logos/Youtube";
-import ApplePodcast from "./Logos/ApplePodcast";
+import Instagram from "./Social/Instagram";
+import Spotify from "./Social/Spotify";
+import GoodReads from "./Social/GoodReads";
+import Youtube from "./Social/Youtube";
+import ApplePodcast from "./Social/ApplePodcast";
 import SearchInput from "./SearchInput";
 
 export default function Sidebar({
@@ -17,7 +17,7 @@ export default function Sidebar({
     <div className="sidebar hidden w-10/12 lg:flex flex-col items-center max-w-min">
       <div className="flex flex-col items-center">
         <SearchInput />
-        <p className="text-2xl font-light ">Chi Sono</p>
+        <h4 className="text-2xl font-light ">Chi Sono</h4>
         <Logo />
         <p className="text-base text-center">
           Ciao, sono Alessio e su questo blog parlo di libri e fumetti. I miei
@@ -26,7 +26,7 @@ export default function Sidebar({
         </p>
       </div>
       <div className="flex flex-col items-center">
-        <p className="text-2xl font-light">Social</p>
+        <h4 className="text-2xl font-light">Social</h4>
         <div className="flex flex-row gap-2 mb-4 flex-wrap items-center">
           <Spotify />
           <ApplePodcast />
@@ -36,7 +36,7 @@ export default function Sidebar({
         </div>
       </div>
       <div className="flex flex-col items-center">
-        <p className="text-2xl font-light">Recensioni Casuali</p>
+        <h4 className="text-2xl font-light">Recensioni Casuali</h4>
         <RandomPosts randomBooks={randomPosts} />
       </div>
     </div>

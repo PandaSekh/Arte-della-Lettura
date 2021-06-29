@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Fuse from "fuse.js";
 import { motion } from "framer-motion";
-import fuseIndex from "../src/data/fuse-index.json";
-import fuseData from "../src/data/fuse-data.json";
-import Post from "../interfaces/Post";
-import Input from "../components/Search/Input";
-import PostHomepage from "../components/Homepage/PostHomepage";
+import fuseIndex from "@data/fuse-index.json";
+import fuseData from "@data/fuse-data.json";
+import Post from "@interfaces/Post";
+import Input from "@components/Search/Input";
+import PostHomepage from "@components/Homepage/PostHomepage";
 
 export default function Search(): JSX.Element {
   const [results, setResults] = useState<Post[]>([]);
@@ -19,16 +19,6 @@ export default function Search(): JSX.Element {
 
   return (
     <div className="mx-auto w-full flex flex-col">
-      {/* <Input
-        setResultsCallback={(query: string) => {
-          setResults([
-            ...fuse
-              .search(query)
-              .slice(0, 6)
-              .map((item) => item.item),
-          ]);
-        }}
-      /> */}
       <Input
         setResultsCallback={setResults}
         fuse={fuse}

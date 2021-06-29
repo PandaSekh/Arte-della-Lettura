@@ -2,18 +2,17 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import dynamic from "next/dynamic";
-import Audiobook from "../../interfaces/Audiobook";
-import getKey from "../../lib/keyGen";
-import stringToSlug from "../../lib/stringToSlug";
+import Audiobook from "@interfaces/Audiobook";
+import { getKey, stringToSlug } from "@lib/utils";
 
 export default function BookElement({ slug }: { slug: string }): JSX.Element {
-  const audiobook: Audiobook = require(`../../books/${slug}.json`);
+  const audiobook: Audiobook = require(`../../src/data/books/${slug}.json`);
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));
   const BoldTextWithStars = dynamic(
-    () => import("../UtilComponents/BoldTextWithStars")
+    () => import("../Stars/BoldTextWithStars")
   );
-  const BookSchema = dynamic(() => import("../../schemas/BookSchema"));
+  const BookSchema = dynamic(() => import("@schemas/BookSchema"));
   const Intersperse = dynamic(() => import("../UtilComponents/Intersperse"));
 
   return (

@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "prepareData": "ts-node src/lib/runGenerators.ts",
+    "prepareData": "node -r ts-node/register -r tsconfig-paths/register src/lib/runGenerators.ts",
     "dev": "yarn prepareData && next dev",
     "build": "yarn prepareData && next build",
     "start": "next start",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@octokit/request": "^5.5.0",
     "@supabase/supabase-js": "^1.15.1",
+    "better-substring": "^1.0.2",
     "framer-motion": "^4.1.17",
     "fuse.js": "^6.4.6",
     "gray-matter": "^4.0.2",
@@ -26,7 +27,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.8.3",
-    "tslib": "^2.2.0"
+    "tslib": "^2.2.0",
+    "usedynamicscript": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
@@ -34,9 +36,8 @@
     "@types/nodemailer": "^6.4.2",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.3",
-    "@types/react-paginate": "^7.1.0",
-    "@typescript-eslint/eslint-plugin": "^4.22.1",
-    "@typescript-eslint/parser": "^4.22.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
     "autoprefixer": "^10.2.5",
     "eslint": "^7.25.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
@@ -47,13 +48,15 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "next-transpile-modules": "^8.0.0",
     "postcss": "^8.1.14",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.3.1",
     "tailwindcss": "^2.0.1",
     "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.2.4",
-    "webpack": "^5.35.1"
+    "webpack": "^5.41.0"
   },
   "browserslist": [
     "> 5% in IT"

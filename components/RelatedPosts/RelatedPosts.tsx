@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import getKey from "../../lib/keyGen";
-import { RelatedPost } from "../../dataFetchers/getRelatedPosts";
+import { getKey } from "@lib/utils";
+import { RelatedPost } from "@fetchers/getRelatedPosts";
+import subs from "better-substring"
 
 function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
   return (
@@ -10,7 +11,8 @@ function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
         <Link href={`/${encodeURIComponent(post.slug)}`}>
           <a>
             <h3 className="text-center font-normal text-base mb-2 hover:text-customBlue mx-auto max-w-xs">
-              {post.title}
+              {/* TODO avoid trimmig mid-word */}
+              {post.title.length > 70 ? `${subs(post.title, 0, false, 60, false)}...` : post.title}
             </h3>
           </a>
         </Link>

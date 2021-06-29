@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import Book from "../../interfaces/Book";
+import Book from "@interfaces/Book";
 
 export default function RandomPosts({
   randomBooks,
@@ -17,7 +17,7 @@ export default function RandomPosts({
           <Image
             src={`/static/images/books/${book.image}`}
             loading="lazy"
-            alt={book.title}
+            alt={book.title || "Copertina libro"}
             layout="fill"
             objectFit="contain"
           />

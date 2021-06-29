@@ -1,8 +1,8 @@
 import { GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
-import RenderPosts from "../../components/Homepage/RenderPosts";
-import DataSingleton from "../../dataFetchers/postsData";
-import Book from "../../interfaces/Book";
+import DataSingleton from "@fetchers/postsData";
+import RenderPosts from "@components/Homepage/RenderPosts";
+import Book from "@interfaces/Book";
 
 export default function Index({
   posts,

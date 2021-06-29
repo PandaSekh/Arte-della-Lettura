@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { createRef } from "react";
-import config from "../../../website.config.json";
+import { getKey as keygen } from "@lib/utils";
+import config from "website.config.json";
 import NavUrl from "./NavUrl";
-import keygen from "../../../lib/keyGen";
 
 export default function MobileHeader(): JSX.Element {
   const burgerRef = createRef<HTMLButtonElement>();

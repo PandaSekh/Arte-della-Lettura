@@ -1,6 +1,5 @@
 import Post from "@interfaces/Post";
 import { useRouter } from "next/router"; import Fuse from "fuse.js";
-
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 export default function Input({

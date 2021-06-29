@@ -8,28 +8,22 @@ import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
 import RelatedPost from "@interfaces/RelatedPost";
 import Comment from "@interfaces/Comment";
-import PostDataSingleton from "../dataFetchers/postsData";
-import ArticleSchema from "../schemas/ArticleSchema";
-import getComments from "../dataFetchers/getComments";
-import DateUnderPost from "../components/Post/DateUnderPost";
-import getRelatedPosts from "../dataFetchers/getRelatedPosts";
-
-import Image from "../components/Post/Image";
-import Book from "../components/BookCard/Book";
+import ArticleSchema from "@schemas/ArticleSchema";
+import DateUnderPost from "@components/Post/DateUnderPost";
 
 const components = {
   InternalLink: dynamic(
-    () => import("../components/UtilComponents/InternalLink")
+    () => import("@components/UtilComponents/InternalLink")
   ),
-  Audiobook: dynamic(() => import("../components/BookCard/Audiobook")),
+  Audiobook: dynamic(() => import("@components/BookCard/Audiobook")),
   Head: dynamic(() => import("next/head")),
-  Image,
-  Stars: dynamic(() => import("../components/BookCard/Stars")),
+  Image: dynamic(() => import("@components/Post/Image")),
+  Stars: dynamic(() => import("@components/Stars/Stars")),
   BoldTextWithStars: dynamic(
-    () => import("../components/UtilComponents/BoldTextWithStars")
+    () => import("@components/Stars/BoldTextWithStars")
   ),
-  Spoiler: dynamic(() => import("../components/UtilComponents/SpoilerText")),
-  Book,
+  Spoiler: dynamic(() => import("@components/UtilComponents/SpoilerText")),
+  Book: dynamic(() => import("@components/BookCard/Book")),
 };
 
 export default function PostPage({
@@ -41,13 +35,13 @@ export default function PostPage({
   const router = useRouter();
 
   const CommentBlock = dynamic(
-    () => import("../components/Comments/CommentBlock")
+    () => import("@components/Comments/CommentBlock")
   );
   const RelatedPosts = dynamic(
-    () => import("../components/RelatedPosts/RelatedPosts")
+    () => import("@components/RelatedPosts/RelatedPosts")
   );
   const EmojiBlock = dynamic(
-    () => import("../components/EmojiBlock/EmojiBlock")
+    () => import("@components/EmojiBlock/EmojiBlock")
   );
 
   return (
@@ -95,14 +89,14 @@ export async function getStaticProps({
     slug: string;
   };
 }): Promise<{ props: Props }> {
-  const source = PostDataSingleton.getPostBySlug(params.slug);
+  const source = (await import("@fetchers/postsData")).default.getPostBySlug(params.slug);
 
-  const relatedPosts = getRelatedPosts(params.slug);
+  const relatedPosts = (await import("@fetchers/getRelatedPosts")).default(params.slug);
 
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
 
-  const comments = await getComments(params.slug);
+  const comments = await (await import("@fetchers/getComments")).default(params.slug);
 
   return {
     props: {
@@ -115,7 +109,7 @@ export async function getStaticProps({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = PostDataSingleton.getInstance().getSlugs();
+  const paths = (await import("@fetchers/postsData")).default.getInstance().getSlugs();
 
   return {
     paths,
