@@ -1,5 +1,5 @@
 <h1 align="center">
-  Arte della Lettura
+  📚 Arte della Lettura 📚
 </h1>
 <p align="center">
   <img src="/public/panda-logo.png?raw=true" width="250" >
