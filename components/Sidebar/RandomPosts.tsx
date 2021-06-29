@@ -17,7 +17,7 @@ export default function RandomPosts({
           <Image
             src={`/static/images/books/${book.image}`}
             loading="lazy"
-            alt={book.title}
+            alt={book.title || "Copertina libro"}
             layout="fill"
             objectFit="contain"
           />

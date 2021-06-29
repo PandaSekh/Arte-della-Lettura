@@ -10,7 +10,8 @@ function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
         <Link href={`/${encodeURIComponent(post.slug)}`}>
           <a>
             <h3 className="text-center font-normal text-base mb-2 hover:text-customBlue mx-auto max-w-xs">
-              {post.title}
+              {/* TODO avoid trimmig mid-word */}
+              {post.title.length > 70 ? `${post.title.substring(0, 60)}...` : post.title}
             </h3>
           </a>
         </Link>
