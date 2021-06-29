@@ -6606,10 +6606,10 @@ use-subscription@1.5.1:
   dependencies:
     object-assign "^4.1.1"
 
-usedynamicscript@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/usedynamicscript/-/usedynamicscript-1.0.1.tgz#2233a5dd3d1eba4d9c35b56505fea24ffdbae7f8"
-  integrity sha512-cMaGooWmRNBg/H1JYf0iEdSjDrrCPd1pVZYGhjoCbt6N+Qoz/oXcywXGwgXL4adRt22Sur1sRZkppkXfRDk28Q==
+usedynamicscript@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/usedynamicscript/-/usedynamicscript-1.0.2.tgz#9ceb59b3d836333205fca7e73c494683533b27da"
+  integrity sha512-KsJR2PUSZxed7VV1GeA+OsO/Ckq8sAeGNX0MFk/RSynpBfTJHwgsGOC8MrMSvBubXaxm5B/73ymU241t6PvxuQ==
 
 utf-8-validate@^5.0.2:
   version "5.0.5"
