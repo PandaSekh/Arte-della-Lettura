@@ -2,7 +2,7 @@
 /* eslint-disable no-async-promise-executor */
 import { request } from "@octokit/request";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { NewCommentData } from "@components/Comments/AddComment";
+import NewCommentData from "@interfaces/NewComment";
 import Comment from "@interfaces/Comment";
 import { encrypt } from "@lib/encryption/crypto";
 import config from "website.config.json";

@@ -209,7 +209,7 @@ export default class PostsDataSingleton {
       })
       .filter((post) => post)
       .sort(
-        (a: PostWithFilepath, b: PostWithFilepath) =>
+        (a: Post, b: Post) =>
           getDateFromStringMMDDYYYY(b.data.publishedAt).getTime() -
           getDateFromStringMMDDYYYY(a.data.publishedAt).getTime()
       );
@@ -371,14 +371,14 @@ export default class PostsDataSingleton {
     return getArraySample(this.books, number);
   }
 }
-interface PostWithFilepath {
-  content: string;
-  data: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any;
-  };
-  filePath: string;
-}
+// interface PostWithFilepath {
+//   content: string;
+//   data: {
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     [key: string]: any;
+//   };
+//   filePath: string;
+// }
 
 interface SlugParam {
   params: {
@@ -401,7 +401,7 @@ interface BookWithTitleSlugAuthorRating {
 
 export type {
   Post,
-  PostWithFilepath,
+  // PostWithFilepath,
   SlugParam,
   HomepagePostData,
   BookWithTitleSlugAuthorRating,

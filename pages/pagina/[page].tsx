@@ -1,6 +1,7 @@
 import { GetStaticPaths } from "next";
 import PostDataSingleton from "@fetchers/postsData";
 import config from "website.config.json";
+import Post from "@interfaces/Post"
 import RenderPosts from "@components/Homepage/RenderPosts";
 import Pagination from "@components/Pagination/Pagination";
 
@@ -53,11 +54,3 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
-
-interface Post {
-  content: string;
-  data: {
-    [key: string]: unknown;
-  };
-  filePath: string;
-}
