@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 import Link from "next/link";
+import subs from "better-substring"
 import ReadMore from "./ReadMore";
 import DateUnderPost from "../Post/DateUnderPost";
 
@@ -43,8 +44,8 @@ export default function PostHomepage({
       </div>
       <p className="extract m-auto max-w-full">
         {data.extract && data.extract !== null
-          ? data.extract?.slice(0, 400)
-          : post.slice(0, 400)}
+          ? subs(data.extract, 0, false, 400, true)
+          : subs(post, 0, false, 400, true)}
         ...
       </p>
       <style jsx>

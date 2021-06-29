@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getKey } from "@lib/utils";
 import { RelatedPost } from "@fetchers/getRelatedPosts";
+import subs from "better-substring"
 
 function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
   return (
@@ -11,7 +12,7 @@ function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
           <a>
             <h3 className="text-center font-normal text-base mb-2 hover:text-customBlue mx-auto max-w-xs">
               {/* TODO avoid trimmig mid-word */}
-              {post.title.length > 70 ? `${post.title.substring(0, 60)}...` : post.title}
+              {post.title.length > 70 ? `${subs(post.title, 0, false, 60, false)}...` : post.title}
             </h3>
           </a>
         </Link>
