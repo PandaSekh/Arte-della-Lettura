@@ -22,7 +22,7 @@ export default function SearchInput(): JSX.Element {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button type="submit" className="absolute right-0 top-0 mt-5 mr-4">
+      <button type="submit" className="absolute right-0 top-0 mt-5 mr-4" name="Cerca">
         <svg
           className="text-dark-grayText h-4 w-4 fill-current"
           xmlns="http://www.w3.org/2000/svg"
