@@ -2,8 +2,8 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import IComment from "../../interfaces/Comment";
-import getKey from "../../lib/keyGen";
+import IComment from "@interfaces/Comment";
+import { getKey } from "@lib/utils";
 
 export default function CommentBlock({
   slug,

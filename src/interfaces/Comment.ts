@@ -1,4 +1,4 @@
-import { Hash } from "../lib/encryption/crypto";
+import { Hash } from "@lib/encryption/crypto";
 
 export default interface Comment {
   id: string;

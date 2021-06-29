@@ -3,18 +3,17 @@
 /* eslint-disable global-require */
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import Book from "../../interfaces/Book";
-import getKey from "../../lib/keyGen";
-import stringToSlug from "../../lib/stringToSlug";
+import { getKey, stringToSlug } from "@lib/utils";
+import Book from "@interfaces/Book";
 
 export default function BookElement({ slug }: { slug: string }): JSX.Element {
-  const book: Book = require(`../../books/${slug}.json`);
+  const book: Book = require(`../../src/data/books/${slug}.json`);
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));
   const BoldTextWithStars = dynamic(
-    () => import("../UtilComponents/BoldTextWithStars")
+    () => import("../Stars/BoldTextWithStars")
   );
-  const BookSchema = dynamic(() => import("../../schemas/BookSchema"));
+  const BookSchema = dynamic(() => import("@schemas/BookSchema"));
   const Intersperse = dynamic(() => import("../UtilComponents/Intersperse"));
 
   return (

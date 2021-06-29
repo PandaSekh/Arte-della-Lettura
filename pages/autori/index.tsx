@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { GetStaticProps } from "next";
-import stringToSlug from "../../lib/stringToSlug";
-import keygen from "../../lib/keyGen";
 import DataSingleton, {
   BookWithTitleSlugAuthorRating,
-} from "../../dataFetchers/postsData";
+} from "@fetchers/postsData";
+import { stringToSlug, getKey as keygen } from "@lib/utils"
 
 // create a map with a letter as key and authors as values
 function mapAuthorsWithInitials(authors: Array<string>) {

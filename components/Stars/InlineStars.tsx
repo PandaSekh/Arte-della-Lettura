@@ -1,4 +1,4 @@
-import Stars from "../BookCard/Stars";
+import Stars from "./Stars";
 
 export default function InlineStars({
   rating,

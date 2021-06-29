@@ -1,5 +1,5 @@
 import { request } from "@octokit/request";
-import Comment from "../interfaces/Comment";
+import Comment from "@interfaces/Comment";
 
 export default async function getComments(
   slug: string
@@ -14,7 +14,7 @@ export default async function getComments(
         },
         owner: "PandaSekh",
         repo: "arte-della-lettura",
-        path: `comments/${slug}.json`,
+        path: `../../data/comments/${slug}.json`,
         ref: "dev",
       }
     );

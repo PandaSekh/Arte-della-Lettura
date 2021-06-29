@@ -1,16 +1,13 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import Book from "@interfaces/Book";
+import Post from "@interfaces/Post";
+import { getDateFromStringMMDDYYYY, stringToSlug } from "@lib/utils";
+import getArraySample from "@lib/random/arraySample";
 
-import { getDateFromStringMMDDYYYY } from "../lib/timeUtils";
-import stringToSlug from "../lib/stringToSlug";
-
-import Book from "../interfaces/Book";
-import Post from "../interfaces/Post";
-import getArraySample from "../lib/random/arraySample";
-
-const POSTS_PATH = path.join(process.cwd(), "posts");
-const BOOKS_PATH = path.join(process.cwd(), "books");
+const POSTS_PATH = path.join(process.cwd(), "src/data/posts");
+const BOOKS_PATH = path.join(process.cwd(), "src/data/books");
 
 export default class PostsDataSingleton {
   private static instance: PostsDataSingleton;
@@ -212,7 +209,7 @@ export default class PostsDataSingleton {
       })
       .filter((post) => post)
       .sort(
-        (a: PostWithFilepath, b: PostWithFilepath) =>
+        (a: Post, b: Post) =>
           getDateFromStringMMDDYYYY(b.data.publishedAt).getTime() -
           getDateFromStringMMDDYYYY(a.data.publishedAt).getTime()
       );
@@ -374,14 +371,14 @@ export default class PostsDataSingleton {
     return getArraySample(this.books, number);
   }
 }
-interface PostWithFilepath {
-  content: string;
-  data: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any;
-  };
-  filePath: string;
-}
+// interface PostWithFilepath {
+//   content: string;
+//   data: {
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     [key: string]: any;
+//   };
+//   filePath: string;
+// }
 
 interface SlugParam {
   params: {
@@ -404,7 +401,7 @@ interface BookWithTitleSlugAuthorRating {
 
 export type {
   Post,
-  PostWithFilepath,
+  // PostWithFilepath,
   SlugParam,
   HomepagePostData,
   BookWithTitleSlugAuthorRating,

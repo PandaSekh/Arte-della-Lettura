@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
-import Book from "../interfaces/Book";
-import Audiobook from "../interfaces/Audiobook";
-import { bookReviewSchemaGen } from "./SchemaGenerators";
+import Book from "@interfaces/Book";
+import Audiobook from "@interfaces/Audiobook";
+import { bookReviewSchemaGen } from "@schemas/SchemaGenerators";
 
 export default function BookSchema({ book }: { book: Book | Audiobook }): JSX.Element {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import getKey from "../../lib/keyGen";
+import { getKey } from "@lib/utils";
 
 export default function Intersperse({
   arr,

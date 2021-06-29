@@ -1,4 +1,4 @@
-import Book from "../../interfaces/Book";
+import Book from "@interfaces/Book";
 import Logo from "./Logo";
 import RandomPosts from "./RandomPosts";
 import Instagram from "./Logos/Instagram";

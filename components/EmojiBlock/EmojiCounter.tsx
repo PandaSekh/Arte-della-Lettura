@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { EmojiInterface } from "./types";
-import getKey from "../../lib/keyGen";
+import { getKey } from "@lib/utils"
+import { EmojiInterface } from "@interfaces/Reactions";
 
 function getRandomRotation() {
   return Math.random() * (30 - 10) + 10;

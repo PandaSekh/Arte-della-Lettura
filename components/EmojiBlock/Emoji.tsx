@@ -1,4 +1,4 @@
-import type { EmojiFN, EmojiInterface } from "./types";
+import type { EmojiFN, EmojiInterface } from "@interfaces/Reactions";
 
 export default function Emoji({
   emoji,

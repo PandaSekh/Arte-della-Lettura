@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import type { SupaEmoji } from "@interfaces/Reactions";
 import LoadingComponent from "../Loaders/LoadingSpinner";
 import EmojiCounter from "./EmojiCounter";
-import type { SupaEmoji } from "./types";
 
 let delayDebounceFn: NodeJS.Timeout;
 let isFirstRender = true;

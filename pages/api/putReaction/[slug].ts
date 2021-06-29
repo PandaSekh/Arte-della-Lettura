@@ -2,25 +2,9 @@
 /* eslint-disable no-async-promise-executor */
 import { request } from "@octokit/request";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { Reactions } from "../../../components/EmojiBlock/types";
-
-// function merge(array: Array<EmojiGit>, newEmoji: EmojiGit): Array<EmojiGit> {
-//   const { label } = newEmoji;
-//   console.log(`To add: ${newEmoji.label}`);
-//   const toRemove = array.find((e) => e.label === label);
-//   console.log(`To toRemove: ${toRemove?.label}`);
-//   if (toRemove) {
-//     console.log("To remove");
-//     array.splice(array.indexOf(toRemove), 1, newEmoji);
-//     console.log("Array after: ", JSON.stringify(array, null, 2));
-//   }
-//   array.push(newEmoji);
-//   return array;
-// }
+import { Reactions } from "@interfaces/Reactions";
 
 function merge(map: Reactions, newEmoji: EmojiBody): Reactions {
-  // console.log(`Merge map: ${JSON.stringify(map, null, 2)}`);
-  // console.log(`newEmoji: ${JSON.stringify(newEmoji, null, 2)}`);
   if (map[newEmoji.label]) {
     let count = map[newEmoji.label];
     count = newEmoji.counter;
@@ -28,14 +12,12 @@ function merge(map: Reactions, newEmoji: EmojiBody): Reactions {
   } else {
     map[newEmoji.label] = newEmoji.counter;
   }
-  // console.log(`End Merge map: ${JSON.stringify(map, null, 2)}`);
   return map;
 }
 
 export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   return new Promise(async (resolve) => {
     const updatedEmoji: EmojiBody = req.body;
-    // console.log("UpdatedEmoji: ", JSON.stringify(updatedEmoji, null, 2));
     const { slug } = req.query;
 
     try {
@@ -57,8 +39,6 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
         if (e.status !== 404) throw new Error(e);
       });
 
-      // console.log("prevReactions: ", JSON.stringify(prevReactions, null, 2));
-
       if (prevReactions) {
         // get the data from the base64 encoded content. Disabling things because it actually exist. Might need to update this once I understand how this library handles types
 
@@ -74,7 +54,6 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 
         // merge
         const dataToSave: Reactions = merge(data, updatedEmoji);
-        // console.log("after merge: ", JSON.stringify(dataToSave, null, 2));
         // save the new comment to git
         request("PUT /repos/{owner}/{repo}/contents/{path}", {
           headers: {
@@ -97,12 +76,10 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           resolve();
         });
       } else {
-        // console.log("no prev data");
         // merge
         const dataToSave: Reactions = {};
         dataToSave[updatedEmoji.label] = updatedEmoji.counter;
 
-        // console.log("Uploading this: ", dataToSave);
         // save the new comment to git
         request("PUT /repos/{owner}/{repo}/contents/{path}", {
           headers: {

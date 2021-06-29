@@ -1,7 +1,7 @@
 import Book from "@interfaces/Book";
 import Post from "@interfaces/Post";
 import { promises as fs } from 'fs';
-import PostsDataSingleton from "../../dataFetchers/postsData";
+import PostsDataSingleton from "@fetchers/postsData";
 /**
  * Split a string into single words
  * @param phrase string to be splitted

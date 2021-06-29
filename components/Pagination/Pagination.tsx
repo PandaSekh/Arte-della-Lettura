@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import getKey from "../../lib/keyGen";
-import config from "../../website.config.json";
+import { getKey } from "@lib/utils";
+import config from "website.config.json";
 
 export function PageButton({
   text,

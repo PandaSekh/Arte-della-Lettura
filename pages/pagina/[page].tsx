@@ -1,8 +1,9 @@
 import { GetStaticPaths } from "next";
-import config from "../../website.config.json";
-import RenderPosts from "../../components/Homepage/RenderPosts";
-import PostDataSingleton from "../../dataFetchers/postsData";
-import Pagination from "../../components/Pagination/Pagination";
+import PostDataSingleton from "@fetchers/postsData";
+import config from "website.config.json";
+import Post from "@interfaces/Post"
+import RenderPosts from "@components/Homepage/RenderPosts";
+import Pagination from "@components/Pagination/Pagination";
 
 export default function Index({
   posts,
@@ -53,11 +54,3 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
-
-interface Post {
-  content: string;
-  data: {
-    [key: string]: unknown;
-  };
-  filePath: string;
-}

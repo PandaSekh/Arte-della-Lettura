@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import "../styles/style.css";
+import "../src/styles/style.css";
 import { AppProps } from "next/app";
-import Layout from "../components/Layout/Layout";
+import Layout from "@components/Layout/Layout";
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   return (

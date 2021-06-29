@@ -1,5 +1,5 @@
-import Book from "../interfaces/Book";
-import Audiobook from "../interfaces/Audiobook";
+import Book from "@interfaces/Book";
+import Audiobook from "@interfaces/Audiobook";
 
 function getBookFormatInSchema(bookFormat: string): string {
   if (bookFormat === "Paperback" || bookFormat === "Manga") {

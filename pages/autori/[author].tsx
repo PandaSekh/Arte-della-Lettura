@@ -1,11 +1,10 @@
 import { GetStaticPaths } from "next";
 import { ParsedUrlQuery } from "querystring";
-import RenderPosts from "../../components/Homepage/RenderPosts";
-import stringToSlug from "../../lib/stringToSlug";
-
 import DataSingleton, {
   BookWithTitleSlugAuthorRating,
-} from "../../dataFetchers/postsData";
+} from "@fetchers/postsData";
+import RenderPosts from "@components/Homepage/RenderPosts";
+import { stringToSlug } from "@lib/utils";
 
 export default function Index({
   posts,

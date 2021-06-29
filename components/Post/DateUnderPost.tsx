@@ -1,4 +1,4 @@
-import months from "../../lib/monthsArray";
+import { months } from "@lib/utils";
 
 export default function DateUnderPost({ date }: { date: string }): JSX.Element {
   const dateArray = date.split("-");

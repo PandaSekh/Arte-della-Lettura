@@ -17,9 +17,12 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@interfaces/*": ["interfaces/*"],
-      "@lib/*": ["lib/*"],
-      "@components/*": ["components/*"]
+      "@interfaces/*": ["src/interfaces/*"],
+      "@lib/*": ["src/lib/*"],
+      "@components/*": ["components/*"],
+      "@fetchers/*": ["src/lib/fetchers/*"],
+      "@schemas/*": ["src/schemas/*"],
+      "@data/*": ["src/data/*"]
     }
   },
   "include": [
