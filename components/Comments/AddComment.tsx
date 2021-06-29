@@ -11,8 +11,7 @@ import {
 } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import useDynamicScript from "usedynamicscript";
-import Comment from "@interfaces/Comment";
-import { Hash } from "@lib/encryption/crypto";
+import NewCommentData, { FormData } from "@interfaces/NewComment";
 import { getKey } from "@lib/utils";
 import InternalLink from "../UtilComponents/InternalLink";
 import LoadingComponent from "../Loaders/LoadingSpinner";
@@ -332,27 +331,9 @@ export default function AddComment({
   );
 }
 
-type FormData = {
-  id: string;
-  username: string;
-  date: string | Date;
-  email: string;
-  content: string;
-  parentCommentId: string;
-  terms: boolean;
-};
 
-export interface NewCommentData {
-  id: string;
-  username: string;
-  date: string | Date;
-  email: Hash | string;
-  content: string;
-  children: Array<Comment>;
-  parentCommentId?: string;
-  userimageUrl?: string;
-  token: string;
-}
+
+
 
 AddComment.defaultProps = {
   parentCommentId: undefined,

@@ -2,7 +2,7 @@
 /* eslint-disable no-async-promise-executor */
 import { request } from "@octokit/request";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { Reactions } from "@components/EmojiBlock/types";
+import { Reactions } from "@interfaces/Reactions";
 
 function merge(map: Reactions, newEmoji: EmojiBody): Reactions {
   if (map[newEmoji.label]) {

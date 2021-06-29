@@ -17,8 +17,8 @@ export default function Comment({
 }): JSX.Element {
   const [reply, setReply] = useState(false);
   const isAdmin =
-    comment.username === process.env.ADMIN_NAME &&
-    decrypt(comment.email as Hash) === process.env.ADMIN_EMAIL;
+    comment.username === process.env.NEXT_PUBLIC_ADMIN_NAME &&
+    decrypt(comment.email as Hash) === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
   const AddComment = dynamic(() => import("./AddComment"));
 
