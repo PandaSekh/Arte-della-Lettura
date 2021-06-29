@@ -1,4 +1,4 @@
-import Book from "@interfaces/Book";
+import RandomPost from "@interfaces/RandomPost";
 import Logo from "./Logo";
 import RandomPosts from "./RandomPosts";
 import Instagram from "./Social/Instagram";
@@ -11,7 +11,7 @@ import SearchInput from "./SearchInput";
 export default function Sidebar({
   randomPosts,
 }: {
-  randomPosts: Array<Book>;
+  randomPosts: Array<RandomPost>;
 }): JSX.Element {
   return (
     <div className="sidebar hidden w-10/12 lg:flex flex-col items-center max-w-min">

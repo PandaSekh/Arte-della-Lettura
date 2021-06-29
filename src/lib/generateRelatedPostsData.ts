@@ -23,9 +23,7 @@ function getMapData(): Map<string, PostWithFullData> {
     if (bookReview) posts.splice(posts.indexOf(bookReview), 1);
     const fullData: PostWithFullData = {
       title: bookReview?.data?.title ? bookReview?.data?.title : book.title,
-      image: bookReview?.data?.image
-        ? `/static/images/books/${bookReview?.data?.image}`
-        : `/static/images/books/${bookReview?.data?.image}`,
+      image: `/static/images/${bookReview?.data?.image}`,
       slug: bookReview?.data?.slug ? bookReview?.data?.slug : book.reviewSlug,
       keywords: getKeywords(book.title),
       category: "Recensione",
@@ -154,7 +152,7 @@ function writeRelatedToDisk(
       PostsDataSingleton.getInstance().getPostsForHomepageBySlug(slug);
     return {
       title: post.data.title,
-      image: `/static/images/books/${post.data.image}`,
+      image: `/static/images/${post.data.image}`,
       slug: post.data.slug,
     };
   });

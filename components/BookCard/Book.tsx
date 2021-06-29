@@ -23,7 +23,7 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
         <div className="mr-4 md:float-left">
           <motion.figure layoutId={`image-${book.reviewSlug}`}>
             <Image
-              src={`/static/images/books/${book.image}`}
+              src={`/static/images/${book.image}`}
               width={275}
               height={420}
             />

@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-
 import Head from "next/head";
 import Router from "next/router";
 import { AppProps } from "next/app";
@@ -11,7 +10,7 @@ import SEO from "seo.config";
 import SiteNavSchema from "@schemas/SiteNavSchema";
 import LogoSchema from "@schemas/LogoSchema";
 import BreadcrumbsSchema from "@schemas/BreadcrumbsSchema";
-import Book from "@interfaces/Book";
+import RandomPost from "@interfaces/RandomPost";
 import Sidebar from "../Sidebar/Sidebar";
 import randomPosts from "../../src/data/random-posts.json";
 import Navbar from "../Header/NavBar/Navbar";
@@ -81,7 +80,7 @@ export default function Layout({
       <Navbar />
       <main className="flex container mx-auto justify-between md:px-8">
         {children}
-        <Sidebar randomPosts={randomPosts as unknown as Array<Book>} />
+        <Sidebar randomPosts={randomPosts as unknown as Array<RandomPost>} />
       </main>
       <Footer />
     </>

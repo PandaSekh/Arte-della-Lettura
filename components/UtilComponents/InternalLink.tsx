@@ -10,7 +10,7 @@ export default function CustomLink({
   return (
     <>
       <Link href={`/${encodeURIComponent(slug)}`}>
-        <a className="link">{text}</a>
+        <a className="text-customBlue cursor-pointer underline">{text}</a>
       </Link>
     </>
   );
