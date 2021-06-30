@@ -10,11 +10,8 @@ import SEO from "seo.config";
 import SiteNavSchema from "@schemas/SiteNavSchema";
 import LogoSchema from "@schemas/LogoSchema";
 import BreadcrumbsSchema from "@schemas/BreadcrumbsSchema";
-import RandomPost from "@interfaces/RandomPost";
-import Sidebar from "../Sidebar/Sidebar";
-import randomPosts from "../../src/data/random-posts.json";
 import Navbar from "../Header/NavBar/Navbar";
-import Footer from "../Footer/Footer";
+import Sidebar from "../Sidebar/Sidebar";
 
 export default function Layout({
   children,
@@ -28,6 +25,7 @@ export default function Layout({
   }, [children.props.router, Router]);
 
   const DarkModeButton = dynamic(() => import("../Header/DarkModeButton"));
+  const Footer = dynamic(() => import("../Footer/Footer"));
 
   return (
     <>
@@ -80,7 +78,7 @@ export default function Layout({
       <Navbar />
       <main className="flex container mx-auto justify-between md:px-8">
         {children}
-        <Sidebar randomPosts={randomPosts as unknown as Array<RandomPost>} />
+        <Sidebar />
       </main>
       <Footer />
     </>
