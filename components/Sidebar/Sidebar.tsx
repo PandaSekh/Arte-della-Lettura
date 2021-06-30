@@ -1,4 +1,3 @@
-import Book from "@interfaces/Book";
 import Logo from "./Logo";
 import RandomPosts from "./RandomPosts";
 import Instagram from "./Social/Instagram";
@@ -8,15 +7,13 @@ import Youtube from "./Social/Youtube";
 import ApplePodcast from "./Social/ApplePodcast";
 import SearchInput from "./SearchInput";
 
-export default function Sidebar({
-  randomPosts,
-}: {
-  randomPosts: Array<Book>;
-}): JSX.Element {
+export default function Sidebar(): JSX.Element {
   return (
-    <div className="sidebar hidden w-10/12 lg:flex flex-col items-center max-w-min">
+    <div className="sidebar hidden w-10/12 lg:flex flex-col items-center max-w-min gap-2">
       <div className="flex flex-col items-center">
         <SearchInput />
+      </div>
+      <div className="flex flex-col items-center">
         <h4 className="text-2xl font-light ">Chi Sono</h4>
         <Logo />
         <p className="text-base text-center">
@@ -37,7 +34,7 @@ export default function Sidebar({
       </div>
       <div className="flex flex-col items-center">
         <h4 className="text-2xl font-light">Recensioni Casuali</h4>
-        <RandomPosts randomBooks={randomPosts} />
+        <RandomPosts />
       </div>
     </div>
   );

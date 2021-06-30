@@ -1,15 +1,10 @@
 /* eslint-disable react/no-danger */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ArticleSchema({ postMetadata }: { postMetadata: any }): JSX.Element {
-  const imageSrc =
-    postMetadata.category === "Recensioni"
-      ? `static/images/books/${postMetadata.image}`
-      : `static/images/${postMetadata.image}`;
-
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    image: `https://artedellalettura.it/${imageSrc}`,
+    image: `https://artedellalettura.it/static/images/${postMetadata.image}`,
     dateModified: postMetadata.updatedAt,
     datePublished: postMetadata.publishedAt,
     headline: postMetadata.title,

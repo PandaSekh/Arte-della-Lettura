@@ -19,7 +19,7 @@ export default function RenderPosts({
           <PostHomepage
             post={post.content}
             data={post.data}
-            mainPost={i <= 4}
+            mainPost={i <= 2}
           />
         </article>
       ))}

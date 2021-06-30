@@ -14,11 +14,6 @@ export default function PostHomepage({
   data: { [key: string]: any };
   mainPost?: boolean;
 }): JSX.Element {
-  const imageSrc =
-    data.category === "Recensioni"
-      ? `/static/images/books/${data.image}`
-      : `/static/images/${data.image}`;
-
   return (
     <div className="singlePostHomepage m-auto w-11/12 mb-8 grid">
       <Link href={`/${encodeURIComponent(data.slug)}`}>
@@ -33,7 +28,7 @@ export default function PostHomepage({
         <Link href={`/${encodeURIComponent(data.slug)}`}>
           <a>
             <Image
-              src={imageSrc}
+              src={`/static/images/${data.image}`}
               loading={mainPost ? "eager" : "lazy"}
               alt={data.title}
               layout="fill"

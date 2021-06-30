@@ -21,7 +21,7 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
       <div className="mt-6 max-w-7xl">
         <div className="mr-4 float-left">
           <Image
-            src={`/static/images/books/${audiobook.image}`}
+            src={`/static/images/${audiobook.image}`}
             width={300}
             height={300}
           />

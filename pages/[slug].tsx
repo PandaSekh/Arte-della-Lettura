@@ -34,15 +34,9 @@ export default function PostPage({
 }: Props): JSX.Element {
   const router = useRouter();
 
-  const CommentBlock = dynamic(
-    () => import("@components/Comments/CommentBlock")
-  );
-  const RelatedPosts = dynamic(
-    () => import("@components/RelatedPosts/RelatedPosts")
-  );
-  const EmojiBlock = dynamic(
-    () => import("@components/EmojiBlock/EmojiBlock")
-  );
+  const CommentBlock = dynamic(() => import("@components/Comments/CommentBlock"));
+  const RelatedPosts = dynamic(() => import("@components/RelatedPosts/RelatedPosts"));
+  const EmojiBlock = dynamic(() => import("@components/EmojiBlock/EmojiBlock"));
 
   return (
     <div>
@@ -90,13 +84,11 @@ export async function getStaticProps({
   };
 }): Promise<{ props: Props }> {
   const source = (await import("@fetchers/postsData")).default.getPostBySlug(params.slug);
-
+  const comments = await (await import("@fetchers/getComments")).default(params.slug);
   const relatedPosts = (await import("@fetchers/getRelatedPosts")).default(params.slug);
 
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
-
-  const comments = await (await import("@fetchers/getComments")).default(params.slug);
 
   return {
     props: {

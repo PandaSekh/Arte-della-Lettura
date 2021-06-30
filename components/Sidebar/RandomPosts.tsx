@@ -1,23 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
-import Book from "@interfaces/Book";
+import randomPosts from "../../src/data/random-posts.json";
 
-export default function RandomPosts({
-  randomBooks,
-}: {
-  randomBooks: Array<Book>;
-}): JSX.Element {
-  const posts = randomBooks.map((book) => (
+export default function RandomPosts(): JSX.Element {
+  const posts = randomPosts.map((post) => (
     <div
       className="lg:w-64 lg:h-72 w-52 h-56 relative my-4 transition-opacity opacity-100 hover:opacity-80"
-      key={book.title}
+      key={post.title}
     >
-      <Link href={`/${encodeURIComponent(book.reviewSlug)}`}>
+      <Link href={`/${encodeURIComponent(post.slug)}`}>
         <a>
           <Image
-            src={`/static/images/books/${book.image}`}
+            src={`/static/images/${post.image}`}
             loading="lazy"
-            alt={book.title || "Copertina libro"}
+            alt={post.title || "Copertina libro"}
             layout="fill"
             objectFit="contain"
           />

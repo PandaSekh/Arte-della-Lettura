@@ -1,4 +1,4 @@
-import InternalLink from "../UtilComponents/InternalLink";
+import Link from "next/link";
 
 export default function Footer(): JSX.Element {
   const year = new Date().getFullYear();
@@ -7,7 +7,9 @@ export default function Footer(): JSX.Element {
     <footer className="pt-6	mb-4 text-center left-2/4 mx-auto">
       <small>
         &copy; Copyright {year}, Alessio Franceschi.{" "}
-        <InternalLink text="Privacy Policy" slug="privacy-policy" />
+        <Link href={`/${encodeURIComponent("privacy-policy")}`}>
+          <a className="text-dark-black cursor-pointer underline">Privacy Policy</a>
+        </Link>
       </small>
     </footer>
   );

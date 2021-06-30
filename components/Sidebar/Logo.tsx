@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
+import panda from "../../public/apple-icon-180x180-dunplab-manifest-37208.png"
 
 export default function Logo(): JSX.Element {
   return (
@@ -12,7 +13,9 @@ export default function Logo(): JSX.Element {
       <Image
         width={200}
         height={200}
-        src="/apple-icon-180x180-dunplab-manifest-37208.png"
+        src={panda}
+        placeholder="empty"
+        alt="Mascotte Arte della Lettura"
       />
     </motion.div>
   );
