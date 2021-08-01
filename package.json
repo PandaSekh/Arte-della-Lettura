@@ -32,9 +32,9 @@
     "usedynamicscript": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
+    "@babel/core": "^7.14.8",
     "@types/node": "^16.4.10",
-    "@types/nodemailer": "^6.4.2",
+    "@types/nodemailer": "^6.4.4",
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@types/react": "^17.0.15",
