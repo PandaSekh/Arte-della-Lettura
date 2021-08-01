@@ -33,11 +33,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
-    "@types/node": "^16.0.0",
+    "@types/node": "^16.4.10",
     "@types/nodemailer": "^6.4.2",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "^17.0.13",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@types/react": "^17.0.15",
     "@typescript-eslint/parser": "^4.28.1",
     "autoprefixer": "^10.2.5",
     "eslint": "^7.30.0",
@@ -56,7 +56,7 @@
     "prettier": "^2.3.1",
     "tailwindcss": "^2.0.1",
     "ts-node": "^10.0.0",
-    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths": "^3.10.1",
     "typescript": "^4.3.5",
     "webpack": "^5.42.1"
   },
