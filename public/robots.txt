@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.artedellalettura.it
+
+# Sitemaps
+Sitemap: https://www.artedellalettura.it/sitemap.xml
