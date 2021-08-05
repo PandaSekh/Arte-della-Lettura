@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-async-promise-executor */
+/* eslint-disable no-console */
 import { request } from "@octokit/request";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Reactions } from "@interfaces/Reactions";
@@ -17,6 +18,8 @@ function merge(map: Reactions, newEmoji: EmojiBody): Reactions {
 
 export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   return new Promise(async (resolve) => {
+    console.log("Init request to /putReaction")
+
     const updatedEmoji: EmojiBody = req.body;
     const { slug } = req.query;
 
@@ -36,10 +39,13 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
           ref: "prod",
         }
       ).catch((e) => {
+        console.error("Error when retreiving previous reactions")
         if (e.status !== 404) throw new Error(e);
       });
 
       if (prevReactions) {
+        console.log("prevReactions found")
+
         // get the data from the base64 encoded content. Disabling things because it actually exist. Might need to update this once I understand how this library handles types
 
         const data = JSON.parse(
@@ -52,8 +58,12 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
         // @ts-ignore: Unreachable code error
         const { sha } = prevReactions.data;
 
+        console.log("pre merge")
         // merge
         const dataToSave: Reactions = merge(data, updatedEmoji);
+
+        console.log("merge success")
+
         // save the new comment to git
         request("PUT /repos/{owner}/{repo}/contents/{path}", {
           headers: {
@@ -70,12 +80,14 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
             "base64"
           ),
         }).then((response) => {
+          console.log("PUT request done with status ", response.status)
           res
             .status(response.status)
             .json(JSON.stringify(response.data.commit.message));
           resolve();
         });
       } else {
+        console.log("no previous reactions found")
         // merge
         const dataToSave: Reactions = {};
         dataToSave[updatedEmoji.label] = updatedEmoji.counter;
@@ -95,11 +107,13 @@ export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
             "base64"
           ),
         }).then((response) => {
+          console.log("PUT request done with status ", response.status)
           res.status(response.status);
           resolve();
         });
       }
     } catch (e) {
+      console.error("Error: ", e)
       res.status(500).json(e);
       resolve();
     }
