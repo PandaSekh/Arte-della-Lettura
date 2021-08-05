@@ -76,7 +76,7 @@ export default function EmojiBlock({ slug }: { slug: string }): JSX.Element {
   const [isError, setIsError] = useState(false)
 
   useEffect(() => {
-    fetch(`/api/supa/getReactions/${slug}`)
+    fetch(`/api/getReactions/${slug}`)
       .then(res => {
         if (res.status === 200) {
           return res.json();
@@ -100,7 +100,7 @@ export default function EmojiBlock({ slug }: { slug: string }): JSX.Element {
 
   async function updateDB(emojiToBeUpdated: SupaEmoji) {
     if (!isFirstRender) {
-      fetch(`/api/supa/putReactions`, {
+      fetch(`/api/putReactions`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
