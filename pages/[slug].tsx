@@ -36,7 +36,7 @@ export default function PostPage({
 
   const CommentBlock = dynamic(() => import("@components/Comments/CommentBlock"));
   const RelatedPosts = dynamic(() => import("@components/RelatedPosts/RelatedPosts"));
-  const EmojiBlock = dynamic(() => import("@components/EmojiBlock/EmojiBlock"));
+  // const EmojiBlock = dynamic(() => import("@components/EmojiBlock/EmojiBlock"));
 
   return (
     <div>
@@ -60,7 +60,7 @@ export default function PostPage({
         <meta content={frontMatter.publishedAt} />
         <MDXRemote {...source} components={components} />
       </article>
-      <EmojiBlock slug={frontMatter.slug} />
+      {/* <EmojiBlock slug={frontMatter.slug} /> */}
       <RelatedPosts posts={relatedPosts} />
       <CommentBlock slug={frontMatter.slug} comments={commentsData} />
     </div>
