@@ -12,14 +12,9 @@ Ai sensi dell'articolo 13 del codice della D.Lgs. 196/2003`}
         Arte della Lettura è un blog senza scopo di lucro. L’indirizzo del
         nostro sito web è: https://www.artedellalettura.it. L’email per il
         contatto è info@artedellalettura.it
+
+        Nessun identificativo personale viene raccolto.
       </p>
-      <h3 className="my-3">Commenti</h3>
-      <p>{`Arte della Lettura richiede all'utente un indirizzo email quando viene inviato un nuovo commento. L'indirizzo email viene
-      successivamente utilizzato solamente per inviare notifiche via email all'utente in caso di risposta al proprio commento.
-      Le email vengono crittate e non sono visibili a terzi.
-      Le email vengono salvate fintanto che il commento dell'utente rimane sul sito.
-      
-      Il nome utente richiesto nel form per i commenti non è anonimo e non serve a identificare l'utente.`}</p>
     </div>
   );
 }
