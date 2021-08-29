@@ -49,12 +49,6 @@
   }
 
    @media (max-width: 768px) {
-  /* .link {
-      @apply text-customBlue;
-    }
-    .link {
-      @apply cursor-pointer underline;
-    } */
     .switch {
       @apply -left-10 transition-transform;
     }

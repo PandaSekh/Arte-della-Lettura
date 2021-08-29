@@ -7,7 +7,6 @@ import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { GetStaticPaths } from "next";
 import RelatedPost from "@interfaces/RelatedPost";
-// import Comment from "@interfaces/Comment";
 import ArticleSchema from "@schemas/ArticleSchema";
 import DateUnderPost from "@components/Post/DateUnderPost";
 
@@ -30,13 +29,9 @@ export default function PostPage({
   source,
   frontMatter,
   relatedPosts,
-  // commentsData,
 }: Props): JSX.Element {
   const router = useRouter();
-
-  // const CommentBlock = dynamic(() => import("@components/Comments/CommentBlock"));
   const RelatedPosts = dynamic(() => import("@components/RelatedPosts/RelatedPosts"));
-  // const EmojiBlock = dynamic(() => import("@components/EmojiBlock/EmojiBlock"));
 
   return (
     <div>
@@ -60,9 +55,7 @@ export default function PostPage({
         <meta content={frontMatter.publishedAt} />
         <MDXRemote {...source} components={components} />
       </article>
-      {/* <EmojiBlock slug={frontMatter.slug} /> */}
       <RelatedPosts posts={relatedPosts} />
-      {/* <CommentBlock slug={frontMatter.slug} comments={commentsData} /> */}
     </div>
   );
 }
@@ -73,7 +66,6 @@ interface Props {
     [key: string]: string;
   };
   relatedPosts: Array<RelatedPost>;
-  // commentsData: Array<Comment> | null;
 }
 
 export async function getStaticProps({
@@ -84,7 +76,6 @@ export async function getStaticProps({
   };
 }): Promise<{ props: Props }> {
   const source = (await import("@fetchers/postsData")).default.getPostBySlug(params.slug);
-  // const comments = await (await import("@fetchers/getComments")).default(params.slug);
   const relatedPosts = (await import("@fetchers/getRelatedPosts")).default(params.slug);
 
   const { content, data } = matter(source);
@@ -95,7 +86,6 @@ export async function getStaticProps({
       source: mdxSource,
       frontMatter: data,
       relatedPosts,
-      // commentsData: comments,
     },
   };
 }

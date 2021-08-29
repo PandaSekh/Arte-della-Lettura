@@ -1,6 +1,7 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import AnimatedHeader from "../AnimatedHeader";
+import SvgHeader from "../SvgHeader";
+// import AnimatedHeader from "../AnimatedHeader";
 import DesktopHeader from "./DesktopHeader";
 
 export default function Navbar(): JSX.Element {
@@ -14,7 +15,7 @@ export default function Navbar(): JSX.Element {
       <div className="logo max-h-full w-4/6 m-auto lg:w-2/5">
         <Link href="/" aria-label="homepage">
           <a aria-label="homepage">
-            <AnimatedHeader />
+            <SvgHeader />
           </a>
         </Link>
       </div>
