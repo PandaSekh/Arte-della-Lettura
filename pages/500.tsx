@@ -26,6 +26,7 @@ export default function Custom500(): JSX.Element {
           objectFit="contain"
           width={250}
           height={300}
+          alt="Un panda arrabiato"
         />
       </div>
     </div>

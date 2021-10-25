@@ -26,6 +26,7 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
               src={`/static/images/${book.image}`}
               width={275}
               height={420}
+              alt="Book Cover"
             />
           </motion.figure>
         </div>
