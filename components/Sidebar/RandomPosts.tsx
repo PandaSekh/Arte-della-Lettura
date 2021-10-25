@@ -8,7 +8,7 @@ export default function RandomPosts(): JSX.Element {
       className="lg:w-64 lg:h-72 w-52 h-56 relative my-4 transition-opacity opacity-100 hover:opacity-80"
       key={post.title}
     >
-      <Link href={`/${encodeURIComponent(post.slug)}`}>
+      <Link href={`/${encodeURIComponent(post.slug)}`} prefetch={false}>
         <a>
           <Image
             src={`/static/images/${post.image}`}

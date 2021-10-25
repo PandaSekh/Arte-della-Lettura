@@ -26,6 +26,7 @@ export default function Custom404(): JSX.Element {
           objectFit="contain"
           width={250}
           height={300}
+          alt="Un panda triste"
         />
       </div>
     </div>

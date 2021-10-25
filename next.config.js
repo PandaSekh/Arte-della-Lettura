@@ -16,12 +16,6 @@ const nextConfiguration = {
 };
 
 const withPlugins = require("next-compose-plugins");
-const PWA = require("next-pwa")({
-  pwa: {
-    dest: "public",
-    disable: process.env.NODE_ENV === "development",
-  },
-});
 const withTM = require("next-transpile-modules")(["better-substring"]);
 
-module.exports = withPlugins([PWA, withTM], nextConfiguration);
+module.exports = withPlugins([withTM], nextConfiguration);

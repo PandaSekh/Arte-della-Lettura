@@ -24,6 +24,7 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
             src={`/static/images/${audiobook.image}`}
             width={300}
             height={300}
+            alt="Audiobook Cover"
           />
         </div>
         <p className="m-0">
