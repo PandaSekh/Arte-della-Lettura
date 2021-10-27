@@ -12,7 +12,7 @@
 Arte della Lettura is my personal blog where I review books since 2018. I started with Blogger, then moved to Wordpress and now I finally decided to move to a completely self-made solution built with Next.js (React), TailwindCSS and MDX.
 
 ## Why
-As stated in the introduction, this website was previously hosted on Wordpress. While Wordpress is great for many things, I hated not being able to do any customization (I don't know PHP and I have no intention to learn it). 
+As stated in the introduction, this website was previously hosted on Wordpress. While Wordpress is great for many things, I hated not being able to do any customization (I don't know PHP). 
 Also, to have a decent website I have to spend some money, which isn't great for a hobby website with no ads.
 
 So, I decided to remake my blog from the ground up.
