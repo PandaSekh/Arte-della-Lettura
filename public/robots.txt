@@ -7,3 +7,4 @@ Host: https://www.artedellalettura.it
 
 # Sitemaps
 Sitemap: https://www.artedellalettura.it/sitemap.xml
+Sitemap: https://www.artedellalettura.it/sitemap-0.xml

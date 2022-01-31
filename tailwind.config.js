@@ -1,19 +1,12 @@
 module.exports = {
   mode: "jit",
-  purge: {
-    enabled: true,
-    content: [
+  content: [
       "./components/**/*.tsx",
       "./components/**/**/*.tsx",
       "./pages/**/*.tsx",
       "./pages/*.tsx",
       "./components/*.tsx",
-    ],
-    options: {
-      keyframes: true,
-      fontFace: true,
-    },
-  },
+  ],
   darkMode: "class",
   //https://javisperez.github.io/tailwindcolorshades/?lochmara=018fd9
   theme: {
