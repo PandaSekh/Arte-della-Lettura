@@ -57,5 +57,8 @@
   },
   "browserslist": [
     "> 5% in IT"
-  ]
+  ],
+  "engines": {
+      "node": "16.x"
+    },
 }
