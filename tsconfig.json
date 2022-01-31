@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "downlevelIteration": true,
     "importHelpers": true,
     "allowJs": true,
@@ -17,13 +21,26 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@interfaces/*": ["src/interfaces/*"],
-      "@lib/*": ["src/lib/*"],
-      "@components/*": ["components/*"],
-      "@fetchers/*": ["src/lib/fetchers/*"],
-      "@schemas/*": ["src/schemas/*"],
-      "@data/*": ["src/data/*"]
-    }
+      "@interfaces/*": [
+        "src/interfaces/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@fetchers/*": [
+        "src/lib/fetchers/*"
+      ],
+      "@schemas/*": [
+        "src/schemas/*"
+      ],
+      "@data/*": [
+        "src/data/*"
+      ]
+    },
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
@@ -36,7 +53,12 @@
     "src/**/*",
     "@types/**/*"
   ],
-  "exclude": ["node_modules", "**/*.test.ts", "**/*.test.tsx", "**/*.spec.js"],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.js"
+  ],
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"

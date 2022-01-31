@@ -1,3 +1,6 @@
+export {}
+
+/**
 import { motion } from "framer-motion";
 
 export default function AnimatedHeader(): JSX.Element {
@@ -49,3 +52,4 @@ export default function AnimatedHeader(): JSX.Element {
     </motion.svg>
   );
 }
+*/
