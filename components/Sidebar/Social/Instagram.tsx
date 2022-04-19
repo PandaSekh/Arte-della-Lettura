@@ -1,4 +1,3 @@
-// import { motion } from "framer-motion";
 import SocialContainer from "./SocialContainer";
 
 export default function Instagram(): JSX.Element {

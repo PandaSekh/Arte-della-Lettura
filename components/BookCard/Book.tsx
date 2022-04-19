@@ -2,7 +2,6 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 import { getKey, stringToSlug } from "@lib/utils";
 import Book from "@interfaces/Book";
 
@@ -21,14 +20,12 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
       <BookSchema book={book} />
       <div className="mt-6 max-w-7xl">
         <div className="mr-4 md:float-left">
-          <motion.figure layoutId={`image-${book.reviewSlug}`}>
-            <Image
-              src={`/static/images/${book.image}`}
-              width={275}
-              height={420}
-              alt="Book Cover"
-            />
-          </motion.figure>
+          <Image
+            src={`/static/images/${book.image}`}
+            width={275}
+            height={420}
+            alt="Book Cover"
+          />
         </div>
         <p className="m-0">
           <strong>{book.title}</strong> di{" "}
