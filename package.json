@@ -1,8 +1,8 @@
 {
   "name": "arte-della-lettura",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": false,
-  "license": "GPLv3",
+  "license": "GPL-3.0-only",
   "scripts": {
     "prepareData": "node -r ts-node/register -r tsconfig-paths/register src/lib/runGenerators.ts",
     "dev": "yarn prepareData && next dev",

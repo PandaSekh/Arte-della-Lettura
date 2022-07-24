@@ -98,7 +98,7 @@ export default function BookElement({ slug }: { slug: string }): JSX.Element {
         <blockquote>{audiobook.synopsis}</blockquote>
       </div>
       <div className="clear-both" />
-      <hr className="my-6 border-dark-grayText dark:border-customBlue-light border-opacity-40 border-t-2 w-4/12 mx-auto" />
+      <hr className="my-6 border-dark-grayText border-opacity-40 border-t-2 w-4/12 mx-auto" />
     </>
   );
 }

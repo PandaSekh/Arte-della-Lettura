@@ -24,7 +24,6 @@ export default function Layout({
     Router.events.on("routeChangeError", () => NProgress.done());
   }, [children.props.router, Router]);
 
-  const DarkModeButton = dynamic(() => import("../Header/DarkModeButton"));
   const Footer = dynamic(() => import("../Footer/Footer"));
 
   return (
@@ -74,7 +73,6 @@ export default function Layout({
       <SiteNavSchema />
       <LogoSchema />
       <BreadcrumbsSchema url={children.props.router.asPath} />
-      <DarkModeButton />
       <Navbar />
       <main className="flex container mx-auto justify-between md:px-8">
         {children}

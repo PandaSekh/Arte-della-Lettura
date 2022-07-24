@@ -40,7 +40,7 @@ export default function Input({
         name="search"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="shadow appearance-none border rounded py-2 px-3 text-dark-grayText dark:text-dark-grayText focus:outline-none focus:shadow-md w-9/12 mx-auto mb-8"
+        className="shadow appearance-none border rounded py-2 px-3 text-dark-grayText focus:outline-none focus:shadow-md w-9/12 mx-auto mb-8"
       />
     </>
   );

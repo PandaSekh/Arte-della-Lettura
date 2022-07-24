@@ -17,7 +17,7 @@ export default function SearchInput(): JSX.Element {
       <input
         type="test"
         name="search"
-        className="border border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none text-dark-grayText dark:text-dark-grayText"
+        className="border border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none text-dark-grayText"
         placeholder="Cerca"
         value={value}
         onChange={(e) => setValue(e.target.value)}

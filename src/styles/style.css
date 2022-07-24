@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply dark:bg-dark-background dark:text-dark-white text-dark-black transition-all;
+    @apply text-dark-black transition-all;
   }
   h1,
   h2,
@@ -30,7 +30,7 @@
     @apply text-lg font-medium;
   }
   p {
-    @apply text-dark-grayText dark:text-dark-white text-lg my-4;
+    @apply text-dark-grayText text-lg my-4;
   }
   p > a {
     @apply text-customBlue;
@@ -39,24 +39,18 @@
     @apply cursor-pointer underline;
   }
   blockquote {
-    @apply mt-4 md:pr-20 pr-4  pl-4 italic text-lg border-l-4 border-dark-grayText dark:border-customBlue-light border-opacity-40;
+    @apply mt-4 md:pr-20 pr-4  pl-4 italic text-lg border-l-4 border-dark-grayText border-opacity-40;
   }
 }
 
 @layer components {
   .mobileNav::before {
-    @apply dark:bg-customBlue-darker bg-customBlue;
+    @apply bg-customBlue;
   }
 
    @media (max-width: 768px) {
-    .switch {
-      @apply -left-10 transition-transform;
-    }
-    .switch.isOpen {
-      @apply left-4 top-4 z-50;
-    }
     header {
-      @apply grid bg-dark-white dark:bg-dark-grayText mb-2;
+      @apply grid bg-dark-white mb-2;
     }
     .logo {
       @apply w-2/4 p-1;
