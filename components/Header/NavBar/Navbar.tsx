@@ -1,7 +1,6 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import SvgHeader from "../SvgHeader";
-// import AnimatedHeader from "../AnimatedHeader";
 import DesktopHeader from "./DesktopHeader";
 
 export default function Navbar(): JSX.Element {

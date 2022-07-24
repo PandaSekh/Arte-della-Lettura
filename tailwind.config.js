@@ -7,7 +7,6 @@ module.exports = {
       "./pages/*.tsx",
       "./components/*.tsx",
   ],
-  darkMode: "class",
   //https://javisperez.github.io/tailwindcolorshades/?lochmara=018fd9
   theme: {
     colors: {
@@ -39,9 +38,6 @@ module.exports = {
       textColor: ["hover"],
       borderWidth: ["hover"],
       opacity: ["hover"],
-      inset: ["dark"],
-      translate: ["dark"],
-      backgroundOpacity: ["dark"],
       ringWidth: ["hover"],
     },
   },

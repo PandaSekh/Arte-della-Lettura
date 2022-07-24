@@ -10,12 +10,10 @@ export default function MobileHeader(): JSX.Element {
   const router = useRouter();
 
   function handleMenuClick() {
-    const documentSwitch = document.querySelector(".switch");
-    if (burgerRef.current && navRef.current && documentSwitch) {
+    if (burgerRef.current && navRef.current) {
       burgerRef.current.classList.toggle("isOpen");
       navRef.current.classList.toggle("isOpen");
       document.body.classList.toggle("lockBody");
-      documentSwitch.classList.toggle("isOpen");
     }
   }
   const urls = config.urls.map((url) => (
@@ -105,7 +103,7 @@ export default function MobileHeader(): JSX.Element {
         </style>
       </button>
       <nav
-        className="mobileNav dark:bg-dark-grayText dark:bg-opacity-50 bg-opacity-80 bg-dark-white"
+        className="mobileNav bg-opacity-80 bg-dark-white"
         ref={navRef}
       >
         <ul>{urls}</ul>
