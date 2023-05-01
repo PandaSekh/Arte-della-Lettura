@@ -68,6 +68,11 @@ export default function Layout({
           async
           src="//gc.zgo.at/count.js"
         />
+        <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3079214726745163"
+          crossOrigin="anonymous"
+        />
       </Head>
       <DefaultSeo {...SEO} />
       <SiteNavSchema />
