@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import subs from "better-substring"
 import ReadMore from "./ReadMore";
-import DateUnderPost from "../Post/DateUnderPost";
 
 export default function PostHomepage({
   post,
