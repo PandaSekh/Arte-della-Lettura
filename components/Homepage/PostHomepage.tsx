@@ -23,7 +23,7 @@ export default function PostHomepage({
           </h3>
         </a>
       </Link>
-      <DateUnderPost date={data.publishedAt} />
+      {/* <DateUnderPost date={data.publishedAt} /> */}
       <div className="homePageImage grid m-auto my-2 w-72 h-80 relative transition-opacity opacity-100 hover:opacity-80">
         <Link href={`/${encodeURIComponent(data.slug)}`}>
           <a>
