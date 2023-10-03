@@ -16,27 +16,27 @@ export default class PostsDataSingleton {
 
   private publishedPostsPath: Array<string>;
 
-  private publishedPostsSlug: Array<SlugParam>;
+  private readonly publishedPostsSlug: Array<SlugParam>;
 
   private bookPath: Array<string>;
 
-  private books: Array<Book>;
+  private readonly books: Array<Book>;
 
-  private authors: Array<string>;
+  private readonly authors: Array<string>;
 
-  private authorSlugs: Array<string>;
+  private readonly authorSlugs: Array<string>;
 
-  private editors: Array<string>;
+  private readonly editors: Array<string>;
 
-  private editorsSlug: Array<string>;
+  private readonly editorsSlug: Array<string>;
 
-  private genres: Array<string>;
+  private readonly genres: Array<string>;
 
-  private genresSlug: Array<string>;
+  private readonly genresSlug: Array<string>;
 
-  private series: Array<string>;
+  private readonly series: Array<string>;
 
-  private seriesSlug: Array<string>;
+  private readonly seriesSlug: Array<string>;
 
   private constructor() {
     this.publishedPostsPath = PostsDataSingleton.getPublishedPostPath();

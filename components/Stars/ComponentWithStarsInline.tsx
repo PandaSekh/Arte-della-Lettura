@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import Stars from "./Stars";
 
 export default function InlineStars({
@@ -5,8 +6,8 @@ export default function InlineStars({
   Component,
 }: {
   rating: number;
-  Component: JSX.Element;
-}): JSX.Element {
+  Component: ReactElement | null;
+}): ReactElement | null {
   return (
     <span className="flex md:flex-row flex-col md:items-center	m-0">
       {Component}

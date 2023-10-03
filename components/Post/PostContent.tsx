@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
+import React, { ReactElement, ReactNode } from "react";
 
 export default function PostContent({
   content,
 }: {
   content: ReactNode;
-}): JSX.Element {
+}): ReactElement | null {
   return <>{content}</>;
 }

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { NextRouter } from "next/router";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, ReactElement } from "react";
 import Link from "next/link";
 
 export default function NavUrl({
@@ -18,7 +18,7 @@ export default function NavUrl({
   extraClass?: string;
   onClickFunction?: MouseEventHandler<HTMLAnchorElement>;
   router: NextRouter;
-}): JSX.Element {
+}): ReactElement | null {
   return (
     <li className={liClass}>
       <Link href={`${path}`} prefetch={false}>

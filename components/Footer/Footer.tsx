@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { ReactElement } from "react";
 
-export default function Footer(): JSX.Element {
+export default function Footer(): ReactElement | null {
   const year = new Date().getFullYear();
 
   return (
@@ -8,7 +9,9 @@ export default function Footer(): JSX.Element {
       <small>
         &copy; Copyright {year}, Alessio Franceschi.{" "}
         <Link href={`/${encodeURIComponent("privacy-policy")}`}>
-          <a className="text-dark-black cursor-pointer underline">Privacy Policy</a>
+          <a className="text-dark-black cursor-pointer underline">
+            Privacy Policy
+          </a>
         </Link>
       </small>
     </footer>

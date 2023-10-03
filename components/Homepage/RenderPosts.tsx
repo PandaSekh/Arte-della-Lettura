@@ -1,4 +1,5 @@
 import PostHomepage from "./PostHomepage";
+import { ReactElement } from "react";
 
 export default function RenderPosts({
   posts,
@@ -7,11 +8,11 @@ export default function RenderPosts({
     content: string;
     data: {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      [key: string]: any;
+      [_key: string]: any;
     };
     filePath: string;
   }[];
-}): JSX.Element {
+}): ReactElement | null {
   return (
     <div className="content grid-cols-1 md:grid-cols-2 grid">
       {posts.map((post, i) => (

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ReactElement } from "react";
 
 export default function CustomLink({
   slug,
@@ -6,7 +7,7 @@ export default function CustomLink({
 }: {
   slug: string;
   text: string;
-}): JSX.Element {
+}): ReactElement | null {
   return (
     <>
       <Link href={`/${encodeURIComponent(slug)}`}>

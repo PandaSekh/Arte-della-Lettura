@@ -45,3 +45,6 @@ package-lock.json
 src/data/related-posts/*.json
 src/data/*.json
 src/data/random-posts.json
+.yarn
+.idea
+.yarnrc.yml

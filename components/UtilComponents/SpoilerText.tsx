@@ -1,7 +1,11 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 
-export default function Spoiler({ text }: { text: string }): JSX.Element {
+export default function Spoiler({
+  text,
+}: {
+  text: string;
+}): ReactElement | null {
   const [showSpoiler, setShowSpoiler] = useState(false);
   return (
     <span className="wrapper">

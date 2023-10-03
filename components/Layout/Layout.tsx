@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import Head from "next/head";
 import Router from "next/router";
-import { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import NProgress from "nprogress";
-import { useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 import SEO from "seo.config";
 import SiteNavSchema from "@schemas/SiteNavSchema";
 import LogoSchema from "@schemas/LogoSchema";
@@ -16,8 +15,8 @@ import Sidebar from "../Sidebar/Sidebar";
 export default function Layout({
   children,
 }: {
-  children: { props: AppProps };
-}): JSX.Element {
+  children: ReactElement;
+}): ReactElement | null {
   useEffect(() => {
     Router.events.on("routeChangeStart", () => NProgress.start());
     Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -68,8 +67,8 @@ export default function Layout({
           async
           src="//gc.zgo.at/count.js"
         />
-        <script 
-          async 
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3079214726745163"
           crossOrigin="anonymous"
         />

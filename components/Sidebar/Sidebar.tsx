@@ -6,15 +6,16 @@ import GoodReads from "./Social/GoodReads";
 import Youtube from "./Social/Youtube";
 import ApplePodcast from "./Social/ApplePodcast";
 import SearchInput from "./SearchInput";
+import { ReactElement } from "react";
 
-export default function Sidebar(): JSX.Element {
+export default function Sidebar(): ReactElement | null {
   return (
     <div className="sidebar hidden w-10/12 lg:flex flex-col items-center max-w-min gap-2">
       <div className="flex flex-col items-center">
         <SearchInput />
       </div>
       <div className="flex flex-col items-center">
-        <h4 className="text-2xl font-light ">Chi Sono</h4>
+        <h4 className="text-2xl font-light ">Chi sono</h4>
         <Logo />
         <p className="text-base text-center">
           Ciao, sono Alessio e su questo blog parlo di libri e fumetti. I miei

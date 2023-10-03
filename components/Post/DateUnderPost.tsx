@@ -1,6 +1,11 @@
 import { months } from "@lib/utils";
+import { ReactElement } from "react";
 
-export default function DateUnderPost({ date }: { date: string }): JSX.Element {
+export default function DateUnderPost({
+  date,
+}: {
+  date: string;
+}): ReactElement | null {
   const dateArray = date.split("-");
 
   return (

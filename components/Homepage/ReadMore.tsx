@@ -1,6 +1,11 @@
 import Link from "next/link";
+import { ReactElement } from "react";
 
-export default function ReadMore({ slug }: { slug: string }): JSX.Element {
+export default function ReadMore({
+  slug,
+}: {
+  slug: string;
+}): ReactElement | null {
   return (
     <div className="text-dark-black readMoreButton text-center m-auto w-max p-3 bg-customBlue hover:bg-customBlue-light mt-4 rounded ease-in-out duration-300 cursor-pointer ">
       <Link href={`/${encodeURIComponent(slug)}`}>
@@ -9,12 +14,12 @@ export default function ReadMore({ slug }: { slug: string }): JSX.Element {
         </a>
       </Link>
       <style jsx>{`
-			@media (max-width: 768px){
-        .readMoreButton {
-          width:inherit
+        @media (max-width: 768px) {
+          .readMoreButton {
+            width: inherit;
+          }
         }
-      }
-			`}</style>
+      `}</style>
     </div>
   );
 }

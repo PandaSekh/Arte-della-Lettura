@@ -1,6 +1,8 @@
 /* eslint-disable react/no-danger */
 
-export default function SearchSchema(): JSX.Element {
+import { ReactElement } from "react";
+
+export default function SearchSchema(): ReactElement | null {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -12,6 +14,10 @@ export default function SearchSchema(): JSX.Element {
     },
   };
   return (
-    <script key="logo-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    <script
+      key="logo-schema"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
   );
 }

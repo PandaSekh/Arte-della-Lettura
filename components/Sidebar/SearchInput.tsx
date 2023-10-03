@@ -1,7 +1,7 @@
 import router from "next/router";
-import { FormEvent, useState } from "react";
+import { FormEvent, ReactElement, useState } from "react";
 
-export default function SearchInput(): JSX.Element {
+export default function SearchInput(): ReactElement | null {
   const [value, setValue] = useState("");
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -10,10 +10,7 @@ export default function SearchInput(): JSX.Element {
   }
 
   return (
-    <form
-      className="pt-2 relative mx-auto "
-      onSubmit={(e) => onSubmit(e)}
-    >
+    <form className="pt-2 relative mx-auto " onSubmit={(e) => onSubmit(e)}>
       <input
         type="test"
         name="search"
@@ -22,7 +19,11 @@ export default function SearchInput(): JSX.Element {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button type="submit" className="absolute right-0 top-0 mt-5 mr-4" name="Cerca">
+      <button
+        type="submit"
+        className="absolute right-0 top-0 mt-5 mr-4"
+        name="Cerca"
+      >
         <svg
           className="text-dark-grayText h-4 w-4 fill-current"
           xmlns="http://www.w3.org/2000/svg"

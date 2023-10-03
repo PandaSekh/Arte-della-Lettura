@@ -4,6 +4,7 @@ import DataSingleton from "@fetchers/postsData";
 import Book from "@interfaces/Book";
 import { stringToSlug } from "@lib/utils";
 import RenderPosts from "@components/Homepage/RenderPosts";
+import { ReactElement } from "react";
 
 export default function Index({
   posts,
@@ -17,7 +18,7 @@ export default function Index({
     filePath: string;
   }[];
   seriesParam: string;
-}): JSX.Element {
+}): ReactElement | null {
   return (
     <div className="mx-auto">
       <h2 className="text-center mx-auto">

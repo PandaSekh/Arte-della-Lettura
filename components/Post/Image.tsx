@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ReactElement } from "react";
 
 export default function CustomImage({
   url,
@@ -14,7 +15,7 @@ export default function CustomImage({
   height: number;
   layout: "fixed" | "intrinsic" | "responsive" | undefined;
   center: boolean;
-}): JSX.Element {
+}): ReactElement | null {
   return (
     <div
       style={{

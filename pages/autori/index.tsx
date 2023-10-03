@@ -3,7 +3,8 @@ import { GetStaticProps } from "next";
 import DataSingleton, {
   BookWithTitleSlugAuthorRating,
 } from "@fetchers/postsData";
-import { stringToSlug, getKey as keygen } from "@lib/utils"
+import { stringToSlug, getKey as keygen } from "@lib/utils";
+import { ReactElement } from "react";
 
 // create a map with a letter as key and authors as values
 function mapAuthorsWithInitials(authors: Array<string>) {
@@ -21,7 +22,7 @@ export default function Index({
   authorBookJSON,
 }: {
   authorBookJSON: string;
-}): JSX.Element {
+}): ReactElement | null {
   const authorsBooksMap: Map<
     string,
     Array<BookWithTitleSlugAuthorRating>
@@ -31,11 +32,11 @@ export default function Index({
       ...mapAuthorsWithInitials(Array.from(authorsBooksMap.keys())).entries(),
     ].sort()
   );
-  const toBePrinted: Array<JSX.Element> = [];
+  const toBePrinted: Array<ReactElement | null> = [];
 
   // for each letter
   authorsWithAlphabet.forEach((authors: Array<string>, char: string) => {
-    const authorsMapped: Array<JSX.Element> = [];
+    const authorsMapped: Array<ReactElement | null> = [];
 
     // get the books for each author
     const authorsWithBooks: Map<

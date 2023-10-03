@@ -2,8 +2,9 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import SvgHeader from "../SvgHeader";
 import DesktopHeader from "./DesktopHeader";
+import { ReactElement } from "react";
 
-export default function Navbar(): JSX.Element {
+export default function Navbar(): ReactElement | null {
   const MobileHeader = dynamic(() => import("./MobileHeader"));
 
   return (

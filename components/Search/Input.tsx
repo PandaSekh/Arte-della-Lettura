@@ -1,14 +1,21 @@
 import Post from "@interfaces/Post";
-import { useRouter } from "next/router"; import Fuse from "fuse.js";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Fuse from "fuse.js";
+import {
+  Dispatch,
+  ReactElement,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 
 export default function Input({
   setResultsCallback,
-  fuse
+  fuse,
 }: {
-  setResultsCallback: Dispatch<SetStateAction<Post[]>>,
-  fuse: Fuse<Post>
-}): JSX.Element {
+  setResultsCallback: Dispatch<SetStateAction<Post[]>>;
+  fuse: Fuse<Post>;
+}): ReactElement | null {
   const router = useRouter();
   const { q } = router.query;
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,10 +25,12 @@ export default function Input({
   }, [q]);
 
   useEffect(() => {
-    const results = [...fuse
-      .search(searchQuery)
-      .slice(0, 6)
-      .map((item) => item.item)]
+    const results = [
+      ...fuse
+        .search(searchQuery)
+        .slice(0, 6)
+        .map((item) => item.item),
+    ];
 
     const delayDebounceFn = setTimeout(() => {
       setResultsCallback(results);

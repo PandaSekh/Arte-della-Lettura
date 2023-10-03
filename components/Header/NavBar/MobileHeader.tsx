@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
-import { createRef } from "react";
+import { ReactElement, createRef } from "react";
 import { getKey as keygen } from "@lib/utils";
 import config from "website.config.json";
 import NavUrl from "./NavUrl";
 
-export default function MobileHeader(): JSX.Element {
+export default function MobileHeader(): ReactElement | null {
   const burgerRef = createRef<HTMLButtonElement>();
   const navRef = createRef<HTMLElement>();
   const router = useRouter();
@@ -102,10 +102,7 @@ export default function MobileHeader(): JSX.Element {
           `}
         </style>
       </button>
-      <nav
-        className="mobileNav bg-opacity-80 bg-dark-white"
-        ref={navRef}
-      >
+      <nav className="mobileNav bg-opacity-80 bg-dark-white" ref={navRef}>
         <ul>{urls}</ul>
         <style jsx global>
           {`

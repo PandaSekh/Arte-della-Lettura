@@ -1,6 +1,12 @@
 /* eslint-disable react/no-danger */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function ArticleSchema({ postMetadata }: { postMetadata: any }): JSX.Element {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ReactElement } from "react";
+
+export default function ArticleSchema({
+  postMetadata,
+}: {
+  postMetadata: any;
+}): ReactElement | null {
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",

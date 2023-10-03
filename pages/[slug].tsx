@@ -9,6 +9,7 @@ import { GetStaticPaths } from "next";
 import RelatedPost from "@interfaces/RelatedPost";
 import ArticleSchema from "@schemas/ArticleSchema";
 import DateUnderPost from "@components/Post/DateUnderPost";
+import { ReactElement } from "react";
 
 const components = {
   InternalLink: dynamic(
@@ -29,9 +30,11 @@ export default function PostPage({
   source,
   frontMatter,
   relatedPosts,
-}: Props): JSX.Element {
+}: Props): ReactElement | null {
   const router = useRouter();
-  const RelatedPosts = dynamic(() => import("@components/RelatedPosts/RelatedPosts"));
+  const RelatedPosts = dynamic(
+    () => import("@components/RelatedPosts/RelatedPosts")
+  );
 
   return (
     <div>
@@ -75,8 +78,12 @@ export async function getStaticProps({
     slug: string;
   };
 }): Promise<{ props: Props }> {
-  const source = (await import("@fetchers/postsData")).default.getPostBySlug(params.slug);
-  const relatedPosts = (await import("@fetchers/getRelatedPosts")).default(params.slug);
+  const source = (await import("@fetchers/postsData")).default.getPostBySlug(
+    params.slug
+  );
+  const relatedPosts = (await import("@fetchers/getRelatedPosts")).default(
+    params.slug
+  );
 
   const { content, data } = matter(source);
   const mdxSource = await serialize(content);
@@ -91,7 +98,9 @@ export async function getStaticProps({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = (await import("@fetchers/postsData")).default.getInstance().getSlugs();
+  const paths = (await import("@fetchers/postsData")).default
+    .getInstance()
+    .getSlugs();
 
   return {
     paths,

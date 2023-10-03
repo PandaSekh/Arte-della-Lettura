@@ -1,4 +1,6 @@
-export default function SvgHeader(): JSX.Element {
+import { ReactElement } from "react";
+
+export default function SvgHeader(): ReactElement | null {
   return (
     <svg
       width="588.15"

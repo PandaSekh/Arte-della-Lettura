@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { ReactElement } from "react";
 
-export default function Custom404(): JSX.Element {
+export default function Custom404(): ReactElement | null {
   const router = useRouter();
 
   return (

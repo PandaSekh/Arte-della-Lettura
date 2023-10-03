@@ -35,7 +35,7 @@ function getBookAuthorInSchema(bookAuthors: Array<string>) {
 
 function isbn10to13(isbn10: string): string {
   // https://isbn-information.com/convert-isbn-10-to-isbn-13.html
-  let isbn13 = "";
+  let isbn13: string;
   // remove last digit
   isbn13 = isbn10.slice(0, -1);
   // add first three digits
@@ -68,7 +68,9 @@ function bookSchemaGen(book: Book): unknown {
     url: `https://artedellalettura.it/${book.reviewSlug}`,
     author: authors,
     workExample: {
-      "@id": `artedellalettura.it/edition/${book.isbn13 ? book.isbn13 : book.isbn}`,
+      "@id": `artedellalettura.it/edition/${
+        book.isbn13 ? book.isbn13 : book.isbn
+      }`,
       "@type": "Book",
       bookFormat: `${bookFormat}`,
       inLanguage: `${book.language}`,
@@ -92,7 +94,9 @@ function bookReviewSchemaGen(book: Book | Audiobook): unknown {
     url: `https://artedellalettura.it/${book.reviewSlug}`,
     author: authors,
     workExample: {
-      "@id": `artedellalettura.it/edition/${book.isbn13 ? book.isbn13 : book.isbn}`,
+      "@id": `artedellalettura.it/edition/${
+        book.isbn13 ? book.isbn13 : book.isbn
+      }`,
       "@type": "Book",
       bookFormat: `${bookFormat}`,
       inLanguage: `${book.language}`,

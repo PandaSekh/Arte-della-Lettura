@@ -2,8 +2,9 @@ import { useRouter } from "next/router";
 import { getKey as keygen } from "@lib/utils";
 import config from "website.config.json";
 import NavUrl from "./NavUrl";
+import { ReactElement } from "react";
 
-export default function DesktopHeader(): JSX.Element {
+export default function DesktopHeader(): ReactElement | null {
   const router = useRouter();
   const urls = config.urls.map((url) => (
     <NavUrl

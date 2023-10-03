@@ -1,5 +1,7 @@
 // https://loading.io/css/
-export default function LoadingComponent(): JSX.Element {
+import { ReactElement } from "react";
+
+export default function LoadingComponent(): ReactElement | null {
   return (
     <>
       <div className="lds-roller">

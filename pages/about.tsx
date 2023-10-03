@@ -1,4 +1,6 @@
-export default function About(): JSX.Element {
+import { ReactElement } from "react";
+
+export default function About(): ReactElement | null {
   return (
     <div className="mx-auto md:px-0 px-9">
       <h2 className="text-center">About</h2>

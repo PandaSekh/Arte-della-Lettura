@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { getKey } from "@lib/utils";
 import config from "website.config.json";
+import { ReactElement } from "react";
 
 export function PageButton({
   text,
@@ -12,14 +13,15 @@ export function PageButton({
   value: number;
   currentPage: number;
   onClickCallback: (pageNumber: number) => void;
-}): JSX.Element {
+}): ReactElement | null {
   return (
     <button
       type="button"
       onClick={() => onClickCallback(value)}
       onKeyPress={() => onClickCallback(value)}
-      className={`flex flex-col items-center text-xl m-4 justify-center cursor-pointer text-grayText rounded-md h-11 md: focus:outline-none p-2 hover:text-customBlue ${value === currentPage ? "underline text-customBlue" : ""
-        }`}
+      className={`flex flex-col items-center text-xl m-4 justify-center cursor-pointer text-grayText rounded-md h-11 md: focus:outline-none p-2 hover:text-customBlue ${
+        value === currentPage ? "underline text-customBlue" : ""
+      }`}
     >
       {text}
     </button>
@@ -30,7 +32,7 @@ export default function Pagination({
   totalCount,
 }: {
   totalCount: number;
-}): JSX.Element {
+}): ReactElement | null {
   const router = useRouter();
   const currentPage = router.query.page
     ? Number.parseInt(router.query.page as string, 10)

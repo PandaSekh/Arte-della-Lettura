@@ -4,6 +4,7 @@ import PostDataSingleton from "@fetchers/postsData";
 import RenderPosts from "@components/Homepage/RenderPosts";
 import config from "website.config.json";
 import SearchSchema from "@schemas/SearchSchema";
+import { ReactElement } from "react";
 
 export default function Index({
   posts,
@@ -12,12 +13,12 @@ export default function Index({
   posts: {
     content: string;
     data: {
-      [key: string]: unknown;
+      [_key: string]: unknown;
     };
     filePath: string;
   }[];
   postsCount: number;
-}): JSX.Element {
+}): ReactElement | null {
   const Pagination = dynamic(
     () => import("../components/Pagination/Pagination")
   );

@@ -5,12 +5,13 @@ import DataSingleton, {
 } from "@fetchers/postsData";
 import { getKey as keygen } from "@lib/utils";
 import BookTitleWithStars from "@components/Stars/BookTitleWithStars";
+import { ReactElement } from "react";
 
 export default function Archivio({
   data,
 }: {
   data: Array<BookWithTitleSlugAuthorRating>;
-}): JSX.Element {
+}): ReactElement | null {
   const prettyPrintData = data.map((book) => {
     return (
       <li key={keygen()} className="relative px-7 my-6">

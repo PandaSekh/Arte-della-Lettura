@@ -1,9 +1,10 @@
 import { GetStaticPaths } from "next";
 import PostDataSingleton from "@fetchers/postsData";
 import config from "website.config.json";
-import Post from "@interfaces/Post"
+import Post from "@interfaces/Post";
 import RenderPosts from "@components/Homepage/RenderPosts";
 import Pagination from "@components/Pagination/Pagination";
+import { ReactElement } from "react";
 
 export default function Index({
   posts,
@@ -11,7 +12,7 @@ export default function Index({
 }: {
   posts: Array<Post>;
   postsCount: number;
-}): JSX.Element {
+}): ReactElement | null {
   return (
     <div>
       <RenderPosts posts={posts} />

@@ -1,10 +1,12 @@
+import { ReactElement } from "react";
+
 export default function Stars({
   rating,
   className,
 }: {
   rating: number | string;
   className?: string;
-}): JSX.Element {
+}): ReactElement | null {
   const ratingNumber =
     typeof rating === "number" ? rating : Number.parseInt(rating, 10);
 

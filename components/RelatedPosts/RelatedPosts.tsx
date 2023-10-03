@@ -2,16 +2,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { getKey } from "@lib/utils";
 import { RelatedPost } from "@fetchers/getRelatedPosts";
-import subs from "better-substring"
+import subs from "better-substring";
+import { ReactElement } from "react";
 
-function SingleRelatedPost({ post }: { post: RelatedPost }): JSX.Element {
+function SingleRelatedPost({
+  post,
+}: {
+  post: RelatedPost;
+}): ReactElement | null {
   return (
     <div className="max-w-ws mx-auto md:p-2 p-4 h-auto self-end">
       <div>
         <Link href={`/${encodeURIComponent(post.slug)}`}>
           <a>
             <h3 className="text-center font-normal text-base mb-2 hover:text-customBlue mx-auto max-w-xs">
-              {post.title.length > 70 ? `${subs(post.title, 0, false, 60, false)}...` : post.title}
+              {post.title.length > 70
+                ? `${subs(post.title, 0, false, 60, false)}...`
+                : post.title}
             </h3>
           </a>
         </Link>
@@ -37,7 +44,7 @@ export default function RenderPosts({
   posts,
 }: {
   posts: RelatedPost[];
-}): JSX.Element {
+}): ReactElement | null {
   return (
     <div className="mx-auto my-8 w-full ">
       <p className="mx-auto text-center font-bold	">Post Correlati</p>

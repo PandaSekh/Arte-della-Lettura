@@ -1,4 +1,5 @@
 import Stars from "./StarsNoAnim";
+import { ReactElement } from "react";
 
 export default function InlineStars({
   rating,
@@ -6,13 +7,15 @@ export default function InlineStars({
   type,
 }: {
   rating: number;
-  Component: JSX.Element;
+  Component: ReactElement | null;
   type: "book";
-}): JSX.Element {
+}): ReactElement | null {
   const emoji = type === "book" ? "📚" : "📺";
   return (
     <span className="flex md:flex-row flex-col md:items-center m-0 gap-2">
-      <div>{emoji} {Component}</div>
+      <div>
+        {emoji} {Component}
+      </div>
       <Stars className="m-0 stars" rating={rating} />
     </span>
   );

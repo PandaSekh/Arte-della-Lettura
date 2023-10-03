@@ -1,17 +1,18 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 import dynamic from "next/dynamic";
 import { getKey, stringToSlug } from "@lib/utils";
 import Book from "@interfaces/Book";
+import { ReactElement } from "react";
 
-export default function BookElement({ slug }: { slug: string }): JSX.Element {
+export default function BookElement({
+  slug,
+}: {
+  slug: string;
+}): ReactElement | null {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const book: Book = require(`../../src/data/books/${slug}.json`);
   const Link = dynamic(() => import("next/link"));
   const Image = dynamic(() => import("next/image"));
-  const BoldTextWithStars = dynamic(
-    () => import("../Stars/BoldTextWithStars")
-  );
+  const BoldTextWithStars = dynamic(() => import("../Stars/BoldTextWithStars"));
   const BookSchema = dynamic(() => import("@schemas/BookSchema"));
   const Intersperse = dynamic(() => import("../UtilComponents/Intersperse"));
 

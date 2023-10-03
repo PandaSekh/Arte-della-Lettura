@@ -1,5 +1,5 @@
 import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 
 export default function Stars({
   rating,
@@ -7,7 +7,7 @@ export default function Stars({
 }: {
   rating: number | string;
   className?: string;
-}): JSX.Element {
+}): ReactElement | null {
   const ratingNumber =
     typeof rating === "number" ? rating : Number.parseInt(rating, 10);
 

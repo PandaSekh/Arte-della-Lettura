@@ -2,8 +2,13 @@
 import "../src/styles/style.css";
 import { AppProps } from "next/app";
 import Layout from "@components/Layout/Layout";
+import { ReactElement } from "react";
 
-function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
+function MyApp({
+  Component,
+  pageProps,
+  router,
+}: AppProps): ReactElement | null {
   return (
     <>
       <Layout>
@@ -60,7 +65,9 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
             right: 0px;
             width: 100px;
             height: 100%;
-            box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+            box-shadow:
+              0 0 10px #29d,
+              0 0 5px #29d;
             opacity: 1;
 
             -webkit-transform: rotate(3deg) translate(0px, -4px);

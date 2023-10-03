@@ -1,7 +1,8 @@
 import Image from "next/image";
-import panda from "../../public/icon-180-180.png"
+import panda from "../../public/icon-180-180.png";
+import { ReactElement } from "react";
 
-export default function Logo(): JSX.Element {
+export default function Logo(): ReactElement | null {
   return (
     <div>
       <Image

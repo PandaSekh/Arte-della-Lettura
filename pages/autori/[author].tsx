@@ -5,6 +5,7 @@ import DataSingleton, {
 } from "@fetchers/postsData";
 import RenderPosts from "@components/Homepage/RenderPosts";
 import { stringToSlug } from "@lib/utils";
+import { ReactElement } from "react";
 
 export default function Index({
   posts,
@@ -13,12 +14,12 @@ export default function Index({
   posts: {
     content: string;
     data: {
-      [key: string]: unknown;
+      [_key: string]: unknown;
     };
     filePath: string;
   }[];
   authorParam: string;
-}): JSX.Element {
+}): ReactElement | null {
   return (
     <div className="mx-auto">
       <h2 className="text-center mx-auto">Recensioni Libri di {authorParam}</h2>

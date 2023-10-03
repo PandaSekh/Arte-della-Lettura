@@ -62,5 +62,5 @@ export function mapToJSON(map: Map<unknown, unknown>): string {
 export function getBookPages(book: Book): number {
   const { pages } = book;
   if (!pages) return 0;
-  return typeof pages === "string" ? Number.parseInt(pages, 10) : pages;
+  return pages;
 }

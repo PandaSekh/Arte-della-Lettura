@@ -1,6 +1,8 @@
 /* eslint-disable react/no-danger */
 
-export default function LogoSchema(): JSX.Element {
+import { ReactElement } from "react";
+
+export default function LogoSchema(): ReactElement | null {
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -28,6 +30,10 @@ export default function LogoSchema(): JSX.Element {
     ],
   };
   return (
-    <script key="logo-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    <script
+      key="logo-schema"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
   );
 }
