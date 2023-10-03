@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { getKey } from "@lib/utils";
 import { RelatedPost } from "@fetchers/getRelatedPosts";
 import subs from "better-substring";

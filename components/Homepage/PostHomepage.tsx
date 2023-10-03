@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import subs from "better-substring";
 import ReadMore from "./ReadMore";

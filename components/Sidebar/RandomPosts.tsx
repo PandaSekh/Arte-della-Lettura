@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import randomPosts from "../../src/data/random-posts.json";
 import { ReactElement } from "react";
 
