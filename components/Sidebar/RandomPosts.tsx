@@ -10,15 +10,15 @@ export default function RandomPosts(): ReactElement | null {
       key={post.title}
     >
       <Link href={`/${encodeURIComponent(post.slug)}`} prefetch={false}>
-        <a>
-          <Image
-            src={`/static/images/${post.image}`}
-            loading="lazy"
-            alt={post.title || "Copertina libro"}
-            layout="fill"
-            objectFit="contain"
-          />
-        </a>
+
+        <Image
+          src={`/static/images/${post.image}`}
+          loading="lazy"
+          alt={post.title || "Copertina libro"}
+          layout="fill"
+          objectFit="contain"
+        />
+
       </Link>
     </div>
   ));

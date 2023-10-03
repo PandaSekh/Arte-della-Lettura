@@ -24,31 +24,43 @@ export default function Archivio({
     return (
       <div className="flex flex-row flex-wrap justify-center md:gap-5 md:mx-auto mx-6">
         <p>
-          <Link href="/autori">
-            <a className="text-customBlue hover:underline text-xl" type="link">
+          <Link
+            href="/autori"
+            className="text-customBlue hover:underline text-xl"
+            type="link">
+            
               Recensioni per Autore
-            </a>
+            
           </Link>
         </p>
         <p>
-          <Link href="/case-editrici">
-            <a className="text-customBlue hover:underline text-xl" type="link">
+          <Link
+            href="/case-editrici"
+            className="text-customBlue hover:underline text-xl"
+            type="link">
+            
               Recensioni per Editore
-            </a>
+            
           </Link>
         </p>
         <p>
-          <Link href="/generi">
-            <a className="text-customBlue hover:underline text-xl" type="link">
+          <Link
+            href="/generi"
+            className="text-customBlue hover:underline text-xl"
+            type="link">
+            
               Recensioni per Genere
-            </a>
+            
           </Link>
         </p>
         <p>
-          <Link href="/serie">
-            <a className="text-customBlue hover:underline text-xl" type="link">
+          <Link
+            href="/serie"
+            className="text-customBlue hover:underline text-xl"
+            type="link">
+            
               Recensioni per Serie
-            </a>
+            
           </Link>
         </p>
       </div>

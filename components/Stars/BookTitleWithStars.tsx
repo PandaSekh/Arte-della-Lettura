@@ -9,8 +9,10 @@ export default function BookTitleWithStars({
   bookTitleSlug: BookWithTitleSlugAuthorRating;
 }): ReactElement | null {
   const LinkComponent = (
-    <Link href={`/${bookTitleSlug.reviewSlug}`}>
-      <a className="text-customBlue hover:underline">{bookTitleSlug.title}</a>
+    <Link
+      href={`/${bookTitleSlug.reviewSlug}`}
+      className="text-customBlue hover:underline">
+      {bookTitleSlug.title}
     </Link>
   );
 

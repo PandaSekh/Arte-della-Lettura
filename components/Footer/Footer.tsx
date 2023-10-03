@@ -8,10 +8,12 @@ export default function Footer(): ReactElement | null {
     <footer className="pt-6	mb-4 text-center left-2/4 mx-auto">
       <small>
         &copy; Copyright {year}, Alessio Franceschi.{" "}
-        <Link href={`/${encodeURIComponent("privacy-policy")}`}>
-          <a className="text-dark-black cursor-pointer underline">
+        <Link
+          href={`/${encodeURIComponent("privacy-policy")}`}
+          className="text-dark-black cursor-pointer underline">
+          
             Privacy Policy
-          </a>
+          
         </Link>
       </small>
     </footer>

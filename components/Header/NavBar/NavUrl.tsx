@@ -21,20 +21,21 @@ export default function NavUrl({
 }): ReactElement | null {
   return (
     <li className={liClass}>
-      <Link href={`${path}`} prefetch={false}>
-        <a
-          onClick={onClickFunction}
-          role="link"
-          aria-roledescription="link"
-          tabIndex={0}
-          className={
-            router.pathname === `${path}`
-              ? `border-b-2 text-customBlue ${extraClass}`
-              : `${extraClass}`
-          }
-        >
-          {name}
-        </a>
+      <Link
+        href={`${path}`}
+        prefetch={false}
+        onClick={onClickFunction}
+        role="link"
+        aria-roledescription="link"
+        tabIndex={0}
+        className={
+          router.pathname === `${path}`
+            ? `border-b-2 text-customBlue ${extraClass}`
+            : `${extraClass}`
+        }>
+
+        {name}
+
       </Link>
     </li>
   );

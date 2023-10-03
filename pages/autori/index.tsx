@@ -54,10 +54,13 @@ export default function Index({
         const bookTitles = books.map((book) => {
           return (
             <li key={keygen()}>
-              <Link href={book.reviewSlug}>
-                <a className="text-customBlue hover:underline" type="link">
-                  {book.title}
-                </a>
+              <Link
+                href={book.reviewSlug}
+                className="text-customBlue hover:underline"
+                type="link">
+
+                {book.title}
+
               </Link>
             </li>
           );
@@ -65,8 +68,8 @@ export default function Index({
 
         authorsMapped.push(
           <div key={keygen()}>
-            <Link href={`autori/${stringToSlug(author)}`}>
-              <a className="underline">{author}</a>
+            <Link href={`autori/${stringToSlug(author)}`} className="underline">
+              {author}
             </Link>
             : <ul>{bookTitles}</ul>
           </div>

@@ -8,11 +8,11 @@ export default function CustomLink({
   slug: string;
   text: string;
 }): ReactElement | null {
-  return (
-    <>
-      <Link href={`/${encodeURIComponent(slug)}`}>
-        <a className="text-customBlue cursor-pointer underline">{text}</a>
-      </Link>
-    </>
-  );
+  return <>
+    <Link
+      href={`/${encodeURIComponent(slug)}`}
+      className="text-customBlue cursor-pointer underline">
+      {text}
+    </Link>
+  </>;
 }

@@ -17,24 +17,20 @@ export default function PostHomepage({
   return (
     <div className="singlePostHomepage m-auto w-11/12 mb-8 grid">
       <Link href={`/${encodeURIComponent(data.slug)}`}>
-        <a>
-          <h3 className="homepageTitle text-center font-light text-2xl mb-2 hover:text-customBlue mx-auto">
-            {data.title}
-          </h3>
-        </a>
+        <h3 className="homepageTitle text-center font-light text-2xl mb-2 hover:text-customBlue mx-auto">
+          {data.title}
+        </h3>
       </Link>
       {/* <DateUnderPost date={data.publishedAt} /> */}
       <div className="homePageImage grid m-auto my-2 w-72 h-80 relative transition-opacity opacity-100 hover:opacity-80">
         <Link href={`/${encodeURIComponent(data.slug)}`}>
-          <a>
-            <Image
-              src={`/static/images/${data.image}`}
-              loading={mainPost ? "eager" : "lazy"}
-              alt={data.title}
-              layout="fill"
-              objectFit="contain"
-            />
-          </a>
+          <Image
+            src={`/static/images/${data.image}`}
+            loading={mainPost ? "eager" : "lazy"}
+            alt={data.title}
+            layout="fill"
+            objectFit="contain"
+          />
         </Link>
       </div>
       <p className="extract m-auto max-w-full">

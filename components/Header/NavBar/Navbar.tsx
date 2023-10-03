@@ -14,9 +14,7 @@ export default function Navbar(): ReactElement | null {
 
       <div className="logo max-h-full w-4/6 m-auto lg:w-2/5">
         <Link href="/" aria-label="homepage">
-          <a aria-label="homepage">
-            <SvgHeader />
-          </a>
+          <SvgHeader />
         </Link>
       </div>
       <style jsx>
