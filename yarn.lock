@@ -1890,7 +1890,7 @@ __metadata:
     next-sitemap: 4.2.3
     next-transpile-modules: 10.0.1
     nprogress: 0.2.0
-    postcss: 8.4.30
+    postcss: 8.4.31
     postcss-preset-env: 9.1.4
     prettier: 3.0.3
     react: 18.2.0
@@ -6648,7 +6648,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.30, postcss@npm:^8.4.23":
+"postcss@npm:8.4.31":
+  version: 8.4.31
+  resolution: "postcss@npm:8.4.31"
+  dependencies:
+    nanoid: ^3.3.6
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: 1d8611341b073143ad90486fcdfeab49edd243377b1f51834dc4f6d028e82ce5190e4f11bb2633276864503654fb7cab28e67abdc0fbf9d1f88cad4a0ff0beea
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.23":
   version: 8.4.30
   resolution: "postcss@npm:8.4.30"
   dependencies:
