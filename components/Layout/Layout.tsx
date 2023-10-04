@@ -11,6 +11,7 @@ import LogoSchema from "@schemas/LogoSchema";
 import BreadcrumbsSchema from "@schemas/BreadcrumbsSchema";
 import Navbar from "../Header/NavBar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
+import Script from "next/script";
 
 export default function Layout({
   children,
@@ -62,16 +63,6 @@ export default function Layout({
         />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="shortcut icon" href="/favicon.png" />
-        <script
-          data-goatcounter="https://artedellalettura.goatcounter.com/count"
-          async
-          src="//gc.zgo.at/count.js"
-        />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3079214726745163"
-          crossOrigin="anonymous"
-        />
       </Head>
       <DefaultSeo {...SEO} />
       <SiteNavSchema />
@@ -83,6 +74,16 @@ export default function Layout({
         <Sidebar />
       </main>
       <Footer />
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3079214726745163"
+        crossOrigin="anonymous"
+      />
+      <Script
+        data-goatcounter="https://artedellalettura.goatcounter.com/count"
+        async
+        src="//gc.zgo.at/count.js"
+      />
     </>
   );
 }

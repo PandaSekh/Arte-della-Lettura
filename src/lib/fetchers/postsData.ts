@@ -101,10 +101,6 @@ export default class PostsDataSingleton {
     return this.seriesSlug;
   }
 
-  public getBookByReviewSlug(slug: string): Book | undefined {
-    return this.books.find((book) => book.reviewSlug === slug);
-  }
-
   /**
    * Returns all the posts
    * @returns Array<Post>
@@ -134,29 +130,6 @@ export default class PostsDataSingleton {
     return fs.readFileSync(postFilePath);
   }
 
-  public getPublishedPostsForHomepage(
-    sliceFrom: number | undefined = undefined,
-    sliceTo: number | undefined = undefined
-  ): Array<HomepagePostData> {
-    return this.publishedPostsPath
-      .map((filePath) => {
-        const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
-        const { data } = matter(source);
-
-        return {
-          data,
-          filePath,
-        };
-      })
-      .filter((post) => post)
-      .sort(
-        (a, b) =>
-          getDateFromStringMMDDYYYY(b.data.publishedAt).getTime() -
-          getDateFromStringMMDDYYYY(a.data.publishedAt).getTime()
-      )
-      .slice(sliceFrom, sliceTo);
-  }
-
   public getPostsForHomepageBySlug(slug: string): HomepagePostData {
     const filePath =
       this.publishedPostsPath
@@ -172,7 +145,7 @@ export default class PostsDataSingleton {
   }
 
   /**
-   *  Should only be ran once in the constructor.
+   *  Should only be run once in the constructor.
    * @returns Get all the slugs for the posts
    */
   private getPublishedPostSlug(): Array<SlugParam> {
@@ -182,7 +155,7 @@ export default class PostsDataSingleton {
   }
 
   /**
-   * Get a list of all Posts. Should only be ran once in the constructor.
+   * Get a list of all Posts. Should only be run once in the constructor.
    * @returns Array of all posts filename
    */
   private static getPublishedPostPath(): string[] {
@@ -192,7 +165,7 @@ export default class PostsDataSingleton {
   }
 
   /**
-   * Get all the posts in the posts folder. Should only be ran once in the constructor.
+   * Get all the posts in the posts folder. Should only be run once in the constructor.
    * @returns Array<Post>
    */
   private getPostsMethod(): Array<Post> {
@@ -255,7 +228,7 @@ export default class PostsDataSingleton {
   }
 
   /**
-   * Get a list of all Books. Should only be ran once in the constructor.
+   * Get a list of all Books. Should only be run once in the constructor.
    * @returns Array of all posts filename
    */
   private static getBooksPath(): string[] {

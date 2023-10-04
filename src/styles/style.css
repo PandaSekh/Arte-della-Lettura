@@ -55,13 +55,8 @@
     .logo {
       @apply w-2/4 p-1;
     }
-    .active {
-      @apply border-dark-white border-solid border-b-4;
-    }
-    .book-block > .cover {
-      @apply block float-none mx-auto w-max;
-    }
-    .book-block > p {
+
+     .book-block > p {
       @apply px-2.5;
     }
   }

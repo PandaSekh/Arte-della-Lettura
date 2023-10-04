@@ -62,7 +62,7 @@ function MyApp({
           #nprogress .peg {
             display: block;
             position: absolute;
-            right: 0px;
+            right: 0;
             width: 100px;
             height: 100%;
             box-shadow:

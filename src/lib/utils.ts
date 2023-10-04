@@ -1,17 +1,6 @@
-import Book from "@interfaces/Book";
-
 export function getDateFromStringMMDDYYYY(date: string): Date {
   const parts = date.split("-");
   return new Date(`${parts[1]}-${parts[0]}-${parts[2]}`);
-}
-
-/**
- *
- * @param date DD-MM-YYYY
- */
-export function getMonthFromDate(date: string): number {
-  const parts = date.split("-");
-  return Number.parseInt(parts[1], 10);
 }
 
 export function stringToSlug(str: string): string {
@@ -48,19 +37,9 @@ months[11] = "Novembre";
 months[12] = "Dicembre";
 
 export function getKey(length = 10): string {
-  const n = Math.random() * (9 - 0) + 0;
+  const n = Math.random() * 9;
   return n
     .toString()
     .replace(".", "")
     .substring(0, length + 1);
-}
-
-export function mapToJSON(map: Map<unknown, unknown>): string {
-  return JSON.stringify([...map]);
-}
-
-export function getBookPages(book: Book): number {
-  const { pages } = book;
-  if (!pages) return 0;
-  return pages;
 }

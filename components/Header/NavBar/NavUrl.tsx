@@ -32,10 +32,9 @@ export default function NavUrl({
           router.pathname === `${path}`
             ? `border-b-2 text-customBlue ${extraClass}`
             : `${extraClass}`
-        }>
-
+        }
+      >
         {name}
-
       </Link>
     </li>
   );
@@ -44,5 +43,4 @@ export default function NavUrl({
 NavUrl.defaultProps = {
   liClass: "",
   extraClass: "",
-  onClickFunction: () => {},
 };

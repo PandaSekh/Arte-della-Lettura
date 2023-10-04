@@ -9,10 +9,10 @@
 </p>
 <p align="center"><em>Personal Book Review Blog</em></p>
 
-Arte della Lettura is my personal blog where I review books since 2018. I started with Blogger, then moved to Wordpress and now I finally decided to move to a completely self-made solution built with Next.js (React), TailwindCSS and MDX.
+Arte della Lettura is my personal blog where I review books since 2018. I started with Blogger, then moved to WordPress and now I finally decided to move to a completely self-made solution built with Next.js (React), TailwindCSS and MDX.
 
 ## Why
-As stated in the introduction, this website was previously hosted on Wordpress. While Wordpress is great for many things, I hated not being able to do any customization (I don't know PHP). 
+As stated in the introduction, this website was previously hosted on WordPress. While WordPress is great for many things, I hated not being able to do any customization (I don't know PHP). 
 Also, to have a decent website I have to spend some money, which isn't great for a hobby website with no ads.
 
 So, I decided to remake my blog from the ground up.
@@ -25,7 +25,7 @@ So, I decided to remake my blog from the ground up.
 
 - Next.js - _Frontend framework to make React actually usable in production_
 - TailwindCSS - _Seemed great to reduce the css size, as classes are reused across the whole website. Also, easy dark mode_
-- MDX - _To make cool posts, without MDX this blog wouldn't be possible (think of this like wordpress hooks)_
+- MDX - _To make cool posts, without MDX this blog wouldn't be possible (think of this like WordPress hooks)_
 - GitHub - _I use GitHub for a lot of things, like comments_
 - Supabase - _Used for the free database only_
 - Framer Motion - _To make the website feel less boring_

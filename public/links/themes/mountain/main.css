@@ -112,6 +112,6 @@ html{
 
 #footer{
   width: 100%;
-  bottom: 0px; 
-  left: 0px; 
+  bottom: 0;
+  left: 0;
 }

@@ -39,7 +39,7 @@ export default function BookElement({
                   stringToSlug(singleAuthor)
                 )}`}
               >
-                <a>{singleAuthor}</a>
+                {singleAuthor}
               </Link>
             ))}
           />
@@ -53,9 +53,7 @@ export default function BookElement({
                   stringToSlug(book.series[0].series)
                 )}`}
               >
-                <a>
-                  {book.series[0].series} #{book.series[0].numInSeries}
-                </a>
+                {book.series[0].series} #{book.series[0].numInSeries}
               </Link>
               <br />
             </>
@@ -67,7 +65,7 @@ export default function BookElement({
               stringToSlug(book.publisher)
             )}`}
           >
-            <a>{book.publisher}</a>
+            {book.publisher}
           </Link>
           <br />
           <strong>
@@ -80,7 +78,7 @@ export default function BookElement({
                 key={getKey()}
                 href={`/generi/${encodeURIComponent(stringToSlug(genre))}`}
               >
-                <a>{genre}</a>
+                {genre}
               </Link>
             ))}
           />

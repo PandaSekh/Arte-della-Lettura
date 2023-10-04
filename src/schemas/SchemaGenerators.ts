@@ -45,7 +45,7 @@ function isbn10to13(isbn10: string): string {
   let lastDigitSum = 0;
   isbn13.split("").forEach((char, index) => {
     if (index % 2 === 0) {
-      lastDigitSum += Number.parseInt(char, 10) * 1;
+      lastDigitSum += Number.parseInt(char, 10);
     } else {
       lastDigitSum += Number.parseInt(char, 10) * 3;
     }
@@ -56,37 +56,11 @@ function isbn10to13(isbn10: string): string {
   return isbn13;
 }
 
-function bookSchemaGen(book: Book): unknown {
-  const authors = getBookAuthorInSchema(book.author);
-  const bookFormat = getBookFormatInSchema(book.format);
-
-  const schema = {
-    "@context": "https://schema.org/",
-    "@id": `artedellalettura.it/work/${book.isbn13 ? book.isbn13 : book.isbn}`,
-    "@type": "Book",
-    name: `${book.title}`,
-    url: `https://artedellalettura.it/${book.reviewSlug}`,
-    author: authors,
-    workExample: {
-      "@id": `artedellalettura.it/edition/${
-        book.isbn13 ? book.isbn13 : book.isbn
-      }`,
-      "@type": "Book",
-      bookFormat: `${bookFormat}`,
-      inLanguage: `${book.language}`,
-      isbn: `${book.isbn13 ? book.isbn13 : isbn10to13(book.isbn)}`,
-      datePublished: `${book.publishedYear}`,
-    },
-  };
-
-  return schema;
-}
-
 function bookReviewSchemaGen(book: Book | Audiobook): unknown {
   const authors = getBookAuthorInSchema(book.author);
   const bookFormat = getBookFormatInSchema(book.format);
 
-  const schema = {
+  return {
     "@context": "https://schema.org/",
     "@id": `artedellalettura.it/work/${book.isbn13 ? book.isbn13 : book.isbn}`,
     "@type": "Book",
@@ -121,56 +95,6 @@ function bookReviewSchemaGen(book: Book | Audiobook): unknown {
       },
     },
   };
-
-  return schema;
 }
 
-// function bookReviewSchemaGen(book: Book): unknown {
-//   const authors = getBookAuthorInSchema(book.author);
-//   const bookFormat = getBookFormatInSchema(book.format);
-
-//   const schema = {
-//     "@context": "http://schema.org",
-//     "@type": "DataFeed",
-//     dateModified: `${book.readDate}`,
-//     dataFeedElement: [
-//       {
-//         "@context": "https://schema.org/",
-//         "@type": "Review",
-//         author: {
-//           "@type": "Person",
-//           name: `Alessio Franceschi`,
-//         },
-//         itemReviewed: {
-//           "@id": `artedellalettura.it/work/${book.isbn13 ? book.isbn13 : book.isbn}`,
-//           "@type": "Book",
-//           name: `${book.title}`,
-//           url: `https://artedellalettura.it/${book.reviewSlug}`,
-//           author: authors,
-//           workExample: {
-//             "@id": `artedellalettura.it/edition/${book.isbn13 ? book.isbn13 : book.isbn}`,
-//             "@type": "Book",
-//             bookFormat: `${bookFormat}`,
-//             inLanguage: `${book.language}`,
-//             isbn: `${book.isbn13 ? book.isbn13 : isbn10to13(book.isbn)}`,
-//             datePublished: `${book.publishedYear}`,
-//           },
-//         },
-//         reviewRating: {
-//           author: {
-//             "@type": "Person",
-//             name: `Alessio Franceschi`,
-//           },
-//           "@type": "Rating",
-//           bestRating: 5,
-//           worstRating: 0,
-//           ratingValue: `${book.rating}`,
-//         },
-//       },
-//     ],
-//   };
-
-//   return schema;
-// }
-
-export { bookSchemaGen, bookReviewSchemaGen };
+export { bookReviewSchemaGen };

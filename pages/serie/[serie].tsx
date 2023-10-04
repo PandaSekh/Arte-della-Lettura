@@ -13,7 +13,7 @@ export default function Index({
   posts: {
     content: string;
     data: {
-      [key: string]: unknown;
+      [_key: string]: unknown;
     };
     filePath: string;
   }[];
