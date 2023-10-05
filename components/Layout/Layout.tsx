@@ -62,7 +62,7 @@ export default function Layout({
           href="/favicon-16x16.png"
         />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <DefaultSeo {...SEO} />
       <SiteNavSchema />
@@ -74,11 +74,6 @@ export default function Layout({
         <Sidebar />
       </main>
       <Footer />
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3079214726745163"
-        crossOrigin="anonymous"
-      />
       <Script
         data-goatcounter="https://artedellalettura.goatcounter.com/count"
         async
