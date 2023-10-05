@@ -58,5 +58,11 @@
   "browserslist": [
     "> 5% in IT"
   ],
-  "packageManager": "yarn@3.6.3"
+  "packageManager": "yarn@3.6.3",
+  "nextBundleAnalysis": {
+    "budget": 358400,
+    "budgetPercentIncreaseRed": 20,
+    "minimumChangeThreshold": 10,
+    "showDetails": true
+  }
 }
