@@ -30,7 +30,7 @@ So, I decided to remake my blog from the ground up.
 - Supabase - _Used for the free database only_
 - Framer Motion - _To make the website feel less boring_
 
-## Why did I decide to store -almost- everything on GitHub?
+## Why did I decide to store everything on GitHub?
 
 <p align="center">
   <img src="https://media1.tenor.com/images/a3d9fc252280b3b89419b1bb728e8f2d/tenor.gif" >
@@ -41,8 +41,6 @@ This blog is an hobby, I don't want to make money off of it, so every penny spen
 As such, I wanted to design this website to be as cheap as possible. 
 The best solution I found is to save everything as a JSON on GitHub. This means that I don't have relational data, but for this use case that is easily solved.
 By going this route I also get the additional advantage to have everything stored in one place and under my control.
-
-Unfortunately, to make reactions usable I had to rely on a database. I used [Supabase](https://supabase.io/), which has a generous free plan and as such I'm currently able to not spend any money on this.
 
 ## License
 Code is covered by GPLv3, while the articles/reviews are covered by Copyright©.
