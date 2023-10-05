@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import "../src/styles/style.css";
 import { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
 import Layout from "@components/Layout/Layout";
 import { ReactElement } from "react";
 
@@ -14,6 +15,7 @@ function MyApp({
       <Layout>
         <Component {...pageProps} router={router} />
       </Layout>
+      <Analytics />
       <style jsx global>
         {`
           :root {
