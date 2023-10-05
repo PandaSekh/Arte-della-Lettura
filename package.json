@@ -4,8 +4,8 @@
   "license": "GPL-3.0-only",
   "scripts": {
     "prepareData": "node -r ts-node/register -r tsconfig-paths/register src/lib/runGenerators.ts",
-    "dev": "pnpm run prepareData && next dev",
-    "build": "pnpm run prepareData && next build",
+    "dev": "yarn prepareData && next dev",
+    "build": "yarn prepareData && next build",
     "start": "next start",
     "lint": "next lint --fix",
     "postbuild": "next-sitemap"
