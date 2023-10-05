@@ -47,4 +47,3 @@ src/data/*.json
 src/data/random-posts.json
 .yarn
 .idea
-.yarnrc.yml
