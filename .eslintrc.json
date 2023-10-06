@@ -32,7 +32,7 @@
     "tailwind.config.js",
     "website.config.js",
     "vercel.json",
-    "next-sitemap.js"
+    "next-sitemap.config.js"
   ],
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
