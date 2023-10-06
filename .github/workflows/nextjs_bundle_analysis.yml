@@ -4,10 +4,9 @@
 name: 'Next.js Bundle Analysis'
 
 on:
-  #pull_request:
-  #push:
-  #branches:
-  #- main # change this if your default branch is named differently
+  pull_request:
+    branches:
+      - dev
   workflow_dispatch:
 
 defaults:
