@@ -833,10 +833,10 @@
   dependencies:
     undici-types "~5.25.1"
 
-"@types/nodemailer@6.4.11":
-  version "6.4.11"
-  resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-6.4.11.tgz#98630b15b95f292940d27cf4f314c42c70dfdf19"
-  integrity sha512-Ld2c0frwpGT4VseuoeboCXQ7UJIkK3X7Lx/4YsZEiUHtHsthWAOCYtf6PAiLhMtfwV0cWJRabLBS3+LD8x6Nrw==
+"@types/nodemailer@6.4.12":
+  version "6.4.12"
+  resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-6.4.12.tgz#d2f3b0ed703f567366e4b9c247e7c8392c1c8312"
+  integrity sha512-FMXpf8/U9tpcjGwwOh2nSPKiPmxmIDEwHjYyUMMKYlHn7WSeJeDtT61pnpcjk1QDK9+5ktnyuxXVsTvvTx1zoA==
   dependencies:
     "@types/node" "*"
 
